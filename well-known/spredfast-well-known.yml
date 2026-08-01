@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of /.well-known/* on Spredfast API and website hosts
+note: >-
+  No /.well-known/ discovery document returned HTTP 200. api.spredfast.com is
+  auth-gated (401 on all paths) and the spredfast.com website returns 503 (the
+  product is now Khoros Marketing at developer.khoros.com). Absence of published
+  discovery documents is recorded as valid data; no raw files were saved.
+hosts:
+- host: https://api.spredfast.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+- host: https://spredfast.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 503
+  - path: /.well-known/openid-configuration
+    status: 503
+  - path: /.well-known/oauth-authorization-server
+    status: 503
+  - path: /.well-known/api-catalog
+    status: 503
+  - path: /.well-known/ai-plugin.json
+    status: 503

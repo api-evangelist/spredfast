@@ -1,7 +1,16 @@
 aid: spredfast
 name: Spredfast
-description: Spredfast is a company surfaced as a portfolio company of battery-ventures and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Spredfast was an Austin-based social media marketing and management platform
+  providing social publishing, engagement, listening, and analytics for
+  enterprise brands and agencies. Backed by Battery Ventures, Spredfast merged
+  with Lithium Technologies in 2018; the combined company rebranded as Khoros in
+  2019, and the Spredfast product line is now delivered as Khoros Marketing. Its
+  developer API surface — the Conversations API, Publishing API, Analytics
+  Reporting API, Notification API, and CRM API — is documented today under the
+  Khoros developer center at developer.khoros.com, secured with OAuth 2.0. The
+  legacy api.spredfast.com host still resolves, while the original
+  devcenter.spredfast.com developer portal is no longer maintained.
 url: https://raw.githubusercontent.com/api-evangelist/spredfast/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,12 +18,71 @@ x-backed-by:
 - battery-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-successor: khoros
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 3
+  pass: local-v1
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Social Media
+- Social Media Management
+- Marketing
+- Social Marketing
+- Publishing
+- Analytics
+- Engagement
+image: https://raw.githubusercontent.com/api-evangelist/spredfast/refs/heads/main/apis.yml
+apis:
+- name: Spredfast / Khoros Marketing API
+  description: >-
+    The Spredfast social marketing API, now delivered as the Khoros Marketing
+    API family — Conversations, Publishing, Analytics Reporting, Notification,
+    and CRM APIs — authenticated with OAuth 2.0 and documented at the Khoros
+    developer center.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com
+  tags:
+  - Social Media
+  - Marketing
+  - Publishing
+  - Analytics
+  properties:
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: GettingStarted
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+common:
+- type: DeveloperPortal
+  url: https://developer.khoros.com/khorosmarketingdevdocs
+- type: Documentation
+  url: https://developer.khoros.com/khorosmarketingdevdocs
+- type: APIReference
+  url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+- type: Authentication
+  url: authentication/spredfast-authentication.yml
+- type: DomainSecurity
+  url: security/spredfast-domain-security.yml
+- type: WellKnown
+  url: well-known/spredfast-well-known.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

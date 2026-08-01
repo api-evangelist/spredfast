@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+docs: https://developer.khoros.com/khorosmarketingdevdocs
+note: >-
+  Spredfast's social marketing API is now the Khoros Marketing API family
+  (Conversations, Publishing, Analytics Reporting, Notification, CRM). The
+  developer center documents an OAuth 2.0 developer auth flow: clients complete
+  the auth flow to obtain an accessToken that authenticates all subsequent calls
+  to the Khoros Marketing Conversations API. No OpenAPI/Swagger definition is
+  published, so the scheme below is captured from the docs rather than derived.
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    description: >-
+      Developer Auth Flow — the app obtains an accessToken via OAuth 2.0 that is
+      then presented on all subsequent Khoros Marketing (Spredfast) API calls.
+  sources:
+  - https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
