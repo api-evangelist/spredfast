@@ -3,42 +3,45 @@ name: Spredfast
 description: >-
   Spredfast was an Austin-based social media marketing and management platform
   providing social publishing, engagement, listening, and analytics for
-  enterprise brands and agencies. Backed by Battery Ventures, Spredfast merged
-  with Lithium Technologies in 2018; the combined company rebranded as Khoros in
-  2019, and the Spredfast product line is now delivered as Khoros Marketing. Its
-  developer API surface — the Conversations API, Publishing API, Analytics
-  Reporting API, Notification API, and CRM API — is documented today under the
-  Khoros developer center at developer.khoros.com, secured with OAuth 2.0. The
-  legacy api.spredfast.com host still resolves, while the original
-  devcenter.spredfast.com developer portal is no longer maintained.
+  enterprise brands and agencies. Backed by Battery Ventures, it acquired Mass
+  Relevance in 2013, merged with Lithium Technologies in 2018, and the combined
+  company rebranded as Khoros in 2019; the Spredfast product line is delivered
+  today as Khoros Marketing and documented at developer.khoros.com. The API
+  surface still carries the Spredfast name in production — the host is
+  api.spredfast.com, OAuth 2.0 runs on login.spredfast.com, request headers use
+  the x-sf- vendor prefix, and the Conversations v1 contract is still licensed
+  as "Spredfast API Terms of Use". Nine OpenAPI documents covering 149
+  operations are published through the Khoros developer center: Conversations
+  v2 and v1, an asynchronous Analytics Reporting API, a Notifications (Events)
+  API with eleven documented event types, CRM registration, Label Sets, token
+  introspection, the Experiences Stream API inherited from Mass Relevance, and
+  an inverted Custom CRM contract the customer implements. The original
+  devcenter.spredfast.com developer portal is dead and spredfast.com returns
+  503.
 url: https://raw.githubusercontent.com/api-evangelist/spredfast/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - battery-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: nine-openapi-contracts-harvested
 x-successor: khoros
-x-enrichment:
-  date: '2026-07-21'
-  status: enriched
-  artifacts_added: 3
-  pass: local-v1
 accessModel:
-  pricing: unknown
-  onboarding: self-serve
+  pricing: enterprise
+  onboarding: sales-gated
   trial: false
   try_now: false
   public: false
-  label: Self-serve signup
-  confidence: medium
+  label: Contact sales; API credentials issued by support
+  confidence: high
   source:
-  - authentication
-  generated: '2026-07-22'
-  method: derived
+  - plans/spredfast-plans-pricing.yml
+  - authentication/spredfast-authentication.yml
+  generated: '2026-08-13'
+  method: searched
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-13'
 tags:
 - Company
 - Social Media
@@ -48,28 +51,207 @@ tags:
 - Publishing
 - Analytics
 - Engagement
+- Content Management
+- Webhooks
+- Events
+- Enterprise
 image: https://raw.githubusercontent.com/api-evangelist/spredfast/refs/heads/main/apis.yml
 apis:
-- name: Spredfast / Khoros Marketing API
+- name: Spredfast Conversations API (v2)
   description: >-
-    The Spredfast social marketing API, now delivered as the Khoros Marketing
-    API family — Conversations, Publishing, Analytics Reporting, Notification,
-    and CRM APIs — authenticated with OAuth 2.0 and documented at the Khoros
-    developer center.
+    The current Spredfast / Khoros Marketing publishing and content surface —
+    39 operations covering initiatives, account sets, message publishing and
+    scheduling, the Content Center (assets and folders), custom channels and the
+    publishing calendar, plans, content labels, users, roles, privileges and
+    workspaces. OAuth 2.0 bearer token; company and environment are derived from
+    the token.
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
-  baseURL: https://api.spredfast.com
+  baseURL: https://api.spredfast.com/v2
   tags:
   - Social Media
   - Marketing
   - Publishing
-  - Analytics
+  - Content Management
   properties:
+  - type: OpenAPI
+    url: openapi/spredfast-conversations-api-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-conversations-api-overlay.yaml
   - type: Documentation
     url: https://developer.khoros.com/khorosmarketingdevdocs
   - type: APIReference
     url: https://developer.khoros.com/khorosmarketingdevdocs/reference
   - type: GettingStarted
     url: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+  - type: AgentSkill
+    url: skills/spredfast-publish-a-social-message.md
+  - type: AgentSkill
+    url: skills/spredfast-manage-content-center-assets.md
+- name: Spredfast Conversations API (v1)
+  description: >-
+    The original Spredfast Conversations API, still live alongside v2 on
+    api.spredfast.com — 27 operations for publishing, assets, folders,
+    initiatives, plans and privileges. Paths take the form
+    /{environment}/v1/company/{companyId}/... where the environment segment is a
+    case-sensitive deployment name (Production, VPC1, APP3). This is the one
+    contract that declares the real OAuth endpoints on login.spredfast.com and
+    carries the "Spredfast API Terms of Use" licence. No deprecation or sunset
+    notice is published for it.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  baseURL: https://api.spredfast.com
+  tags:
+  - Social Media
+  - Publishing
+  - Legacy
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-conversations-api-v1-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-conversations-api-v1-overlay.yaml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+- name: Spredfast Analytics Reporting API
+  description: >-
+    Asynchronous analytics exports — 12 operations. Eight export endpoints
+    (published posts, daily account metrics, daily post summary, ads net values,
+    stream items, stream item actions, customer feedback, profiles) start a job
+    that is then polled at GET /export/{id}/status; field discovery and stream
+    listing are synchronous. Documented as beta.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  baseURL: https://api.spredfast.com/v2/analytics
+  tags:
+  - Analytics
+  - Reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-analytics-api-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-analytics-api-overlay.yaml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: AgentSkill
+    url: skills/spredfast-export-analytics.md
+- name: Spredfast Notifications (Events) API
+  description: >-
+    The event surface — six operations managing event subscriptions. A
+    subscription binds one eventName; setting notificationUri makes delivery a
+    push (with an optional subscriber-supplied bearerToken), omitting it makes
+    it a poll against GET /data/{subscriptionId}. Eleven event types are
+    documented, including four credential-* events that report social account
+    de-authorization. No AsyncAPI document is published.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  baseURL: https://api.spredfast.com/v2/events
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-notification-api-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-notification-api-overlay.yaml
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: AgentSkill
+    url: skills/spredfast-subscribe-to-events.md
+- name: Spredfast Experiences Stream API
+  description: >-
+    Curated social stream data powering Khoros Marketing Experiences
+    visualisations — 48 operations for stream items, leaderboards, stream meta,
+    topic and hashtag counts, and volume comparison. Served from
+    api.massrelevance.com, the host inherited from Mass Relevance, which
+    Spredfast acquired in 2013 and rebranded as Spredfast Experiences; the
+    provider's own reference page states "Experiences is a Khoros Marketing
+    product" and that access requires accepting the Spredfast Experiences API
+    usage agreement. PROBED 2026-08-13: that host returns HTTP 502 on every path
+    including /, while the contract remains published on the current developer
+    center.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  baseURL: https://api.massrelevance.com
+  tags:
+  - Social Media
+  - Streaming
+  - Experiences
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-experiences-stream-api-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-experiences-stream-api-overlay.yaml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+- name: Spredfast CRM Registration API
+  description: >-
+    Two operations to register and update a customer-implemented Custom CRM so
+    Khoros Marketing can call it — POST /admin/custom and PATCH
+    /admin/custom/{crmId}. The paired contract the customer must implement is
+    the Custom CRM Callback Contract.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  baseURL: https://api.spredfast.com/v2/crm
+  tags:
+  - CRM
+  - Integration
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-crm-api-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-crm-api-overlay.yaml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+- name: Spredfast Custom CRM Callback Contract
+  description: >-
+    An INVERTED contract — 13 operations the CUSTOMER implements on their own
+    domain and Khoros Marketing calls. Cases, customers, best-match lookup, a
+    customer's cases, list and asset resources, and GET /meta/object/{type},
+    which lets the customer describe their own object structures back to Khoros.
+    The templated server https://{your-domain}.com is correct and deliberate,
+    not a defect: the host is the customer's. Failures on this integration are
+    reported asynchronously through the error-custom-crm event.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/api-specification-introduction
+  baseURL: https://{your-domain}.com
+  tags:
+  - CRM
+  - Integration
+  - Callbacks
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-custom-crm-callback-api-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-custom-crm-callback-api-overlay.yaml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- name: Spredfast Label Sets API
+  description: >-
+    One operation returning a page of content labels nested within their label
+    sets. Labels are applied to messages and to inbox stream items, and their
+    application raises the stream-item-label-applied event.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/retrieve-a-page-of-labels-nested-within-sets
+  baseURL: https://api.spredfast.com/v2/labelsets
+  tags:
+  - Taxonomy
+  - Content Management
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-labelsets-api-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-labelsets-api-overlay.yaml
+- name: Spredfast Introspection API
+  description: >-
+    Token introspection — a single GET returning the identity and company behind
+    the presented access token. The whoami call for the Spredfast OAuth surface.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/current-user-details
+  baseURL: https://api.spredfast.com/v2/whoami
+  tags:
+  - Authentication
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-introspection-api-openapi.yml
+  - type: Overlay
+    url: overlays/spredfast-introspection-api-overlay.yaml
 common:
 - type: DeveloperPortal
   url: https://developer.khoros.com/khorosmarketingdevdocs
@@ -77,14 +259,57 @@ common:
   url: https://developer.khoros.com/khorosmarketingdevdocs
 - type: APIReference
   url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+- type: GettingStarted
+  url: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+- type: Support
+  url: https://community.khoros.com/t5/Developer-Discussion/bd-p/studio
+- type: Blog
+  url: https://community.khoros.com/t5/Developer-Blog/bg-p/developer-blog
+- type: TermsOfService
+  url: https://khoros.ai/legal/customer-agreements/
 - type: Authentication
   url: authentication/spredfast-authentication.yml
+- type: OAuthScopes
+  url: scopes/spredfast-scopes.yml
+- type: Conventions
+  url: conventions/spredfast-conventions.yml
+- type: ErrorCatalog
+  url: errors/spredfast-problem-types.yml
+- type: DataModel
+  url: data-model/spredfast-data-model.yml
+- type: Lifecycle
+  url: lifecycle/spredfast-lifecycle.yml
+- type: StatusPage
+  url: https://status.khoros.com
+- type: Conformance
+  url: conformance/spredfast-conformance.yml
+- type: Compliance
+  url: security/spredfast-trust-center.yml
+- type: TrustCenter
+  url: security/spredfast-trust-center.yml
 - type: DomainSecurity
   url: security/spredfast-domain-security.yml
-- type: WellKnown
-  url: well-known/spredfast-well-known.yml
+- type: Packages
+  url: packages/spredfast-packages.yml
+- type: Plans
+  url: plans/spredfast-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/spredfast-rate-limits.yml
+- type: ChangeLog
+  url: changelog/spredfast-changelog.yml
+- type: Webhooks
+  url: asyncapi/spredfast-events-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/spredfast-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 47
+  pass: local-v1
