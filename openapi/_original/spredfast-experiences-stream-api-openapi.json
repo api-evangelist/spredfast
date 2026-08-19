@@ -1,0 +1,2657 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "stream-api",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.massrelevance.com"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://example.com/oauth2/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/{account}/{streamName}": {
+      "get": {
+        "summary": "Retrieve Stream's Approved Content",
+        "description": "Retrieve approved content for a specified account and stream",
+        "operationId": "retrieve-streams-approved-content",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "tweet_mode",
+            "in": "query",
+            "description": "This will expose the latest Tweet format from Twitter where the payload contains all information required to render Tweets that contain more than 140 characters.",
+            "schema": {
+              "type": "string",
+              "default": "extended"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?limit": {
+      "get": {
+        "summary": "Specify amount of content to pull",
+        "description": "Includes a query parameter to return a specific number of entities",
+        "operationId": "specify-amount-of-content-to-pull",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of status entities to return. **Maximum:** `200` **Minimum:** `1`",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?since_id": {
+      "get": {
+        "summary": "Gather content after specific entity",
+        "description": "Includes only those status entities approved after supplied status entity_id biasing towards real-time",
+        "operationId": "gather-content-after-specific-entity",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "since_id",
+            "in": "query",
+            "description": "Includes only those status entities approved after supplied status entity_id biasing towards real-time. (e.g. \u201centity_id\u201d = 255682528302747648)\"",
+            "schema": {
+              "type": "string",
+              "default": "255682528302747648"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?from_id": {
+      "get": {
+        "summary": "Gather content after included entity",
+        "description": "Includes only those status entities approved after supplied status entity_id without skipping over status entities",
+        "operationId": "gather-content-after-included-entity",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "from_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "255682528302747648"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?start_id": {
+      "get": {
+        "summary": "Gather content before included entity",
+        "description": "Includes only those status entities approved before supplied status `entity_id`",
+        "operationId": "gather-content-after-included-entity-1",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "start_id",
+            "in": "query",
+            "description": "Includes only those status entities approved before supplied status entity_id. This parameter is commonly used to implement \u2018More\u2019 functionality on a stream of content, wherein an end user sees a stream of content, then clicks on a \u2018More\u2019 link to display the next N entities. By supplying the entity_id of the last viewed entity, you may request the set of entities that came before it in the stream.",
+            "schema": {
+              "type": "string",
+              "default": "255682528302747648"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?callback": {
+      "get": {
+        "summary": "Enable JSONP support",
+        "description": "Enables JSONP support. Wraps JSON response with a JavaScript function of given name. (e.g. ?callback=myFunction)",
+        "operationId": "enable-jsonp-support",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?geo_hint": {
+      "get": {
+        "summary": "Enable geohinting data",
+        "description": "Includes only those status entities approved before supplied status `entity_id`",
+        "operationId": "enable-geohinting-data",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "geo_hint",
+            "in": "query",
+            "description": "When possible, geo_hint adds inferred status entity location from the authoring user\u2019s profile information. The data is added the to geo_hint property of a Twitter status entity. (e.g. 1)",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"geo_hint\": {\n    \"country\": \"US\",\n    \"state\": \"CA\",\n    \"coordinates\": [\n      34.0522342,\n      -118.2436849\n    ]\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "geo_hint": {
+                      "type": "object",
+                      "properties": {
+                        "country": {
+                          "type": "string",
+                          "example": "US"
+                        },
+                        "state": {
+                          "type": "string",
+                          "example": "CA"
+                        },
+                        "coordinates": {
+                          "type": "array",
+                          "items": {
+                            "type": "number",
+                            "example": 34.0522342,
+                            "default": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?page_links": {
+      "get": {
+        "summary": "Enable product hinting for each entity",
+        "description": "Enable product hinting by specified account and stream",
+        "operationId": "enable-product-hinting-for-each-entity",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "page_links",
+            "in": "query",
+            "description": "This parameter is used for Product Linking and must be set to true to surface up any product data that is linked to the entity. The absence of the parameter or it being set to false will assume that you are not requesting product linked data. If set to true, the data is added the to massrel/page_links property of an entity. (e.g. 1)",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"massrel\": {\n    \"page_links\": [\n      {\n        \"id\": 12,\n        \"url\": \"http://yoursite.com/yourpage\",\n        \"short_url\": \"http://mssv.ly/13J39ai\",\n        \"name\": \"Your page name\",\n        \"description\": \"Your page description\",\n        \"image_url\": \"http://yoursite.com/yourpage.jpg\"\n      }\n    ]\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massrel": {
+                      "type": "object",
+                      "properties": {
+                        "page_links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "example": 12,
+                                "default": 0
+                              },
+                              "url": {
+                                "type": "string",
+                                "example": "http://yoursite.com/yourpage"
+                              },
+                              "short_url": {
+                                "type": "string",
+                                "example": "http://mssv.ly/13J39ai"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Your page name"
+                              },
+                              "description": {
+                                "type": "string",
+                                "example": "Your page description"
+                              },
+                              "image_url": {
+                                "type": "string",
+                                "example": "http://yoursite.com/yourpage.jpg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?replies": {
+      "get": {
+        "summary": "Enable replies to entities",
+        "description": "Includes the status entity that a status entity replied to. The status entity is added to the in_reply_to property of a status entity",
+        "operationId": "enable-replies-to-entities",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "replies",
+            "in": "query",
+            "description": "Includes the status entity that a status entity replied to. The status entity is added to the in_reply_to property of a status entity. (e.g. 1)",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"massrel\": {\n    \"page_links\": [\n      {\n        \"id\": 12,\n        \"url\": \"http://yoursite.com/yourpage\",\n        \"short_url\": \"http://mssv.ly/13J39ai\",\n        \"name\": \"Your page name\",\n        \"description\": \"Your page description\",\n        \"image_url\": \"http://yoursite.com/yourpage.jpg\"\n      }\n    ]\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massrel": {
+                      "type": "object",
+                      "properties": {
+                        "page_links": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "example": 12,
+                                "default": 0
+                              },
+                              "url": {
+                                "type": "string",
+                                "example": "http://yoursite.com/yourpage"
+                              },
+                              "short_url": {
+                                "type": "string",
+                                "example": "http://mssv.ly/13J39ai"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Your page name"
+                              },
+                              "description": {
+                                "type": "string",
+                                "example": "Your page description"
+                              },
+                              "image_url": {
+                                "type": "string",
+                                "example": "http://yoursite.com/yourpage.jpg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?network": {
+      "get": {
+        "summary": "Specify Social Network to gather entities",
+        "description": "Includes entities from a specified social network only",
+        "operationId": "specify-social-network-to-gather-entities",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "network",
+            "in": "query",
+            "description": "Includes entities from a specified social network only. **Possible Values:** `facebook`, `instagram`, `google_plus`, and `rss`. **Notes:** Must be a single value (`network=facebook`). Multiple values are not supported.",
+            "schema": {
+              "type": "string",
+              "default": "facebook"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?include_entities": {
+      "get": {
+        "summary": "Included entity object on tweets",
+        "description": "XML endpoint only. Includes an `entities` object on Tweets containing links, media, or other references",
+        "operationId": "included-entity-object-on-tweets",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "include_entities",
+            "in": "query",
+            "description": "XML endpoint only. Includes an `entities` object on Tweets containing links, media, or other references.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?reverse": {
+      "get": {
+        "summary": "Reverse order of status entities",
+        "description": "Reverses the status entities in response to be in chronological approved order (default is reverse chronological approved order) so that entities approved earlier are on top",
+        "operationId": "reverse-order-of-status-entities",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "reverse",
+            "in": "query",
+            "description": "Reverses the status entities in response to be in chronological approved order (default is reverse chronological approved order) so that entities approved earlier are on top.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?strip_links": {
+      "get": {
+        "summary": "Remove trailing links",
+        "description": "Removes trailing URLs from the text of a status entity",
+        "operationId": "remove-trailing-links-1",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "strip_links",
+            "in": "query",
+            "description": "Removes trailing URLs from the text of a status entity.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?keywords": {
+      "get": {
+        "summary": "Gather specific entities containing keywords",
+        "description": "Returns only entities containing the specified keywords",
+        "operationId": "remove-trailing-links",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "keywords",
+            "in": "query",
+            "description": "Returns only entities containing the specified keywords.(e.g. `fire%20ice`)",
+            "schema": {
+              "type": "string",
+              "default": "fire%20ice"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?from": {
+      "get": {
+        "summary": "Return entities from specific user",
+        "description": "Returns only entities authored by the specified author. The value must be in all lowercase. (e.g. `jack%20johnson`)",
+        "operationId": "return-entities-from-specific-user",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "jack%20johnson"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?timeframe[start]": {
+      "get": {
+        "summary": "Return entities after a specific time",
+        "description": "Returns only items created after given time. Only use the seconds portion of unix time (JavaScript will give the number in milliseconds. Divide by 1000). (e.g. `1380666060`)",
+        "operationId": "return-entities-after-a-specific-time",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "timeframe[start]",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "1380666060"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}?timeframe[finish]": {
+      "get": {
+        "summary": "Return entities before a specific time",
+        "description": "Returns only items created before given time. Only use the seconds portion of unix time (JavaScript will give the number in milliseconds. Divide by 1000). (e.g. `1380666060`)",
+        "operationId": "return-entities-before-a-specific-time",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "kindle.json"
+            },
+            "required": true
+          },
+          {
+            "name": "timeframe[finish]",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "1380666060"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json": {
+      "get": {
+        "summary": "Get entity information",
+        "description": "Provides information about and derived from the entities in a stream",
+        "operationId": "get-entity-information",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?num_minutes": {
+      "get": {
+        "summary": "Get minutes of activity",
+        "description": "Retrieve the number of minutes of activity",
+        "operationId": "get-minutes-of-activity",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "num_minutes",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 60
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?num_hours": {
+      "get": {
+        "summary": "Get hours of activity",
+        "description": "Retrieve the number of activity hours",
+        "operationId": "get-minutes-of-activity-1",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "num_hours",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 2
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?num_days": {
+      "get": {
+        "summary": "Get days of activity",
+        "description": "Retrieve the number of activity days",
+        "operationId": "get-days-of-activity",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "num_days",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 30
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?activity": {
+      "get": {
+        "summary": "Get activity and count props",
+        "description": "Include activity and count properties in response",
+        "operationId": "get-activity-and-count-props",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "activity",
+            "in": "query",
+            "description": "**Format:** binary",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?finish": {
+      "get": {
+        "summary": "Get last item of activity",
+        "description": "Unix time of the point of which activity data should end",
+        "operationId": "get-last-item-of-activity",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "finish",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1349278694
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json? networks": {
+      "get": {
+        "summary": "Get networks in meta response",
+        "description": "Include networks property in the response, which is an array of strings",
+        "operationId": "get-networks-in-meta-response-1",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "networks",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?top_periods": {
+      "get": {
+        "summary": "Get top retweets in specified hours",
+        "description": "Include top tweets from specific hourly periods provided",
+        "operationId": "get-networks-in-meta-response",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "top_periods",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "2012070412"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?top_periods_relative": {
+      "get": {
+        "summary": "Get top retweets hourly from now",
+        "description": "Include top tweets from specific hourly periods ago from now",
+        "operationId": "get-top-retweets-hourly-from-now-1",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "top_periods_relative",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?top_count": {
+      "get": {
+        "summary": "Get tweets per period",
+        "description": "Number of tweets to include per period",
+        "operationId": "get-top-retweets-hourly-from-now",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "top_count",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?num_hashtags": {
+      "get": {
+        "summary": "Get number of hashtags returned",
+        "description": "Retrieves the number of hashtags.",
+        "operationId": "get-number-of-hashtags-returned-1",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "num_hashtags",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?num_contributors": {
+      "get": {
+        "summary": "Get number of contributors",
+        "description": "Number of contributor user handles to return",
+        "operationId": "get-number-of-topics",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "num_contributors",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?num_trends": {
+      "get": {
+        "summary": "Get number of topics",
+        "description": "Retrieves the number of topics (buckets).",
+        "operationId": "get-number-of-hashtags-returned",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "num_trends",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?sort": {
+      "get": {
+        "summary": "Get Specified Sort Order",
+        "description": "Determines the sort order for returned topics",
+        "operationId": "get-specified-sort-order",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "position asc"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?all_topics": {
+      "get": {
+        "summary": "Get all topics",
+        "description": "Returns all topics, not just those with count > 0",
+        "operationId": "get-all-topics",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "all_topics",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?percent": {
+      "get": {
+        "summary": "Get percentages in buckets",
+        "description": "Returns percentages (PCT) in buckets (Total group only, not top)",
+        "operationId": "get-percentages-in-buckets",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "percent",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?precision": {
+      "get": {
+        "summary": "Get specific decimals in percent return",
+        "description": "Determines the number of decimal places to return in percentages",
+        "operationId": "get-specific-decimals-in-percent-return",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "precision",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/meta.json?disregard": {
+      "get": {
+        "summary": "Get excluded trends from values",
+        "description": "Exclude trends that match supplied values from buckets while trying to ensure `num_trends` is met",
+        "operationId": "get-excluded-trends-from-values",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "disregard",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}/{streamName}/entities.json?entity_ids": {
+      "get": {
+        "summary": "Get specific entities",
+        "description": "Returns a comma-separated list of one or more `entity_id` values of approved items in the stream",
+        "operationId": "get-specific-entities",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streamName",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "entity_ids",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "749457935733950347_25025320"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}.json": {
+      "get": {
+        "summary": "Get meta account information",
+        "description": "Retrieves limited meta-information (entity counts, entity activity rates, etc.) about a set of streams belonging to an individual user account",
+        "operationId": "get-meta-account-information",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"activity\": {\n        \"minute\": {\n          \"approved\": [\n            0,\n            ...\n            0\n          ],\n          \"pending\": [\n            0,\n            ...\n            0\n          ],\n          \"rejected\": [\n            0,\n            ...\n            0\n          ],\n          \"total\": [\n            0,\n            ...\n            0\n          ]\n        }\n      },\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 91617,\n        \"pending\": 0,\n        \"rejected\": 192724,\n        \"total\": 284341\n      },\n      \"count_pct\": 91617,\n      \"created_at\": \"2015-04-13T19:16:10Z\",\n      \"description\": \"-nab2015\",\n      \"full_name\": \"MassRelDemo/-nab2015\",\n      \"name\": \"-nab2015\",\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    ...\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}.json?streams": {
+      "get": {
+        "summary": "Get meta info of account's streams",
+        "description": "Returns a comma-delimited set of stream names for which you need to pull meta information",
+        "operationId": "get-meta-info-of-accounts-streams",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streams",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "galaxy-topic"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"activity\": {\n        \"minute\": {\n          \"approved\": [\n            0,\n            ...\n            0\n          ],\n          \"pending\": [\n            0,\n            ...\n            0\n          ],\n          \"rejected\": [\n            0,\n            ...\n            0\n          ],\n          \"total\": [\n            0,\n            ...\n            0\n          ]\n        }\n      },\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 12990,\n        \"pending\": 0,\n        \"rejected\": 0,\n        \"total\": 12990\n      },\n      \"count_pct\": 12990,\n      \"created_at\": \"2012-02-03T15:17:01Z\",\n      \"description\": \"Topic 1\",\n      \"full_name\": \"MassRelDemo/galaxy-topic1\",\n      \"name\": \"galaxy-topic1\",\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    ...\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}.json?num_minutes": {
+      "get": {
+        "summary": "Get minutes of activity from account",
+        "description": "Retrieves the number of minutes of activity.",
+        "operationId": "get-minutes-of-activity-from-account",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "num_minutes",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 120
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"activity\": {\n        \"minute\": {\n          \"approved\": [\n            0,\n            ...\n            0\n          ],\n          \"pending\": [\n            0,\n            ...\n            0\n          ],\n          \"rejected\": [\n            0,\n            ...\n            0\n          ],\n          \"total\": [\n            0,\n            ...\n            0\n          ]\n        }\n      },\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 91617,\n        \"pending\": 0,\n        \"rejected\": 192724,\n        \"total\": 284341\n      },\n      \"count_pct\": 91617,\n      \"created_at\": \"2015-04-13T19:16:10Z\",\n      \"description\": \"-nab2015\",\n      \"full_name\": \"MassRelDemo/-nab2015\",\n      \"name\": \"-nab2015\",\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    ...\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}.json?num_trends": {
+      "get": {
+        "summary": "Get trends in response per account",
+        "description": "Number of trends to return in response per bucket",
+        "operationId": "get-trends-in-response-per-account",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "num_trends",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"activity\": {\n        \"minute\": {\n          \"approved\": [\n            0,\n            ...\n            0\n          ],\n          \"pending\": [\n            0,\n            ...\n            0\n          ],\n          \"rejected\": [\n            0,\n            ...\n            0\n          ],\n          \"total\": [\n            0,\n            ...\n            0\n          ]\n        }\n      },\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 91617,\n        \"pending\": 0,\n        \"rejected\": 192724,\n        \"total\": 284341\n      },\n      \"count_pct\": 91617,\n      \"created_at\": \"2015-04-13T19:16:10Z\",\n      \"description\": \"-nab2015\",\n      \"full_name\": \"MassRelDemo/-nab2015\",\n      \"name\": \"-nab2015\",\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    ...\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}.json?disregard": {
+      "get": {
+        "summary": "Exclude specified trends",
+        "description": "Exclude trends that match supplied values from buckets while trying to ensure `num_trends` is met",
+        "operationId": "exclude-specified-trends",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "disregard",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "test"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}.json?start": {
+      "get": {
+        "summary": "Get activity data from specific time",
+        "description": "Unix time of the point of which activity data should start",
+        "operationId": "get-activity-data-from-specific-time",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1349278694
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"activity\": {\n        \"minute\": {\n          \"approved\": [\n            0,\n            ...\n            0\n          ],\n          \"pending\": [\n            0,\n            ...\n            0\n          ],\n          \"rejected\": [\n            0,\n            ...\n            0\n          ],\n          \"total\": [\n            0,\n            ...\n            0\n          ]\n        }\n      },\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 91617,\n        \"pending\": 0,\n        \"rejected\": 192724,\n        \"total\": 284341\n      },\n      \"count_pct\": 91617,\n      \"created_at\": \"2015-04-13T19:16:10Z\",\n      \"description\": \"-nab2015\",\n      \"full_name\": \"MassRelDemo/-nab2015\",\n      \"name\": \"-nab2015\",\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    ...\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}.json?finish": {
+      "get": {
+        "summary": "Get activity data ending at specific time",
+        "description": "Unix time of the point of which activity data should end",
+        "operationId": "get-activity-data-ending-at-specific-time",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"activity\": {\n        \"minute\": {\n          \"approved\": [\n            0,\n            ...\n            0\n          ],\n          \"pending\": [\n            0,\n            ...\n            0\n          ],\n          \"rejected\": [\n            0,\n            ...\n            0\n          ],\n          \"total\": [\n            0,\n            ...\n            0\n          ]\n        }\n      },\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 91617,\n        \"pending\": 0,\n        \"rejected\": 192724,\n        \"total\": 284341\n      },\n      \"count_pct\": 91617,\n      \"created_at\": \"2015-04-13T19:16:10Z\",\n      \"description\": \"-nab2015\",\n      \"full_name\": \"MassRelDemo/-nab2015\",\n      \"name\": \"-nab2015\",\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    ...\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/{account}.json?streams_with_topics": {
+      "get": {
+        "summary": "Get streams with/without topics",
+        "description": "Returns streams that do or do not have topics configured",
+        "operationId": "get-streams-withwithout-topics",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streams_with_topics",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"activity\": {\n        \"minute\": {\n          \"approved\": [\n            27,\n            40,\n            24,\n            24,\n            22,\n            20,\n            22,\n            28,\n            19,\n            24,\n            22,\n            30,\n            36,\n            34,\n            47,\n            30,\n            38,\n            26,\n            26,\n            26,\n            10,\n            24,\n            27,\n            19,\n            20,\n            20,\n            28,\n            20,\n            24,\n            24,\n            21,\n            17,\n            37,\n            30,\n            31,\n            34,\n            19,\n            26,\n            25,\n            25,\n            34,\n            23,\n            24,\n            26,\n            22,\n            23,\n            25,\n            26,\n            14,\n            28,\n            17,\n            20,\n            14,\n            13,\n            21,\n            26,\n            21,\n            15,\n            16,\n            10\n          ],\n          \"pending\": [\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0\n          ],\n          \"rejected\": [\n            12,\n            8,\n            6,\n            9,\n            12,\n            10,\n            8,\n            11,\n            9,\n            8,\n            9,\n            14,\n            12,\n            11,\n            10,\n            19,\n            12,\n            12,\n            9,\n            12,\n            18,\n            17,\n            11,\n            14,\n            9,\n            17,\n            10,\n            16,\n            17,\n            12,\n            9,\n            6,\n            5,\n            11,\n            8,\n            12,\n            12,\n            13,\n            12,\n            13,\n            9,\n            7,\n            19,\n            9,\n            10,\n            13,\n            13,\n            11,\n            8,\n            15,\n            11,\n            18,\n            10,\n            10,\n            7,\n            8,\n            8,\n            8,\n            7,\n            3\n          ],\n          \"total\": [\n            39,\n            48,\n            30,\n            33,\n            34,\n            30,\n            30,\n            39,\n            28,\n            32,\n            31,\n            44,\n            48,\n            45,\n            57,\n            49,\n            50,\n            38,\n            35,\n            38,\n            28,\n            41,\n            38,\n            33,\n            29,\n            37,\n            38,\n            36,\n            41,\n            36,\n            30,\n            23,\n            42,\n            41,\n            39,\n            46,\n            31,\n            39,\n            37,\n            38,\n            43,\n            30,\n            43,\n            35,\n            32,\n            36,\n            38,\n            37,\n            22,\n            43,\n            28,\n            38,\n            24,\n            23,\n            28,\n            34,\n            29,\n            23,\n            23,\n            13\n          ]\n        }\n      },\n      \"approved_tpm\": 17,\n      \"count\": {\n        \"approved\": 1516909299,\n        \"pending\": 0,\n        \"rejected\": 560479090,\n        \"total\": 2077388389\n      },\n      \"count_pct\": 1516909299,\n      \"created_at\": \"2016-03-09T22:44:47Z\",\n      \"description\": \"Stream Created with Builder\",\n      \"full_name\": \"MassRelDemo/cc-competitor-donut\",\n      \"name\": \"cc-competitor-donut\",\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    ...\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/compare.json?streams": {
+      "get": {
+        "summary": "Compare stream volumes",
+        "description": "Retrieve stream volumes and compare them.",
+        "operationId": "compare-stream-volumes",
+        "parameters": [
+          {
+            "name": "streams",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 551979,\n        \"pending\": 0,\n        \"rejected\": 81681394,\n        \"total\": 82233373\n      },\n      \"created_at\": \"2013-09-09T18:26:01Z\",\n      \"description\": \"The Twitterverse has some good things to say about the Amazon Kindle.\",\n      \"full_name\": \"MassRelDemo/kindle\",\n      \"name\": \"kindle\",\n      \"pct\": 98,\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    {\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 12990,\n        \"pending\": 0,\n        \"rejected\": 0,\n        \"total\": 12990\n      },\n      \"created_at\": \"2012-02-03T15:17:01Z\",\n      \"description\": \"Topic 1\",\n      \"full_name\": \"MassRelDemo/galaxy-topic1\",\n      \"name\": \"galaxy-topic1\",\n      \"pct\": 2,\n      \"tags\": [],\n      \"tpm\": 0\n    }\n  ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "approved_tpm": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "count": {
+                            "type": "object",
+                            "properties": {
+                              "approved": {
+                                "type": "integer",
+                                "example": 551979,
+                                "default": 0
+                              },
+                              "pending": {
+                                "type": "integer",
+                                "example": 0,
+                                "default": 0
+                              },
+                              "rejected": {
+                                "type": "integer",
+                                "example": 81681394,
+                                "default": 0
+                              },
+                              "total": {
+                                "type": "integer",
+                                "example": 82233373,
+                                "default": 0
+                              }
+                            }
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2013-09-09T18:26:01Z"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "The Twitterverse has some good things to say about the Amazon Kindle."
+                          },
+                          "full_name": {
+                            "type": "string",
+                            "example": "MassRelDemo/kindle"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "kindle"
+                          },
+                          "pct": {
+                            "type": "integer",
+                            "example": 98,
+                            "default": 0
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "tpm": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/compare.json?streams={content}&target": {
+      "get": {
+        "summary": "Get percentage towards target",
+        "description": "Get a percentage towards a specified target",
+        "operationId": "get-percentage-towards-target",
+        "parameters": [
+          {
+            "name": "content",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streams",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+            }
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/compare.json?streams={content}&target={number}&precision": {
+      "get": {
+        "summary": "Get specific decimals in percent return",
+        "description": "Return specific decimals",
+        "operationId": "get-specific-decimals-in-percent-return-1",
+        "parameters": [
+          {
+            "name": "content",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "number",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streams",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+            }
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 500
+            }
+          },
+          {
+            "name": "precision",
+            "in": "query",
+            "description": "**Possible Values:** `0`, `1`, `2`, `3`, `4`",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/compare.json?streams={content}&sort": {
+      "get": {
+        "summary": "Get specified sort order",
+        "description": "Defines the sort order of the results",
+        "operationId": "get-specified-sort-order-1",
+        "parameters": [
+          {
+            "name": "content",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "streams",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Possible Values: `pct asc`, `pct desc`",
+            "schema": {
+              "type": "string",
+              "default": "pct asc"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"streams\": [\n    {\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 12990,\n        \"pending\": 0,\n        \"rejected\": 0,\n        \"total\": 12990\n      },\n      \"created_at\": \"2012-02-03T15:17:01Z\",\n      \"description\": \"Topic 1\",\n      \"full_name\": \"MassRelDemo/galaxy-topic1\",\n      \"name\": \"galaxy-topic1\",\n      \"pct\": 2,\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    {\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 551979,\n        \"pending\": 0,\n        \"rejected\": 81681394,\n        \"total\": 82233373\n      },\n      \"created_at\": \"2013-09-09T18:26:01Z\",\n      \"description\": \"The Twitterverse has some good things to say about the Amazon Kindle.\",\n      \"full_name\": \"MassRelDemo/kindle\",\n      \"name\": \"kindle\",\n      \"pct\": 98,\n      \"tags\": [],\n      \"tpm\": 0\n    }\n  ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "approved_tpm": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "count": {
+                            "type": "object",
+                            "properties": {
+                              "approved": {
+                                "type": "integer",
+                                "example": 12990,
+                                "default": 0
+                              },
+                              "pending": {
+                                "type": "integer",
+                                "example": 0,
+                                "default": 0
+                              },
+                              "rejected": {
+                                "type": "integer",
+                                "example": 0,
+                                "default": 0
+                              },
+                              "total": {
+                                "type": "integer",
+                                "example": 12990,
+                                "default": 0
+                              }
+                            }
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2012-02-03T15:17:01Z"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Topic 1"
+                          },
+                          "full_name": {
+                            "type": "string",
+                            "example": "MassRelDemo/galaxy-topic1"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "galaxy-topic1"
+                          },
+                          "pct": {
+                            "type": "integer",
+                            "example": 2,
+                            "default": 0
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          },
+                          "tpm": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

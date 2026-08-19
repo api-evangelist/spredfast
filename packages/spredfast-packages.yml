@@ -1,0 +1,98 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  npm registry (registry.npmjs.org search maintainer:spredfast + per-package
+  metadata), pypi.org, rubygems.org, github.com/spredfast, and the Khoros
+  Marketing developer center at developer.khoros.com
+note: >-
+  Spredfast published NO first-party API client SDK. The Khoros Marketing
+  (Spredfast) developer center documents raw HTTP + OAuth 2.0 only and links no
+  client libraries. Four packages ARE published on npm under the `spredfast`
+  maintainer account, but none of them wrap the Conversations, Publishing,
+  Analytics, Notification or CRM APIs — they are internal build/UI/test
+  utilities. Every one last shipped between 2016 and 2018, before the 2018
+  Lithium merger and the 2019 Khoros rebrand, and none has been republished
+  since. That is the abandonment signal: the company's own npm account went
+  silent eight years before the APIs it never wrapped. Because no entry is an
+  API client, NO `type: SDKs` pointer is emitted for this provider — emitting
+  one would credit Spredfast with an SDK surface it does not have.
+  Searched and NOT found: PyPI (`spredfast` 404), RubyGems (`spredfast` 404),
+  Maven Central, NuGet, pkg.go.dev, Packagist, crates.io. The `khoros` package
+  on PyPI (5.4.0, 2023-11-01) is a THIRD-PARTY community library by Jeff
+  Shurtliff for Khoros Communities (the Lithium side of the merger), not for the
+  Spredfast/Khoros Marketing API family, and is therefore excluded.
+  github.com/spredfast is live (HTTP 200) with 30 public repositories, all of
+  them forks of third-party open source (DataTables, modernizr, kafka, zipkin,
+  woodstox, spark-cassandra-connector) — no first-party SDK repo.
+sdk_count: 0
+package_count: 4
+packages:
+- name: sf-duo
+  registry: npm
+  url: https://www.npmjs.com/package/sf-duo
+  official: true
+  kind: ui-components
+  api_client: false
+  version: 16.2.0
+  published: '2017-10-09'
+  description: new-viz and component lib for analytics
+  note: >-
+    First-party: sole npm maintainer is the `spredfast` account. A visualization
+    and component library for the Spredfast analytics UI, not a client for the
+    Analytics Reporting API. 7 published versions; nothing since 2017.
+- name: logging-stubby
+  registry: npm
+  url: https://www.npmjs.com/package/logging-stubby
+  official: true
+  kind: test-tooling
+  api_client: false
+  version: 4.0.2
+  published: '2018-07-12'
+  description: a lightweight server for stubbing external systems and endpoints
+  note: >-
+    First-party (npm maintainer `spredfast`). Test double / stub server used in
+    Spredfast's own integration tests. The last first-party publish from the
+    account, four months before the Lithium merger closed.
+- name: babel-plugin-transform-hoist-jsx-style
+  registry: npm
+  url: https://www.npmjs.com/package/babel-plugin-transform-hoist-jsx-style
+  official: true
+  kind: build-tooling
+  api_client: false
+  version: 1.0.0
+  published: '2016-11-10'
+  description: Hoist pure objects passed to 'style' prop
+  note: First-party (npm maintainer `spredfast`). Babel build plugin. One version, never updated.
+- name: trainbus
+  registry: npm
+  url: https://www.npmjs.com/package/trainbus
+  official: true
+  kind: utility
+  api_client: false
+  version: 1.0.1
+  published: '2016-12-18'
+  description: Is it a train, or is it a bus?
+  note: First-party (npm maintainer `spredfast`). Small internal utility.
+excluded:
+- name: khoros
+  registry: pypi
+  version: 5.4.0
+  published: '2023-11-01'
+  reason: >-
+    Third-party community library (author Jeff Shurtliff,
+    github.com/jeffshurtliff/khoros) targeting Khoros Communities / Lithium
+    LiQL, not the Spredfast / Khoros Marketing API family documented at
+    developer.khoros.com/khorosmarketingdevdocs. Not first-party, not this API.
+- name: khoros-aurora-sdk
+  registry: npm
+  version: 26.4.3
+  published: '2026-07-27'
+  reason: >-
+    Khoros Communities (Aurora) plugin SDK — the Lithium product line, a
+    different API surface from the Spredfast/Khoros Marketing APIs profiled
+    here. Belongs to Khoros the parent, not to the Spredfast product line.
+- name: lithium-sdk
+  registry: npm
+  version: 1.11.0
+  published: '2022-10-31'
+  reason: Lithium Communities developer tooling, not the Spredfast Marketing API surface.

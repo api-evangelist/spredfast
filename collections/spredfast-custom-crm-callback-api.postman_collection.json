@@ -1,0 +1,5069 @@
+{
+  "item": [
+    {
+      "id": "0b125e86-b9f9-4143-b81b-91979c1751b7",
+      "name": "createCase",
+      "request": {
+        "name": "createCase",
+        "description": {
+          "content": "Create a new case with interactions",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "case"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "key": "x-sf-initiative",
+            "value": "<integer>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+            "key": "x-sf-company-id",
+            "value": "<integer>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "e11f156d-88c5-4402-8a15-b5d6888d4ef9",
+          "name": "201",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"string\",\n  \"title\": \"string\",\n  \"interactions\": [\n    {\n      \"created\": \"string (date-time)\",\n      \"body\": \"string\",\n      \"linkUrl\": \"string\",\n      \"serviceId\": \"string\",\n      \"service\": \"string\",\n      \"contentType\": \"string\",\n      \"author\": {\n        \"service\": \"string\",\n        \"serviceId\": \"string\",\n        \"handle\": \"string\",\n        \"name\": \"string\",\n        \"brandOwned\": true\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"string\",\n  \"customCasePropertyTwo\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "e2909783-6252-4849-9c5f-20122ccde481",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"string\",\n  \"title\": \"string\",\n  \"interactions\": [\n    {\n      \"created\": \"string (date-time)\",\n      \"body\": \"string\",\n      \"linkUrl\": \"string\",\n      \"serviceId\": \"string\",\n      \"service\": \"string\",\n      \"contentType\": \"string\",\n      \"author\": {\n        \"service\": \"string\",\n        \"serviceId\": \"string\",\n        \"handle\": \"string\",\n        \"name\": \"string\",\n        \"brandOwned\": true\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"string\",\n  \"customCasePropertyTwo\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "366b1473-e4c0-4b04-bf3f-65c411b681eb",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"string\",\n  \"title\": \"string\",\n  \"interactions\": [\n    {\n      \"created\": \"string (date-time)\",\n      \"body\": \"string\",\n      \"linkUrl\": \"string\",\n      \"serviceId\": \"string\",\n      \"service\": \"string\",\n      \"contentType\": \"string\",\n      \"author\": {\n        \"service\": \"string\",\n        \"serviceId\": \"string\",\n        \"handle\": \"string\",\n        \"name\": \"string\",\n        \"brandOwned\": true\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"string\",\n  \"customCasePropertyTwo\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "3637cdb9-1a5b-4c0e-987c-52018976a236",
+          "name": "422",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"string\",\n  \"title\": \"string\",\n  \"interactions\": [\n    {\n      \"created\": \"string (date-time)\",\n      \"body\": \"string\",\n      \"linkUrl\": \"string\",\n      \"serviceId\": \"string\",\n      \"service\": \"string\",\n      \"contentType\": \"string\",\n      \"author\": {\n        \"service\": \"string\",\n        \"serviceId\": \"string\",\n        \"handle\": \"string\",\n        \"name\": \"string\",\n        \"brandOwned\": true\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"string\",\n  \"customCasePropertyTwo\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "50f98c3b-09e4-48cc-8eaa-eeaba52887c1",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"string\",\n  \"title\": \"string\",\n  \"interactions\": [\n    {\n      \"created\": \"string (date-time)\",\n      \"body\": \"string\",\n      \"linkUrl\": \"string\",\n      \"serviceId\": \"string\",\n      \"service\": \"string\",\n      \"contentType\": \"string\",\n      \"author\": {\n        \"service\": \"string\",\n        \"serviceId\": \"string\",\n        \"handle\": \"string\",\n        \"name\": \"string\",\n        \"brandOwned\": true\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"string\",\n  \"customCasePropertyTwo\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "fa33fb4e-0316-4c6a-ad97-21d0b3397457",
+      "name": "lookupCase",
+      "request": {
+        "name": "lookupCase",
+        "description": {
+          "content": "Returns info for a specific case",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "case",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) Case ID."
+            },
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "key": "x-sf-initiative",
+            "value": "<integer>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+            "key": "x-sf-company-id",
+            "value": "<integer>"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7c0e2471-36d7-4872-9989-4f4c7c0601aa",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "3427011f-a557-48f2-80c1-951338c225ae",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "fdb4948c-ec4b-43fd-b132-fcab70495ccc",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "57d36c55-069d-48a4-9393-f5cd72f21dd3",
+          "name": "422",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "779d9518-7b6f-48e7-bb16-6ea0407076dc",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Case ID."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ed4bb349-0833-4dba-9f81-5af83e52a2f4",
+      "name": "updateCase",
+      "request": {
+        "name": "updateCase",
+        "description": {
+          "content": "Create a new case with interactions",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "case",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) The case ID to update."
+            },
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "key": "x-sf-initiative",
+            "value": "<integer>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+            "key": "x-sf-company-id",
+            "value": "<integer>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "PATCH",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "4e8c6b4c-0491-4750-9cad-967869f51f01",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The case ID to update."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "8a5e8a97-0d7e-4165-8fb4-689d26d4d428",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The case ID to update."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "55b2aa0d-618b-4fa5-9590-d91b579b2e41",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The case ID to update."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "1450c8f0-20ff-41ae-bdf6-f828d4fccbdc",
+          "name": "422",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The case ID to update."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "31f0f1fd-578b-4a07-9787-b7ab03f1ba6f",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "case",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The case ID to update."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"interactions\": [\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    },\n    {\n      \"created\": \"<string>\",\n      \"body\": \"<string>\",\n      \"linkUrl\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"service\": \"facebook\",\n      \"contentType\": \"post\",\n      \"author\": {\n        \"service\": \"facebook\",\n        \"serviceId\": \"<string>\",\n        \"handle\": \"<string>\",\n        \"name\": \"<string>\",\n        \"brandOwned\": \"<boolean>\"\n      }\n    }\n  ],\n  \"customCasePropertyOne\": \"<string>\",\n  \"customCasePropertyTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "4b5f0c72-e903-4e93-b5ff-a8b31656b878",
+      "name": "searchCustomers",
+      "request": {
+        "name": "searchCustomers",
+        "description": {
+          "content": "Find all customers matching the provided set of criteria",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "customers"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+            "key": "x-sf-initiative",
+            "value": "<integer>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+            "key": "x-sf-company-id",
+            "value": "<integer>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "c45ff188-ec9c-4c3b-85cb-d0203292fd66",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "7754ad82-cab6-481e-8fe1-15002d6eb223",
+          "name": "204",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "c2476895-a273-4b43-aa13-b11371191019",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "15e4a115-2967-4363-bb6d-4b237ad7a6c3",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "6b329d8f-2368-4a44-ad82-05c8b602fc9c",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "43dd1076-e742-43eb-8eb5-5f58d0100f71",
+      "name": "bestmatchCustomers",
+      "request": {
+        "name": "bestmatchCustomers",
+        "description": {
+          "content": "Find a customer best match based on known Social Information",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "customer",
+            "bestmatch"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+            "key": "x-sf-initiative",
+            "value": "<integer>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+            "key": "x-sf-company-id",
+            "value": "<integer>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "2c29fd53-49d9-4585-820b-0825ee958905",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                "bestmatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "ef4ccb81-4036-4697-8a65-105854d12c8c",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                "bestmatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "865f643a-5f49-4583-a37a-cb6467a3c85d",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                "bestmatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "b2bde8aa-42af-4062-a481-bb60c7fd1887",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                "bestmatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"screenName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"profileUrl\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"addresses\": [\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    },\n    {\n      \"streetOne\": \"<string>\",\n      \"streetTwo\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"zip\": \"<string>\"\n    }\n  ],\n  \"orderNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"caseNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"accountNumbers\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3fdc27be-0290-4fe3-8031-16a0325ef2c7",
+      "name": "createCustomer",
+      "request": {
+        "name": "createCustomer",
+        "description": {
+          "content": "Create a new customer",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "customer"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+            "key": "x-sf-initiative",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing id of the company the user is in when making the request.",
+            "key": "x-sf-company-id",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "94d96009-3b8e-46ab-aab0-cbd182f98346",
+          "name": "201",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"id\\\": 1234,\\n  \\\"nonSearchableFieldOne\\\": \\\"value1\\\",\\n  \\\"searchableFieldTwo\\\": \\\"value2\\\"\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "a8342c73-a14e-4f41-bc7c-28f669f29013",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "95397efb-c915-481d-813d-b69e5b267131",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "f0f5bf76-7d25-4352-af9a-a4a05e839838",
+          "name": "422",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "f7bf8791-75b0-4f5f-94dd-c000029b349b",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8a594242-2d3b-4fb9-bcd2-272ed2227ec6",
+      "name": "findCustomer",
+      "request": {
+        "name": "findCustomer",
+        "description": {
+          "content": "Returns info for a specific customer",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "customer",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) Customer ID"
+            },
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "key": "x-sf-initiative",
+            "value": "<integer>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+            "key": "x-sf-company-id",
+            "value": "<integer>"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "e4951a3e-c961-449c-8280-08ca299ed2b2",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "514b80fe-50bf-40cc-8f32-72062b52344d",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"See Details for Schema\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "97f3b032-c377-4ee2-a98d-e518746f5de0",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "a5431804-3525-4d8a-9818-2c6fbde2fd60",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "66a9cb72-83cd-4976-b5d8-f8f05a62c387",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "318365a0-a5a4-4c0b-af4f-b48341c82ca8",
+      "name": "updateCustomer",
+      "request": {
+        "name": "updateCustomer",
+        "description": {
+          "content": "Update a customer’s details",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "customer",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) Customer ID"
+            },
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+            "key": "x-sf-initiative",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing id of the company the user is in when making the request.",
+            "key": "x-sf-company-id",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "PATCH",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "700ee1f3-974d-457a-8ba5-fda7aeda758a",
+          "name": "201",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "04df837a-9f32-4d96-b171-b72c346cb75a",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "e299c8e1-d5ec-492b-a9e0-7235387ae285",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "8dc6bff8-81dd-4774-9122-a9cbaeb994fe",
+          "name": "422",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "b3676f37-7472-4617-8e62-43935f00cb6e",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email id of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+                "key": "x-sf-initiative",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing id of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customNonSearchableCustomerFieldOne\": \"<string>\",\n  \"customNonSearchableCustomerFieldTwo\": \"<string>\",\n  \"customSearchableCustomerFieldOne\": \"<string>\",\n  \"customSearchableCustomerFieldTwo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "fecac259-e1a7-4623-a2c7-a3edd8f351ff",
+      "name": "findCases",
+      "request": {
+        "name": "findCases",
+        "description": {
+          "content": "Get all cases for the given customer ID",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "customer",
+            ":id",
+            "cases"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) Customer ID"
+            },
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "key": "x-sf-initiative",
+            "value": "<integer>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+            "key": "x-sf-company-id",
+            "value": "<integer>"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "11d5036b-f932-4460-8ea2-82347636bf70",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id",
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "a41d616f-a2c4-4af6-a2ef-d4f280bd8de3",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id",
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "044ef5d8-105a-4582-baab-4329a3938fff",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id",
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "4f69b337-e8f0-4c74-bb91-aa145690c6cc",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id",
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "612d0820-4ad8-4992-aaad-df596c609a15",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "customer",
+                ":id",
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+                "key": "x-sf-initiative",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2701400d-5993-414f-8f93-7f2ce25d460d",
+      "name": "Define Object Structures",
+      "request": {
+        "name": "Define Object Structures",
+        "description": {
+          "content": "Define object structures for a specified type",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "meta",
+            "object",
+            ":type"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "type",
+              "description": "(Required) Object name. **Allowed Values:** `customer`, `case`"
+            },
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "key": "x-sf-user-email",
+            "value": "<string>"
+          },
+          {
+            "disabled": false,
+            "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+            "key": "x-sf-company-id",
+            "value": "<integer>"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "41551851-adc0-45c2-86ab-0d9fab6aa5e3",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "meta",
+                "object",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Object name. **Allowed Values:** `customer`, `case`"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "d84f0e27-7bf2-42bf-adaf-24e36113fe11",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "meta",
+                "object",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Object name. **Allowed Values:** `customer`, `case`"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The email ID of the Khoros Marketing agent performing the action.",
+                "key": "x-sf-user-email",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+                "key": "x-sf-company-id",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e2ef5e9a-584e-4000-94ec-d96d165c6a53",
+      "name": "List a specific directory",
+      "request": {
+        "name": "List a specific directory",
+        "description": {
+          "content": "List the assets available within a specific directory",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "list",
+            ":resourcePath"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "resourcePath",
+              "description": "(Required) The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`."
+            },
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4ca5e9ae-ab61-4c22-ac3c-8eeb693ca9e6",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list",
+                ":resourcePath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourcePath",
+                  "description": "(Required) The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "e665ad21-b2dc-47f4-b720-c0fbd1a705b7",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list",
+                ":resourcePath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourcePath",
+                  "description": "(Required) The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "80659a56-f1a9-4b4c-acc6-a4c428e71d70",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list",
+                ":resourcePath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourcePath",
+                  "description": "(Required) The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "f1f0c802-9e04-4a14-b312-24f562ed3f23",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list",
+                ":resourcePath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourcePath",
+                  "description": "(Required) The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "72ac715f-993a-45bd-960f-8f95d470fd6a",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list",
+                ":resourcePath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourcePath",
+                  "description": "(Required) The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "43730b88-95f4-4de5-9f58-273643cc4a5b",
+      "name": "List the root directory",
+      "request": {
+        "name": "List the root directory",
+        "description": {
+          "content": "List the root directory",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "list"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "578bbea9-2996-4ac3-9e58-1ec12e065588",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "9ddc2245-a21a-4bc2-baca-cafd591531b8",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "31792795-6105-4c6c-b160-0bc98066a6a4",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "11a23940-2ab4-4ee4-8fe6-0b4d38293f10",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "13c291ee-272f-45b9-8ab5-ae88fb4a8bf2",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b7f9aa6f-4706-477f-881f-18fe33c9c4b2",
+      "name": "Get an asset",
+      "request": {
+        "name": "Get an asset",
+        "description": {
+          "content": "Retrieve an asset specified by its assetPath",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "asset",
+            ":assetPath"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "thumbnail",
+              "value": "false",
+              "description": "When true, a thumbnail of the asset should be returned. See the expanded parameter descriptionbelow."
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "assetPath",
+              "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+            },
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "type": "any",
+              "value": "{{your-domain}}",
+              "key": "your-domain"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4405c52a-7375-4fc5-8be2-e605f93ff838",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "asset",
+                ":assetPath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "thumbnail",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetPath",
+                  "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "3bbba292-2ddb-4605-849c-0901a79da6ea",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "asset",
+                ":assetPath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "thumbnail",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetPath",
+                  "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "b26d7e45-c82b-46f0-9dbd-5ea90b4738db",
+          "name": "401",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "asset",
+                ":assetPath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "thumbnail",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetPath",
+                  "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "e8a8f7f2-0520-4c86-b920-899ecd91d652",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "asset",
+                ":assetPath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "thumbnail",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetPath",
+                  "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "0336ca36-f32a-4075-8f6d-7a5fbab5088b",
+          "name": "500",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "asset",
+                ":assetPath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "thumbnail",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetPath",
+                  "description": "(Required) The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{your-domain}}",
+                  "key": "your-domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "See Details for Schema",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-domain",
+      "key": "your-domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{your-domain}}.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "50135fad-c4f0-48ce-a25c-3dba72e3b9a6",
+    "name": "api-specifications",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

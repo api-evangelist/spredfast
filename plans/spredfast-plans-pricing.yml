@@ -1,0 +1,36 @@
+generated: '2026-08-13'
+method: searched
+source: https://khoros.ai/
+docs: https://khoros.ai/lets-connect/
+plan_count: 0
+note: >-
+  No published plans or pricing, for the product or for the API. Spredfast was
+  and Khoros Marketing remains an enterprise, sales-gated product: there is no
+  pricing page, no tier table, no free tier, no per-call rate card. Probed
+  2026-08-13: https://khoros.com/pricing 302s to the khoros.ai root rather than
+  to a pricing page, and https://khoros.ai/pricing returns 404. The developer
+  center (developer.khoros.com/khorosmarketingdevdocs) documents no API pricing,
+  no quota and no metering, and API access is not self-serve — the getting
+  started guide requires a company admin to contact support to have the
+  DevCenter application enabled and a client id issued for the company before
+  any call can be made. An honest zero rather than an omitted file.
+pricing_model: enterprise-contact-sales
+free_tier: false
+self_serve: false
+plans: []
+evidence:
+- url: https://khoros.com/pricing
+  status: 200
+  note: 302 to the khoros.ai root; no pricing content.
+- url: https://khoros.ai/pricing
+  status: 404
+- url: https://developer.khoros.com/khorosmarketingdevdocs
+  status: 200
+  note: Developer center; no pricing, quota or metering documented.
+access_gate:
+  note: >-
+    Getting an API credential is a support ticket, not a signup. The company
+    admin must ask Khoros support to enable the DevCenter application for the
+    company and to issue a client id + client secret, and that client id must
+    then be allow-listed for the company in Conversations.
+  source: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api

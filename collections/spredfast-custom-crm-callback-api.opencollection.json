@@ -1,0 +1,383 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "api-specifications",
+    "version": "1.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "createCase",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://{your-domain}.com/case",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a new case with interactions"
+    },
+    {
+      "info": {
+        "name": "lookupCase",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://{your-domain}.com/case/:id",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "Case ID."
+          }
+        ]
+      },
+      "docs": "Returns info for a specific case"
+    },
+    {
+      "info": {
+        "name": "updateCase",
+        "type": "http"
+      },
+      "http": {
+        "method": "PATCH",
+        "url": "https://{your-domain}.com/case/:id",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "The case ID to update."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a new case with interactions"
+    },
+    {
+      "info": {
+        "name": "searchCustomers",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://{your-domain}.com/customers",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Find all customers matching the provided set of criteria"
+    },
+    {
+      "info": {
+        "name": "bestmatchCustomers",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://{your-domain}.com/customer/bestmatch",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Find a customer best match based on known Social Information"
+    },
+    {
+      "info": {
+        "name": "createCustomer",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://{your-domain}.com/customer",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a new customer"
+    },
+    {
+      "info": {
+        "name": "findCustomer",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://{your-domain}.com/customer/:id",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "Customer ID"
+          }
+        ]
+      },
+      "docs": "Returns info for a specific customer"
+    },
+    {
+      "info": {
+        "name": "updateCustomer",
+        "type": "http"
+      },
+      "http": {
+        "method": "PATCH",
+        "url": "https://{your-domain}.com/customer/:id",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "Customer ID"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update a customer’s details"
+    },
+    {
+      "info": {
+        "name": "findCases",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://{your-domain}.com/customer/:id/cases",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-initiative",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "Customer ID"
+          }
+        ]
+      },
+      "docs": "Get all cases for the given customer ID"
+    },
+    {
+      "info": {
+        "name": "Define Object Structures",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://{your-domain}.com/meta/object/:type",
+        "headers": [
+          {
+            "name": "x-sf-user-email",
+            "value": ""
+          },
+          {
+            "name": "x-sf-company-id",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "type",
+            "value": "",
+            "type": "path",
+            "description": "Object name. **Allowed Values:** `customer`, `case`"
+          }
+        ]
+      },
+      "docs": "Define object structures for a specified type"
+    },
+    {
+      "info": {
+        "name": "List a specific directory",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://{your-domain}.com/list/:resourcePath",
+        "params": [
+          {
+            "name": "resourcePath",
+            "value": "",
+            "type": "path",
+            "description": "The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`."
+          }
+        ]
+      },
+      "docs": "List the assets available within a specific directory"
+    },
+    {
+      "info": {
+        "name": "List the root directory",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://{your-domain}.com/list"
+      },
+      "docs": "List the root directory"
+    },
+    {
+      "info": {
+        "name": "Get an asset",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://{your-domain}.com/asset/:assetPath",
+        "params": [
+          {
+            "name": "assetPath",
+            "value": "",
+            "type": "path",
+            "description": "The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`."
+          },
+          {
+            "name": "thumbnail",
+            "value": "",
+            "type": "query",
+            "description": "When true, a thumbnail of the asset should be returned. See the expanded parameter descriptionbelow."
+          }
+        ]
+      },
+      "docs": "Retrieve an asset specified by its assetPath"
+    }
+  ],
+  "bundled": true
+}

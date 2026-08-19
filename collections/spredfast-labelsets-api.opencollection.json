@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "labelsets-api",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://example.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Retrieve a Page of Labels Nested within Sets",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/labelsets/",
+        "params": [
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query",
+            "description": "Page Number"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query",
+            "description": "Page Size"
+          }
+        ]
+      },
+      "docs": "Retrieve a page of labels nested within sets"
+    }
+  ],
+  "bundled": true
+}

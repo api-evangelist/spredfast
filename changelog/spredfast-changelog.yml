@@ -1,0 +1,36 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.khoros.com/khorosmarketingdevdocs
+published: false
+scheme: none
+current_version: v2
+entry_count: 0
+note: >-
+  No dated API changelog or release notes are published for the Spredfast /
+  Khoros Marketing API family. Probed 2026-08-13:
+  https://developer.khoros.com/khorosmarketingdevdocs/changelog returns 404, and
+  the ReadMe project exposes no changelog section in its navigation. There is no
+  version history, no breaking-change log and no migration guide from V1 to V2,
+  even though both generations are live on api.spredfast.com simultaneously. No
+  `type: ChangeLog` pointer is emitted, because there is nothing to point at.
+entries: []
+evidence:
+- url: https://developer.khoros.com/khorosmarketingdevdocs/changelog
+  status: 404
+- url: https://developer.khoros.com/khorosmarketingdevdocs
+  status: 200
+  note: Developer center landing page; no changelog link in navigation.
+nearest_dated_signal:
+  note: >-
+    The only dated signal available is the docs platform's own metadata: every
+    one of the ten API definition files in the ReadMe project carries
+    created_at/updated_at of 2026-05-13, i.e. all ten were re-uploaded in a
+    single batch. That records a docs migration, not an API change, and is not
+    a changelog.
+  source: developer.khoros.com ReadMe project apiDefinitions metadata
+related:
+  status_page_history: https://status.khoros.com/history.rss
+  note: >-
+    Incident history on the Khoros status page is the only dated, machine-
+    readable feed covering this product line — operational events, not API
+    changes.

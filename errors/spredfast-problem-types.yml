@@ -1,0 +1,134 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/*.json (4xx/5xx responses across all nine harvested
+  Spredfast OpenAPI documents), enriched from
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+  and https://developer.khoros.com/khorosmarketingdevdocs/docs/events-errors
+format: proprietary
+rfc9457: false
+note: >-
+  Spredfast does NOT use RFC 9457 / RFC 7807 problem+json. No operation in any
+  of the nine specs declares an `application/problem+json` response. Errors are
+  returned inside the same proprietary envelope as successes: a top-level
+  `status` object carrying `succeeded: false` and a nested `error` object with
+  `code` and `message`. 74 error responses are declared across 149 operations,
+  but 51 of them are typed `text/plain` and 23 `application/json`, and almost
+  all carry an empty `{}` example — the specs declare that an error can happen
+  without describing it. Only one error code string is published anywhere in the
+  contract (`not_acceptable`). The developer docs additionally describe
+  NON-JSON failure modes: bare HTML error pages for bad credentials, an
+  undocumented `586 Service Not Found` status for an invalid endpoint path, and
+  an HTML `Developer Inactive` page for an expired access token — none of which
+  appear in any spec.
+envelope:
+  shape: |-
+    {
+      "status": {
+        "error": { "code": "<string>", "message": "<human readable>" },
+        "succeeded": false
+      }
+    }
+  fields:
+  - name: status.succeeded
+    type: boolean
+    description: false on error; true on success. The primary success discriminator.
+  - name: status.error.code
+    type: string
+    description: Machine-readable snake_case error code. Only `not_acceptable` is published.
+  - name: status.error.message
+    type: string
+    description: Human-readable explanation.
+  success_envelope: '{ "data": <payload>, "status": { "succeeded": true } }'
+status_codes:
+- status: '400'
+  occurrences: 29
+  title: Bad Request
+  description: >-
+    Most common declared failure. Example bodies are empty ({}) in the specs;
+    no per-field validation detail is published.
+- status: '401'
+  occurrences: 12
+  title: Unauthorized
+  description: >-
+    Missing, invalid or expired OAuth bearer token. api.spredfast.com returns
+    401 for every anonymous request, including /.well-known/ paths.
+  remediation: >-
+    Re-run the OAuth authorization-code flow at
+    https://login.spredfast.com/v3/oauth/authorize and exchange the code at
+    /v3/oauth/token. Tokens are issued with a 24-month lifetime.
+- status: '403'
+  occurrences: 2
+  title: Forbidden
+  description: >-
+    The authenticated user lacks the privilege for this operation. Check
+    `retrieve-permissions-for-current-user` (GET /conversations/privilege).
+- status: '404'
+  occurrences: 10
+  title: Not Found
+  description: Resource does not exist, or is not visible to the caller's company.
+- status: '406'
+  occurrences: 3
+  title: Not Acceptable
+  description: The only status with a published error code and message in the contract.
+- status: '422'
+  occurrences: 6
+  title: Unprocessable Entity
+  description: Semantic validation failure on an otherwise well-formed request body.
+- status: '500'
+  occurrences: 12
+  title: Internal Server Error
+  description: >-
+    Also documented as the response when an incorrect clientSecret is supplied
+    at the /token step of the OAuth flow — an authentication fault surfaced as
+    a server error.
+problem_types:
+- code: not_acceptable
+  status: '406'
+  title: Not Acceptable
+  detail: Unable to parse the json you provided.
+  remediation: >-
+    Send a syntactically valid JSON body and set Content-Type: application/json.
+  source: openapi/spredfast-conversations-api-openapi.yml
+undocumented_failure_modes:
+- signal: HTML error page (no JSON envelope)
+  cause: Bad platform credentials, or an invalid clientId/clientSecret during the OAuth flow.
+  source: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+- signal: '586 Service Not Found (non-standard HTTP status, HTML body)'
+  cause: >-
+    Invalid endpoint path — commonly a wrong `{environment}` path segment. The
+    docs warn the environment segment of the V1 URL is case sensitive
+    (Production, VPC1, APP3).
+  source: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+- signal: HTML page reading "Developer Inactive"
+  cause: The access token has expired or been revoked in Profile Settings.
+  source: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+- signal: 'Company {id} does not allow the application {clientId}'
+  cause: The DevCenter application has not been enabled for the caller's company.
+  remediation: Company admin must contact Khoros support to enable the application.
+  source: openapi/spredfast-conversations-api-v1-openapi.yml
+event_errors:
+  note: >-
+    The Notifications (Events) API emits its own error event rather than an HTTP
+    error, so integration failures against a customer's Custom CRM are delivered
+    asynchronously.
+  event_name: error-custom-crm
+  payload_fields:
+  - companyId
+  - eventName
+  - createdDate
+  - eventUuid
+  - type
+  - subscriptionUuid
+  - data.operation
+  - data.trackingId
+  - data.description
+  - data.spredfastErrorMessage
+  - data.externalCall.requestMethod
+  - data.externalCall.requestUri
+  - data.externalCall.requestHeaders
+  - data.externalCall.requestQueryParameters
+  - data.externalCall.requestBody
+  - data.externalCall.responseHeaders
+  - data.externalCall.responseCode
+  source: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-errors

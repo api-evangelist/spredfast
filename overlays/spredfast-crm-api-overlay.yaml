@@ -1,0 +1,61 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Spredfast Custom CRM Registration API
+  version: 1.0.0
+extends: ../openapi/spredfast-crm-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: openapi/spredfast-crm-api-openapi.yml + developer.khoros.com/khorosmarketingdevdocs
+x-note: 'API Evangelist overlay. Captures our enhancements to the harvested contract WITHOUT mutating
+  it: a descriptive title and description the provider omitted (the source documents carry a bare lowercase
+  filename as info.title and no description), contact and licence pointers, and the runtime semantics
+  documented in prose but absent from the contract. Nothing here is invented — every value is sourced
+  from the Khoros Marketing developer center or from a sibling artifact in this repo.'
+actions:
+- target: $.info
+  description: Give the document a real title and description; the source names it "crm".
+  update:
+    title: Spredfast Custom CRM Registration API
+    description: Register and update a customer-implemented Custom CRM so Khoros Marketing can call it.
+    contact:
+      name: Khoros Marketing Developer Center
+      url: https://developer.khoros.com/khorosmarketingdevdocs
+    x-provider: spredfast
+    x-successor: khoros
+    x-status-page: https://status.khoros.com
+- target: $
+  description: Record the cross-cutting runtime semantics the contract does not declare.
+  update:
+    x-idempotency:
+      supported: false
+      note: No idempotency key of any kind; retrying a publish POST publishes twice.
+    x-rate-limits:
+      published: false
+      headers: []
+      note: No published limit and no rate-limit response header on any operation.
+    x-error-format:
+      rfc9457: false
+      envelope: '{ "status": { "error": { "code", "message" }, "succeeded": false } }'
+      artifact: errors/spredfast-problem-types.yml
+    x-conventions: conventions/spredfast-conventions.yml
+    x-lifecycle: lifecycle/spredfast-lifecycle.yml
+    x-authentication: authentication/spredfast-authentication.yml
+    x-harvest:
+      method: extracted from the rendered ReadMe reference pages at developer.khoros.com/khorosmarketingdevdocs;
+        the raw definition endpoint returns HTTP 403 anonymously and every static spec path returns the
+        docs SPA HTML shell
+      date: '2026-08-13'
+- target: $.components.securitySchemes['sec0']
+  description: The source declares a clientCredentials flow with tokenUrl https://example.com/oauth2/token
+    — a documentation-tool placeholder, not a Spredfast endpoint. Replace it with the real authorization-code
+    flow the Conversations V1 contract and the getting-started guide both publish.
+  update:
+    type: oauth2
+    description: 3-legged OAuth 2.0. Client id and secret are issued by Khoros support; the DevCenter
+      application must be enabled for the company. Access tokens are valid for 24 months.
+    flows:
+      authorizationCode:
+        authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+        tokenUrl: https://login.spredfast.com/v3/oauth/token
+        scopes:
+          all: Read/write access for all endpoints.

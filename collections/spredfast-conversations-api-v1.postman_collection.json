@@ -1,0 +1,4047 @@
+{
+  "item": [
+    {
+      "id": "ef15cee5-0f13-42a6-bad3-07e57aec64fb",
+      "name": "AccountSet",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d58b8b74-3bcb-4db4-97d1-e75caa88eb3d",
+          "name": "Lists all accounts sets and corresponding accounts available to the user.",
+          "request": {
+            "name": "Lists all accounts sets and corresponding accounts available to the user.",
+            "description": {
+              "content": "List all account sets and accounts available.\n\nNote: the following criteria must be met for an account set to be listed:\n1. Your user must be a member of the Account Set.\n2. There must be at least one Account registered in the Account Set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "accountset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef53bbea-3039-4bcb-bfc6-708de407e0f7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "accountset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"sfEntityType\": \"string\",\n      \"id\": 8407,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"thumbnail\": \"string\",\n      \"accounts\": [\n        {\n          \"sfEntityType\": \"string\",\n          \"id\": 2081,\n          \"service\": \"string\",\n          \"name\": \"string\",\n          \"accountType\": \"string\",\n          \"serviceId\": \"string\"\n        },\n        {\n          \"sfEntityType\": \"string\",\n          \"id\": 4611,\n          \"service\": \"string\",\n          \"name\": \"string\",\n          \"accountType\": \"string\",\n          \"serviceId\": \"string\"\n        }\n      ]\n    },\n    {\n      \"sfEntityType\": \"string\",\n      \"id\": 5898,\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"thumbnail\": \"string\",\n      \"accounts\": [\n        {\n          \"sfEntityType\": \"string\",\n          \"id\": 666,\n          \"service\": \"string\",\n          \"name\": \"string\",\n          \"accountType\": \"string\",\n          \"serviceId\": \"string\"\n        },\n        {\n          \"sfEntityType\": \"string\",\n          \"id\": 4862,\n          \"service\": \"string\",\n          \"name\": \"string\",\n          \"accountType\": \"string\",\n          \"serviceId\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "71cc8cb1-06a3-4e16-8ff6-aa926402db06",
+      "name": "Analytics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "8e8ed81b-38aa-44b6-8d7c-e7bf953c88bd",
+      "name": "Assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d2b6b856-d60a-4a9b-8cac-80b15410d53a",
+          "name": "Create a new Content Center Asset.",
+          "request": {
+            "name": "Create a new Content Center Asset.",
+            "description": {
+              "content": "Create a new image/video Content Center Asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"folderId\": \"<string>\",\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"endDate\": \"<dateTime>\",\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"intendedForPublishing\": false,\n  \"intendedForModeration\": false,\n  \"createdDate\": \"<dateTime>\",\n  \"originSystem\": \"<string>\",\n  \"originId\": \"<string>\",\n  \"contentLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"image\": \"<uri>\",\n  \"video\": \"<uri>\",\n  \"externalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e84e0e0-0762-44dc-9dae-1daefdffedb7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"folderId\": \"999\",\n  \"name\": \"asset_name\",\n  \"description\": \"Cool new Asset!\",\n  \"text\": \"Text body.\",\n  \"sfEntityType\": \"Asset\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"folderId\": \"999\",\n    \"name\": \"asset_name\",\n    \"description\": \"Cool new Asset!\",\n    \"text\": \"Text body.\",\n    \"sfEntityType\": \"Asset\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"CANNOT_CREATE_NEW_LABELS\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7588061-cf79-4548-ad9b-3d87290b02ca",
+          "name": "Create a new Content Center image/video Asset.",
+          "request": {
+            "name": "Create a new Content Center image/video Asset.",
+            "description": {
+              "content": "Create a new image/video Content Center Asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "multipart",
+                  "value": "null"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "asset",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) JSON object describing the asset."
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "video",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "videoSize",
+                  "value": "<long>",
+                  "type": "text",
+                  "description": "Video size in bytes."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fa2a45a1-14b0-4f14-ac99-d23db19b1c6c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) JSON object describing the asset.",
+                        "type": "text/plain"
+                      },
+                      "key": "asset",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "video",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Video size in bytes.",
+                        "type": "text/plain"
+                      },
+                      "key": "videoSize",
+                      "value": "<long>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"folderId\": \"999\",\n    \"name\": \"asset_name\",\n    \"description\": \"Cool new Asset!\",\n    \"text\": \"Text body.\",\n    \"sfEntityType\": \"Asset\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"CANNOT_CREATE_NEW_LABELS\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e9e920e-c952-480b-becc-9438c1eed2d9",
+          "name": "Retrieve a Content Center Asset based by asset ID.",
+          "request": {
+            "name": "Retrieve a Content Center Asset based by asset ID.",
+            "description": {
+              "content": "Gets a Content Center Asset based by asset ID (including content labels information).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "asset",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "617353ac-4019-4c73-a79c-3038ae80439e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "asset",
+                    ":assetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"folderId\": \"999\",\n    \"name\": \"asset_name\",\n    \"description\": \"Cool new Asset!\",\n    \"text\": \"Text body.\",\n    \"sfEntityType\": \"Asset\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"CANNOT_CREATE_NEW_LABELS\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31aa10c9-011c-49aa-a196-3d21ac0df48d",
+          "name": "Update existing Content Center Asset.",
+          "request": {
+            "name": "Update existing Content Center Asset.",
+            "description": {
+              "content": "Updates a Content Center Asset based on the JSON request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "asset",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "removeImage",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "removeVideo",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"folderId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b13089cd-203d-4391-82f5-239a8d533b32",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "asset",
+                    ":assetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "removeImage",
+                      "value": "false"
+                    },
+                    {
+                      "key": "removeVideo",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assetId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"folderId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"folderId\": \"999\",\n    \"name\": \"asset_name\",\n    \"description\": \"Cool new Asset!\",\n    \"text\": \"Text body.\",\n    \"sfEntityType\": \"Asset\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"CANNOT_CREATE_NEW_LABELS\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "216d3023-686e-48a9-841f-be6c0e5053fe",
+      "name": "Docs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "a66c11ca-0fd1-4bbb-9381-e54f0d015cf4",
+      "name": "Folder",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9bc0320a-3b3f-47a0-8a40-716d9a62b6b5",
+          "name": "Retrieve a list of folders.",
+          "request": {
+            "name": "Retrieve a list of folders.",
+            "description": {
+              "content": "This endpoint is used to retrieve a list of existing *Spredfast* Content Center folders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nameFilter",
+                  "value": "<string>",
+                  "description": "If present, filter the results by the provided \"nameFilter\" string"
+                },
+                {
+                  "disabled": false,
+                  "key": "metrics",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cb2c3af-4868-4723-b054-082061d1fea6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nameFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metrics",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"companyId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createdDate\": \"1948-06-06T19:44:57.662Z\",\n      \"metrics\": {\n        \"assetCount\": 2591,\n        \"lastModifiedAssetImageThumb\": \"https://nXMYPPQexVIhWLPshAxKpID.vwqtvXlQA+m.wmR7kcHbyJTF5Pzku-EEPd3vcT,j-KbkFHoB+bPxzpXI4OR8BUDU\"\n      },\n      \"sfEntityType\": \"AssetFolder\"\n    },\n    {\n      \"id\": \"string\",\n      \"companyId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"createdDate\": \"1957-02-20T19:53:41.600Z\",\n      \"metrics\": {\n        \"assetCount\": 2767,\n        \"lastModifiedAssetImageThumb\": \"http://PywiodXhwubPL.jjTkDUpBWbUmLP7bR,Vco\"\n      },\n      \"sfEntityType\": \"AssetFolder\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"PUBLISH_DATE_INVALID\",\n      \"message\": \"string\"\n    }\n  },\n  \"pagination\": {\n    \"next\": \"string\",\n    \"previous\": \"string\",\n    \"totalItems\": 7124\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2c8e22b-d5f4-46b7-a156-b9be4076d3e5",
+          "name": "Create a new Content Center Asset Folder.",
+          "request": {
+            "name": "Create a new Content Center Asset Folder.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3dbfabf-10c8-407f-84d3-1b8079738551",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"companyId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"createdDate\": \"2013-07-29T05:47:14.301Z\",\n    \"metrics\": {\n      \"assetCount\": 4906,\n      \"lastModifiedAssetImageThumb\": \"https://oBOBQkZwdSmglwiQUAIcKYhbZaGgY.olrh77H5LH7Mtq9G\"\n    },\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"INVALID_MESSAGE_ID\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "348579f7-449f-4d4d-8110-cbb9d17c08da",
+          "name": "Retrieve a specific Content Center Asset Folder by ID.",
+          "request": {
+            "name": "Retrieve a specific Content Center Asset Folder by ID.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "folderId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d57dbff4-dbf6-4bc3-84d5-afdf6c499824",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder",
+                    ":folderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "folderId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"companyId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"createdDate\": \"2013-07-29T05:47:14.301Z\",\n    \"metrics\": {\n      \"assetCount\": 4906,\n      \"lastModifiedAssetImageThumb\": \"https://oBOBQkZwdSmglwiQUAIcKYhbZaGgY.olrh77H5LH7Mtq9G\"\n    },\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"INVALID_MESSAGE_ID\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f32cf9e-b7a6-4e6f-b115-93ada2ff4e2e",
+          "name": "Updates an existing Content Center Asset Folder.",
+          "request": {
+            "name": "Updates an existing Content Center Asset Folder.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "folderId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aeac2806-f4e9-44ae-9a52-46ee870a12ac",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder",
+                    ":folderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "folderId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"companyId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"createdDate\": \"2013-07-29T05:47:14.301Z\",\n    \"metrics\": {\n      \"assetCount\": 4906,\n      \"lastModifiedAssetImageThumb\": \"https://oBOBQkZwdSmglwiQUAIcKYhbZaGgY.olrh77H5LH7Mtq9G\"\n    },\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"INVALID_MESSAGE_ID\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d2bfa85-07c8-4197-8763-ce8718776e8c",
+          "name": "Deletes an existing Content Center Asset Folder.",
+          "request": {
+            "name": "Deletes an existing Content Center Asset Folder.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "folderId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8eb11f3f-57b3-484a-b6bd-89a8a50e625b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder",
+                    ":folderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "folderId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": 984,\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"PROXY_ORIGIN_SERVER_FAILURE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f06b1d68-e53d-4f3c-8de0-4a81bdab05d7",
+          "name": "Retrieve a list of assets in a folder.",
+          "request": {
+            "name": "Retrieve a list of assets in a folder.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "folder",
+                ":folderId",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "ASCENDING"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "folderId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f32728ec-6a42-41a7-a6ff-f760eca41068",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "folder",
+                    ":folderId",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "ASCENDING"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "folderId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"folderId\": \"999\",\n      \"name\": \"asset_name\",\n      \"description\": \"Cool new Asset!\",\n      \"text\": \"Text body.\",\n      \"sfEntityType\": \"Asset\"\n    },\n    {\n      \"folderId\": \"999\",\n      \"name\": \"asset_name\",\n      \"description\": \"Cool new Asset!\",\n      \"text\": \"Text body.\",\n      \"sfEntityType\": \"Asset\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"CANNOT_CREATE_NEW_LABELS\",\n      \"message\": \"string\"\n    }\n  },\n  \"pagination\": {\n    \"next\": \"string\",\n    \"previous\": \"string\",\n    \"totalItems\": 6393\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b27ef855-1067-4a71-be9d-1e919624642a",
+      "name": "Initiatives",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3fd75e9-fe6b-4c78-a264-622530ae8c24",
+          "name": "Retrieve a list of available initiatives.",
+          "request": {
+            "name": "Retrieve a list of available initiatives.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nameFilter",
+                  "value": "<string>",
+                  "description": "If present, filter the results by the provided \"nameFilter\" string."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3c3c364-2c46-4696-8fd3-e78f8e217dba",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nameFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"MESSAGE_HAS_PROMOTION\",\n      \"message\": \"string\"\n    }\n  },\n  \"pagination\": {\n    \"next\": \"string\",\n    \"previous\": \"string\",\n    \"totalItems\": 6026\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4a9540f-b51d-4f89-98bd-9e0c66cb304d",
+          "name": "Retrieve a single initiative by ID.",
+          "request": {
+            "name": "Retrieve a single initiative by ID.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6fcb706-9e63-49a0-8cfb-ce9fddc864b3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\"\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"INVALID_MESSAGE_ID\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d0c2b00c-a9ca-43bf-b7da-00b2c5fa0b0f",
+      "name": "Labels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ef05103-698c-4729-82a6-6e3405e31d90",
+          "name": "Retrieve paged labels.",
+          "request": {
+            "name": "Retrieve paged labels.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "contentLabel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "If present, filter the results by the provided title string."
+                },
+                {
+                  "disabled": false,
+                  "key": "priority",
+                  "value": "<boolean>",
+                  "description": "If present, only return \"top\" labels."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "100"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "056fce08-b602-43dc-b0fc-f1908204a3d1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "contentLabel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "priority",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"priority\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "66d1d46d-55ce-4727-8c73-a061f633b742",
+      "name": "Me",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b806b077-a3d8-47b3-8bba-058199833ff9",
+          "name": "List of your companies with this app enabled",
+          "request": {
+            "name": "List of your companies with this app enabled",
+            "description": {
+              "content": "List of your companies **with this app enabled**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "791ac7a1-7d32-4820-8f2e-3a50d75a9569",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "me"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"string\",\n  \"email\": \"PpdubG@UGpPatdEmEG.xwx\",\n  \"companies\": [\n    {\n      \"sfEntityType\": \"string\",\n      \"directoryId\": 939,\n      \"name\": \"string\",\n      \"environment\": \"string\"\n    },\n    {\n      \"sfEntityType\": \"string\",\n      \"directoryId\": 232,\n      \"name\": \"string\",\n      \"environment\": \"string\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"PUBLISH_DATE_INVALID\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a6046776-41b9-461b-a939-950783ca1fc7",
+      "name": "Messages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff849528-64d7-4df3-aa81-76a2a5e2c601",
+          "name": "Publish a new message.",
+          "request": {
+            "name": "Publish a new message.",
+            "description": {
+              "content": "Publish a new *Spredfast* Messages for the target Initiative.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2405dc4a-cb02-41bc-b595-29a5d4fc7db5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1999-12-02T00:51:17.473Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1982-07-21T03:52:57.136Z\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1983-06-24T11:00:15.800Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1975-12-06T17:40:18.442Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe20d493-484d-4ea7-9324-15e0d9aecaa7",
+          "name": "Retrieve an existing message.",
+          "request": {
+            "name": "Retrieve an existing message.",
+            "description": {
+              "content": "The Messages endpoint returns information about the *Spredfast* Messages for the target Initiative.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "message",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "messageId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83240edd-3e73-4666-bcde-45deaa7f4fa1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "message",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "messageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1999-12-02T00:51:17.473Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1982-07-21T03:52:57.136Z\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1983-06-24T11:00:15.800Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1975-12-06T17:40:18.442Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a641638d-4da9-45ec-9753-8074b7b01c0d",
+          "name": "Update an existing multi-part message.",
+          "request": {
+            "name": "Update an existing multi-part message.",
+            "description": {
+              "content": "This endpoint is used to update an existing multi-part *Spredfast* Message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "message",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "messageId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d8e8e14-c2f9-41bc-9a0f-534304523c64",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "message",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "messageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1999-12-02T00:51:17.473Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1982-07-21T03:52:57.136Z\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1983-06-24T11:00:15.800Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1975-12-06T17:40:18.442Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7b1f506-37fc-49fe-be7d-8475fd587401",
+          "name": "Delete an existing message.",
+          "request": {
+            "name": "Delete an existing message.",
+            "description": {
+              "content": "This endpoint is used to delete an existing *Spredfast* Message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "message",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "messageId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fbfb01e-0f84-40c9-b0fd-2280dcc0325d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "message",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "messageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": 984,\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"PROXY_ORIGIN_SERVER_FAILURE\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5449f26e-fadb-4724-bfa9-9d65151634e0",
+          "name": "Publish a new message.",
+          "request": {
+            "name": "Publish a new message.",
+            "description": {
+              "content": "Publish a new *Spredfast* Messages for the target Initiative.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "multipart",
+                  "value": "null"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "message",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e171f640-5a20-4d92-818c-4b876649c050",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1999-12-02T00:51:17.473Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1982-07-21T03:52:57.136Z\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1983-06-24T11:00:15.800Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1975-12-06T17:40:18.442Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35923796-e22c-4df5-9adf-8ff79d2cdf0b",
+          "name": "Publish a new message.",
+          "request": {
+            "name": "Publish a new message.",
+            "description": {
+              "content": "Publish a new *Spredfast* Messages for the target Initiative. **Note:** For multiple images the cURL should looks like this (notice that content.images is an array and must contain the same number of elements as files being uploaded): \n \n ```curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: Bearer {your token}' -F 'message={\"sfEntityType\":\"Message\",\"service\":\"FACEBOOK\",\"content\":{\"sfEntityType\":\"ImageShareList\",\"images\":[{\"sfEntityType\":\"ImageShare\",\"caption\":\"image one\"},{\"sfEntityType\":\"ImageShare\",\"caption\":\"image two\"},{\"sfEntityType\":\"ImageShare\",\"caption\":\"image three\"}]},\"targetAccountIds\":[\"4\"]};type=application/json' -F 'image=@butterfly1.jpg' -F 'image=@butterfly2.jpg' -F 'image=@butterfly3.jpg' 'https://api.spredfast.com/{env}/v1/company/{companyId}/initiative/{initiativeId}/message' \n``` ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "imageset",
+                  "value": "null"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "message",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a61dce99-052c-4f9d-b4d9-d3f56762867f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1999-12-02T00:51:17.473Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1982-07-21T03:52:57.136Z\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1983-06-24T11:00:15.800Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1975-12-06T17:40:18.442Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b27a4c80-9fcc-43a6-9770-9419ac459d34",
+          "name": "Publish a new message.",
+          "request": {
+            "name": "Publish a new message.",
+            "description": {
+              "content": "Publish a new *Spredfast* Messages for the target Initiative.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "video",
+                  "value": "null"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "message",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f17b7d2c-d3e6-4427-a6e1-8e4e84629376",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1999-12-02T00:51:17.473Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1982-07-21T03:52:57.136Z\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1983-06-24T11:00:15.800Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1975-12-06T17:40:18.442Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77c27ff4-f1a3-4470-b99e-d46ed103206b",
+          "name": "Update an existing multi-part message.",
+          "request": {
+            "name": "Update an existing multi-part message.",
+            "description": {
+              "content": "This endpoint is used to update an existing multi-part *Spredfast* Message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "message",
+                "{{messageId}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "multipart",
+                  "value": "null"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "message",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "86349721-2756-4463-8964-2e8c867bbe81",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "message",
+                    "{{messageId}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": \"<object>\",\n  \"title\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<dateTime>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<dateTime>\",\n  \"callbacks\": [\n    \"<uri>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {\n      \"key_0\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_2\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ],\n      \"key_3\": [\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        },\n        {\n          \"subType\": \"<string>\",\n          \"value\": \"<string>\",\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": false,\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1999-12-02T00:51:17.473Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1982-07-21T03:52:57.136Z\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"createdDate\": \"1983-06-24T11:00:15.800Z\",\n      \"lastModifiedByUserId\": \"string\",\n      \"lastModifiedDate\": \"1975-12-06T17:40:18.442Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "58a024ed-f782-41d5-bef7-2fc077b07935",
+      "name": "MultiChannelMessages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6cd51c45-7957-4f06-9436-d792c01b2d14",
+          "name": "Retrieve an existing multi-channel message.",
+          "request": {
+            "name": "Retrieve an existing multi-channel message.",
+            "description": {
+              "content": "The Messages endpoint returns information about the *Spredfast* multi-channel messages for the target Initiative.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "multiChannelMessage",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "messageId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cca002a-40b1-49ce-8393-ac6d6d4e93d6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "multiChannelMessage",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "messageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sfEntityType\": \"MultiChannelMessage\",\n  \"messageService\": \"MULTI_CHANNEL\",\n  \"channelMessages\": [\n    {\n      \"sfEntityType\": \"SingleChannelMessage\",\n      \"service\": \"FACEBOOK\",\n      \"targetAccountIds\": [\n        \"4\"\n      ],\n      \"content\": {\n        \"sfEntityType\": \"Status\",\n        \"text\": \"Status Update\"\n      }\n    },\n    {\n      \"sfEntityType\": \"SingleChannelMessage\",\n      \"service\": \"FACEBOOK\",\n      \"targetAccountIds\": [\n        \"5\"\n      ],\n      \"content\": {\n        \"sfEntityType\": \"Status\",\n        \"text\": \"Facebook test post\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "21190aba-6940-4c5a-ab8f-47f0f7a6619b",
+      "name": "Permissions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c5d27c1-14c6-461f-9231-ab1e3b729274",
+          "name": "Retrieve permissions for current user.",
+          "request": {
+            "name": "Retrieve permissions for current user.",
+            "description": {
+              "content": "Results will be a list of permissions in the **currently selected company**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "privilege"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a25e74b-3762-4e77-ac23-585e922f1264",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "privilege"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"canPublish\": false,\n    \"canCreateLabels\": false\n  },\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"SERVICE_INVALID_NAME\",\n      \"message\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f9ec2a75-95a6-4564-bcb7-21aa9ac60d6d",
+      "name": "Plans",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46d375c3-3b99-4380-b2c3-bc2f82bb41d2",
+          "name": "Retrieve a list of Plans.",
+          "request": {
+            "name": "Retrieve a list of Plans.",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "initiative",
+                ":initiativeId",
+                "plan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nameFilter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d1101b4-07ad-4d04-a8b6-872853147aec",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "initiative",
+                    ":initiativeId",
+                    "plan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nameFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"companyId\": 291,\n      \"campaignId\": 9369,\n      \"name\": \"string\",\n      \"overview\": \"string\",\n      \"objective\": \"string\",\n      \"targetAudience\": \"string\",\n      \"color\": \"string\",\n      \"startDate\": \"1975-06-18T07:47:03.976Z\",\n      \"endDate\": \"1968-09-17T11:52:42.366Z\",\n      \"createdDate\": \"1967-09-28T23:11:04.736Z\",\n      \"lastModifiedDate\": \"1972-05-07T19:39:36.680Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"companyId\": 2595,\n      \"campaignId\": 7029,\n      \"name\": \"string\",\n      \"overview\": \"string\",\n      \"objective\": \"string\",\n      \"targetAudience\": \"string\",\n      \"color\": \"string\",\n      \"startDate\": \"1981-03-10T15:54:01.872Z\",\n      \"endDate\": \"2020-06-13T23:01:26.902Z\",\n      \"createdDate\": \"1958-04-14T22:41:40.154Z\",\n      \"lastModifiedDate\": \"1994-07-10T01:11:12.164Z\"\n    }\n  ],\n  \"status\": {\n    \"succeeded\": false,\n    \"error\": {\n      \"code\": \"RESOURCE_NOT_FOUND\",\n      \"message\": \"string\"\n    }\n  },\n  \"pagination\": {\n    \"next\": \"string\",\n    \"previous\": \"string\",\n    \"totalItems\": 1854\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0ee6b2a6-e65f-4fa7-b335-3d3646661569",
+      "name": "test",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "ad3f6188-3c07-4b37-b2da-deb458c2341c",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44404d08-4fda-49b4-b21c-8f2b74e37286",
+          "name": "Retrieve a list of Conversations users",
+          "request": {
+            "name": "Retrieve a list of Conversations users",
+            "description": {},
+            "url": {
+              "path": [
+                ":environment",
+                "v1",
+                "company",
+                ":companyId",
+                "users",
+                "initiative",
+                ":initiativeId",
+                "publishers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "environment",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95f3b75c-93c9-455f-ae9a-64aad248eddc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":environment",
+                    "v1",
+                    "company",
+                    ":companyId",
+                    "users",
+                    "initiative",
+                    ":initiativeId",
+                    "publishers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "environment",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "initiativeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"data\": [\n        {\n          \"id\": 1558,\n          \"displayName\": \"string\"\n        },\n        {\n          \"id\": 9729,\n          \"displayName\": \"string\"\n        }\n      ],\n      \"status\": {\n        \"succeeded\": false,\n        \"error\": {\n          \"code\": \"UNAUTHENTICATED\",\n          \"message\": \"string\"\n        }\n      },\n      \"pagination\": {\n        \"next\": \"string\",\n        \"previous\": \"string\",\n        \"totalItems\": 1804\n      }\n    },\n    {\n      \"data\": [\n        {\n          \"id\": 3570,\n          \"displayName\": \"string\"\n        },\n        {\n          \"id\": 7645,\n          \"displayName\": \"string\"\n        }\n      ],\n      \"status\": {\n        \"succeeded\": false,\n        \"error\": {\n          \"code\": \"ACCOUNT_LOCKED\",\n          \"message\": \"string\"\n        }\n      },\n      \"pagination\": {\n        \"next\": \"string\",\n        \"previous\": \"string\",\n        \"totalItems\": 4281\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spredfast.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<long>",
+      "key": "messageId"
+    }
+  ],
+  "info": {
+    "_postman_id": "81c74525-bb7c-4fc6-bcbd-fd3e3e562ed3",
+    "name": "Conversations API V1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Spredfast Conversations API. Using this API you can access many of the features of the Spredfast platform including publishing and reporting.\n# Prerequisites\nIn order to make an API call to the platform, you must have the following:\n- Enable the DevCenter application for your company. See [troubleshooting](#devcenter-not-enabled) for more information.\n- A valid login for the platform (used to retrieve an access token, described below)\n- An assigned client id for your application\n- That client id enabled for your company in conversations\nIf you are reading this documentation you already have your login! Let&#39;s proceed the the next two steps.\n\n# Authentication and Authorization\n\nSpredfast uses the OAuth standard for API authorization. OAuth specifies the manner in which a bearer token may be obtained that will authorize your API calls. OAuth tokens are managed from the same authentication system as your web logins. All company security policies including SAML SSO integration are supported and enforced.\n\n## Client Id\n\nA client id uniquely identifies your application. There is a whitelist in place to control which applications have access to your company in Conversations. This allows you to control when an application is activated for your company.\n\nTo retrieve your client id, please have your company admin contact [support@spredfast.com](mailto:support@spredfast.com) and request a new or pre-existing client id. Please provide a description of your application. You may also request this application be enabled for your company, if you are the company administrator.\n\nSupport will respond with a client id and a client secret, both of which are needed to obtain an access token.\n\n## Browser Redirection Flow\n\nIf you are building a web application where your users will interact with a UI to authenticate against Spredfast, you are advised to implement the OAuth browser redirection flow. There are many resources available on the web on how to implement this flow, but the basic process is shown below:\n\n\nYou will redirect the user to login.spredfast.com with the following URL:\n\n [https://login.spredfast.com/v3/oauth/authorize?client id=YOUR CLIENT ID&response type=code&redirect uri=https://YOUR URL&state=none](https://login.spredfast.com/v3/oauth/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=https://YOUR_URL&state=none)\n\n Replace YOUR CLIENT ID with the id of your API client and YOUR URL with the URL of your web application the user should return two once an OAuth Grant has been obtained.\n\nWhen the user returns to your website there will be a URL parameter called &quot;code&quot; set. This is an authorization code that you must use to obtain an access token. Make a POST call to the following endpoint to obtain your access token:\n\n```bash \ncurl https://login.spredfast.com/v3/oauth/token \\\n\t-H \"Accept: application/json\" \\\n\t--data 'client_id=YOUR_CLIENT_ID' \\\n\t--data 'client_secret=YOUR_CLIENT_SECRET' \\\n\t--data 'redirect_uri=https://YOUR_URL' \\\n\t--data 'code=CODE_RETURNED'\n```\n\nOnce again substitute YOUR_CLIENT_ID for your client id. You must also provide your client secret in YOUR_CLIENT_SECRET and the code you received in CODE_RETURNED.\n\nYou will receive a JSON response that contains your access token in a response like this:\n\n```js\n{\n   \"data\":{\n      \"sfEntityType\":\"Token\",\n      \"accessToken\":\"XXX\",\n      \"expiryTime\":1519770939876\n   },\n   \"status\":{\n      \"succeeded\":true\n   }\n}\n```\n\nTokens are issued with a 2 year lifetime. Save this token in a secure place. It’s a bearer token and is all that is needed to make API calls on your behalf.\n\n## DevCenter Test Request Flow\nBefore you can query any endpoint, you must first obtain a token. Do this by clicking the \"Get Access Token\" button on any endpoint. You will then be redirected to login via Spredfast and authenticate the DevCenter app for your company. Once complete you will return to the DevCenter and will notice that the `oauth_access_token` variable is filled in. You may now run any Spredfast API action against your company.\n\n### Developer notes\nWhile developing against the Spredfast API you will be using your own Spredfast API App (client_id/secret pair). To be absolutely certain you know what data your application is receiving, you can substitute the default DevCenter `client_id` and `secret` pair with your own.\n\n## Access Token Expiration\nAccess tokens are valid for 24 months. You may refresh these tokens at any time by repeating the authorization flow.\n# API Path Construction\nConversations APIs have several required parameters for all API calls. All Conversations APIs have the following URL path scheme:\n[https://api.spredfast.com/v1/conversations/](/api/conversations/v1/conversations)\n# API Overview\nSpredfast Conversations offers APIs to manage content and plans, publish content, and retrieve analytics reports.\n## Publishing\nPublishing requires you to select an initiative and an account set. To retrieve the list of initiatives use the [/{environment}/v1/company/{companyId}/initiative](/api/conversations/v1/conversations/initiatives/listinitiatives) call. To list the accounts available with that initiative, use the [/{environment}/v1/company/{companyId}/initiative/{initiativeId}/accountset](/api/conversations/v1/conversations/accountset/accountset) call.\n\nOnce you have these parameters you may publish content. For status updates (text) and images you publish with a single call. For video publishing you must first upload the video into the Conversations Content Center.\n\nStatus updated may be published with the [/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message](/api/conversations/v1/conversations/messages/publishmessage) call. You will send your content as a JSON POST. For example:\n\n```js\n{\n   \"sfEntityType\":\"Message\",\n   \"service\":\"FACEBOOK\",\n   \"content\":{\n      \"sfEntityType\":\"Status\",\n      \"text\":\"Status Update\"\n   },\n   \" targetAccountIds\":[\n      \"4\"\n   ]\n}\n```\n\n# Troubleshooting\n\n## DevCenter not enabled\n\nIf you get an error while granting a token which reads `Company 20,307,234 does not allow the application TVjzVmUSDZFVdSpUiKBsQYIAzTrvVcUb`, then please contact [support@spredfast.com](mailto:support@spredfast.com) to enable the DevCenter application for your company.",
+      "type": "text/plain"
+    }
+  }
+}

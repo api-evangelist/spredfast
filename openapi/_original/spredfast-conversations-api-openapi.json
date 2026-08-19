@@ -1,0 +1,4571 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "conversations",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.spredfast.com/v2"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://example.com/oauth2/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/conversations/initiative/{initiative-id}/accountset": {
+      "get": {
+        "summary": "Retrieve All Account Sets & Accounts Available",
+        "description": "List all account sets and accounts available",
+        "operationId": "accountset",
+        "parameters": [
+          {
+            "name": "initiative-id",
+            "in": "path",
+            "description": "The initiative you wish to target.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"accounts\": [\n        {\n          \"accountType\": \"PAGE\",\n          \"alias\": \"PCGazer\",\n          \"id\": \"21365\",\n          \"name\": \"Page: Example Inc.\",\n          \"service\": \"FACEBOOK\",\n          \"serviceId\": \"103129177815577\",\n          \"sfEntityType\": \"Account\",\n          \"uniqueId\": \"2fefd6afe8261c2c162c0988c8f79727\"\n        },\n        {\n          \"accountType\": \"USER\",\n          \"id\": \"21366\",\n          \"name\": \"ExampleInc\",\n          \"service\": \"TWITTER\",\n          \"serviceId\": \"1193602248087146499\",\n          \"sfEntityType\": \"Account\",\n          \"uniqueId\": \"495d056a96b49b82b8cd53145324c2d7\"\n        }\n      ],\n      \"description\": \"\",\n      \"id\": \"98330576\",\n      \"name\": \"PCGazer\",\n      \"sfEntityType\": \"AccountSet\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "accounts": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "accountType": {
+                                  "type": "string",
+                                  "example": "PAGE"
+                                },
+                                "alias": {
+                                  "type": "string",
+                                  "example": "PCGazer"
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "example": "21365"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Page: Example Inc."
+                                },
+                                "service": {
+                                  "type": "string",
+                                  "example": "FACEBOOK"
+                                },
+                                "serviceId": {
+                                  "type": "string",
+                                  "example": "103129177815577"
+                                },
+                                "sfEntityType": {
+                                  "type": "string",
+                                  "example": "Account"
+                                },
+                                "uniqueId": {
+                                  "type": "string",
+                                  "example": "2fefd6afe8261c2c162c0988c8f79727"
+                                }
+                              }
+                            }
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "98330576"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "PCGazer"
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "AccountSet"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/conversations/asset": {
+      "post": {
+        "summary": "Create Text Asset",
+        "description": "Create a new Text Content Center Asset",
+        "operationId": "assets-create-text-asset",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "sfEntityType",
+                  "folderId"
+                ],
+                "properties": {
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "Specifies that this object is of Khoros Marketing entity type `Asset`. Any other type will fail for this request.",
+                    "default": "Asset"
+                  },
+                  "id": {
+                    "type": "string",
+                    "description": "The ID of the asset within Khoros Marketing. **readOnly**: true"
+                  },
+                  "folderId": {
+                    "type": "string",
+                    "description": "Which folder to place the asset in. This value must be present and a valid."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the Asset. See the [Name](#name-field) section below for additional information."
+                  },
+                  "intendedForPublishing": {
+                    "type": "boolean",
+                    "description": "Whether the asset can be used for publishing.",
+                    "default": true
+                  },
+                  "intendedForModeration": {
+                    "type": "boolean",
+                    "description": "Whether the asset can be used for Moderation.",
+                    "default": true
+                  },
+                  "contentLabels": {
+                    "type": "array",
+                    "description": "List of labels to apply to content generated with this asset.",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "services": {
+                    "type": "array",
+                    "description": "The services to restrict this Asset to. **Allowed Values:** `FACEBOOK`, `INSTAGRAM`, `PINTEREST`, `YOUTUBE`, `VK`, `MULTI_CHANNEL`, `SINAWEIBO`",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "startDate": {
+                    "type": "string",
+                    "description": "The date and time when the asset becomes available for use. **Format**: date-time"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "The date and time when the asset stops being available for use. **Format**: date-time"
+                  },
+                  "removalDate": {
+                    "type": "string",
+                    "description": "The date and time when the asset will be removed from Khoros Marketing. **Format**: date-time"
+                  },
+                  "text": {
+                    "type": "string",
+                    "description": "Text to go along with the asset. If this is Text Asset, this field is required. **Character Limit**: 4000 **Visible On**: Text asset **Required for**: Text asset"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "The publicly accessible URL for an Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true"
+                  },
+                  "imageMedium": {
+                    "type": "string",
+                    "description": "The publicly accessible URL for a smaller version of the original Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true"
+                  },
+                  "imageThumb": {
+                    "type": "string",
+                    "description": "The publically accessible URL for a thumbnail of an Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true"
+                  },
+                  "video": {
+                    "type": "string",
+                    "description": "The publically accessible URL for a Video Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true"
+                  },
+                  "videoThumb": {
+                    "type": "string",
+                    "description": "The publically accessible URL for a thumbnail of a Video Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true"
+                  },
+                  "externalId": {
+                    "type": "string",
+                    "description": "External ID to represent the ID of the asset outside of the system."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"sfEntityType\": \"Asset\",\n    \"id\": \"84d5cdbe-0f15-415e-80ea-examplede44f\",\n    \"companyId\": \"12\",\n    \"folderId\": \"736\",\n    \"name\": \"Asset Name\",\n    \"text\": \"Asset text value\",\n    \"intendedForPublishing\": true,\n    \"intendedForModeration\": true,\n    \"createdDate\": 1551719642698,\n    \"contentLabels\": [\n      \"coffee - espresso\"\n    ]\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "Asset"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "84d5cdbe-0f15-415e-80ea-examplede44f"
+                        },
+                        "companyId": {
+                          "type": "string",
+                          "example": "12"
+                        },
+                        "folderId": {
+                          "type": "string",
+                          "example": "736"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Asset Name"
+                        },
+                        "text": {
+                          "type": "string",
+                          "example": "Asset text value"
+                        },
+                        "intendedForPublishing": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "intendedForModeration": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "createdDate": {
+                          "type": "integer",
+                          "example": 1551719642698,
+                          "default": 0
+                        },
+                        "contentLabels": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "coffee - espresso"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "406",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"status\": {\n    \"error\": {\n      \"code\": \"not_acceptable\",\n      \"message\": \"Unable to parse the json you provided.\"\n    },\n    \"succeeded\": false\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "example": "not_acceptable"
+                            },
+                            "message": {
+                              "type": "string",
+                              "example": "Unable to parse the json you provided."
+                            }
+                          }
+                        },
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": false,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/asset?multipart": {
+      "post": {
+        "summary": "Create Image or Video",
+        "description": "Create a new image/video Content Center Asset",
+        "operationId": "assets-create-image-or-video",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "sfEntityType",
+                  "folderId"
+                ],
+                "properties": {
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "Specifies that this object is of Khoros Marketing entity type `Asset`. Any other type will fail for this request.",
+                    "default": "Asset"
+                  },
+                  "id": {
+                    "type": "string",
+                    "description": "The ID of the asset within Khoros Marketing. **readOnly**: true"
+                  },
+                  "folderId": {
+                    "type": "string",
+                    "description": "Which folder to place the asset in. This value must be present and a valid."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the Asset. See the [Name](#name-field) section below for additional information. **Character Limit:** 250"
+                  },
+                  "intendedForPublishing": {
+                    "type": "boolean",
+                    "description": "Whether the asset can be used for publishing.",
+                    "default": true
+                  },
+                  "intendedForModeration": {
+                    "type": "boolean",
+                    "description": "Whether the asset can be used for Moderation.",
+                    "default": true
+                  },
+                  "contentLabels": {
+                    "type": "array",
+                    "description": "List of labels to apply to content generated with this asset.",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "services": {
+                    "type": "array",
+                    "description": "The services to restrict this Asset to. **Allowed Values:** `FACEBOOK`, `INSTAGRAM`, `PINTEREST`, `YOUTUBE`, `VK`, `MULTI_CHANNEL`, `SINAWEIBO`",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "startDate": {
+                    "type": "string",
+                    "description": "The date and time when the asset becomes available for use. **Format**: date-time"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "description": "The date and time when the asset stops being available for use. **Format**: date-time"
+                  },
+                  "removalDate": {
+                    "type": "string",
+                    "description": "The date and time when the asset will be removed from Khoros Marketing. **Format**: date-time"
+                  },
+                  "text": {
+                    "type": "string",
+                    "description": "Text to go along with the asset. If this is Text Asset, this field is required. **Visible On**: Text asset **Required for**: Text asset **Character Limit:** 4000"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "The publicly accessible URL for an Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true"
+                  },
+                  "imageMedium": {
+                    "type": "string",
+                    "description": "The publicly accessible URL for a smaller version of the original Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true"
+                  },
+                  "imageThumb": {
+                    "type": "string",
+                    "description": "The publically accessible URL for a thumbnail of an Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true"
+                  },
+                  "video": {
+                    "type": "string",
+                    "description": "The publically accessible URL for a Video Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true"
+                  },
+                  "videoThumb": {
+                    "type": "string",
+                    "description": "The publically accessible URL for a thumbnail of a Video Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true"
+                  },
+                  "externalId": {
+                    "type": "string",
+                    "description": "External ID to represent the ID of the asset outside of the system."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"sfEntityType\": \"Asset\",\n    \"id\": \"84d5cdbe-0f15-415e-80ea-examplede44f\",\n    \"companyId\": \"12\",\n    \"folderId\": \"736\",\n    \"name\": \"Asset Name\",\n    \"text\": \"Asset text value\",\n    \"intendedForPublishing\": true,\n    \"intendedForModeration\": true,\n    \"createdDate\": 1551719642698,\n    \"contentLabels\": [\n      \"coffee - espresso\"\n    ]\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "Asset"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "84d5cdbe-0f15-415e-80ea-examplede44f"
+                        },
+                        "companyId": {
+                          "type": "string",
+                          "example": "12"
+                        },
+                        "folderId": {
+                          "type": "string",
+                          "example": "736"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Asset Name"
+                        },
+                        "text": {
+                          "type": "string",
+                          "example": "Asset text value"
+                        },
+                        "intendedForPublishing": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "intendedForModeration": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "createdDate": {
+                          "type": "integer",
+                          "example": 1551719642698,
+                          "default": 0
+                        },
+                        "contentLabels": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "coffee - espresso"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/asset/{assetId}": {
+      "get": {
+        "summary": "Retrieve a Content Center Asset by ID",
+        "description": "Gets a Content Center Asset by asset ID (including content label information)",
+        "operationId": "assets-retrieve-a-content-center-asset-by-id",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"contentLabels\": [\n      \"General Labels - Inspirations\"\n    ],\n    \"createdDate\": 1616437795210,\n    \"description\": \"This is an asset description.\",\n    \"folderId\": \"32252\",\n    \"id\": \"0e195f2b-1f47-40cd-ae44-example70c88\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-example70c88.jpg?AWSAccessKeyId=REDACTED_AWS_ACCESS_KEY_ID&Expires=1616441951&Signature=0DwGQR%2BDo00aDAbLSLszuBCe0Ow%3D\",\n    \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=SrwJV726yQxCez%2FwAj2uiZDe8A8%3D\",\n    \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=sOrgXXY2xLZK1wJC5H9v3DupakQ%3D\",\n    \"intendedForModeration\": true,\n    \"intendedForPublishing\": true,\n    \"name\": \"exampleav-klapin-SymZoeE8quA-unsplash\",\n    \"services\": [\n      \"FACEBOOK\"\n    ],\n    \"sfEntityType\": \"Asset\",\n    \"text\": \"\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "companyId": {
+                          "type": "string",
+                          "example": "389"
+                        },
+                        "contentLabels": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "General Labels - Inspirations"
+                          }
+                        },
+                        "createdDate": {
+                          "type": "integer",
+                          "example": 1616437795210,
+                          "default": 0
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "This is an asset description."
+                        },
+                        "folderId": {
+                          "type": "string",
+                          "example": "32252"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "0e195f2b-1f47-40cd-ae44-example70c88"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-example70c88.jpg?AWSAccessKeyId=REDACTED_AWS_ACCESS_KEY_ID&Expires=1616441951&Signature=0DwGQR%2BDo00aDAbLSLszuBCe0Ow%3D"
+                        },
+                        "imageMedium": {
+                          "type": "string",
+                          "example": "https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=SrwJV726yQxCez%2FwAj2uiZDe8A8%3D"
+                        },
+                        "imageThumb": {
+                          "type": "string",
+                          "example": "https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=sOrgXXY2xLZK1wJC5H9v3DupakQ%3D"
+                        },
+                        "intendedForModeration": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "intendedForPublishing": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "exampleav-klapin-SymZoeE8quA-unsplash"
+                        },
+                        "services": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "FACEBOOK"
+                          }
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "Asset"
+                        },
+                        "text": {
+                          "type": "string",
+                          "example": ""
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "put": {
+        "summary": "Update Existing Content Center Asset",
+        "description": "Updates a Content Center Asset based on the JSON request body",
+        "operationId": "assets-update-existing-content-center-asset",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "removeImage",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "removeVideo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "folderId",
+                  "sfEntityType"
+                ],
+                "properties": {
+                  "folderId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "**Allowed Values**: Asset"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616437795210,\n    \"description\": \"This is an example image asset.\",\n    \"folderId\": \"32252\",\n    \"id\": \"0e195f2b-1f47-40cd-ae44-a5e083070c88\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplerqgMe7fxWfo6ckEzQ%2Bk%3D\",\n    \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplez4IoJCKxOjnKEw3giFE%3D\",\n    \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplejIGyN0tKoVjn9gSwisk%3D\",\n    \"intendedForModeration\": true,\n    \"intendedForPublishing\": true,\n    \"name\": \"Asset Image Example\",\n    \"services\": [\n      \"FACEBOOK\"\n    ],\n    \"sfEntityType\": \"Asset\",\n    \"text\": \"\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "companyId": {
+                          "type": "string",
+                          "example": "389"
+                        },
+                        "createdDate": {
+                          "type": "integer",
+                          "example": 1616437795210,
+                          "default": 0
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "This is an example image asset."
+                        },
+                        "folderId": {
+                          "type": "string",
+                          "example": "32252"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "0e195f2b-1f47-40cd-ae44-a5e083070c88"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplerqgMe7fxWfo6ckEzQ%2Bk%3D"
+                        },
+                        "imageMedium": {
+                          "type": "string",
+                          "example": "https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplez4IoJCKxOjnKEw3giFE%3D"
+                        },
+                        "imageThumb": {
+                          "type": "string",
+                          "example": "https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplejIGyN0tKoVjn9gSwisk%3D"
+                        },
+                        "intendedForModeration": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "intendedForPublishing": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Asset Image Example"
+                        },
+                        "services": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "FACEBOOK"
+                          }
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "Asset"
+                        },
+                        "text": {
+                          "type": "string",
+                          "example": ""
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/folder": {
+      "post": {
+        "summary": "Create a New Content Asset Folder",
+        "description": "Create a new custom asset folder where assets may be assigned",
+        "operationId": "create-a-new-content-asset-folder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "sfEntityType"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "**Allowed Values:** AssetFolder"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616447179440,\n    \"description\": \"This is a new example folder.\",\n    \"id\": \"32253\",\n    \"name\": \"A New Folder\",\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "companyId": {
+                          "type": "string",
+                          "example": "389"
+                        },
+                        "createdDate": {
+                          "type": "integer",
+                          "example": 1616447179440,
+                          "default": 0
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "This is a new example folder."
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "32253"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "A New Folder"
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "AssetFolder"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "get": {
+        "summary": "Retrieve a list of folders",
+        "description": "Retrieve a list of existing Khoros Marketing Content Center folders",
+        "operationId": "retrieve-a-list-of-folders",
+        "parameters": [
+          {
+            "name": "nameFilter",
+            "in": "query",
+            "description": "If present, filter the results by the provided `nameFilter` string.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"companyId\": \"389\",\n      \"createdDate\": 1616437729000,\n      \"description\": \"This folder contains assets.\",\n      \"id\": \"32252\",\n      \"name\": \"assets\",\n      \"sfEntityType\": \"AssetFolder\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "companyId": {
+                            "type": "string",
+                            "example": "389"
+                          },
+                          "createdDate": {
+                            "type": "integer",
+                            "example": 1616437729000,
+                            "default": 0
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "This folder contains assets."
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "32252"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "assets"
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "AssetFolder"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/folder/{folderId}": {
+      "get": {
+        "summary": "Retrieve a Content Asset Folder by ID",
+        "description": "Retrieve a specific content asset folder by ID",
+        "operationId": "retrieve-a-content-asset-folder-by-id",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616437729000,\n    \"description\": \"This folder contains assets.\",\n    \"id\": \"32252\",\n    \"name\": \"assets\",\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "companyId": {
+                          "type": "string",
+                          "example": "389"
+                        },
+                        "createdDate": {
+                          "type": "integer",
+                          "example": 1616437729000,
+                          "default": 0
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "This folder contains assets."
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "32252"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "assets"
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "AssetFolder"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "put": {
+        "summary": "Update Existing Content Center Asset Folder",
+        "description": "Update an existing content center asset folder",
+        "operationId": "update-existing-content-center-asset-folder",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "sfEntityType"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "**Allowed Values:** AssetFolder"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "summary": "Delete a Content Asset Folder by ID",
+        "description": "Delete a specific content asset folder by ID",
+        "operationId": "delete-a-content-asset-folder-by-id",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": 32253,\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "integer",
+                      "example": 32253,
+                      "default": 0
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/folder/{folderId}/assets": {
+      "get": {
+        "summary": "Retrieve a List of Assets in a Folder",
+        "description": "Retrieve a list of assets in a folder",
+        "operationId": "retrieve-a-list-of-assets-in-a-folder",
+        "parameters": [
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "description": "**Allowed Values:** `ASCENDING`, `DESCENDING`",
+            "schema": {
+              "type": "string",
+              "default": "ASCENDING"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"companyId\": \"389\",\n      \"createdDate\": 1616437795210,\n      \"description\": \"This is an example image asset.\",\n      \"folderId\": \"32252\",\n      \"id\": \"0e195f2b-1f47-40cd-ae44-a5e083070c88\",\n      \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/example-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\",\n      \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\",\n      \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\",\n      \"intendedForModeration\": true,\n      \"intendedForPublishing\": true,\n      \"name\": \"Asset Image Example\",\n      \"services\": [\n        \"FACEBOOK\"\n      ],\n      \"sfEntityType\": \"Asset\",\n      \"text\": \"\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "companyId": {
+                            "type": "string",
+                            "example": "389"
+                          },
+                          "createdDate": {
+                            "type": "integer",
+                            "example": 1616437795210,
+                            "default": 0
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "This is an example image asset."
+                          },
+                          "folderId": {
+                            "type": "string",
+                            "example": "32252"
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "0e195f2b-1f47-40cd-ae44-a5e083070c88"
+                          },
+                          "image": {
+                            "type": "string",
+                            "example": "https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/example-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]"
+                          },
+                          "imageMedium": {
+                            "type": "string",
+                            "example": "https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]"
+                          },
+                          "imageThumb": {
+                            "type": "string",
+                            "example": "https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]"
+                          },
+                          "intendedForModeration": {
+                            "type": "boolean",
+                            "example": true,
+                            "default": true
+                          },
+                          "intendedForPublishing": {
+                            "type": "boolean",
+                            "example": true,
+                            "default": true
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Asset Image Example"
+                          },
+                          "services": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "example": "FACEBOOK"
+                            }
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "Asset"
+                          },
+                          "text": {
+                            "type": "string",
+                            "example": ""
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/calendar/customChannel": {
+      "get": {
+        "summary": "List CustomChannels",
+        "description": "List any CustomChannels that exist",
+        "operationId": "list-customchannels",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "description": "The Khoros Marketing internal ID of the CustomChannel. **Format**: int64",
+                          "format": "int32"
+                        },
+                        "companyId": {
+                          "type": "string",
+                          "description": "The Khoros Marketing internal ID for the company. **Note:** This is scoped to the environment to which the company belongs."
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "contactName": {
+                          "type": "string"
+                        },
+                        "image": {
+                          "type": "string",
+                          "description": "**Format:** uri"
+                        }
+                      },
+                      "required": [
+                        "id"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "pagination": {
+                    "type": "object",
+                    "description": "Common pagination data.",
+                    "properties": {
+                      "next": {
+                        "type": "string",
+                        "description": "The query parameters for the next page. **Example:** `pageSize=10&pageNumber=4`"
+                      },
+                      "previous": {
+                        "type": "string",
+                        "description": "The query parameters for the previous page. **Example:** `pageSize=10&pageNumber=2`"
+                      },
+                      "totalItems": {
+                        "type": "string",
+                        "description": "The total number of items for the given query. **Example:** `55`"
+                      }
+                    }
+                  },
+                  "status": {
+                    "type": "object",
+                    "description": "The resulting status of the data returned.",
+                    "properties": {
+                      "succeeded": {
+                        "type": "boolean",
+                        "description": "Whether the call succeeded."
+                      },
+                      "error": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "description": "An error code which can be reported to Khoros."
+                          },
+                          "message": {
+                            "type": "string",
+                            "description": "A human-readable error message which can be reported to end users."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"companyId\": \"[COMPANY-ID]\",\n      \"contactName\": \"John Doe\",\n      \"id\": \"4609\",\n      \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]\",\n      \"name\": \"Custom Type\",\n      \"sfEntityType\": \"CustomChannel\",\n      \"type\": \"Event\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "companyId": {
+                            "type": "string",
+                            "example": "[COMPANY-ID]"
+                          },
+                          "contactName": {
+                            "type": "string",
+                            "example": "John Doe"
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "4609"
+                          },
+                          "image": {
+                            "type": "string",
+                            "example": "https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Custom Type"
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "CustomChannel"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "Event"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "post": {
+        "summary": "Create a CustomChannel",
+        "description": "Create a CustomChannel",
+        "operationId": "create-a-customchannel",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID of the CustomChannel. **Format:** int64",
+                    "format": "int32"
+                  },
+                  "companyId": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.",
+                    "format": "int32"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "contactName": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "**Format:** uri"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/calendar/customChannel/{customChannelId}": {
+      "get": {
+        "summary": "Get a CustomChannel based on ID",
+        "description": "Retrieve a previously created custom channel",
+        "operationId": "get-a-customchannel-based-on-id",
+        "parameters": [
+          {
+            "name": "customChannelId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID of the CustomChannel. **Format:** int64",
+                    "format": "int32"
+                  },
+                  "companyId": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.",
+                    "format": "int32"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "contactName": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "**Format:** uri"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"contactName\": \"Ryan Pierson\",\n    \"id\": \"4609\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616448046&Signature=[SIGNATURE]\",\n    \"name\": \"Custom Type\",\n    \"sfEntityType\": \"CustomChannel\",\n    \"type\": \"Event\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "companyId": {
+                          "type": "string",
+                          "example": "389"
+                        },
+                        "contactName": {
+                          "type": "string",
+                          "example": "Ryan Pierson"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "4609"
+                        },
+                        "image": {
+                          "type": "string",
+                          "example": "https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616448046&Signature=[SIGNATURE]"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Custom Type"
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "CustomChannel"
+                        },
+                        "type": {
+                          "type": "string",
+                          "example": "Event"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "put": {
+        "summary": "Update a CustomChannel",
+        "description": "Update a CustomChannel",
+        "operationId": "update-a-customchannel",
+        "parameters": [
+          {
+            "name": "customChannelId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID of the CustomChannel. **Format:** int64",
+                    "format": "int32"
+                  },
+                  "companyId": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.",
+                    "format": "int32"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "contactName": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "**Format:** uri"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}/calendar/customChannelItem/{customChannelItemId}": {
+      "post": {
+        "summary": "Create a CustomChannelItem",
+        "description": "Create a new CustomChannelItem",
+        "operationId": "create-a-customchannelitem",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "customChannelItemId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "companyId": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.",
+                    "format": "int32"
+                  },
+                  "initiativeId": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID of the initiative the object belongs to.",
+                    "format": "int32"
+                  },
+                  "customChannel": {
+                    "type": "object",
+                    "description": "A CustomChannel object.",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The Khoros Marketing internal ID of the CustomChannel.",
+                        "format": "int32"
+                      },
+                      "companyId": {
+                        "type": "integer",
+                        "description": "The Khoros Marketing internal ID for the company. **Note:** This is scoped to the environment to which the company belongs.",
+                        "format": "int32"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "contactName": {
+                        "type": "string"
+                      },
+                      "image": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "scheduledPublishDate": {
+                    "type": "integer",
+                    "description": "Date and Time in seconds since epoch.",
+                    "format": "int32"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "**Format:** uri"
+                  },
+                  "imageThumb": {
+                    "type": "string",
+                    "description": "**Format:** uri"
+                  },
+                  "createdDate": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "put": {
+        "summary": "Update a CustomChannelItem",
+        "description": "Update a CustomChannelItem",
+        "operationId": "update-a-customchannelitem",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "customChannelItemId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "companyId": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.",
+                    "format": "int32"
+                  },
+                  "initiativeId": {
+                    "type": "integer",
+                    "description": "The Khoros Marketing internal ID of the initiative the object belongs to.",
+                    "format": "int32"
+                  },
+                  "customChannel": {
+                    "type": "object",
+                    "description": "A CustomChannel object.",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "The Khoros Marketing internal ID of the CustomChannel.",
+                        "format": "int32"
+                      },
+                      "companyId": {
+                        "type": "integer",
+                        "description": "The Khoros Marketing internal ID for the company. **Note:** This is scoped to the environment to which the company belongs.",
+                        "format": "int32"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "contactName": {
+                        "type": "string"
+                      },
+                      "image": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "scheduledPublishDate": {
+                    "type": "integer",
+                    "description": "Date and Time in seconds since epoch.",
+                    "format": "int32"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "**Format:** uri"
+                  },
+                  "imageThumb": {
+                    "type": "string",
+                    "description": "**Format:** uri"
+                  },
+                  "createdDate": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "get": {
+        "summary": "Get a CustomChannelItem by ID",
+        "description": "Get a CustomChannelItem identified by its unique id",
+        "operationId": "get-a-customchannelitem-by-id",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format**: int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "customChannelItemId",
+            "in": "path",
+            "description": "**Format**: int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/calendar/messages": {
+      "get": {
+        "summary": "Get Messages",
+        "description": "Get a list of messages posted or scheduled to be posted from Khoros Marketing",
+        "operationId": "get-messages",
+        "parameters": [
+          {
+            "name": "initiativeIds",
+            "in": "query",
+            "description": "CSV list of initiatives to filter by. All initiatives are included when absent.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "planIds",
+            "in": "query",
+            "description": "CSV list of Plan ids to filter messages by. All plans are included in the search when absent.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "Number of messages to include in each page of results. Default is 25. Must be between 1 and 50.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "ISO-8601 formatted date and time for the earliest published result. **Format:** date-time",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "ISO-8601 formatted date and time for the latest published result. **Format:** date-time",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "String representing the current cursor within paged data.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative": {
+      "get": {
+        "summary": "Retrieve a List of Available Initiatives",
+        "description": "Retrieve a list of initiatives that exist for your company",
+        "operationId": "retrieve-a-list-of-available-initiatives",
+        "parameters": [
+          {
+            "name": "nameFilter",
+            "in": "query",
+            "description": "If present, filter the results by the provided `nameFilter` string.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"description\": \"This is an initiative's description.\",\n      \"id\": \"1710\",\n      \"name\": \"doc\",\n      \"sfEntityType\": \"Initiative\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "description": {
+                            "type": "string",
+                            "example": "This is an initiative's description."
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "1710"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "doc"
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "Initiative"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}": {
+      "get": {
+        "summary": "Retrieve a Single Initiative",
+        "description": "Retrieve information about a specific initiative",
+        "operationId": "retrieve-a-single-initiative",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"description\": \"This is an initiative's description.\",\n    \"id\": \"1710\",\n    \"name\": \"doc\",\n    \"sfEntityType\": \"Initiative\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "type": "string",
+                          "example": "This is an initiative's description."
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "1710"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "doc"
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "Initiative"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}/contentLabel": {
+      "get": {
+        "summary": "Retrieve Paged Labels",
+        "description": "Retrieve a paged list of labels using Khoros Marketing Conversations API.",
+        "operationId": "retrieve-paged-labels",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "If present, filter the results by the provided string.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priority",
+            "in": "query",
+            "description": "If present, only returns `top` labels.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Ideas\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Inventions\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Products\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Services\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Innovations\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Inspirations\"\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "priority": {
+                            "type": "boolean",
+                            "example": false,
+                            "default": true
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "General Labels - Ideas"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/me": {
+      "get": {
+        "summary": "Retrieve a List of Companies with this App Enabled",
+        "description": "Retrieve a list of companies the currently-authenticated user is associated with for this app",
+        "operationId": "retrieve-a-list-companies-with-this-app-enabled",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"companies\": [\n      {\n        \"directoryId\": \"24606\",\n        \"environment\": \"APP3\",\n        \"environmentUrl\": \"https://app3.spredfast.com\",\n        \"id\": \"389\",\n        \"name\": \"(documentation2)\",\n        \"productName\": null,\n        \"sfEntityType\": \"AvailableCompany\"\n      }\n    ],\n    \"email\": \"ryan.pierson+doc@khoros.com\",\n    \"sfEntityType\": \"User\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "companies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "directoryId": {
+                                "type": "string",
+                                "example": "24606"
+                              },
+                              "environment": {
+                                "type": "string",
+                                "example": "APP3"
+                              },
+                              "environmentUrl": {
+                                "type": "string",
+                                "example": "https://app3.spredfast.com"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "389"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "(documentation2)"
+                              },
+                              "productName": {},
+                              "sfEntityType": {
+                                "type": "string",
+                                "example": "AvailableCompany"
+                              }
+                            }
+                          }
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "ryan.pierson+doc@khoros.com"
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "User"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/conversations/initiative/{initiativeId}/message": {
+      "post": {
+        "summary": "Publish a New Message (imageset)",
+        "description": "Publish a new Khoros Marketing Message for the target Initiative",
+        "operationId": "publish-a-new-message-imageset",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "Khoros Marketing internal entity type. **Allowed Values:** `Message`"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "object",
+                    "description": "Content body appears as one of the object sets described in the **Details** section below.",
+                    "properties": {}
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "service": {
+                    "type": "string",
+                    "description": "Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`, `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`",
+                    "default": "FACEBOOK"
+                  },
+                  "targetAccountIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "organicVisibility": {
+                    "type": "string",
+                    "description": "**AllowedValues:** `VISIBLE`, `INVISIBLE`, `VISIBLE_POST_PUBLISH`"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`, `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`",
+                    "default": "DRAFT"
+                  },
+                  "delegationStatus": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`, `DELEGATED`"
+                  },
+                  "publicationResults": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "accountId": {
+                          "type": "string"
+                        },
+                        "serviceId": {
+                          "type": "string"
+                        },
+                        "serviceLink": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "**Allowed Values:** `PENDING`, `PUBLISHED`, `ERROR`, `DELETED`"
+                        },
+                        "datePublished": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "scheduledPublishDate": {
+                    "type": "string",
+                    "description": "**Format:** date-time"
+                  },
+                  "callbacks": {
+                    "type": "array",
+                    "description": "**uniqueItems:** `true` **uniqueItems:** `true` Callback URLs need to be a POST type. Other types of URLs may result in an error response.",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "targetingProfile": {
+                    "type": "object",
+                    "properties": {
+                      "targetingType": {
+                        "type": "string",
+                        "description": "**Allowed Values:** `ENHANCED`, `GATED`"
+                      },
+                      "targetingValues": {
+                        "type": "object",
+                        "properties": {}
+                      }
+                    }
+                  },
+                  "assetIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "planId": {
+                    "type": "string"
+                  },
+                  "nativeScheduling": {
+                    "type": "boolean"
+                  },
+                  "sponsor": {
+                    "type": "object",
+                    "description": "A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don\u2019t comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.",
+                    "properties": {
+                      "profileId": {
+                        "type": "string",
+                        "description": "The sponsor's profile ID in the corresponding social network."
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "The sponsor's display name in the corresponding social network."
+                      },
+                      "link": {
+                        "type": "string",
+                        "description": "The link to the sponsor's profile in the corresponding social network."
+                      }
+                    }
+                  },
+                  "publisherIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "notes": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "sfEntityType": {
+                          "type": "string",
+                          "description": "Khoros Marketing internal entity type. **Allowed Values:** `Note`"
+                        },
+                        "text": {
+                          "type": "string",
+                          "description": "The note's text content."
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "The note's ID. This should be left empty or set to `0` for new notes."
+                        },
+                        "createdByDisplayName": {
+                          "type": "string",
+                          "description": "The formatted name [firstName lastName] of the note's author. **readOnly:** true"
+                        },
+                        "createdByUserId": {
+                          "type": "string",
+                          "description": "**readOnly:** true"
+                        },
+                        "createdDate": {
+                          "type": "string",
+                          "description": "**Format:** date-time **readOnly:** true"
+                        },
+                        "lastModifiedByUserId": {
+                          "type": "string",
+                          "description": "**readOnly:** true"
+                        },
+                        "lastModifiedDate": {
+                          "type": "string",
+                          "description": "**Format:** date-time **readOnly:** true"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}/message/{messageId}": {
+      "put": {
+        "summary": "Update a Message",
+        "description": "Update an existing Khoros Marketing Message using Khoros Marketing Conversations API.",
+        "operationId": "update-a-message",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "Khoros Marketing internal entity type. **Allowed Values:** `Message`"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "object",
+                    "description": "Content body appears as one of the object sets described in the **Details** section below.",
+                    "properties": {}
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "service": {
+                    "type": "string",
+                    "description": "Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`, `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`",
+                    "default": "FACEBOOK"
+                  },
+                  "targetAccountIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "organicVisibility": {
+                    "type": "string",
+                    "description": "**AllowedValues:** `VISIBLE`, `INVISIBLE`, `VISIBLE_POST_PUBLISH`"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`, `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`",
+                    "default": "DRAFT"
+                  },
+                  "delegationStatus": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`, `DELEGATED`"
+                  },
+                  "publicationResults": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "accountId": {
+                          "type": "string"
+                        },
+                        "serviceId": {
+                          "type": "string"
+                        },
+                        "serviceLink": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "**Allowed Values:** `PENDING`, `PUBLISHED`, `ERROR`, `DELETED`"
+                        },
+                        "datePublished": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "scheduledPublishDate": {
+                    "type": "string",
+                    "description": "**Format:** date-time"
+                  },
+                  "callbacks": {
+                    "type": "array",
+                    "description": "**uniqueItems:** `true`",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "targetingProfile": {
+                    "type": "object",
+                    "properties": {
+                      "targetingType": {
+                        "type": "string",
+                        "description": "**Allowed Values:** `ENHANCED`, `GATED`"
+                      },
+                      "targetingValues": {
+                        "type": "object",
+                        "properties": {}
+                      }
+                    }
+                  },
+                  "assetIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "planId": {
+                    "type": "string"
+                  },
+                  "nativeScheduling": {
+                    "type": "boolean"
+                  },
+                  "sponsor": {
+                    "type": "object",
+                    "description": "A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don\u2019t comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.",
+                    "properties": {
+                      "profileId": {
+                        "type": "string",
+                        "description": "The sponsor's profile ID in the corresponding social network."
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "The sponsor's display name in the corresponding social network."
+                      },
+                      "link": {
+                        "type": "string",
+                        "description": "The link to the sponsor's profile in the corresponding social network."
+                      }
+                    }
+                  },
+                  "publisherIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "notes": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "sfEntityType": {
+                          "type": "string",
+                          "description": "Khoros Marketing internal entity type. **Allowed Values:** `Note`"
+                        },
+                        "text": {
+                          "type": "string",
+                          "description": "The note's text content."
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "The note's ID. This should be left empty or set to `0` for new notes."
+                        },
+                        "createdByDisplayName": {
+                          "type": "string",
+                          "description": "The formatted name [firstName lastName] of the note's author. **readOnly:** true"
+                        },
+                        "createdByUserId": {
+                          "type": "string",
+                          "description": "**readOnly:** true"
+                        },
+                        "createdDate": {
+                          "type": "string",
+                          "description": "**Format:** date-time **readOnly:** true"
+                        },
+                        "lastModifiedByUserId": {
+                          "type": "string",
+                          "description": "**readOnly:** true"
+                        },
+                        "lastModifiedDate": {
+                          "type": "string",
+                          "description": "**Format:** date-time **readOnly:** true"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "get": {
+        "summary": "Retrieve an Existing Message",
+        "description": "Returns information about the existing Khoros Marketing Messages for the target Initiative",
+        "operationId": "retrieve-an-existing-message",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"content\": {\n      \"caption\": \"This is the best day to say hello to someone new. Hello, world!\",\n      \"sfEntityType\": \"ImageShare\",\n      \"temporaryImageUrl\": \"s3.amazonaws.com/photos.socialagency.com/app3/389/example.jpeg\",\n      \"temporaryThumbnailUrl\": \"s3.amazonaws.com/photos.socialagency.com/app3/389/example.thumb.jpeg\"\n    },\n    \"delegationStatus\": \"NOT_DELEGATED\",\n    \"id\": \"2244551225\",\n    \"labels\": [\n      \"General Labels - Inspirations\"\n    ],\n    \"notes\": [],\n    \"organicVisibility\": \"VISIBLE\",\n    \"planId\": \"example-991e-4394-bdb5-88358cd909eb\",\n    \"publicationResults\": [\n      {\n        \"accountId\": \"21365\",\n        \"datePublished\": 1616018540000,\n        \"serviceId\": \"123456177815577_123456789123456\",\n        \"serviceLink\": \"https://www.facebook.com/123456789/posts/987654321\",\n        \"sfEntityType\": \"PublicationResult\",\n        \"status\": \"PUBLISHED\"\n      }\n    ],\n    \"scheduledPublishDate\": 1616018541000,\n    \"service\": \"MULTI_CHANNEL\",\n    \"sfEntityType\": \"Message\",\n    \"status\": \"PUBLISHED\",\n    \"targetAccountIds\": [\n      \"21365\"\n    ],\n    \"title\": \"This is the best\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "content": {
+                          "type": "object",
+                          "properties": {
+                            "caption": {
+                              "type": "string",
+                              "example": "This is the best day to say hello to someone new. Hello, world!"
+                            },
+                            "sfEntityType": {
+                              "type": "string",
+                              "example": "ImageShare"
+                            },
+                            "temporaryImageUrl": {
+                              "type": "string",
+                              "example": "s3.amazonaws.com/photos.socialagency.com/app3/389/example.jpeg"
+                            },
+                            "temporaryThumbnailUrl": {
+                              "type": "string",
+                              "example": "s3.amazonaws.com/photos.socialagency.com/app3/389/example.thumb.jpeg"
+                            }
+                          }
+                        },
+                        "delegationStatus": {
+                          "type": "string",
+                          "example": "NOT_DELEGATED"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "2244551225"
+                        },
+                        "labels": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "General Labels - Inspirations"
+                          }
+                        },
+                        "notes": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "organicVisibility": {
+                          "type": "string",
+                          "example": "VISIBLE"
+                        },
+                        "planId": {
+                          "type": "string",
+                          "example": "example-991e-4394-bdb5-88358cd909eb"
+                        },
+                        "publicationResults": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "accountId": {
+                                "type": "string",
+                                "example": "21365"
+                              },
+                              "datePublished": {
+                                "type": "integer",
+                                "example": 1616018540000,
+                                "default": 0
+                              },
+                              "serviceId": {
+                                "type": "string",
+                                "example": "123456177815577_123456789123456"
+                              },
+                              "serviceLink": {
+                                "type": "string",
+                                "example": "https://www.facebook.com/123456789/posts/987654321"
+                              },
+                              "sfEntityType": {
+                                "type": "string",
+                                "example": "PublicationResult"
+                              },
+                              "status": {
+                                "type": "string",
+                                "example": "PUBLISHED"
+                              }
+                            }
+                          }
+                        },
+                        "scheduledPublishDate": {
+                          "type": "integer",
+                          "example": 1616018541000,
+                          "default": 0
+                        },
+                        "service": {
+                          "type": "string",
+                          "example": "MULTI_CHANNEL"
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "Message"
+                        },
+                        "status": {
+                          "type": "string",
+                          "example": "PUBLISHED"
+                        },
+                        "targetAccountIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "21365"
+                          }
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "This is the best"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "summary": "Delete an Existing Message",
+        "description": "This endpoint is used to delete an existing Khoros Marketing Message",
+        "operationId": "delete-an-existing-message",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": 6221767,\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "integer",
+                      "example": 6221767,
+                      "default": 0
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}/message?multipart": {
+      "post": {
+        "summary": "Publish a New Message (multipart)",
+        "description": "Publish a new Khoros Marketing multipart Message for the target Initiative",
+        "operationId": "publish-a-new-message-multipart",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "Khoros Marketing internal entity type. **Allowed Values:** `Message`"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "object",
+                    "description": "Content body appears as one of the object sets described in the **Details** section below.",
+                    "properties": {}
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "service": {
+                    "type": "string",
+                    "description": "Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`, `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`",
+                    "default": "FACEBOOK"
+                  },
+                  "targetAccountIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "organicVisibility": {
+                    "type": "string",
+                    "description": "**AllowedValues:** `VISIBLE`, `INVISIBLE`, `VISIBLE_POST_PUBLISH`"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`, `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`",
+                    "default": "DRAFT"
+                  },
+                  "delegationStatus": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`, `DELEGATED`"
+                  },
+                  "publicationResults": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "accountId": {
+                          "type": "string"
+                        },
+                        "serviceId": {
+                          "type": "string"
+                        },
+                        "serviceLink": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "**Allowed Values:** `PENDING`, `PUBLISHED`, `ERROR`, `DELETED`"
+                        },
+                        "datePublished": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "scheduledPublishDate": {
+                    "type": "string",
+                    "description": "**Format:** date-time"
+                  },
+                  "callbacks": {
+                    "type": "array",
+                    "description": "**uniqueItems:** `true` **uniqueItems:** `true` Callback URLs need to be a POST type. Other types of URLs may result in an error response.",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "targetingProfile": {
+                    "type": "object",
+                    "properties": {
+                      "targetingType": {
+                        "type": "string",
+                        "description": "**Allowed Values:** `ENHANCED`, `GATED`"
+                      },
+                      "targetingValues": {
+                        "type": "object",
+                        "properties": {}
+                      }
+                    }
+                  },
+                  "assetIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "planId": {
+                    "type": "string"
+                  },
+                  "nativeScheduling": {
+                    "type": "boolean"
+                  },
+                  "sponsor": {
+                    "type": "object",
+                    "description": "A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don\u2019t comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.",
+                    "properties": {
+                      "profileId": {
+                        "type": "string",
+                        "description": "The sponsor's profile ID in the corresponding social network."
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "The sponsor's display name in the corresponding social network."
+                      },
+                      "link": {
+                        "type": "string",
+                        "description": "The link to the sponsor's profile in the corresponding social network."
+                      }
+                    }
+                  },
+                  "publisherIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "notes": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "sfEntityType": {
+                          "type": "string",
+                          "description": "Khoros Marketing internal entity type. **Allowed Values:** `Note`"
+                        },
+                        "text": {
+                          "type": "string",
+                          "description": "The note's text content."
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "The note's ID. This should be left empty or set to `0` for new notes."
+                        },
+                        "createdByDisplayName": {
+                          "type": "string",
+                          "description": "The formatted name [firstName lastName] of the note's author. **readOnly:** true"
+                        },
+                        "createdByUserId": {
+                          "type": "string",
+                          "description": "**readOnly:** true"
+                        },
+                        "createdDate": {
+                          "type": "string",
+                          "description": "**Format:** date-time **readOnly:** true"
+                        },
+                        "lastModifiedByUserId": {
+                          "type": "string",
+                          "description": "**readOnly:** true"
+                        },
+                        "lastModifiedDate": {
+                          "type": "string",
+                          "description": "**Format:** date-time **readOnly:** true"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}/message/{messageId}?multipart": {
+      "put": {
+        "summary": "Update a Multipart Message",
+        "description": "This endpoint is used to update an existing multi-part Khoros Marketing Message",
+        "operationId": "update-a-multipart-message",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sfEntityType": {
+                    "type": "string",
+                    "description": "Khoros Marketing internal entity type. **Allowed Values:** `Message`"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "object",
+                    "description": "Content body appears as one of the object sets described in the **Details** section below.",
+                    "properties": {}
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "service": {
+                    "type": "string",
+                    "description": "Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`, `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`,`TIKTOK`",
+                    "default": "FACEBOOK"
+                  },
+                  "targetAccountIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "organicVisibility": {
+                    "type": "string",
+                    "description": "**AllowedValues:** `VISIBLE`, `INVISIBLE`, `VISIBLE_POST_PUBLISH`"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`, `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`",
+                    "default": "DRAFT"
+                  },
+                  "delegationStatus": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`, `DELEGATED`"
+                  },
+                  "publicationResults": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "accountId": {
+                          "type": "string"
+                        },
+                        "serviceId": {
+                          "type": "string"
+                        },
+                        "serviceLink": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "**Allowed Values:** `PENDING`, `PUBLISHED`, `ERROR`, `DELETED`"
+                        },
+                        "datePublished": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "scheduledPublishDate": {
+                    "type": "string",
+                    "description": "**Format:** date-time"
+                  },
+                  "callbacks": {
+                    "type": "array",
+                    "description": "**uniqueItems:** `true`",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "targetingProfile": {
+                    "type": "object",
+                    "properties": {
+                      "targetingType": {
+                        "type": "string",
+                        "description": "**Allowed Values:** `ENHANCED`, `GATED`"
+                      },
+                      "targetingValues": {
+                        "type": "object",
+                        "properties": {}
+                      }
+                    }
+                  },
+                  "assetIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "planId": {
+                    "type": "string"
+                  },
+                  "nativeScheduling": {
+                    "type": "boolean"
+                  },
+                  "sponsor": {
+                    "type": "object",
+                    "description": "A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don\u2019t comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.",
+                    "properties": {
+                      "profileId": {
+                        "type": "string",
+                        "description": "The sponsor's profile ID in the corresponding social network."
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "The sponsor's display name in the corresponding social network."
+                      },
+                      "link": {
+                        "type": "string",
+                        "description": "The link to the sponsor's profile in the corresponding social network."
+                      }
+                    }
+                  },
+                  "publisherIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "notes": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "sfEntityType": {
+                          "type": "string",
+                          "description": "Khoros Marketing internal entity type. **Allowed Values:** `Note`"
+                        },
+                        "text": {
+                          "type": "string",
+                          "description": "The note's text content."
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "The note's ID. This should be left empty or set to `0` for new notes."
+                        },
+                        "createdByDisplayName": {
+                          "type": "string",
+                          "description": "The formatted name [firstName lastName] of the note's author. **readOnly:** true"
+                        },
+                        "createdByUserId": {
+                          "type": "string",
+                          "description": "**readOnly:** true"
+                        },
+                        "createdDate": {
+                          "type": "string",
+                          "description": "**Format:** date-time **readOnly:** true"
+                        },
+                        "lastModifiedByUserId": {
+                          "type": "string",
+                          "description": "**readOnly:** true"
+                        },
+                        "lastModifiedDate": {
+                          "type": "string",
+                          "description": "**Format:** date-time **readOnly:** true"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}/multiChannelMessage/{messageId}": {
+      "get": {
+        "summary": "Retrieve an Existing Multi-channel Message",
+        "description": "The Messages endpoint returns information about the Khoros Marketing multi-channel messages for the target Initiative",
+        "operationId": "retrieve-an-existing-multi-channel-message",
+        "parameters": [
+          {
+            "name": "messageId",
+            "in": "path",
+            "description": "**Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/privilege": {
+      "get": {
+        "summary": "Retrieve Permissions for Current User",
+        "description": "Retrieves a list of permissions in the currently selected company using Khoros Marketing Conversations API.",
+        "operationId": "retrieve-permissions-for-current-user",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": {\n    \"canCreateLabels\": true,\n    \"canPublish\": true,\n    \"sfEntityType\": \"UserPrivilege\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "canCreateLabels": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "canPublish": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        },
+                        "sfEntityType": {
+                          "type": "string",
+                          "example": "UserPrivilege"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}/plan": {
+      "get": {
+        "summary": "Retrieve a List of Plans",
+        "description": "Retrieve a list of plans for the specified initiative",
+        "operationId": "retrieve-a-list-of-plans",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target. **Format:** int64",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "nameFilter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "**Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"campaignId\": 1710,\n      \"color\": \"#1a7293\",\n      \"companyId\": 389,\n      \"endDate\": 1619931599999,\n      \"id\": \"34534cd7-991e-4394-bdb5-88358cd909eb\",\n      \"name\": \"Grow the Following\",\n      \"sfEntityType\": \"Plan\",\n      \"startDate\": 1615957200000\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "campaignId": {
+                            "type": "integer",
+                            "example": 1710,
+                            "default": 0
+                          },
+                          "color": {
+                            "type": "string",
+                            "example": "#1a7293"
+                          },
+                          "companyId": {
+                            "type": "integer",
+                            "example": 389,
+                            "default": 0
+                          },
+                          "endDate": {
+                            "type": "integer",
+                            "example": 1619931599999,
+                            "default": 0
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "34534cd7-991e-4394-bdb5-88358cd909eb"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Grow the Following"
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "Plan"
+                          },
+                          "startDate": {
+                            "type": "integer",
+                            "example": 1615957200000,
+                            "default": 0
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "totalItems": {
+                          "type": "integer",
+                          "example": 1,
+                          "default": 0
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/roles": {
+      "get": {
+        "summary": "List Roles for the Company",
+        "description": "List Roles for the company using Khoros Marketing Conversations API.",
+        "operationId": "list-roles-for-the-company",
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 300
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"custom\": false,\n      \"id\": 1,\n      \"name\": \"company_admin\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 3,\n      \"name\": \"editor\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 2,\n      \"name\": \"manager\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 97,\n      \"name\": \"mobile_capture_user\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 5,\n      \"name\": \"viewer\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 4,\n      \"name\": \"writer\",\n      \"sfEntityType\": \"Role\"\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "custom": {
+                            "type": "boolean",
+                            "example": false,
+                            "default": true
+                          },
+                          "id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "company_admin"
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "Role"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/users/initiative/{initiativeId}/publishers": {
+      "get": {
+        "summary": "List Conversations Publishers",
+        "description": "List publishers for a specified initiative using Khoros Marketing Conversations API.",
+        "operationId": "list-conversations-publishers",
+        "parameters": [
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "description": "The initiative you wish to target.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"displayName\": \"Jane Doe\",\n      \"id\": 73588\n    },\n    {\n      \"displayName\": \"John Doe\",\n      \"id\": 73589\n    },\n    {\n      \"displayName\": \"Joan Jett\",\n      \"id\": 73590\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "displayName": {
+                            "type": "string",
+                            "example": "Jane Doe"
+                          },
+                          "id": {
+                            "type": "integer",
+                            "example": 73588,
+                            "default": 0
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/user/{userId}": {
+      "delete": {
+        "summary": "Delete a Conversations User",
+        "description": "Delete a user from the company using Khoros Marketing Conversations API.",
+        "operationId": "delete-a-conversations-user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The `id` returned from [List Users](ref:list-conversations-users).",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/user": {
+      "post": {
+        "summary": "Create a Conversations User",
+        "description": "Create a Conversations user for the company using Khoros Marketing Conversations API.",
+        "operationId": "create-a-conversations-user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "firstName",
+                  "lastName",
+                  "roleId",
+                  "workspaceId"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "**minLength** `1`"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "description": "**minLength** `1`"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "**minLength** `1`"
+                  },
+                  "jobTitle": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "roleId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "workspaceId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "default": "America/Chicago"
+                  },
+                  "sendInvite": {
+                    "type": "boolean",
+                    "description": "Boolean indicating if Khoros Marketing should send an invitation email.",
+                    "default": false
+                  },
+                  "inviteEmail": {
+                    "type": "string",
+                    "description": "Optional override email address for the invitation email."
+                  },
+                  "inviteMessage": {
+                    "type": "string",
+                    "description": "Optional custom message for the invitation email."
+                  },
+                  "addToFutureInitiatives": {
+                    "type": "boolean",
+                    "description": "Boolean indicating if the user should be added implicitly to new initiatives.",
+                    "default": false
+                  },
+                  "initiativeIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "addtoFutureAccountSets": {
+                    "type": "boolean",
+                    "description": "Boolean indicating if the users should be added implicitly to new account sets.",
+                    "default": false
+                  },
+                  "accountSetIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "406",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/users": {
+      "get": {
+        "summary": "List Conversations Users",
+        "description": "List Conversations users in the company",
+        "operationId": "list-conversations-users",
+        "parameters": [
+          {
+            "name": "nameEmailFilter",
+            "in": "query",
+            "description": "Search for users based on `firstName`, `lastName`, or `email`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 300
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"accountSetIds\": [\n        1710\n      ],\n      \"description\": \"\",\n      \"directoryId\": 232809,\n      \"email\": \"ryan@example.com\",\n      \"firstName\": \"Ryan\",\n      \"id\": 73589,\n      \"initiativeIds\": [\n        1710\n      ],\n      \"jobTitle\": \"\",\n      \"lastName\": \"Doe\",\n      \"roleId\": 1,\n      \"sfEntityType\": \"User\",\n      \"timezone\": \"America/Chicago\",\n      \"workspaceId\": 1747\n    },\n    {\n      \"accountSetIds\": [\n        1710\n      ],\n      \"description\": \"\",\n      \"directoryId\": 232810,\n      \"email\": \"ryan@example2.com\",\n      \"firstName\": \"Ryan\",\n      \"id\": 73590,\n      \"initiativeIds\": [\n        1710\n      ],\n      \"jobTitle\": \"\",\n      \"lastName\": \"Readme\",\n      \"roleId\": 5,\n      \"sfEntityType\": \"User\",\n      \"timezone\": \"America/Los_Angeles\",\n      \"workspaceId\": 1748\n    },\n    {\n      \"accountSetIds\": [\n        1710\n      ],\n      \"description\": \"\",\n      \"directoryId\": 232808,\n      \"email\": \"suzie@example.com\",\n      \"firstName\": \"Suzie\",\n      \"id\": 73588,\n      \"initiativeIds\": [\n        1710\n      ],\n      \"jobTitle\": \"\",\n      \"lastName\": \"Doe\",\n      \"roleId\": 1,\n      \"sfEntityType\": \"User\",\n      \"timezone\": \"America/Tijuana\",\n      \"workspaceId\": 1747\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "accountSetIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "integer",
+                              "example": 1710,
+                              "default": 0
+                            }
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "directoryId": {
+                            "type": "integer",
+                            "example": 232809,
+                            "default": 0
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "ryan@example.com"
+                          },
+                          "firstName": {
+                            "type": "string",
+                            "example": "Ryan"
+                          },
+                          "id": {
+                            "type": "integer",
+                            "example": 73589,
+                            "default": 0
+                          },
+                          "initiativeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "integer",
+                              "example": 1710,
+                              "default": 0
+                            }
+                          },
+                          "jobTitle": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "lastName": {
+                            "type": "string",
+                            "example": "Doe"
+                          },
+                          "roleId": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "User"
+                          },
+                          "timezone": {
+                            "type": "string",
+                            "example": "America/Chicago"
+                          },
+                          "workspaceId": {
+                            "type": "integer",
+                            "example": 1747,
+                            "default": 0
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/initiative/{initiativeId}/video/captions": {
+      "post": {
+        "summary": "Create a Video Captions",
+        "description": "Create a Video Captions object for using in the Khoros Marketing Conversations API.",
+        "operationId": "create-a-video-captions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "captions": {
+                    "type": "string",
+                    "description": "The SRT captions file. The name of the file must comply with the convention *filename.[language code]_[country code].srt*",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "406",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/conversations/workspaces": {
+      "get": {
+        "summary": "List Workspaces for the Company",
+        "description": "Retrieve list Workspaces for the company",
+        "operationId": "list-workspaces-for-the-company",
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 300
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"data\": [\n    {\n      \"default\": true,\n      \"id\": 1747,\n      \"name\": \"Advanced\",\n      \"sfEntityType\": \"Workspace\"\n    },\n    {\n      \"default\": true,\n      \"id\": 1748,\n      \"name\": \"Basic\",\n      \"sfEntityType\": \"Workspace\"\n    },\n    {\n      \"default\": true,\n      \"id\": 1749,\n      \"name\": \"Mobile Capture Workspace\",\n      \"sfEntityType\": \"Workspace\"\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "default": {
+                            "type": "boolean",
+                            "example": true,
+                            "default": true
+                          },
+                          "id": {
+                            "type": "integer",
+                            "example": 1747,
+                            "default": 0
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Advanced"
+                          },
+                          "sfEntityType": {
+                            "type": "string",
+                            "example": "Workspace"
+                          }
+                        }
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "succeeded": {
+                          "type": "boolean",
+                          "example": true,
+                          "default": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": false
+  },
+  "x-readme-fauxas": true
+}

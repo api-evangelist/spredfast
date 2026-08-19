@@ -1,0 +1,230 @@
+openapi: 3.1.0
+info:
+  title: labelsets-api
+  version: '1.1'
+servers:
+- url: https://api.spredfast.com/v2/labelsets
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+security:
+- sec0: []
+paths:
+  /:
+    get:
+      summary: Retrieve a Page of Labels Nested within Sets
+      description: Retrieve a page of labels nested within sets
+      operationId: retrieve-a-page-of-labels-nested-within-sets
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page Number
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: Page Size
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"data\": [\n    {\n      \"care\": true,\n      \"createdByDirectoryUserId\"\
+                    : 232809,\n      \"createdDate\": 1616018436858,\n      \"description\": \"These are\
+                    \ labels used for general posts.\",\n      \"directoryCompanyId\": 24606,\n      \"\
+                    id\": \"example-8812-4646-902a-1c228d1cebc3\",\n      \"initiativeIds\": [],\n   \
+                    \   \"labels\": [\n        {\n          \"color\": null,\n          \"createdByDirectoryUserId\"\
+                    : 232809,\n          \"createdDate\": 1616018436858,\n          \"directoryCompanyId\"\
+                    : 24606,\n          \"id\": \"example-3390-4b1a-903e-7fe79bfcd9ba\",\n          \"\
+                    initiativeIds\": [],\n          \"labelSetId\": \"example-8812-4646-902a-1c228d1cebc3\"\
+                    ,\n          \"lastModifiedByDirectoryUserId\": 232809,\n          \"lastModifiedDate\"\
+                    : 1616018436858,\n          \"legacyId\": 687375,\n          \"name\": \"Ideas\",\n\
+                    \          \"parentLabelIds\": [],\n          \"status\": \"ACTIVE\"\n        },\n\
+                    \        {\n          \"color\": null,\n          \"createdByDirectoryUserId\": 232809,\n\
+                    \          \"createdDate\": 1616018436858,\n          \"directoryCompanyId\": 24606,\n\
+                    \          \"id\": \"example-3f9d-48f7-80a9-c70bc0b22457\",\n          \"initiativeIds\"\
+                    : [],\n          \"labelSetId\": \"example-8812-4646-902a-1c228d1cebc3\",\n      \
+                    \    \"lastModifiedByDirectoryUserId\": 232809,\n          \"lastModifiedDate\": 1616018436858,\n\
+                    \          \"legacyId\": 687379,\n          \"name\": \"Innovations\",\n         \
+                    \ \"parentLabelIds\": [],\n          \"status\": \"ACTIVE\"\n        },\n        {\n\
+                    \          \"color\": null,\n          \"createdByDirectoryUserId\": 232809,\n   \
+                    \       \"createdDate\": 1616018436858,\n          \"directoryCompanyId\": 24606,\n\
+                    \          \"id\": \"example-29af-4576-a74a-b74c143afd14\",\n          \"initiativeIds\"\
+                    : [],\n          \"labelSetId\": \"example-8812-4646-902a-1c228d1cebc3\",\n      \
+                    \    \"lastModifiedByDirectoryUserId\": 232809,\n          \"lastModifiedDate\": 1616018436858,\n\
+                    \          \"legacyId\": 687380,\n          \"name\": \"Inspirations\",\n        \
+                    \  \"parentLabelIds\": [],\n          \"status\": \"ACTIVE\"\n        },\n       \
+                    \ {\n          \"color\": null,\n          \"createdByDirectoryUserId\": 232809,\n\
+                    \          \"createdDate\": 1616018436858,\n          \"directoryCompanyId\": 24606,\n\
+                    \          \"id\": \"f0718055-200f-426c-a144-32e5cdb85dfd\",\n          \"initiativeIds\"\
+                    : [],\n          \"labelSetId\": \"f10175c7-8812-4646-902a-1c228d1cebc3\",\n     \
+                    \     \"lastModifiedByDirectoryUserId\": 232809,\n          \"lastModifiedDate\":\
+                    \ 1616018436858,\n          \"legacyId\": 687376,\n          \"name\": \"Inventions\"\
+                    ,\n          \"parentLabelIds\": [],\n          \"status\": \"ACTIVE\"\n        },\n\
+                    \        {\n          \"color\": null,\n          \"createdByDirectoryUserId\": 232809,\n\
+                    \          \"createdDate\": 1616018436858,\n          \"directoryCompanyId\": 24606,\n\
+                    \          \"id\": \"example-1d35-4b33-9f7b-057851f28e84\",\n          \"initiativeIds\"\
+                    : [],\n          \"labelSetId\": \"example-8812-4646-902a-1c228d1cebc3\",\n      \
+                    \    \"lastModifiedByDirectoryUserId\": 232809,\n          \"lastModifiedDate\": 1616018436858,\n\
+                    \          \"legacyId\": 687377,\n          \"name\": \"Products\",\n          \"\
+                    parentLabelIds\": [],\n          \"status\": \"ACTIVE\"\n        },\n        {\n \
+                    \         \"color\": null,\n          \"createdByDirectoryUserId\": 232809,\n    \
+                    \      \"createdDate\": 1616018436858,\n          \"directoryCompanyId\": 24606,\n\
+                    \          \"id\": \"1fac7b26-c82f-45a8-9649-78393ab82fcb\",\n          \"initiativeIds\"\
+                    : [],\n          \"labelSetId\": \"f10175c7-8812-4646-902a-1c228d1cebc3\",\n     \
+                    \     \"lastModifiedByDirectoryUserId\": 232809,\n          \"lastModifiedDate\":\
+                    \ 1616018436858,\n          \"legacyId\": 687378,\n          \"name\": \"Services\"\
+                    ,\n          \"parentLabelIds\": [],\n          \"status\": \"ACTIVE\"\n        }\n\
+                    \      ],\n      \"lastModifiedByDirectoryUserId\": 232809,\n      \"lastModifiedDate\"\
+                    : 1616018436858,\n      \"marketing\": true,\n      \"multiSelect\": true,\n     \
+                    \ \"name\": \"General Labels\",\n      \"parentLabelSetId\": null,\n      \"profiles\"\
+                    : false,\n      \"required\": false,\n      \"status\": \"ACTIVE\"\n    }\n  ],\n\
+                    \  \"pageNumber\": 1,\n  \"pageSize\": 20,\n  \"totalRecords\": 1\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        care:
+                          type: boolean
+                          example: true
+                          default: true
+                        createdByDirectoryUserId:
+                          type: integer
+                          example: 232809
+                          default: 0
+                        createdDate:
+                          type: integer
+                          example: 1616018436858
+                          default: 0
+                        description:
+                          type: string
+                          example: These are labels used for general posts.
+                        directoryCompanyId:
+                          type: integer
+                          example: 24606
+                          default: 0
+                        id:
+                          type: string
+                          example: example-8812-4646-902a-1c228d1cebc3
+                        initiativeIds:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                        labels:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              color: {}
+                              createdByDirectoryUserId:
+                                type: integer
+                                example: 232809
+                                default: 0
+                              createdDate:
+                                type: integer
+                                example: 1616018436858
+                                default: 0
+                              directoryCompanyId:
+                                type: integer
+                                example: 24606
+                                default: 0
+                              id:
+                                type: string
+                                example: example-3390-4b1a-903e-7fe79bfcd9ba
+                              initiativeIds:
+                                type: array
+                                items:
+                                  type: object
+                                  properties: {}
+                              labelSetId:
+                                type: string
+                                example: example-8812-4646-902a-1c228d1cebc3
+                              lastModifiedByDirectoryUserId:
+                                type: integer
+                                example: 232809
+                                default: 0
+                              lastModifiedDate:
+                                type: integer
+                                example: 1616018436858
+                                default: 0
+                              legacyId:
+                                type: integer
+                                example: 687375
+                                default: 0
+                              name:
+                                type: string
+                                example: Ideas
+                              parentLabelIds:
+                                type: array
+                                items:
+                                  type: object
+                                  properties: {}
+                              status:
+                                type: string
+                                example: ACTIVE
+                        lastModifiedByDirectoryUserId:
+                          type: integer
+                          example: 232809
+                          default: 0
+                        lastModifiedDate:
+                          type: integer
+                          example: 1616018436858
+                          default: 0
+                        marketing:
+                          type: boolean
+                          example: true
+                          default: true
+                        multiSelect:
+                          type: boolean
+                          example: true
+                          default: true
+                        name:
+                          type: string
+                          example: General Labels
+                        parentLabelSetId: {}
+                        profiles:
+                          type: boolean
+                          example: false
+                          default: true
+                        required:
+                          type: boolean
+                          example: false
+                          default: true
+                        status:
+                          type: string
+                          example: ACTIVE
+                  pageNumber:
+                    type: integer
+                    example: 1
+                    default: 0
+                  pageSize:
+                    type: integer
+                    example: 20
+                    default: 0
+                  totalRecords:
+                    type: integer
+                    example: 1
+                    default: 0
+      deprecated: false
+      security: []
+x-readme:
+  headers: []
+  explorer-enabled: true
+  proxy-enabled: false
+x-readme-fauxas: true

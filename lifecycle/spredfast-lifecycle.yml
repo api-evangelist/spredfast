@@ -1,0 +1,109 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://status.khoros.com (Atlassian Statuspage, incl. its /api/v2/summary.json),
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api,
+  and openapi/_original/*.json
+note: >-
+  A live, machine-readable status page exists and explicitly covers this product
+  line. Everything else in the lifecycle discipline is missing: no versioning
+  policy, no deprecation policy, no Sunset/Deprecation headers, no changelog, no
+  SLA. Two API generations (V1 and V2) run in parallel on api.spredfast.com with
+  nothing published about which one to build against or when V1 goes away, and
+  not one of the 149 operations across the nine specs is marked
+  `deprecated: true` — so the contract itself gives an agent no retirement
+  signal either.
+status_page:
+  url: https://status.khoros.com
+  platform: Atlassian Statuspage
+  machine_readable: true
+  api: https://status.khoros.com/api/v2/summary.json
+  feeds:
+  - https://status.khoros.com/history.rss
+  - https://status.khoros.com/history.atom
+  webhooks: true
+  covers_this_product: true
+  components:
+    group: Khoros Marketing
+    note: >-
+      The status page carries a "Khoros Marketing" component group — the
+      Spredfast product line under its current name — with components for
+      Organic Publishing, Paid Publishing, Analytics (four regional
+      components), Marketing Mobile Apps, the Khoros Marketing apps in the Apple
+      and Google stores, and, notably, "Spredfast npm packages in npmjs". 71
+      components total across the whole Khoros estate.
+    observed_status: All Systems Operational
+    observed: '2026-08-13'
+versioning:
+  policy_published: false
+  scheme: url-path
+  versions:
+  - version: v2
+    base: https://api.spredfast.com/v2
+    status: current
+    note: >-
+      Company and environment are derived from the OAuth token. Sub-services
+      hang off distinct prefixes: /v2/conversations, /v2/analytics, /v2/crm,
+      /v2/events, /v2/labelsets, /v2/whoami.
+  - version: v1
+    base: https://api.spredfast.com
+    status: live
+    note: >-
+      Paths take the form /{environment}/v1/company/{companyId}/... where
+      `{environment}` is a CASE-SENSITIVE deployment name — documented values
+      Production, VPC1, APP3. No sunset date, no deprecation notice, no
+      migration guide from V1 to V2 is published.
+  - version: v1 (Experiences Stream API)
+    base: https://api.massrelevance.com
+    status: unreachable
+    note: >-
+      Versioned independently on its own host. The host answers HTTP 502 Bad
+      Gateway on every path including / (probed 2026-08-13), while the
+      48-operation contract for it is still published on the current developer
+      center. A live contract pointing at a dead origin.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    No RFC 8594 Sunset or Deprecation response header is documented or declared
+    in any spec, and zero of the 149 operations carry `deprecated: true`. NO
+    `type: Deprecation` pointer is emitted, because no deprecation policy
+    exists.
+changelog:
+  published: false
+  note: >-
+    developer.khoros.com/khorosmarketingdevdocs/changelog returns 404. The
+    ReadMe project publishes no dated changelog and no release notes for the
+    Marketing API family. The only dated signal available is ReadMe's own
+    per-file API upload timestamp (2026-05-13), which records when the
+    definitions were last re-uploaded to the docs platform, not when the API
+    changed.
+sla:
+  published: false
+  note: No public SLA or uptime commitment for the API. Commercial terms are enterprise-negotiated.
+company_lifecycle:
+  note: >-
+    Spredfast itself no longer exists as a company. Founded in Austin, backed by
+    Battery Ventures; acquired Mass Relevance in 2013 (which is why the
+    Experiences Stream API still lives on api.massrelevance.com); merged with
+    Lithium Technologies in 2018; the combined company rebranded as Khoros in
+    2019, and Khoros now operates on the khoros.ai domain, with khoros.com
+    redirecting to it. The Spredfast brand survives in the API surface itself —
+    the production host is still api.spredfast.com, the OAuth host is still
+    login.spredfast.com, request headers still carry the `x-sf-` prefix, error
+    payloads still carry a `spredfastErrorMessage` field, and the license on the
+    Conversations V1 contract is still "Spredfast API Terms of Use".
+  successor: khoros
+  legacy_portals:
+  - url: https://devcenter.spredfast.com
+    status: dead
+    detail: >-
+      The original Spredfast developer portal. DNS still CNAMEs to
+      ingress.docs.stoplight.io but TLS fails (no certificate for the hostname)
+      and plain HTTP returns 409. https://api.spredfast.com/ still 307-redirects
+      visitors to this dead portal.
+  - url: https://spredfast.com
+    status: '503'

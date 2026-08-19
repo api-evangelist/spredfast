@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "crm",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://example.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Register a Custom CRM",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/crm/admin/custom",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Register a custom customer relationship manager"
+    },
+    {
+      "info": {
+        "name": "Register a Custom CRM",
+        "type": "http"
+      },
+      "http": {
+        "method": "PATCH",
+        "url": "https://api.spredfast.com/v2/crm/admin/custom/:crmId",
+        "params": [
+          {
+            "name": "crmId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Register a custom customer relationship manager"
+    }
+  ],
+  "bundled": true
+}

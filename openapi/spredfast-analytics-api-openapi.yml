@@ -1,0 +1,1120 @@
+openapi: 3.1.0
+info:
+  title: beta-analytics-api
+  version: '1.1'
+servers:
+- url: https://api.spredfast.com/v2/analytics
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+security:
+- sec0: []
+paths:
+  /export/posts:
+    post:
+      summary: Published Posts
+      description: Export Posts and Metrics for those Posts
+      operationId: published-post
+      parameters:
+      - name: header
+        in: query
+        description: If `true` then include CSV headers.
+        schema:
+          type: boolean
+          default: true
+      - name: delimiter
+        in: query
+        description: Allows you to specify a custom delimiter for CSV exports.
+        schema:
+          type: string
+          default: ','
+      - name: email_recipients
+        in: query
+        description: '(Optional) When an Export completes, a notification-email will be sent to each email-recipient
+          on this list.  Each email-address must also have an associated Spredfast account to access the
+          file.  Submitting no email addresses will result in no email notifications being sent.  Example:
+          “BobSmith@Spredfast.com,CarolJane@Spredfast.com”'
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  description: A set of attributes for filtering the export.
+                  required:
+                  - fields
+                  properties:
+                    accounts:
+                      type: array
+                      description: The uniqueIds of Accounts used to query for results. Account uniqueIds
+                        can be obtained via the AccountSet API and are the preferred method for specifying
+                        accounts within the Analytics API. Submitting no accounts will result in querying
+                        based on all accounts the user has permission to access.
+                      items:
+                        type: string
+                    content_filter:
+                      type: object
+                      properties:
+                        dark:
+                          type: boolean
+                          description: '`true`: Returns only dark posts. `false`: Returns only non-dark
+                            posts. If not present, all posts are returned.'
+                        promoted:
+                          type: boolean
+                          description: '`true`: Returns only promoted posts. `false`: Returns only non-promoted
+                            posts. Excluding the attribute returns all posts.'
+                        tags:
+                          type: object
+                          properties:
+                            untagged:
+                              type: boolean
+                              description: Return only posts with no labels.
+                            tags:
+                              type: array
+                              description: Returns posts which contain labels matching the label-ids included
+                                here.  Label-Ids can be found in API Explorer using the `LabelSets` API,
+                                within the `legacyId` field. The `id` field containing a UUID will not
+                                work.
+                              items:
+                                type: integer
+                                format: int32
+                        post_type:
+                          type: string
+                          description: '`post`: Only brand posts. `response`: Only brand comments/responses.
+                            `all`: All content'
+                          enum:
+                          - '"post"'
+                          - '"response"'
+                          - '"all"'
+                        plans:
+                          type: array
+                          description: ids of `Plan`s to filter for
+                          items:
+                            type: string
+                        content_types:
+                          type: array
+                          description: 'Represents the type of the post. Supported values: `text`, `blog`,
+                            `comment`, `discussion-topic`, `photo`, `photo-album`, `presentation`, `video`,
+                            `link`, `service-event`, `microblog`, `story`, `carousel`, `multi-photo`,
+                            `igtv`, `multi-video`, `mixed-assets`, `reels`'
+                          items:
+                            type: string
+                    intiatives:
+                      type: array
+                      description: ids of initiatives to filter for
+                      items:
+                        type: integer
+                        format: int64
+                    account_sets:
+                      type: array
+                      description: ids of account sets to filter for
+                      items:
+                        type: integer
+                        format: int64
+                    fields:
+                      type: array
+                      description: ids of the [fields to export](/khorosmarketingdevdocs/reference/get-available-report-fields)
+                      items:
+                        type: integer
+                        format: int64
+                    start:
+                      type: string
+                      description: Start date in ISO-8601 format (e.g. 2017-03-01). The start date is
+                        inclusive (i.e. included in the response). **Format:** date
+                    stop:
+                      type: string
+                      description: Stop date in ISO-8601 format (e.g. 2017-03-01 ). Stop date day’s results
+                        are excluded. **Format:** date
+                    timezone:
+                      type: string
+                      description: Timezone descriptor to apply for date formatting and define how to
+                        interpret the start and stop dates for some exports. Example `America/Los_Angeles`
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"export_id\": \"1234567\"\n}"
+              schema:
+                type: object
+                properties:
+                  export_id:
+                    type: string
+                    example: '1234567'
+      deprecated: false
+      security: []
+  /export/accounts:
+    post:
+      summary: Daily Account Level Metrics
+      description: Export contains daily account-level performance metrics
+      operationId: daily-account-level-metrics
+      parameters:
+      - name: email_recipients
+        in: query
+        description: '(Optional) When an Export completes, a notification-email will be sent to each email-recipient
+          on this list.  Each email-address must also have an associated Spredfast account to access the
+          file.  Submitting no email addresses will result in no email notifications being sent.  Example:
+          “BobSmith@Spredfast.com,CarolJane@Spredfast.com”'
+        schema:
+          type: array
+          items:
+            type: string
+      - name: header
+        in: query
+        description: If `true` then include CSV column headers.
+        schema:
+          type: boolean
+          default: true
+      - name: delimiter
+        in: query
+        description: Allows you to specify a custom delimiter for CSV exports.
+        schema:
+          type: string
+          default: ','
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  properties: {}
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"export_id\": \"1234567\"\n}"
+              schema:
+                type: object
+                properties:
+                  export_id:
+                    type: string
+                    example: '1234567'
+      deprecated: false
+      security: []
+  /export/daily_post_summary:
+    post:
+      summary: Daily Post Summary
+      description: Export contains a Daily Summary of Post metrics
+      operationId: daily-post-summary
+      parameters:
+      - name: header
+        in: query
+        description: If `true` then include CSV headers.
+        schema:
+          type: boolean
+          default: true
+      - name: delimiter
+        in: query
+        description: Allows you to specify a custom delimiter for CSV exports.
+        schema:
+          type: string
+          default: ','
+      - name: email_recipients
+        in: query
+        description: '(Optional) When an Export completes, a notification-email will be sent to each email-recipient
+          on this list.  Each email-address must also have an associated Spredfast account to access the
+          file.  Submitting no email addresses will result in no email notifications being sent.  Example:
+          “BobSmith@Spredfast.com,CarolJane@Spredfast.com”'
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  description: A set of attributes for filtering the export.
+                  required:
+                  - fields
+                  properties:
+                    accounts:
+                      type: array
+                      description: The uniqueIds of Accounts used to query for results. Account uniqueIds
+                        can be obtained via the AccountSet API and are the preferred method for specifying
+                        accounts within the Analytics API. Submitting no accounts will result in querying
+                        based on all accounts the user has permission to access.
+                      items:
+                        type: string
+                    content_filter:
+                      type: object
+                      properties:
+                        dark:
+                          type: boolean
+                          description: '`true`: Returns only dark posts. `false`: Returns only non-dark
+                            posts. If not present, all posts are returned.'
+                        promoted:
+                          type: boolean
+                          description: '`true`: Returns only promoted posts. `false`: Returns only non-promoted
+                            posts. Excluding the attribute returns all posts.'
+                        tags:
+                          type: object
+                          properties:
+                            untagged:
+                              type: boolean
+                              description: Return only posts with no labels.
+                            tags:
+                              type: array
+                              description: Returns posts which contain labels matching the label-ids included
+                                here.  Label-Ids can be found in API Explorer using the `LabelSets` API,
+                                within the `legacyId` field. The `id` field containing a UUID will not
+                                work.
+                              items:
+                                type: integer
+                                format: int32
+                        post_type:
+                          type: string
+                          description: '`post`: Only brand posts. `response`: Only brand comments/responses.
+                            `all`: All content'
+                          enum:
+                          - '"post"'
+                          - '"response"'
+                          - '"all"'
+                        plans:
+                          type: array
+                          description: ids of `Plan`s to filter for
+                          items:
+                            type: string
+                        content_types:
+                          type: array
+                          description: 'Represents the type of the post. Supported values: `text`, `blog`,
+                            `comment`, `discussion-topic`, `photo`, `photo-album`, `presentation`, `video`,
+                            `link`, `service-event`, `microblog`, `story`, `carousel`, `multi-photo`,
+                            `igtv`, `multi-video`, `mixed-assets`, `reels`'
+                          items:
+                            type: string
+                    intiatives:
+                      type: array
+                      description: ids of initiatives to filter for
+                      items:
+                        type: integer
+                        format: int64
+                    account_sets:
+                      type: array
+                      description: ids of account sets to filter for
+                      items:
+                        type: integer
+                        format: int64
+                    fields:
+                      type: array
+                      description: ids of the [fields to export](/khorosmarketingdevdocs/reference/get-available-report-fields)
+                      items:
+                        type: integer
+                        format: int64
+                    start:
+                      type: string
+                      description: Start date in ISO-8601 format (e.g. 2017-03-01). The start date is
+                        inclusive (i.e. included in the response). **Format:** date
+                    stop:
+                      type: string
+                      description: Stop date in ISO-8601 format (e.g. 2017-03-01 ). Stop date day’s results
+                        are excluded. **Format:** date
+                    timezone:
+                      type: string
+                      description: Timezone descriptor to apply for date formatting and define how to
+                        interpret the start and stop dates for some exports. Example `America/Los_Angeles`
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"expires\": \"2021-03-24T16:53:55.648\",\n  \"export_id\": 1958297,\n\
+                    \  \"status\": \"complete\",\n  \"url\": \"https://massrel-verwalter.s3.amazonaws.com/exports/123456/232809/data/1a2b3ce6-8203-4d52-aac3-713fdb5db66f/daily_post_summary-20210324T155343-0500.csv?response-content-disposition=attachment%3B%20filename%3Ddaily_post_summary-20210324T155343-0500.csv&X-Amz-Security-Token=Fexampleexampleexample2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDPMVtf8RaJXrdgThPSKtAdePouocqDWJxsJxiyNRQ7byWyrYkAQJZn308RqCWte10npSx7rk2dme3KXPEa81oC%2FAX4b7Ta0KO5RSK0eVHVUCwN0J087G3eSHjYkWinhY4gtFD3dGdtJYek4DyeTKphkQmBZVvqQ2Is70D4CZyy%2Bgg%2FATTAO%2FwxH85l1Rcac8BO3vbvPXoPAUGlSKihU8%2F9ZPhhkx6qsphmfkdGdgnmoIKMnC7oIGMi3z%2BS6kxyTz7BXmuX1lJ4u65N%2BFQTl39KxAroQXdQOwHB6AcsIxdrDbjLNJPdU%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210324T205355Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20210324%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f120f85c2b533c721d574f6952b4a5a0b57e63b11ea4399ab9e0a74dec1ecca5\"\
+                    \n}"
+              schema:
+                type: object
+                properties:
+                  expires:
+                    type: string
+                    example: '2021-03-24T16:53:55.648'
+                  export_id:
+                    type: integer
+                    example: 1958297
+                    default: 0
+                  status:
+                    type: string
+                    example: complete
+                  url:
+                    type: string
+                    example: https://massrel-verwalter.s3.amazonaws.com/exports/123456/232809/data/1a2b3ce6-8203-4d52-aac3-713fdb5db66f/daily_post_summary-20210324T155343-0500.csv?response-content-disposition=attachment%3B%20filename%3Ddaily_post_summary-20210324T155343-0500.csv&X-Amz-Security-Token=Fexampleexampleexample2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDPMVtf8RaJXrdgThPSKtAdePouocqDWJxsJxiyNRQ7byWyrYkAQJZn308RqCWte10npSx7rk2dme3KXPEa81oC%2FAX4b7Ta0KO5RSK0eVHVUCwN0J087G3eSHjYkWinhY4gtFD3dGdtJYek4DyeTKphkQmBZVvqQ2Is70D4CZyy%2Bgg%2FATTAO%2FwxH85l1Rcac8BO3vbvPXoPAUGlSKihU8%2F9ZPhhkx6qsphmfkdGdgnmoIKMnC7oIGMi3z%2BS6kxyTz7BXmuX1lJ4u65N%2BFQTl39KxAroQXdQOwHB6AcsIxdrDbjLNJPdU%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210324T205355Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=REDACTED_AWS_ACCESS_KEY_ID%2F20210324%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f120f85c2b533c721d574f6952b4a5a0b57e63b11ea4399ab9e0a74dec1ecca5
+      deprecated: false
+      security: []
+  /export/net_ads:
+    post:
+      summary: Ads Net Values
+      description: Export Ads and Metrics for those Ads
+      operationId: ads-net-values
+      parameters:
+      - name: header
+        in: query
+        description: If `true` then include CSV headers.
+        schema:
+          type: boolean
+          default: true
+      - name: delimiter
+        in: query
+        description: Allows you to specify a custom delimiter for CSV exports.
+        schema:
+          type: string
+          default: ','
+      - name: email_recipients
+        in: query
+        description: '(Optional) When an Export completes, a notification-email will be sent to each email-recipient
+          on this list.  Each email-address must also have an associated Spredfast account to access the
+          file.  Submitting no email addresses will result in no email notifications being sent.  Example:
+          “BobSmith@Spredfast.com,CarolJane@Spredfast.com”'
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  description: A set of attributes for filtering the export.
+                  properties:
+                    initiatives:
+                      type: array
+                      description: ids of initiatives to filter for
+                      items:
+                        type: integer
+                        format: int64
+                    accounts:
+                      type: array
+                      description: The uniqueIds of Accounts used to query for results. Account uniqueIds
+                        can be obtained via the AccountSet API and are the preferred method for specifying
+                        accounts within the Analytics API. Submitting no accounts will result in querying
+                        based on all accounts the user has permission to access.
+                      items:
+                        type: string
+                    fields:
+                      type: array
+                      description: ids of the [fields to export](/khorosmarketingdevdocs/reference/get-available-report-fields)
+                      items:
+                        type: integer
+                        format: int64
+                    start:
+                      type: string
+                      description: Start date in ISO-8601 format (e.g. 2017-03-01). The start date is
+                        inclusive (i.e. included in the response). **Format:** date
+                    stop:
+                      type: string
+                      description: Stop date in ISO-8601 format (e.g. 2017-03-01 ). Stop date day’s results
+                        are excluded. **Format:** date
+                    timezone:
+                      type: string
+                      description: Timezone descriptor to apply for date formatting and define how to
+                        interpret the start and stop dates for some exports. Example `America/Los_Angeles`
+                    ad_accounts:
+                      type: array
+                      description: Network native IDs of ad accounts to filter for
+                      items:
+                        type: string
+                    ad_campaigns:
+                      type: array
+                      description: Network native IDs of ad campaigns to filter for
+                      items:
+                        type: string
+                    ad_sets:
+                      type: array
+                      description: Network native IDs of ad sets to filter for
+                      items:
+                        type: string
+                    ad_placements:
+                      type: array
+                      description: Placements to filter for
+                      items:
+                        type: string
+                    ad_objectives:
+                      type: array
+                      description: Objectives to filter for
+                      items:
+                        type: string
+                    plans:
+                      type: array
+                      description: IDs of `Plan`s to filter for
+                      items:
+                        type: string
+                    tags:
+                      type: object
+                      properties:
+                        untagged:
+                          type: boolean
+                          description: Return only posts with no labels.
+                        tags:
+                          type: array
+                          description: Returns posts which contain labels matching the label-ids included
+                            here.  Label-Ids can be found in API Explorer using the `LabelSets` API, within
+                            the `legacyId` field. The `id` field containing a UUID will not work.
+                          items:
+                            type: integer
+                            format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"export_id\": \"1234567\"\n}"
+              schema:
+                type: object
+                properties:
+                  export_id:
+                    type: string
+                    example: '1234567'
+      deprecated: false
+      security: []
+  /export/stream_items:
+    post:
+      summary: Stream Item Data
+      description: Generates an export file containing stream items within the requested date and stream
+        parameters using Khoros Marketing Analytics API.
+      operationId: stream-item-data
+      parameters:
+      - name: format
+        in: query
+        description: Supports `json` and `csv`.
+        schema:
+          type: string
+          default: csv
+      - name: header
+        in: query
+        description: If `true` then include CSV column headers.
+        schema:
+          type: boolean
+          default: true
+      - name: delimiter
+        in: query
+        description: Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:**
+          `1`
+        schema:
+          type: string
+          default: ','
+      - name: email_recipients
+        in: query
+        description: '(Optional) When an Export completes, a notification-email will be sent to each email-recipient
+          on this list.  Each email-address must also have an associated Spredfast account to access the
+          file.  Submitting no email addresses will result in no email notifications being sent.  Example:
+          “BobSmith@Spredfast.com,CarolJane@Spredfast.com”'
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  required:
+                  - start
+                  - stop
+                  - fields
+                  properties:
+                    start:
+                      type: string
+                      description: Start date in ISO-8601 format (e.g. 2017-03-01 or 2017-03-01T16:00:00Z).
+                        The start date is inclusive (i.e. included in the response)
+                    stop:
+                      type: string
+                      description: Stop date in ISO-8601 format (e.g. 2017-03-01 or 2017-03-01T16:00:00Z).
+                        If no time is provided, the stop time defaults to the beginning of the day and
+                        the day’s results are excluded.
+                    only_responded_items:
+                      type: boolean
+                      description: Include actions only for items that have been responded to at least
+                        once
+                      default: false
+                    fields:
+                      type: array
+                      description: Select the columns to be returned with your export.  Columns will be
+                        returned in the same order as requested.  See ‘/v2/analytics/export/{export_type}/fields’
+                        for information on available fields and their ids.
+                      items:
+                        type: integer
+                        format: int32
+                    stream_ids:
+                      type: array
+                      description: IDs of the source streams to be included; defaults to all streams
+                      items:
+                        type: integer
+                        format: int32
+                    topic_ids:
+                      type: string
+                      description: IDs of the source topics to be included. Defaults to all
+                    timezone:
+                      type: string
+                      description: Timezone to format dates in. Also to use for defining the start of
+                        day if start/stop values don't include time. Example `America/Los_Angeles`
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"export_id\": \"1958302\"\n}"
+              schema:
+                type: object
+                properties:
+                  export_id:
+                    type: string
+                    example: '1958302'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+  /export/stream_item_actions:
+    post:
+      summary: Stream Item Action Data
+      description: Create Stream item action data in JSON or CSV using Khoros Marketing Analytics API.
+      operationId: stream-item-action-data
+      parameters:
+      - name: format
+        in: query
+        description: Supports `json` and `csv`.
+        schema:
+          type: string
+          default: csv
+      - name: header
+        in: query
+        description: If `true` then include CSV column headers.
+        schema:
+          type: boolean
+          default: true
+      - name: delimiter
+        in: query
+        description: Allows you to specify a custom delimiter for CSV exports.
+        schema:
+          type: string
+          default: ','
+      - name: email_recipients
+        in: query
+        description: '(Optional) When an Export completes, a notification-email will be sent to each email-recipient
+          on this list.  Each email-address must also have an associated Spredfast account to access the
+          file.  Submitting no email addresses will result in no email notifications being sent.  Example:
+          “BobSmith@Spredfast.com,CarolJane@Spredfast.com”'
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  required:
+                  - start
+                  - stop
+                  - fields
+                  properties:
+                    start:
+                      type: string
+                      description: Start date in ISO-8601 format (e.g. 2017-03-01 or 2017-03-01T16:00:00Z).
+                        The start date is inclusive (i.e. included in the response)
+                    stop:
+                      type: string
+                      description: Stop date in ISO-8601 format (e.g. 2017-03-01 or 2017-03-01T16:00:00Z).
+                        If no time is provided, the stop time defaults to the beginning of the day and
+                        the day’s results are excluded.
+                    use_action_date:
+                      type: boolean
+                      description: Report durations, etc using action date for filtering instead of creation
+                        date
+                      default: false
+                    only_responded_items:
+                      type: string
+                      description: Include actions only for items that have been responded to at least
+                        once
+                      default: 'false'
+                    fields:
+                      type: array
+                      description: Select the columns to be returned with your export.  Columns will be
+                        returned in the same order as requested.  See ‘/v2/analytics/export/{export_type}/fields’
+                        for information on available fields and their ids.
+                      items:
+                        type: integer
+                        format: int32
+                    stream_ids:
+                      type: array
+                      description: IDs of the source streams to be included; defaults to all streams.
+                      items:
+                        type: integer
+                        format: int32
+                    topic_ids:
+                      type: array
+                      description: IDs of source topics to be included; defaults to all
+                      items:
+                        type: integer
+                        format: int32
+                    timezone:
+                      type: string
+                      description: Timezone to format dates in. Also to use for defining the start of
+                        day if start/stop values don't include time. Example `America/Los_Angeles`
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"export_id\": \"1958302\"\n}"
+              schema:
+                type: object
+                properties:
+                  export_id:
+                    type: string
+                    example: '1958302'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+  /export/customer_feedback:
+    post:
+      summary: Customer Feedback
+      description: Create a list of customer feedback responses received in the user-selected date range
+        using Khoros Marketing Analytics API.
+      operationId: custom-feedback
+      parameters:
+      - name: format
+        in: query
+        description: Supports `json` and `csv`.
+        schema:
+          type: string
+          default: csv
+      - name: header
+        in: query
+        description: If `true` then include CSV column headers.
+        schema:
+          type: boolean
+          default: true
+      - name: delimiter
+        in: query
+        description: Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:**
+          `1`
+        schema:
+          type: string
+          default: ','
+      - name: email_recipients
+        in: query
+        description: '(Optional) When an Export completes, a notification-email will be sent to each email-recipient
+          on this list.  Each email-address must also have an associated Spredfast account to access the
+          file.  Submitting no email addresses will result in no email notifications being sent.  Example:
+          “BobSmith@Spredfast.com,CarolJane@Spredfast.com”'
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  required:
+                  - start
+                  - stop
+                  - fields
+                  properties:
+                    start:
+                      type: string
+                      description: Start date in ISO-8601 format (e.g. 2017-03-01 or 2017-03-01T16:00:00Z).
+                        The start date is inclusive (i.e. included in the response). **Format:** date-time
+                    stop:
+                      type: string
+                      description: Stop date in ISO-8601 format (e.g. 2017-03-01 or 2017-03-01T16:00:00Z).
+                        If no time is provided, the stop time defaults to the beginning of the day and
+                        the day’s results are excluded. **Format:** date-time
+                    fields:
+                      type: array
+                      description: Select the columns to be returned with your export.  Columns will be
+                        returned in the same order as requested.  See ‘/v2/analytics/export/{export_type}/fields’
+                        for information on available fields and their ids.
+                      items:
+                        type: integer
+                        format: int32
+                    timezone:
+                      type: string
+                      description: Timezone to format dates in. Also to use for defining the start of
+                        day if start/stop values don't include time. Example `America/Los_Angeles`
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"export_id\": \"1234567\"\n}"
+              schema:
+                type: object
+                properties:
+                  export_id:
+                    type: string
+                    example: '1234567'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+  /export/profiles:
+    post:
+      summary: Profiles
+      description: Export information about social network profiles
+      operationId: profiles
+      parameters:
+      - name: format
+        in: query
+        description: Supports `json` and `csv`.
+        schema:
+          type: string
+          default: csv
+      - name: header
+        in: query
+        description: If `true` then include CSV column headers.
+        schema:
+          type: boolean
+          default: true
+      - name: delimiter
+        in: query
+        description: Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:**
+          `1`
+        schema:
+          type: string
+          default: ','
+      - name: email_recipients
+        in: query
+        description: '(Optional) When an Export completes, a notification-email will be sent to each email-recipient
+          on this list.  Each email-address must also have an associated Spredfast account to access the
+          file.  Submitting no email addresses will result in no email notifications being sent.  Example:
+          “BobSmith@Spredfast.com,CarolJane@Spredfast.com”'
+        schema:
+          type: array
+          items:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: object
+                  required:
+                  - start
+                  - stop
+                  - fields
+                  properties:
+                    start:
+                      type: string
+                      description: Start date in ISO-8601 format (e.g. 2017-03-01 or 2017-03-01T16:00:00Z).
+                        The start date is inclusive (i.e. included in the response). **Format:** date-time
+                    stop:
+                      type: string
+                      description: Stop date in ISO-8601 format (e.g. 2017-03-01 or 2017-03-01T16:00:00Z).
+                        If no time is provided, the stop time defaults to the beginning of the day and
+                        the day’s results are excluded. **Format:** date-time
+                    fields:
+                      type: array
+                      description: Select the columns to be returned with your export.  Columns will be
+                        returned in the same order as requested.  See ‘/v2/analytics/export/{export_type}/fields’
+                        for information on available fields and their ids.
+                      items:
+                        type: integer
+                        format: int32
+                    timezone:
+                      type: string
+                      description: Timezone to format dates in. Also to use for defining the start of
+                        day if start/stop values don't include time. Example `America/Los_Angeles`
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"export_id\": \"1234567\"\n}"
+              schema:
+                type: object
+                properties:
+                  export_id:
+                    type: string
+                    example: '1234567'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+  /export/{id}/status:
+    get:
+      summary: Retrieve Export Status
+      description: Check the status of an export using Khoros Marketing Analytics API.
+      operationId: retrieve-export-status
+      parameters:
+      - name: id
+        in: path
+        description: The id of a given export job.  This id is contained in the api-response for an Export
+          request.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"expires\": \"2021-03-24T16:58:16.478\",\n  \"export_id\": 1958298,\n\
+                    \  \"status\": \"complete\",\n  \"url\": \"https://massrel-verwalter.s3.amazonaws.com/exports/12345/232809/data/example-65ea-459b-9310-b65fa1efcc5e/accounts-20210324example-0500.csv?response-content-disposition=attachment%3B%20filename%3Daccounts-20210324T155721-0500.csv&X-Amz-Security-Token=[TOKEN]&X-Amz-Signature=[SIGNATURE]\"\
+                    \n}"
+              schema:
+                type: object
+                properties:
+                  expires:
+                    type: string
+                    example: '2021-03-24T16:58:16.478'
+                  export_id:
+                    type: integer
+                    example: 1958298
+                    default: 0
+                  status:
+                    type: string
+                    example: complete
+                  url:
+                    type: string
+                    example: https://massrel-verwalter.s3.amazonaws.com/exports/12345/232809/data/example-65ea-459b-9310-b65fa1efcc5e/accounts-20210324example-0500.csv?response-content-disposition=attachment%3B%20filename%3Daccounts-20210324T155721-0500.csv&X-Amz-Security-Token=[TOKEN]&X-Amz-Signature=[SIGNATURE]
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+  /export/{export_type}/fields:
+    get:
+      summary: Get Available Report Fields
+      description: Retrieve any available report fields by specified export type
+      operationId: get-available-report-fields
+      parameters:
+      - name: export_type
+        in: path
+        description: The export type that you wish to retrieve available fields and their field-ids. **Allowed
+          Values:* `posts`
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+  /surveys:
+    get:
+      summary: 'Surveys: List All Survey Data for a Set of Streams'
+      description: Returns a list of the available survey data for a given set of streams
+      operationId: surveys-list-all-survey-data-for-a-set-of-streams
+      parameters:
+      - name: start
+        in: query
+        description: Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)
+        schema:
+          type: string
+          default: '2016-01-01T00:00:00Z'
+      - name: stop
+        in: query
+        description: Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)
+        schema:
+          type: string
+          default: '2017-05-01T00:00:00Z'
+      - name: stream_ids
+        in: query
+        description: A list of stream IDs to report on, one value per line (e.g. no delimiter), defaulting
+          to all streams. Use the [streams](ref:care-analytics-api#list-all-available-streams-for-a-company)
+          endpoint to get the appropriate stream IDs.
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+  /streams:
+    get:
+      summary: 'Streams: List All Available Streams for a Company'
+      description: Returns a list of the available streams for a given Company Directory ID
+      operationId: list-all-available-streams-for-a-company
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[\n  {\n    \"campaign_id\": 1710,\n    \"credential_id\": 0,\n    \"hash\"\
+                    : \"c4ad3d29f2c80eea1c557a817581f04a\",\n    \"id\": 22910,\n    \"inbox\": false,\n\
+                    \    \"mode\": \"standard\",\n    \"name\": \"All Activity\",\n    \"query\": \"\"\
+                    ,\n    \"stream_type\": \"spredfast\",\n    \"user_id\": 73208\n  },\n  {\n    \"\
+                    campaign_id\": 1710,\n    \"credential_id\": 0,\n    \"hash\": \"17d10dfe348ab18a449858e836f59a7f\"\
+                    ,\n    \"id\": 22911,\n    \"inbox\": false,\n    \"mode\": \"user_engagement\",\n\
+                    \    \"name\": \"Recent Engagement\",\n    \"query\": \"\",\n    \"stream_type\":\
+                    \ \"spredfast\",\n    \"user_id\": 73208\n  }\n]"
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    campaign_id:
+                      type: integer
+                      example: 1710
+                      default: 0
+                    credential_id:
+                      type: integer
+                      example: 0
+                      default: 0
+                    hash:
+                      type: string
+                      example: c4ad3d29f2c80eea1c557a817581f04a
+                    id:
+                      type: integer
+                      example: 22910
+                      default: 0
+                    inbox:
+                      type: boolean
+                      example: false
+                      default: true
+                    mode:
+                      type: string
+                      example: standard
+                    name:
+                      type: string
+                      example: All Activity
+                    query:
+                      type: string
+                      example: ''
+                    stream_type:
+                      type: string
+                      example: spredfast
+                    user_id:
+                      type: integer
+                      example: 73208
+                      default: 0
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

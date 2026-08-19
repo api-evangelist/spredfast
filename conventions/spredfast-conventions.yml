@@ -1,0 +1,153 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+docs: https://developer.khoros.com/khorosmarketingdevdocs
+derived_from:
+- openapi/spredfast-conversations-api-openapi.yml
+- openapi/spredfast-conversations-api-v1-openapi.yml
+- openapi/spredfast-analytics-api-openapi.yml
+- openapi/spredfast-experiences-stream-api-openapi.yml
+- openapi/spredfast-notification-api-openapi.yml
+note: >-
+  Cross-cutting runtime semantics for the Spredfast (Khoros Marketing) API
+  family, read from the nine harvested OpenAPI documents and the developer
+  center. The headline finding is what is ABSENT: no idempotency mechanism of
+  any kind, no rate-limit headers, no request-id / tracing header on responses,
+  and no RFC 9457 errors. Two incompatible URL conventions coexist — a V1 scheme
+  that requires a case-sensitive deployment `{environment}` segment plus an
+  explicit `{companyId}`, and a V2 scheme that derives both from the token.
+authentication:
+  style: oauth2
+  flows:
+  - authorizationCode
+  authorization_url: https://login.spredfast.com/v3/oauth/authorize
+  token_url: https://login.spredfast.com/v3/oauth/token
+  presentation: Bearer access token on every call.
+  token_lifetime: 24 months (2 years); persists across password changes.
+  token_revocation: By the authenticating user in Profile Settings -> Notifications.
+  prerequisites:
+  - The DevCenter application must be enabled for the caller's company.
+  - A client id must be allow-listed for that company in Conversations.
+  note: >-
+    Documented as "3-legged OAuth 2.0". Client id + secret are issued by Khoros
+    support on request, not self-serve. The V2 specs published through the
+    developer center declare a `clientCredentials` flow with a placeholder
+    tokenUrl of https://example.com/oauth2/token — a documentation-tool default,
+    not a real Spredfast endpoint. The authoritative flow is the
+    authorizationCode flow declared by the Conversations V1 spec.
+  detail: authentication/spredfast-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No idempotency key, no Idempotency-Key header, no request-replay semantics
+    are documented or declared in any of the nine specs. Publishing operations
+    (POST /conversations/initiative/{initiativeId}/message) are NOT safe to
+    retry — a retried publish will post twice. NO `type: Idempotency` pointer is
+    emitted for this provider, because there is nothing to point at.
+pagination:
+  style: offset-page
+  note: >-
+    Two different offset conventions, split by service. Neither returns a cursor
+    or a total-count field that is documented in the contract.
+  variants:
+  - service: Notifications (Events) API — subscription listing
+    params:
+    - name: pageNumber
+      in: query
+      type: integer
+      default: 0
+      description: Result page number, used for cursoring.
+    - name: pageSize
+      in: query
+      type: integer
+      default: 0
+      description: Number of items to return.
+    source: openapi/spredfast-notification-api-openapi.yml
+  - service: Notifications (Events) API — event data
+    params:
+    - name: offset
+      in: query
+      type: integer
+      default: 0
+      description: Offset into results, use to cursor through results.
+    - name: limit
+      in: query
+      type: integer
+      default: 0
+      description: Maximum events to return.
+    source: openapi/spredfast-notification-api-openapi.yml
+  response_fields: not documented
+field_expansion:
+  supported: false
+  note: No expand / include / fields sparse-fieldset parameter exists in any spec.
+metadata:
+  supported: false
+  note: >-
+    No free-form metadata bag on any resource. The closest equivalent is
+    `externalId` on an event subscription (your own identifier for the
+    subscription) and `contentLabel` / labelset assignment on messages and
+    stream items.
+request_id_tracing:
+  response_header: null
+  note: >-
+    No X-Request-Id, X-Correlation-Id or Traceparent header is documented on any
+    response. A `trackingId` field DOES appear, but only inside the payload of
+    the asynchronous `error-custom-crm` event — so a failure is traceable only
+    after the fact, through the Events API, and only for Custom CRM calls.
+custom_headers:
+- name: x-sf-company-id
+  usage: request
+  occurrences: 10
+  description: Scopes the request to a Spredfast company.
+- name: x-sf-user-email
+  usage: request
+  occurrences: 10
+  description: Identifies the acting user.
+- name: x-sf-initiative
+  usage: request
+  occurrences: 9
+  description: Scopes the request to an initiative.
+  note: >-
+    The `x-sf-` prefix is the Spredfast vendor prefix and survives unchanged in
+    the current Khoros Marketing documentation.
+versioning:
+  scheme: url-path
+  current: v2
+  also_live: v1
+  note: >-
+    Two generations run side by side on api.spredfast.com. V1 paths take the
+    form /{environment}/v1/company/{companyId}/... where `{environment}` is a
+    CASE-SENSITIVE deployment name (documented values: Production, VPC1, APP3) —
+    a per-tenant infrastructure detail leaked into the public URL. V2 paths take
+    the form /v2/conversations/... and derive company and environment from the
+    token. The Experiences Stream API is versioned separately (v1) on its own
+    host. No deprecation or sunset policy is published for V1.
+  detail: lifecycle/spredfast-lifecycle.yml
+error_envelope:
+  format: proprietary
+  rfc9457: false
+  shape: '{ "status": { "error": { "code", "message" }, "succeeded": false } }'
+  detail: errors/spredfast-problem-types.yml
+rate_limit_signaling:
+  headers: []
+  status_on_exhaustion: null
+  note: >-
+    No rate limit is published and no rate-limit response header is declared on
+    any of the 149 operations. No 429 response appears anywhere in the contract.
+  detail: rate-limits/spredfast-rate-limits.yml
+content_types:
+  request:
+  - application/json
+  - multipart/form-data
+  response:
+  - application/json
+  - text/plain
+  - application/xml
+  note: >-
+    Multipart is used as a QUERY-STRING FLAG rather than a content negotiation:
+    the specs declare distinct operations at `POST
+    /conversations/initiative/{initiativeId}/message?multipart` and
+    `POST /conversations/asset?multipart`, so the upload variant of an endpoint
+    is a separate path in the contract. The Experiences Stream API additionally
+    responds with application/xml.

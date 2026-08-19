@@ -1,0 +1,141 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/*.json (nine harvested contracts, 149 operations),
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api,
+  https://khoros.ai/trust-center/, https://status.khoros.com
+note: >-
+  Cross-cutting standards assertions for the Spredfast / Khoros Marketing API
+  family. Each entry records whether the provider conforms and the evidence for
+  the call. Compliance certifications are asserted by the SUCCESSOR company
+  (Khoros) on its trust center, not by anything on a Spredfast host.
+standards:
+- id: openapi
+  conforms: true
+  version: 3.1.0 (eight documents) / 3.0.0 (one document)
+  evidence: >-
+    Nine OpenAPI documents are published through the Khoros developer center and
+    captured in openapi/. 149 operations across Conversations V2, Conversations
+    V1, Analytics, CRM, Notifications, Labelsets, Introspection, the Experiences
+    Stream API and the customer-implemented Custom CRM contract. Note: the raw
+    definition files are NOT downloadable — developer.khoros.com's spec API
+    returns 403 anonymously and every static path returns the SPA HTML shell —
+    so the contracts had to be extracted from the rendered reference pages.
+- id: oauth2
+  conforms: true
+  evidence: >-
+    RFC 6749 authorization code flow. authorizationUrl
+    https://login.spredfast.com/v3/oauth/authorize, tokenUrl
+    https://login.spredfast.com/v3/oauth/token, declared in the Conversations V1
+    securityScheme and documented as "3-legged OAuth 2.0" in the getting started
+    guide. Single scope `all` (read/write, all endpoints).
+- id: rfc8414
+  name: OAuth 2.0 Authorization Server Metadata
+  conforms: false
+  evidence: >-
+    https://login.spredfast.com/.well-known/oauth-authorization-server returns
+    404 (probed 2026-08-13). The OAuth server publishes no discovery metadata.
+- id: oidc
+  conforms: false
+  evidence: >-
+    No openIdConnect securityScheme in any spec;
+    https://login.spredfast.com/.well-known/openid-configuration returns 404.
+    OAuth 2.0 for API authorization only, no OIDC identity layer.
+  note: >-
+    The docs do state that company SAML SSO policies are enforced during the
+    OAuth login, but that is enterprise SSO on the login host, not an OIDC
+    provider surface for API clients.
+- id: rfc9457
+  name: Problem Details for HTTP APIs
+  conforms: false
+  evidence: >-
+    Zero of 149 operations declare application/problem+json. Errors use a
+    proprietary envelope: { status: { error: { code, message }, succeeded:
+    false } }. See errors/spredfast-problem-types.yml.
+- id: rfc8594
+  name: Sunset HTTP Header
+  conforms: false
+  evidence: >-
+    No Sunset or Deprecation header is documented or declared, and zero of 149
+    operations are marked deprecated — despite V1 and V2 running side by side.
+- id: idempotency
+  conforms: false
+  evidence: >-
+    No Idempotency-Key header, no idempotency semantics documented, no
+    request-replay guarantee. Retrying a publish POST publishes twice.
+- id: pagination
+  conforms: true
+  style: offset / page-number
+  evidence: >-
+    Two offset conventions on the Notifications API — pageNumber+pageSize on
+    subscription listing, offset+limit on event data. No cursor pagination and
+    no documented total-count or next-link response field.
+- id: rate-limit-headers
+  name: IETF RateLimit header fields
+  conforms: false
+  evidence: >-
+    No RateLimit-* or X-RateLimit-* header is declared on any operation, no 429
+    response exists in any spec, and no limit is published in the docs.
+- id: webhooks
+  conforms: true
+  evidence: >-
+    Subscription-based event delivery to a customer `notificationUri` with an
+    optional subscriber-supplied `bearerToken`. Eleven documented event names.
+    See asyncapi/spredfast-events-webhooks.yml.
+  gaps: No payload signing, no documented retry policy, no delivery guarantee.
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    A real event surface exists but no AsyncAPI document is published anywhere —
+    docs, GitHub org, or /asyncapi.yaml on any host.
+- id: json-api
+  conforms: false
+  evidence: >-
+    Proprietary envelope (data + status), not the JSON:API media type or
+    document structure.
+- id: json-schema
+  conforms: partial
+  evidence: >-
+    Schemas exist inline in the OpenAPI 3.1 documents (which use JSON Schema
+    2020-12 by definition), but there are NO reusable components.schemas in any
+    of the nine documents and many responses are documented by example string
+    only, with no schema at all.
+- id: soc2
+  conforms: true
+  scope: successor-company
+  evidence: SOC 2 Type II named on https://khoros.ai/trust-center/.
+- id: iso27001
+  conforms: true
+  scope: successor-company
+  evidence: ISO/IEC 27001 named on https://khoros.ai/trust-center/.
+- id: iso27701
+  conforms: true
+  scope: successor-company
+  evidence: ISO/IEC 27701 (privacy information management) named on https://khoros.ai/trust-center/.
+- id: iso22301
+  conforms: true
+  scope: successor-company
+  evidence: ISO 22301 (business continuity) named on https://khoros.ai/trust-center/.
+- id: pci-dss
+  conforms: true
+  scope: successor-company
+  evidence: PCI DSS named on https://khoros.ai/trust-center/.
+- id: gdpr
+  conforms: true
+  scope: successor-company
+  evidence: >-
+    Global Data Privacy Addendum published at khoros.ai, plus a TrustArc privacy
+    seal and a privacy@khoros.com data-subject-request contact.
+- id: security-txt
+  name: RFC 9116
+  conforms: false
+  evidence: >-
+    No /.well-known/security.txt on api.spredfast.com (401),
+    login.spredfast.com (404), spredfast.com (503) or developer.khoros.com
+    (200 SPA shell, not a document).
+- id: status-page
+  conforms: true
+  evidence: >-
+    https://status.khoros.com — Atlassian Statuspage with a machine-readable
+    /api/v2/summary.json, RSS and Atom feeds and webhooks. Carries a "Khoros
+    Marketing" component group covering this product line.

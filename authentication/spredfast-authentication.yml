@@ -1,26 +1,127 @@
-generated: '2026-07-21'
+generated: '2026-08-13'
 method: searched
 source: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
 docs: https://developer.khoros.com/khorosmarketingdevdocs
+derived_from:
+- openapi/spredfast-conversations-api-v1-openapi.yml
+- openapi/spredfast-conversations-api-openapi.yml
+- openapi/spredfast-analytics-api-openapi.yml
+- openapi/spredfast-crm-api-openapi.yml
+- openapi/spredfast-notification-api-openapi.yml
+- openapi/spredfast-labelsets-api-openapi.yml
+- openapi/spredfast-introspection-api-openapi.yml
+- openapi/spredfast-experiences-stream-api-openapi.yml
 note: >-
-  Spredfast's social marketing API is now the Khoros Marketing API family
-  (Conversations, Publishing, Analytics Reporting, Notification, CRM). The
-  developer center documents an OAuth 2.0 developer auth flow: clients complete
-  the auth flow to obtain an accessToken that authenticates all subsequent calls
-  to the Khoros Marketing Conversations API. No OpenAPI/Swagger definition is
-  published, so the scheme below is captured from the docs rather than derived.
+  UPGRADED 2026-08-13. The prior round recorded "No OpenAPI/Swagger definition
+  is published" — that is now superseded: nine OpenAPI documents were harvested
+  from the Khoros Marketing developer center and are in openapi/. The auth
+  profile is now corroborated by both the docs AND the contracts.
+  IMPORTANT DISCREPANCY: eight of the nine documents declare a securityScheme
+  named `sec0` with a `clientCredentials` flow whose tokenUrl is
+  `https://example.com/oauth2/token`. That is a DOCUMENTATION-TOOL PLACEHOLDER
+  (ReadMe's default when a spec is authored in its API Designer), not a
+  Spredfast endpoint — example.com is the IANA reserved domain. The
+  authoritative scheme is the one on the Conversations V1 contract, which names
+  the real Spredfast OAuth host, and it matches the getting-started guide's
+  description of "3-legged OAuth 2.0". Treat the placeholder as a defect in the
+  provider's published contracts, not as a second supported flow.
 summary:
   types:
   - oauth2
   oauth2_flows:
   - authorizationCode
+  api_key: false
+  basic_auth: false
+  mtls: false
+  openid_connect: false
+  discovery_metadata: false
+access_model:
+  self_serve: false
+  note: >-
+    Credentials are issued by Khoros support, not by a developer portal. The
+    company admin must ask support to (a) enable the DevCenter application for
+    the company and (b) issue a client id and client secret. That client id must
+    then be allow-listed for the company in Conversations. Until both are done,
+    every call fails with "Company {id} does not allow the application
+    {clientId}".
 schemes:
-- name: OAuth2
+- name: oauth2
   type: oauth2
+  authoritative: true
   flows:
   - flow: authorizationCode
+    authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+    tokenUrl: https://login.spredfast.com/v3/oauth/token
+    scopes:
+      all: Read/write access for all endpoints.
     description: >-
-      Developer Auth Flow — the app obtains an accessToken via OAuth 2.0 that is
-      then presented on all subsequent Khoros Marketing (Spredfast) API calls.
+      3-legged OAuth 2.0 browser redirection flow. Redirect the user to the
+      authorization URL with client_id, response_type=code, redirect_uri and
+      state; exchange the returned code at the token URL with client_id,
+      client_secret and redirect_uri. The response carries a Token object
+      ({ sfEntityType, accessToken, expiryTime }) inside the standard platform
+      envelope.
   sources:
+  - openapi/spredfast-conversations-api-v1-openapi.yml
   - https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+- name: sec0
+  type: oauth2
+  authoritative: false
+  defect: placeholder-token-url
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://example.com/oauth2/token
+    scopes: {}
+    description: >-
+      As published by the provider. The tokenUrl is example.com — an IANA
+      reserved domain — so this flow is not callable as declared. It appears
+      identically in eight of the nine contracts, which is the signature of a
+      docs-platform default rather than a design decision.
+  sources:
+  - openapi/spredfast-conversations-api-openapi.yml
+  - openapi/spredfast-analytics-api-openapi.yml
+  - openapi/spredfast-crm-api-openapi.yml
+  - openapi/spredfast-notification-api-openapi.yml
+  - openapi/spredfast-labelsets-api-openapi.yml
+  - openapi/spredfast-introspection-api-openapi.yml
+  - openapi/spredfast-experiences-stream-api-openapi.yml
+token:
+  type: bearer
+  presentation: Authorization header on every API call.
+  lifetime: 24 months (2 years)
+  persists_across_password_change: true
+  refresh: Repeat the authorization flow; there is no separate refresh_token grant documented.
+  revocation: By the authenticating user, in Profile Settings -> Notifications.
+  self_service_issue: >-
+    A user may also generate an API Access Token directly from the Profile
+    Settings area of Khoros Marketing.
+  introspection:
+    supported: true
+    operation: GET https://api.spredfast.com/v2/whoami
+    spec: openapi/spredfast-introspection-api-openapi.yml
+  expiry_signal: >-
+    An expired or revoked token does NOT return a JSON 401 — the docs record an
+    HTML page reading "Developer Inactive". Detect it as a content-type
+    mismatch, not a status code.
+enterprise_sso:
+  supported: true
+  note: >-
+    All company security policies, including SAML SSO integration, are enforced
+    during the OAuth login, because OAuth tokens are managed by the same
+    authentication system as web logins.
+  source: openapi/spredfast-conversations-api-v1-openapi.yml
+scopes:
+  count: 1
+  note: >-
+    A single scope, `all`, granting read/write across every endpoint. There is
+    no read-only credential, so a reporting integration must be issued the same
+    privilege as a publishing one.
+  detail: scopes/spredfast-scopes.yml
+gaps:
+- No /.well-known/oauth-authorization-server (RFC 8414) — login.spredfast.com returns 404.
+- No /.well-known/openid-configuration — login.spredfast.com returns 404.
+- No PKCE guidance published for the authorization code flow.
+- Client credentials are issued by a support ticket, so there is no programmatic credential lifecycle.
+- >-
+  Eight of nine published contracts declare an uncallable placeholder tokenUrl
+  (example.com), which will mislead any tool that generates a client from them.

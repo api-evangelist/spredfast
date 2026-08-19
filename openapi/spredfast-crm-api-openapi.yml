@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: crm
+  version: '1.1'
+servers:
+- url: https://api.spredfast.com/v2/crm
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+security:
+- sec0: []
+paths:
+  /admin/custom:
+    post:
+      summary: Register a Custom CRM
+      description: Register a custom customer relationship manager
+      operationId: register-a-custom-crm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - instanceUrl
+              - authHeaderValue
+              properties:
+                name:
+                  type: string
+                  description: '**readOnly**: false **Example:** `Custom CRM`'
+                instanceUrl:
+                  type: string
+                  description: '**readOnly**: false **Example:** `https://test-zendesk.heroku.com/api/v1`'
+                authHeaderValue:
+                  type: string
+                  description: '**readOnly**: false **Example:** `MY_AUTH_HEADER`'
+      responses:
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+  /admin/custom/{crmId}:
+    patch:
+      summary: Register a Custom CRM
+      description: Register a custom customer relationship manager
+      operationId: register-a-custom-crm-1
+      parameters:
+      - name: crmId
+        in: path
+        description: '**Format:** int64'
+        schema:
+          type: integer
+          format: int32
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - instanceUrl
+              - authHeaderValue
+              properties:
+                name:
+                  type: string
+                  description: '**readOnly**: false **Example:** `Custom CRM`'
+                instanceUrl:
+                  type: string
+                  description: '**readOnly**: false **Example:** `https://test-zendesk.heroku.com/api/v1`'
+                authHeaderValue:
+                  type: string
+                  description: '**readOnly**: false **Example:** `MY_AUTH_HEADER`'
+      responses:
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+x-readme:
+  headers: []
+  explorer-enabled: true
+  proxy-enabled: false
+x-readme-fauxas: true

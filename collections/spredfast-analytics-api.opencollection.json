@@ -1,0 +1,405 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "beta-analytics-api",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://example.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Published Posts",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/analytics/export/posts",
+        "params": [
+          {
+            "name": "header",
+            "value": "",
+            "type": "query",
+            "description": "If `true` then include CSV headers."
+          },
+          {
+            "name": "delimiter",
+            "value": "",
+            "type": "query",
+            "description": "Allows you to specify a custom delimiter for CSV exports."
+          },
+          {
+            "name": "email_recipients",
+            "value": "",
+            "type": "query",
+            "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Export Posts and Metrics for those Posts"
+    },
+    {
+      "info": {
+        "name": "Daily Account Level Metrics",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/analytics/export/accounts",
+        "params": [
+          {
+            "name": "email_recipients",
+            "value": "",
+            "type": "query",
+            "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+          },
+          {
+            "name": "header",
+            "value": "",
+            "type": "query",
+            "description": "If `true` then include CSV column headers."
+          },
+          {
+            "name": "delimiter",
+            "value": "",
+            "type": "query",
+            "description": "Allows you to specify a custom delimiter for CSV exports."
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Export contains daily account-level performance metrics"
+    },
+    {
+      "info": {
+        "name": "Daily Post Summary",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/analytics/export/daily_post_summary",
+        "params": [
+          {
+            "name": "header",
+            "value": "",
+            "type": "query",
+            "description": "If `true` then include CSV headers."
+          },
+          {
+            "name": "delimiter",
+            "value": "",
+            "type": "query",
+            "description": "Allows you to specify a custom delimiter for CSV exports."
+          },
+          {
+            "name": "email_recipients",
+            "value": "",
+            "type": "query",
+            "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Export contains a Daily Summary of Post metrics"
+    },
+    {
+      "info": {
+        "name": "Ads Net Values",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/analytics/export/net_ads",
+        "params": [
+          {
+            "name": "header",
+            "value": "",
+            "type": "query",
+            "description": "If `true` then include CSV headers."
+          },
+          {
+            "name": "delimiter",
+            "value": "",
+            "type": "query",
+            "description": "Allows you to specify a custom delimiter for CSV exports."
+          },
+          {
+            "name": "email_recipients",
+            "value": "",
+            "type": "query",
+            "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Export Ads and Metrics for those Ads"
+    },
+    {
+      "info": {
+        "name": "Stream Item Data",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/analytics/export/stream_items",
+        "params": [
+          {
+            "name": "format",
+            "value": "",
+            "type": "query",
+            "description": "Supports `json` and `csv`."
+          },
+          {
+            "name": "header",
+            "value": "",
+            "type": "query",
+            "description": "If `true` then include CSV column headers."
+          },
+          {
+            "name": "delimiter",
+            "value": "",
+            "type": "query",
+            "description": "Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:** `1`"
+          },
+          {
+            "name": "email_recipients",
+            "value": "",
+            "type": "query",
+            "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Generates an export file containing stream items within the requested date and stream parameters using Khoros Marketing Analytics API."
+    },
+    {
+      "info": {
+        "name": "Stream Item Action Data",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/analytics/export/stream_item_actions",
+        "params": [
+          {
+            "name": "format",
+            "value": "",
+            "type": "query",
+            "description": "Supports `json` and `csv`."
+          },
+          {
+            "name": "header",
+            "value": "",
+            "type": "query",
+            "description": "If `true` then include CSV column headers."
+          },
+          {
+            "name": "delimiter",
+            "value": "",
+            "type": "query",
+            "description": "Allows you to specify a custom delimiter for CSV exports."
+          },
+          {
+            "name": "email_recipients",
+            "value": "",
+            "type": "query",
+            "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create Stream item action data in JSON or CSV using Khoros Marketing Analytics API."
+    },
+    {
+      "info": {
+        "name": "Customer Feedback",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/analytics/export/customer_feedback",
+        "params": [
+          {
+            "name": "format",
+            "value": "",
+            "type": "query",
+            "description": "Supports `json` and `csv`."
+          },
+          {
+            "name": "header",
+            "value": "",
+            "type": "query",
+            "description": "If `true` then include CSV column headers."
+          },
+          {
+            "name": "delimiter",
+            "value": "",
+            "type": "query",
+            "description": "Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:** `1`"
+          },
+          {
+            "name": "email_recipients",
+            "value": "",
+            "type": "query",
+            "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a list of customer feedback responses received in the user-selected date range using Khoros Marketing Analytics API."
+    },
+    {
+      "info": {
+        "name": "Profiles",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/analytics/export/profiles",
+        "params": [
+          {
+            "name": "format",
+            "value": "",
+            "type": "query",
+            "description": "Supports `json` and `csv`."
+          },
+          {
+            "name": "header",
+            "value": "",
+            "type": "query",
+            "description": "If `true` then include CSV column headers."
+          },
+          {
+            "name": "delimiter",
+            "value": "",
+            "type": "query",
+            "description": "Allows you to specify a custom delimiter for CSV exports. **maxLength:** `1` **minLength:** `1`"
+          },
+          {
+            "name": "email_recipients",
+            "value": "",
+            "type": "query",
+            "description": "(Optional) When an Export completes, a notification-email will be sent to each email-recipient on this list.  Each email-address must also have an associated Spredfast account to access the file.  Submitting no email addresses will result in no email notifications being sent.  Example: “BobSmith@Spredfast.com,CarolJane@Spredfast.com”"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Export information about social network profiles"
+    },
+    {
+      "info": {
+        "name": "Retrieve Export Status",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/analytics/export/:id/status",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "The id of a given export job.  This id is contained in the api-response for an Export request."
+          }
+        ]
+      },
+      "docs": "Check the status of an export using Khoros Marketing Analytics API."
+    },
+    {
+      "info": {
+        "name": "Get Available Report Fields",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/analytics/export/:export_type/fields",
+        "params": [
+          {
+            "name": "export_type",
+            "value": "",
+            "type": "path",
+            "description": "The export type that you wish to retrieve available fields and their field-ids. **Allowed Values:* `posts`"
+          }
+        ]
+      },
+      "docs": "Retrieve any available report fields by specified export type"
+    },
+    {
+      "info": {
+        "name": "Surveys: List All Survey Data for a Set of Streams",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/analytics/surveys",
+        "params": [
+          {
+            "name": "start",
+            "value": "",
+            "type": "query",
+            "description": "Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)"
+          },
+          {
+            "name": "stop",
+            "value": "",
+            "type": "query",
+            "description": "Start date in ISO-8610 format (YYYY-MM-DDTHH:MM:SSZ)"
+          },
+          {
+            "name": "stream_ids",
+            "value": "",
+            "type": "query",
+            "description": "A list of stream IDs to report on, one value per line (e.g. no delimiter), defaulting to all streams. Use the [streams](ref:care-analytics-api#list-all-available-streams-for-a-company) endpoint to get the appropriate stream IDs."
+          }
+        ]
+      },
+      "docs": "Returns a list of the available survey data for a given set of streams"
+    },
+    {
+      "info": {
+        "name": "Streams: List All Available Streams for a Company",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/analytics/streams"
+      },
+      "docs": "Returns a list of the available streams for a given Company Directory ID"
+    }
+  ],
+  "bundled": true
+}

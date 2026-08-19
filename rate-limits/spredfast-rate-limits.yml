@@ -1,0 +1,34 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.khoros.com/khorosmarketingdevdocs
+docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+limit_count: 0
+note: >-
+  Spredfast / Khoros Marketing publishes NO rate limits. Searched the developer
+  center landing page, the Conversations getting-started guide, the analytics
+  reporting guide and the events documentation: no requests-per-second,
+  per-minute, per-hour or per-day figure is stated anywhere, for any tier, for
+  any of the five API products. Derived from the contracts in parallel: across
+  all 149 operations in the nine harvested OpenAPI documents, not one declares
+  a 429 response and not one declares a rate-limit response header. There is
+  therefore no runtime signal an agent can read — a client cannot tell how much
+  budget it has, cannot tell when it is exhausted, and has no Retry-After to
+  back off against. An honest zero.
+limits: []
+response_headers: []
+status_on_exhaustion: null
+retry_after: false
+derived_evidence:
+  operations_examined: 149
+  specs_examined: 9
+  operations_declaring_429: 0
+  operations_declaring_rate_limit_headers: 0
+  source: openapi/_original/*.json
+related_throttling:
+  note: >-
+    The only throughput-shaped control documented is the Analytics Reporting
+    API's asynchronous export model — POST /export/* starts a job and
+    GET /export/{id}/status polls it — which bounds work by job rather than by
+    request rate. That is a design constraint, not a published rate limit, and
+    is not counted above.
+  source: openapi/spredfast-analytics-api-openapi.yml

@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "notification-service",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://example.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Retrieve Subscription Events",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/events/data/:subscriptionId",
+        "params": [
+          {
+            "name": "subscriptionId",
+            "value": "",
+            "type": "path",
+            "description": "Subscription UUID"
+          },
+          {
+            "name": "offset",
+            "value": "",
+            "type": "query",
+            "description": "Offset into results, use to cursor through results. **Format:** int32"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Maximum events to return. **Format:** int32"
+          }
+        ]
+      },
+      "docs": "Poll for events under the specified subscription using Khoros Marketing Events API."
+    },
+    {
+      "info": {
+        "name": "List Subscriptions",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/events/subscription",
+        "params": [
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query",
+            "description": "Result page number. Used for cursoring. **Format:** int32"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query",
+            "description": "Number of items to return. **Format:** int32"
+          }
+        ]
+      },
+      "docs": "Retrieves all subscriptions to events registered for the specified company using Khoros Marketing Events API."
+    },
+    {
+      "info": {
+        "name": "Create a Subscription",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/events/subscription",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Creates a subscription to an event originating from the specified company using Khoros Marketing Events API."
+    },
+    {
+      "info": {
+        "name": "Retrieve Subscription Details",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/events/subscription/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "UUID of the subscription. **Format:** uuid"
+          }
+        ]
+      },
+      "docs": "Retrieves a specific subscription to an event by its UUID using Khoros Marketing Events API."
+    },
+    {
+      "info": {
+        "name": "Delete a Subscription",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.spredfast.com/v2/events/subscription/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "UUID of the subscription. **Format:** uuid"
+          }
+        ]
+      },
+      "docs": "Deletes a specific subscription to an event registered for a company using Khoros Marketing Events API."
+    },
+    {
+      "info": {
+        "name": "Update a Subscription",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.spredfast.com/v2/events/subscription/:id/:status",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "UUID of subscription. **Format:** uuid"
+          },
+          {
+            "name": "status",
+            "value": "",
+            "type": "path",
+            "description": "**Allowed Values:** `ACTIVE`, `DISABLED`, `PAUSED`"
+          }
+        ]
+      },
+      "docs": "Updates the status of a subscription using Khoros Marketing Events API."
+    }
+  ],
+  "bundled": true
+}

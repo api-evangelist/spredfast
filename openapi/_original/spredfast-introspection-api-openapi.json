@@ -1,0 +1,123 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "introspection-api",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.spredfast.com/v2/whoami"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://example.com/oauth2/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Current User Details",
+        "description": "This returns directory level info about the current user using Khoros Marketing Introspection API.",
+        "operationId": "current-user-details",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"companies\": [\n    {\n      \"id\": 12345,\n      \"name\": \"Example Corp\",\n      \"products\": []\n    },\n    {\n      \"id\": 42,\n      \"name\": \"Example Company\",\n      \"products\": [\n        {\n          \"environmentId\": 14,\n          \"environmentName\": \"care\",\n          \"environmentUrl\": \"https://care.spredfast.com\",\n          \"externalCompanyId\": \"45\",\n          \"id\": 10,\n          \"name\": \"Care\"\n        },\n        {\n          \"environmentId\": 2,\n          \"environmentName\": \"APP3\",\n          \"environmentUrl\": \"https://app3.spredfast.com\",\n          \"externalCompanyId\": \"45\",\n          \"id\": 1,\n          \"name\": \"Conversations\"\n        }\n      ]\n    }\n  ],\n  \"description\": \"\",\n  \"email\": \"johndoe@example.com\",\n  \"firstName\": \"John\",\n  \"id\": 123123,\n  \"jobTitle\": \"Assistant to the Regional Manager\",\n  \"lastName\": \"Doe\",\n  \"profileImageUri\": \"https://example.com/image.jpg\",\n  \"timezone\": \"America/Chicago\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "companies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 12345,
+                            "default": 0
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Example Corp"
+                          },
+                          "products": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "johndoe@example.com"
+                    },
+                    "firstName": {
+                      "type": "string",
+                      "example": "John"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "example": 123123,
+                      "default": 0
+                    },
+                    "jobTitle": {
+                      "type": "string",
+                      "example": "Assistant to the Regional Manager"
+                    },
+                    "lastName": {
+                      "type": "string",
+                      "example": "Doe"
+                    },
+                    "profileImageUri": {
+                      "type": "string",
+                      "example": "https://example.com/image.jpg"
+                    },
+                    "timezone": {
+                      "type": "string",
+                      "example": "America/Chicago"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": false
+  },
+  "x-readme-fauxas": true
+}

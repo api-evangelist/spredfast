@@ -1,0 +1,170 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/events-message,
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/event-rule-applied,
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/events-label-applied-to-stream-item,
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/events-authentication,
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/events-bots-pass-conversation-control,
+  https://developer.khoros.com/khorosmarketingdevdocs/docs/events-errors,
+  openapi/spredfast-notification-api-openapi.yml
+asyncapi_published: false
+note: >-
+  Spredfast / Khoros Marketing ships a real event surface but NO AsyncAPI
+  document. Searched developer.khoros.com, github.com/spredfast and
+  /asyncapi.yaml on every host — nothing. The event surface is instead described
+  by a six-operation REST subscription API (the Notifications / Events API at
+  https://api.spredfast.com/v2/events) plus one prose page per event type. This
+  file captures that webhook catalog; `type: Webhooks` is wired, `type:
+  AsyncAPI` is NOT, because no AsyncAPI document exists to point at.
+  The delivery model is DUAL: a subscription may set `notificationUri`, in which
+  case Khoros POSTs the event to that URL (push), or omit it and be polled via
+  GET /data/{subscriptionId} (pull). Both are driven by the same subscription
+  record.
+delivery:
+  model: hybrid
+  push:
+    supported: true
+    configured_by: notificationUri on the subscription (optional, format uri)
+    auth: >-
+      Optional `bearerToken` on the subscription — delivered as a Bearer token
+      in the outbound notification call, so the receiver can authenticate the
+      sender.
+    signing: none documented
+    retries: not documented
+    delivery_guarantee: not documented
+  pull:
+    supported: true
+    operation: retrieve-subscription-events
+    path: GET /data/{subscriptionId}
+    params:
+    - offset (int32, default 0)
+    - limit (int32, default 0)
+management_api:
+  base: https://api.spredfast.com/v2/events
+  spec: openapi/spredfast-notification-api-openapi.yml
+  operations:
+  - operationId: create-a-subscription
+    method: POST
+    path: /subscription
+  - operationId: list-subscriptions
+    method: GET
+    path: /subscription
+  - operationId: retrieve-subscription-details
+    method: GET
+    path: /subscription/{id}
+  - operationId: update-a-subscription
+    method: PUT
+    path: /subscription/{id}/{status}
+  - operationId: delete-a-subscription
+    method: DELETE
+    path: /subscription/{id}
+  - operationId: retrieve-subscription-events
+    method: GET
+    path: /data/{subscriptionId}
+subscription_model:
+  fields:
+  - name: uuid
+    type: string (uuid)
+    readonly: true
+    description: Globally unique identifier for this subscription.
+  - name: externalId
+    type: string
+    description: Your unique identifier for this subscription.
+  - name: companyId
+    type: integer (int64)
+    readonly: true
+  - name: userId
+    type: integer (int64)
+    readonly: true
+  - name: eventName
+    type: string
+    description: Name of the event to listen for. One subscription = one event name.
+  - name: version
+    type: integer (int32)
+    description: Version of the event to deliver.
+  - name: bearerToken
+    type: string
+    description: Optional token to deliver as bearer token in notification calls.
+  - name: notificationUri
+    type: string (uri)
+    description: Optional URL to call when events occur.
+  - name: query
+    type: string
+    description: Optional query string as regex for events — server-side filtering.
+  - name: createdDate
+    type: string (date-time)
+    readonly: true
+  - name: status
+    type: string
+    enum:
+    - ACTIVE
+    - DISABLED
+    - PAUSED
+    readonly: true
+  source: openapi/spredfast-notification-api-openapi.yml
+event_count: 10
+events:
+- name: message-published
+  category: publishing
+  description: A message has gone live on an external social network.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-message
+- name: message-sent-to-network
+  category: publishing
+  description: Data was saved to the social network for future publishing.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-message
+- name: message-needs-approval
+  category: publishing
+  description: A message's state updated to require approval.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-message
+- name: rule-applied
+  category: automation
+  description: An automation rule fired.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/event-rule-applied
+- name: stream-item-label-applied
+  category: engagement
+  description: A label was applied to a stream item in the inbox.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-label-applied-to-stream-item
+- name: credential-auth
+  category: account-authorization
+  description: A social account credential was authorized.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-authentication
+- name: credential-reauth
+  category: account-authorization
+  description: A social account credential was re-authorized.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-authentication
+- name: credential-deauth
+  category: account-authorization
+  description: A social account credential was de-authorized.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-authentication
+- name: credential-delete
+  category: account-authorization
+  description: A social account credential was deleted.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-authentication
+- name: pass-conversation-control
+  category: bots
+  description: Conversation control was handed off between a bot and an agent.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-bots-pass-conversation-control
+- name: error-custom-crm
+  category: error
+  description: >-
+    An outbound call from Khoros Marketing to a customer-implemented Custom CRM
+    failed. The payload carries the full external call — method, URI, headers,
+    query, body, response headers and response code — plus a trackingId and a
+    spredfastErrorMessage.
+  docs: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-errors
+event_envelope:
+  fields:
+  - companyId
+  - eventName
+  - createdDate
+  - eventUuid
+  - type
+  - subscriptionUuid
+  - data
+  source: https://developer.khoros.com/khorosmarketingdevdocs/docs/events-errors
+gaps:
+- No AsyncAPI document is published for this event surface.
+- No signature / HMAC verification on delivered notifications; the only receiver-side authentication is the optional bearerToken the subscriber itself supplies.
+- No retry policy, backoff, or delivery guarantee is documented.
+- No event `version` values are published, though the subscription model carries a version field.

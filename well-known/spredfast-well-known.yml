@@ -1,13 +1,30 @@
-generated: '2026-07-21'
-method: searched
-source: live probes of /.well-known/* on Spredfast API and website hosts
+generated: '2026-08-13'
+method: probed
+source: >-
+  live probes of /.well-known/* on every Spredfast API host, the OAuth host, the
+  Experiences host and the Khoros developer center
 note: >-
-  No /.well-known/ discovery document returned HTTP 200. api.spredfast.com is
-  auth-gated (401 on all paths) and the spredfast.com website returns 503 (the
-  product is now Khoros Marketing at developer.khoros.com). Absence of published
-  discovery documents is recorded as valid data; no raw files were saved.
+  NO /.well-known/ path returned a real document on any host. api.spredfast.com
+  answers 401 on every path (the API is alive but auth-gated at the edge, so it
+  will not serve an anonymous discovery document). login.spredfast.com — the
+  OAuth authorization/token host named by the Conversations V1 spec — is alive
+  (200 at /) but returns 404 for /.well-known/openid-configuration and
+  /.well-known/oauth-authorization-server, so the OAuth 2.0 server publishes no
+  RFC 8414 metadata and the OIDC discovery document does not exist.
+  api.massrelevance.com (the Experiences Stream API host) returns 502 on every
+  path including /. spredfast.com returns 503. developer.khoros.com returns 200
+  for EVERY path, but the body is the ReadMe single-page-app HTML shell
+  (`<!DOCTYPE html>... readme-deploy 5.846.0`), identical for /openapi.json,
+  /.well-known/agent-card.json and any other path — that is an SPA catch-all,
+  NOT a document, and is recorded as a miss.
+  Because nothing returned a real document, NO `type: WellKnown` and NO
+  `type: SecurityTxt` pointer is emitted for this provider. The prior round's
+  WellKnown pointer has been removed for exactly this reason: it asserted a
+  surface whose own probe recorded zero 200s carrying a document.
+hit_count: 0
 hosts:
 - host: https://api.spredfast.com
+  note: Alive but auth-gated; 401 on every path including /.
   documents:
   - path: /.well-known/security.txt
     status: 401
@@ -19,7 +36,43 @@ hosts:
     status: 401
   - path: /.well-known/ai-plugin.json
     status: 401
+- host: https://login.spredfast.com
+  note: >-
+    OAuth 2.0 authorization + token host (login.spredfast.com/v3/oauth/authorize
+    and /v3/oauth/token, per the Conversations V1 OpenAPI securityScheme). Root
+    serves a 200 HTML login page; no OAuth/OIDC discovery metadata is published.
+  documents:
+  - path: /
+    status: 200
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.massrelevance.com
+  note: >-
+    Experiences Stream API host. Returns 502 Bad Gateway on every path — the
+    host resolves and terminates TLS but no origin answers behind it.
+  documents:
+  - path: /
+    status: 502
+  - path: /.well-known/security.txt
+    status: 502
+  - path: /.well-known/openid-configuration
+    status: 502
+  - path: /.well-known/oauth-authorization-server
+    status: 502
+  - path: /.well-known/api-catalog
+    status: 502
+  - path: /.well-known/ai-plugin.json
+    status: 502
 - host: https://spredfast.com
+  note: Legacy marketing site; 503 on every path.
   documents:
   - path: /.well-known/security.txt
     status: 503
@@ -31,3 +84,40 @@ hosts:
     status: 503
   - path: /.well-known/ai-plugin.json
     status: 503
+- host: https://developer.khoros.com
+  note: >-
+    ReadMe-hosted developer center. Returns HTTP 200 with the same SPA HTML
+    shell for EVERY path probed — a soft-200 catch-all. Treated as a miss on all
+    paths; no document was served.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    document: false
+    body: html-spa-shell
+  - path: /.well-known/openid-configuration
+    status: 200
+    document: false
+    body: html-spa-shell
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    document: false
+    body: html-spa-shell
+  - path: /.well-known/api-catalog
+    status: 200
+    document: false
+    body: html-spa-shell
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    document: false
+    body: html-spa-shell
+- host: https://devcenter.spredfast.com
+  note: >-
+    The original Spredfast developer portal. DNS still CNAMEs to
+    ingress.docs.stoplight.io, but the TLS handshake fails (no certificate for
+    this hostname) and plain HTTP returns 409. The portal is dead.
+  documents:
+  - path: /
+    status: 0
+    error: tls-handshake-failure
+  - path: 'http:///'
+    status: 409

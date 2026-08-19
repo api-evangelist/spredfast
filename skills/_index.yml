@@ -1,0 +1,89 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  openapi/spredfast-*-openapi.yml (149 real operations across nine harvested
+  contracts) + https://developer.khoros.com/khorosmarketingdevdocs
+note: >-
+  Packaged Agent Skills for the Spredfast / Khoros Marketing API family. Every
+  operationId referenced in these skills is grepped from a harvested contract in
+  openapi/ — none are invented. Searched first for provider-published skills or
+  an AGENTS.md at developer.khoros.com and github.com/spredfast: none exist, so
+  these are GENERATED from the contracts plus the documented runtime rules.
+  Each skill repeats the three facts an agent most needs and the contract does
+  not state: there is no idempotency mechanism, errors are a proprietary
+  envelope rather than RFC 9457, and no rate limit or rate-limit header is
+  published.
+skill_count: 4
+skills:
+- name: spredfast-publish-a-social-message
+  file: skills/spredfast-publish-a-social-message.md
+  api: Spredfast Conversations API (v2)
+  spec: openapi/spredfast-conversations-api-openapi.yml
+  summary: >-
+    The marquee flow. Resolve company, initiative and account set, publish a
+    message to target accounts, then read publicationResults[] to confirm the
+    per-account outcome.
+  operations:
+  - retrieve-a-list-companies-with-this-app-enabled
+  - retrieve-a-list-of-available-initiatives
+  - accountset
+  - publish-a-new-message-imageset
+  - retrieve-an-existing-message
+- name: spredfast-subscribe-to-events
+  file: skills/spredfast-subscribe-to-events.md
+  api: Spredfast Notifications (Events) API
+  spec: openapi/spredfast-notification-api-openapi.yml
+  summary: >-
+    Create an event subscription, choose push (notificationUri + bearerToken) or
+    pull delivery, manage its ACTIVE/PAUSED/DISABLED lifecycle, and handle the
+    eleven published event names.
+  operations:
+  - create-a-subscription
+  - list-subscriptions
+  - retrieve-subscription-details
+  - retrieve-subscription-events
+  - update-a-subscription
+  - delete-a-subscription
+- name: spredfast-export-analytics
+  file: skills/spredfast-export-analytics.md
+  api: Spredfast Analytics Reporting API (beta)
+  spec: openapi/spredfast-analytics-api-openapi.yml
+  summary: >-
+    Discover streams and report fields, start one of eight asynchronous export
+    jobs, and poll it to completion.
+  operations:
+  - list-all-available-streams-for-a-company
+  - get-available-report-fields
+  - published-post
+  - retrieve-export-status
+- name: spredfast-manage-content-center-assets
+  file: skills/spredfast-manage-content-center-assets.md
+  api: Spredfast Conversations API (v2)
+  spec: openapi/spredfast-conversations-api-openapi.yml
+  summary: >-
+    Organise folders and upload text, image and video assets to the Content
+    Center — the required first step before a video can be published.
+  operations:
+  - create-a-new-content-asset-folder
+  - retrieve-a-list-of-assets-in-a-folder
+  - assets-create-text-asset
+  - assets-create-image-or-video
+  - create-a-video-captions
+not_covered:
+  note: >-
+    Deliberately not turned into skills, and why.
+  surfaces:
+  - api: Spredfast Experiences Stream API
+    reason: >-
+      48 operations, but the declared host api.massrelevance.com returns HTTP
+      502 on every path (probed 2026-08-13). A skill teaching an agent to call a
+      dead origin would be worse than no skill.
+  - api: Spredfast Custom CRM Callback Contract
+    reason: >-
+      Inverted contract — the CUSTOMER implements the server and Khoros calls
+      it. There is nothing for an agent to call.
+  - api: Spredfast Conversations API (v1)
+    reason: >-
+      Superseded by v2 for every flow covered above. Still live, but requires a
+      case-sensitive {environment} path segment and an explicit {companyId}; v2
+      derives both from the token.

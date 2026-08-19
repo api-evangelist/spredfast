@@ -1,0 +1,88 @@
+# Spredfast (now Khoros Marketing)
+
+> Spredfast was an Austin-based social media marketing and management platform — social publishing, engagement, listening and analytics for enterprise brands and agencies. It acquired Mass Relevance in 2013, merged with Lithium Technologies in 2018, and the combined company rebranded as Khoros in 2019. The product line is delivered today as Khoros Marketing. The API surface still carries the Spredfast name in production: the host is api.spredfast.com, OAuth runs on login.spredfast.com, request headers use the `x-sf-` prefix, and the Conversations V1 contract is licensed as "Spredfast API Terms of Use".
+
+GENERATED: 2026-08-13
+METHOD: generated
+SOURCE: apis.yml + the artifacts in this repository. /llms.txt returns 404 on developer.khoros.com, api.spredfast.com (401) and login.spredfast.com — the provider publishes none, so this file is generated from the harvested contracts rather than fetched.
+
+## What you can call
+
+Base: https://api.spredfast.com/v2 (v1 also live at https://api.spredfast.com)
+Auth: OAuth 2.0 authorization code. Authorize at https://login.spredfast.com/v3/oauth/authorize, exchange at https://login.spredfast.com/v3/oauth/token. Bearer token on every call. Tokens valid 24 months. Single scope: `all` (read/write, all endpoints).
+Access is NOT self-serve: a company admin must have Khoros support enable the DevCenter application for the company and issue a client id + secret, and that client id must be allow-listed for the company.
+
+Nine OpenAPI documents, 149 operations:
+
+- Conversations API v2 — 39 operations — https://api.spredfast.com/v2 — publishing, content center, calendar, initiatives, plans, users, roles, workspaces, labels
+- Conversations API v1 — 27 operations — https://api.spredfast.com — the original surface; paths are /{environment}/v1/company/{companyId}/... where {environment} is CASE SENSITIVE (Production, VPC1, APP3)
+- Experiences Stream API — 48 operations — https://api.massrelevance.com — curated social stream data for Experiences visualisations. WARNING: this host returned HTTP 502 on every path when probed 2026-08-13.
+- Analytics Reporting API (beta) — 12 operations — https://api.spredfast.com/v2/analytics — asynchronous exports (POST to start, poll GET /export/{id}/status)
+- Custom CRM Callback Contract — 13 operations — https://{your-domain}.com — INVERTED: the customer implements this server and Khoros Marketing calls it
+- Notifications (Events) API — 6 operations — https://api.spredfast.com/v2/events — event subscriptions, push to a notificationUri or poll
+- CRM Registration API — 2 operations — https://api.spredfast.com/v2/crm — register/update a Custom CRM
+- Label Sets API — 1 operation — https://api.spredfast.com/v2/labelsets
+- Introspection API — 1 operation — https://api.spredfast.com/v2/whoami — token introspection
+
+## Runtime rules an agent must know
+
+- NO IDEMPOTENCY. No Idempotency-Key, no replay protection, no request-id header on responses. A retried publish POST publishes twice. On a timeout, list before retrying.
+- ERRORS ARE NOT RFC 9457. The envelope is `{"status": {"error": {"code", "message"}, "succeeded": false}}`. Branch on `status.succeeded`. Some failures are not JSON at all: an expired token returns an HTML "Developer Inactive" page, and a bad path returns a non-standard `586 Service Not Found`.
+- NO PUBLISHED RATE LIMITS. Zero of 149 operations declare a 429 or any rate-limit header, and no figure is documented. There is no budget signal to read.
+- NO DEPRECATION SIGNAL. v1 and v2 run side by side with no sunset date, no Deprecation/Sunset header, no migration guide, and zero operations marked deprecated.
+- OBJECT TYPES are carried on a `sfEntityType` discriminator field, because the contracts declare no reusable schemas at all.
+- PAGINATION is offset-based, and inconsistent: `pageNumber`+`pageSize` on subscription listing, `offset`+`limit` on event data. No cursors, no documented total-count field.
+- MULTIPART is a separate path, not a content-type: `POST /conversations/asset?multipart` is a distinct operation from `POST /conversations/asset`.
+
+## Contracts
+
+- openapi/spredfast-conversations-api-openapi.yml
+- openapi/spredfast-conversations-api-v1-openapi.yml
+- openapi/spredfast-experiences-stream-api-openapi.yml
+- openapi/spredfast-analytics-api-openapi.yml
+- openapi/spredfast-custom-crm-callback-api-openapi.yml
+- openapi/spredfast-notification-api-openapi.yml
+- openapi/spredfast-crm-api-openapi.yml
+- openapi/spredfast-labelsets-api-openapi.yml
+- openapi/spredfast-introspection-api-openapi.yml
+- openapi/_original/ — the verbatim harvest of each
+
+## Agent Skills
+
+- skills/spredfast-publish-a-social-message.md — resolve initiative and account set, publish, confirm per-account results
+- skills/spredfast-subscribe-to-events.md — create an event subscription, push or pull delivery, the eleven event names
+- skills/spredfast-export-analytics.md — start an asynchronous analytics export and poll it
+- skills/spredfast-manage-content-center-assets.md — folders and assets; the required first step for video
+
+## Semantics and posture
+
+- conventions/spredfast-conventions.yml — auth, pagination, versioning, headers, error envelope, what is absent
+- errors/spredfast-problem-types.yml — status codes, the envelope, and the non-JSON failure modes
+- authentication/spredfast-authentication.yml — every security scheme
+- scopes/spredfast-scopes.yml — the single `all` scope
+- data-model/spredfast-data-model.yml — 18 entities and the relationship graph, reconstructed from sfEntityType and id fields
+- asyncapi/spredfast-events-webhooks.yml — the event catalog (no AsyncAPI document is published)
+- lifecycle/spredfast-lifecycle.yml — versioning, the missing deprecation policy, the status page, company history
+- rate-limits/spredfast-rate-limits.yml — an honest zero
+- plans/spredfast-plans-pricing.yml — enterprise, contact sales; no published pricing
+- conformance/spredfast-conformance.yml — standards conformed to and not
+- security/spredfast-domain-security.yml — TLS, HSTS, DNSSEC, CAA, SPF, DMARC
+- security/spredfast-trust-center.yml — SOC 2 Type II, ISO 27001, ISO 27701, ISO 22301, PCI DSS (asserted by Khoros, the successor)
+- security/spredfast-vulnerability-disclosure.yml — none published
+- packages/spredfast-packages.yml — no API SDK; four first-party npm packages, all last shipped 2016–2018
+- well-known/spredfast-well-known.yml — nothing served on any host
+- overlays/ — OpenAPI Overlay 1.0.0 documents carrying our enhancements without mutating the harvested contracts
+
+## Provider surfaces
+
+- Developer center: https://developer.khoros.com/khorosmarketingdevdocs
+- API reference: https://developer.khoros.com/khorosmarketingdevdocs/reference
+- Getting started: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+- Status: https://status.khoros.com (Atlassian Statuspage; machine-readable at /api/v2/summary.json; carries a "Khoros Marketing" component group)
+- Trust center: https://khoros.ai/trust-center/
+- Company: https://khoros.ai
+- Dead: devcenter.spredfast.com (TLS handshake failure; api.spredfast.com/ still 307-redirects here), spredfast.com (503)
+
+## Not available
+
+No MCP server. No A2A agent card. No GraphQL. No gRPC/protobuf. No AsyncAPI. No CLI. No sandbox or test-mode credentials. No published SDK for any language. No changelog. No published pricing. No security.txt. No OAuth or OIDC discovery metadata (login.spredfast.com/.well-known/* returns 404).

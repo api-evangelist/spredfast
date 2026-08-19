@@ -1,0 +1,435 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "notification-service",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.spredfast.com/v2/events"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://example.com/oauth2/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/data/{subscriptionId}": {
+      "get": {
+        "summary": "Retrieve Subscription Events",
+        "description": "Poll for events under the specified subscription using Khoros Marketing Events API.",
+        "operationId": "retrieve-subscription-events",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "in": "path",
+            "description": "Subscription UUID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset into results, use to cursor through results. **Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum events to return. **Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/subscription": {
+      "get": {
+        "summary": "List Subscriptions",
+        "description": "Retrieves all subscriptions to events registered for the specified company using Khoros Marketing Events API.",
+        "operationId": "list-subscriptions",
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "description": "Result page number. Used for cursoring. **Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return. **Format:** int32",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "post": {
+        "summary": "Create a Subscription",
+        "description": "Creates a subscription to an event originating from the specified company using Khoros Marketing Events API.",
+        "operationId": "create-a-subscription",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "uuid": {
+                    "type": "string",
+                    "description": "Globally unique identifier for this subscription. **Format:** uuid **readOnly:** true"
+                  },
+                  "externalId": {
+                    "type": "string",
+                    "description": "Your unique identifier for this subscription."
+                  },
+                  "companyId": {
+                    "type": "integer",
+                    "description": "Your company ID. **Format:** int64 **readOnly:** true",
+                    "format": "int32"
+                  },
+                  "userId": {
+                    "type": "integer",
+                    "description": "Your user ID. **Format:** int64 **readOnly:** true",
+                    "format": "int32"
+                  },
+                  "eventName": {
+                    "type": "string",
+                    "description": "Name of the event to listen for."
+                  },
+                  "version": {
+                    "type": "integer",
+                    "description": "Version of the event to deliver. **Format:** int32",
+                    "format": "int32"
+                  },
+                  "bearerToken": {
+                    "type": "string",
+                    "description": "Optional token to deliver as bearer token in notification calls."
+                  },
+                  "notificationUri": {
+                    "type": "string",
+                    "description": "Optional URL to call when events occur. **Format:** uri"
+                  },
+                  "query": {
+                    "type": "string",
+                    "description": "Optional query string as regex for events."
+                  },
+                  "createdDate": {
+                    "type": "string",
+                    "description": "Date of subscription creation. **Format:** date-time **readOnly:** true"
+                  },
+                  "key": {
+                    "type": "object",
+                    "properties": {
+                      "uuid": {
+                        "type": "string",
+                        "description": "**Format:** uuid **readOnly:** true"
+                      },
+                      "companyId": {
+                        "type": "integer",
+                        "description": "**Format:** int64 **readOnly:** true",
+                        "format": "int32"
+                      },
+                      "eventName": {
+                        "type": "string",
+                        "description": "**readOnly:** true"
+                      }
+                    }
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "**Allowed Values:** `ACTIVE`, `DISABLED`, `PAUSED` **readOnly** true"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/subscription/{id}": {
+      "get": {
+        "summary": "Retrieve Subscription Details",
+        "description": "Retrieves a specific subscription to an event by its UUID using Khoros Marketing Events API.",
+        "operationId": "retrieve-subscription-details",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "UUID of the subscription. **Format:** uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "summary": "Delete a Subscription",
+        "description": "Deletes a specific subscription to an event registered for a company using Khoros Marketing Events API.",
+        "operationId": "delete-a-subscription",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "UUID of the subscription. **Format:** uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/subscription/{id}/{status}": {
+      "put": {
+        "summary": "Update a Subscription",
+        "description": "Updates the status of a subscription using Khoros Marketing Events API.",
+        "operationId": "update-a-subscription",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "UUID of subscription. **Format:** uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "description": "**Allowed Values:** `ACTIVE`, `DISABLED`, `PAUSED`",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "Coming Soon"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "422",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

@@ -1,0 +1,1040 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conversations API V1",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Me",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List of your companies with this app enabled",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/v1/me"
+          },
+          "docs": "List of your companies **with this app enabled**."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new Content Center Asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/asset",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new image/video Content Center Asset."
+        },
+        {
+          "info": {
+            "name": "Create a new Content Center image/video Asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/asset?multipart",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "video",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "videoSize",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a new image/video Content Center Asset."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Content Center Asset based by asset ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/asset/:assetId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a Content Center Asset based by asset ID (including content labels information)."
+        },
+        {
+          "info": {
+            "name": "Update existing Content Center Asset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/asset/:assetId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "removeImage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "removeVideo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a Content Center Asset based on the JSON request body."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Folder",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of folders.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/folder",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nameFilter",
+                "value": "",
+                "type": "query",
+                "description": "If present, filter the results by the provided \"nameFilter\" string"
+              },
+              {
+                "name": "metrics",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This endpoint is used to retrieve a list of existing *Spredfast* Content Center folders."
+        },
+        {
+          "info": {
+            "name": "Create a new Content Center Asset Folder.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/folder",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Content Center Asset Folder."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific Content Center Asset Folder by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/folder/:folderId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific Content Center Asset Folder by ID."
+        },
+        {
+          "info": {
+            "name": "Updates an existing Content Center Asset Folder.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/folder/:folderId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing Content Center Asset Folder."
+        },
+        {
+          "info": {
+            "name": "Deletes an existing Content Center Asset Folder.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/folder/:folderId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an existing Content Center Asset Folder."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of assets in a folder.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/folder/:folderId/assets",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of assets in a folder."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Initiatives",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of available initiatives.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nameFilter",
+                "value": "",
+                "type": "query",
+                "description": "If present, filter the results by the provided \"nameFilter\" string."
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of available initiatives."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single initiative by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single initiative by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Labels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve paged labels.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/contentLabel",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "If present, filter the results by the provided title string."
+              },
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "If present, only return \"top\" labels."
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve paged labels."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Publish a new message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/message",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish a new *Spredfast* Messages for the target Initiative."
+        },
+        {
+          "info": {
+            "name": "Retrieve an existing message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/message/:messageId",
+            "params": [
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The Messages endpoint returns information about the *Spredfast* Messages for the target Initiative."
+        },
+        {
+          "info": {
+            "name": "Update an existing multi-part message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/message/:messageId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to update an existing multi-part *Spredfast* Message."
+        },
+        {
+          "info": {
+            "name": "Delete an existing message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/message/:messageId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This endpoint is used to delete an existing *Spredfast* Message."
+        },
+        {
+          "info": {
+            "name": "Publish a new message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/message?multipart",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Publish a new *Spredfast* Messages for the target Initiative."
+        },
+        {
+          "info": {
+            "name": "Publish a new message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/message?imageset",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Publish a new *Spredfast* Messages for the target Initiative. **Note:** For multiple images the cURL should looks like this (notice that content.images is an array and must contain the same number of elements as files being uploaded): \n \n ```curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: Bearer {your token}' -F 'message={\"sfEntityType\":\"Message\",\"service\":\"FACEBOOK\",\"content\":{\"sfEntityType\":\"ImageShareList\",\"images\":[{\"sfEn"
+        },
+        {
+          "info": {
+            "name": "Publish a new message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/message?video",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Publish a new *Spredfast* Messages for the target Initiative."
+        },
+        {
+          "info": {
+            "name": "Update an existing multi-part message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/message/:messageId?multipart",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "image",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "This endpoint is used to update an existing multi-part *Spredfast* Message."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MultiChannelMessages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve an existing multi-channel message.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/multiChannelMessage/:messageId",
+            "params": [
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The Messages endpoint returns information about the *Spredfast* multi-channel messages for the target Initiative."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of Plans.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/plan",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "nameFilter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of Plans."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve permissions for current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/privilege",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Results will be a list of permissions in the **currently selected company**."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AccountSet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists all accounts sets and corresponding accounts available to the user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/initiative/:initiativeId/accountset",
+            "params": [
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all account sets and accounts available.\n\nNote: the following criteria must be met for an account set to be listed:\n1. Your user must be a member of the Account Set.\n2. There must be at least one Account registered in the Account Set."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of Conversations users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.spredfast.com/:environment/v1/company/:companyId/users/initiative/:initiativeId/publishers",
+            "params": [
+              {
+                "name": "environment",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "initiativeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of Conversations users"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

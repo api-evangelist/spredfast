@@ -1,0 +1,1320 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "stream-api",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://example.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Retrieve Stream's Approved Content",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "tweet_mode",
+            "value": "",
+            "type": "query",
+            "description": "This will expose the latest Tweet format from Twitter where the payload contains all information required to render Tweets that contain more than 140 characters."
+          }
+        ]
+      },
+      "docs": "Retrieve approved content for a specified account and stream"
+    },
+    {
+      "info": {
+        "name": "Specify amount of content to pull",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?limit",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Number of status entities to return. **Maximum:** `200` **Minimum:** `1`"
+          }
+        ]
+      },
+      "docs": "Includes a query parameter to return a specific number of entities"
+    },
+    {
+      "info": {
+        "name": "Gather content after specific entity",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?since_id",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "since_id",
+            "value": "",
+            "type": "query",
+            "description": "Includes only those status entities approved after supplied status entity_id biasing towards real-time. (e.g. “entity_id” = 255682528302747648)\""
+          }
+        ]
+      },
+      "docs": "Includes only those status entities approved after supplied status entity_id biasing towards real-time"
+    },
+    {
+      "info": {
+        "name": "Gather content after included entity",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?from_id",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "from_id",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Includes only those status entities approved after supplied status entity_id without skipping over status entities"
+    },
+    {
+      "info": {
+        "name": "Gather content before included entity",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?start_id",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "start_id",
+            "value": "",
+            "type": "query",
+            "description": "Includes only those status entities approved before supplied status entity_id. This parameter is commonly used to implement ‘More’ functionality on a stream of content, wherein an end user sees a stream of content, then clicks on a ‘More’ link to display the next N entities. By supplying the entity_id of the last viewed entity, you may request the set of entities that came before it in the stream."
+          }
+        ]
+      },
+      "docs": "Includes only those status entities approved before supplied status `entity_id`"
+    },
+    {
+      "info": {
+        "name": "Enable JSONP support",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?callback",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Enables JSONP support. Wraps JSON response with a JavaScript function of given name. (e.g. ?callback=myFunction)"
+    },
+    {
+      "info": {
+        "name": "Enable geohinting data",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?geo_hint",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "geo_hint",
+            "value": "",
+            "type": "query",
+            "description": "When possible, geo_hint adds inferred status entity location from the authoring user’s profile information. The data is added the to geo_hint property of a Twitter status entity. (e.g. 1)"
+          }
+        ]
+      },
+      "docs": "Includes only those status entities approved before supplied status `entity_id`"
+    },
+    {
+      "info": {
+        "name": "Enable product hinting for each entity",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?page_links",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "page_links",
+            "value": "",
+            "type": "query",
+            "description": "This parameter is used for Product Linking and must be set to true to surface up any product data that is linked to the entity. The absence of the parameter or it being set to false will assume that you are not requesting product linked data. If set to true, the data is added the to massrel/page_links property of an entity. (e.g. 1)"
+          }
+        ]
+      },
+      "docs": "Enable product hinting by specified account and stream"
+    },
+    {
+      "info": {
+        "name": "Enable replies to entities",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?replies",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "replies",
+            "value": "",
+            "type": "query",
+            "description": "Includes the status entity that a status entity replied to. The status entity is added to the in_reply_to property of a status entity. (e.g. 1)"
+          }
+        ]
+      },
+      "docs": "Includes the status entity that a status entity replied to. The status entity is added to the in_reply_to property of a status entity"
+    },
+    {
+      "info": {
+        "name": "Specify Social Network to gather entities",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?network",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "network",
+            "value": "",
+            "type": "query",
+            "description": "Includes entities from a specified social network only. **Possible Values:** `facebook`, `instagram`, `google_plus`, and `rss`. **Notes:** Must be a single value (`network=facebook`). Multiple values are not supported."
+          }
+        ]
+      },
+      "docs": "Includes entities from a specified social network only"
+    },
+    {
+      "info": {
+        "name": "Included entity object on tweets",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?include_entities",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "include_entities",
+            "value": "",
+            "type": "query",
+            "description": "XML endpoint only. Includes an `entities` object on Tweets containing links, media, or other references."
+          }
+        ]
+      },
+      "docs": "XML endpoint only. Includes an `entities` object on Tweets containing links, media, or other references"
+    },
+    {
+      "info": {
+        "name": "Reverse order of status entities",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?reverse",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "reverse",
+            "value": "",
+            "type": "query",
+            "description": "Reverses the status entities in response to be in chronological approved order (default is reverse chronological approved order) so that entities approved earlier are on top."
+          }
+        ]
+      },
+      "docs": "Reverses the status entities in response to be in chronological approved order (default is reverse chronological approved order) so that entities approved earlier are on top"
+    },
+    {
+      "info": {
+        "name": "Remove trailing links",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?strip_links",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "strip_links",
+            "value": "",
+            "type": "query",
+            "description": "Removes trailing URLs from the text of a status entity."
+          }
+        ]
+      },
+      "docs": "Removes trailing URLs from the text of a status entity"
+    },
+    {
+      "info": {
+        "name": "Gather specific entities containing keywords",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?keywords",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "keywords",
+            "value": "",
+            "type": "query",
+            "description": "Returns only entities containing the specified keywords.(e.g. `fire%20ice`)"
+          }
+        ]
+      },
+      "docs": "Returns only entities containing the specified keywords"
+    },
+    {
+      "info": {
+        "name": "Return entities from specific user",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?from",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "from",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns only entities authored by the specified author. The value must be in all lowercase. (e.g. `jack%20johnson`)"
+    },
+    {
+      "info": {
+        "name": "Return entities after a specific time",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?timeframe[start]",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "timeframe[start]",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns only items created after given time. Only use the seconds portion of unix time (JavaScript will give the number in milliseconds. Divide by 1000). (e.g. `1380666060`)"
+    },
+    {
+      "info": {
+        "name": "Return entities before a specific time",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName?timeframe[finish]",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "timeframe[finish]",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns only items created before given time. Only use the seconds portion of unix time (JavaScript will give the number in milliseconds. Divide by 1000). (e.g. `1380666060`)"
+    },
+    {
+      "info": {
+        "name": "Get entity information",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Provides information about and derived from the entities in a stream"
+    },
+    {
+      "info": {
+        "name": "Get minutes of activity",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?num_minutes",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "num_minutes",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieve the number of minutes of activity"
+    },
+    {
+      "info": {
+        "name": "Get hours of activity",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?num_hours",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "num_hours",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieve the number of activity hours"
+    },
+    {
+      "info": {
+        "name": "Get days of activity",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?num_days",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "num_days",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieve the number of activity days"
+    },
+    {
+      "info": {
+        "name": "Get activity and count props",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?activity",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "activity",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** binary"
+          }
+        ]
+      },
+      "docs": "Include activity and count properties in response"
+    },
+    {
+      "info": {
+        "name": "Get last item of activity",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?finish",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "finish",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Unix time of the point of which activity data should end"
+    },
+    {
+      "info": {
+        "name": "Get networks in meta response",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json? networks",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "networks",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Include networks property in the response, which is an array of strings"
+    },
+    {
+      "info": {
+        "name": "Get top retweets in specified hours",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?top_periods",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "top_periods",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Include top tweets from specific hourly periods provided"
+    },
+    {
+      "info": {
+        "name": "Get top retweets hourly from now",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?top_periods_relative",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "top_periods_relative",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Include top tweets from specific hourly periods ago from now"
+    },
+    {
+      "info": {
+        "name": "Get tweets per period",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?top_count",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "top_count",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Number of tweets to include per period"
+    },
+    {
+      "info": {
+        "name": "Get number of hashtags returned",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?num_hashtags",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "num_hashtags",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieves the number of hashtags."
+    },
+    {
+      "info": {
+        "name": "Get number of contributors",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?num_contributors",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "num_contributors",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Number of contributor user handles to return"
+    },
+    {
+      "info": {
+        "name": "Get number of topics",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?num_trends",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "num_trends",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieves the number of topics (buckets)."
+    },
+    {
+      "info": {
+        "name": "Get Specified Sort Order",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?sort",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "sort",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Determines the sort order for returned topics"
+    },
+    {
+      "info": {
+        "name": "Get all topics",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?all_topics",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "all_topics",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns all topics, not just those with count > 0"
+    },
+    {
+      "info": {
+        "name": "Get percentages in buckets",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?percent",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "percent",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns percentages (PCT) in buckets (Total group only, not top)"
+    },
+    {
+      "info": {
+        "name": "Get specific decimals in percent return",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?precision",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "precision",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Determines the number of decimal places to return in percentages"
+    },
+    {
+      "info": {
+        "name": "Get excluded trends from values",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/meta.json?disregard",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "disregard",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Exclude trends that match supplied values from buckets while trying to ensure `num_trends` is met"
+    },
+    {
+      "info": {
+        "name": "Get specific entities",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account/:streamName/entities.json?entity_ids",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streamName",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "entity_ids",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns a comma-separated list of one or more `entity_id` values of approved items in the stream"
+    },
+    {
+      "info": {
+        "name": "Get meta account information",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account.json",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves limited meta-information (entity counts, entity activity rates, etc.) about a set of streams belonging to an individual user account"
+    },
+    {
+      "info": {
+        "name": "Get meta info of account's streams",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account.json?streams",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streams",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns a comma-delimited set of stream names for which you need to pull meta information"
+    },
+    {
+      "info": {
+        "name": "Get minutes of activity from account",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account.json?num_minutes",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "num_minutes",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieves the number of minutes of activity."
+    },
+    {
+      "info": {
+        "name": "Get trends in response per account",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account.json?num_trends",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "num_trends",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Number of trends to return in response per bucket"
+    },
+    {
+      "info": {
+        "name": "Exclude specified trends",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account.json?disregard",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "disregard",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Exclude trends that match supplied values from buckets while trying to ensure `num_trends` is met"
+    },
+    {
+      "info": {
+        "name": "Get activity data from specific time",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account.json?start",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "start",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Unix time of the point of which activity data should start"
+    },
+    {
+      "info": {
+        "name": "Get activity data ending at specific time",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account.json?finish",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Unix time of the point of which activity data should end"
+    },
+    {
+      "info": {
+        "name": "Get streams with/without topics",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/:account.json?streams_with_topics",
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streams_with_topics",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns streams that do or do not have topics configured"
+    },
+    {
+      "info": {
+        "name": "Compare stream volumes",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/compare.json?streams",
+        "params": [
+          {
+            "name": "streams",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieve stream volumes and compare them."
+    },
+    {
+      "info": {
+        "name": "Get percentage towards target",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/compare.json?streams=:content&target",
+        "params": [
+          {
+            "name": "content",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streams",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "target",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Get a percentage towards a specified target"
+    },
+    {
+      "info": {
+        "name": "Get specific decimals in percent return",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/compare.json?streams=:content&target=:number&precision",
+        "params": [
+          {
+            "name": "content",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "number",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streams",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "target",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "precision",
+            "value": "",
+            "type": "query",
+            "description": "**Possible Values:** `0`, `1`, `2`, `3`, `4`"
+          }
+        ]
+      },
+      "docs": "Return specific decimals"
+    },
+    {
+      "info": {
+        "name": "Get specified sort order",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.massrelevance.com/compare.json?streams=:content&sort",
+        "params": [
+          {
+            "name": "content",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "streams",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "sort",
+            "value": "",
+            "type": "query",
+            "description": "Possible Values: `pct asc`, `pct desc`"
+          }
+        ]
+      },
+      "docs": "Defines the sort order of the results"
+    }
+  ],
+  "bundled": true
+}

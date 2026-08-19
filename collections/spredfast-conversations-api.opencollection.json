@@ -1,0 +1,953 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "conversations",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://example.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Retrieve All Account Sets & Accounts Available",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiative-id/accountset",
+        "params": [
+          {
+            "name": "initiative-id",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target."
+          }
+        ]
+      },
+      "docs": "List all account sets and accounts available"
+    },
+    {
+      "info": {
+        "name": "Create Text Asset",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/asset",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a new Text Content Center Asset"
+    },
+    {
+      "info": {
+        "name": "Create Image or Video",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/asset?multipart",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a new image/video Content Center Asset"
+    },
+    {
+      "info": {
+        "name": "Retrieve a Content Center Asset by ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/asset/:assetId",
+        "params": [
+          {
+            "name": "assetId",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Gets a Content Center Asset by asset ID (including content label information)"
+    },
+    {
+      "info": {
+        "name": "Update Existing Content Center Asset",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.spredfast.com/v2/conversations/asset/:assetId",
+        "params": [
+          {
+            "name": "assetId",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "removeImage",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "removeVideo",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Updates a Content Center Asset based on the JSON request body"
+    },
+    {
+      "info": {
+        "name": "Retrieve a list of folders",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/folder",
+        "params": [
+          {
+            "name": "nameFilter",
+            "value": "",
+            "type": "query",
+            "description": "If present, filter the results by the provided `nameFilter` string."
+          },
+          {
+            "name": "metrics",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          }
+        ]
+      },
+      "docs": "Retrieve a list of existing Khoros Marketing Content Center folders"
+    },
+    {
+      "info": {
+        "name": "Create a New Content Asset Folder",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/folder",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a new custom asset folder where assets may be assigned"
+    },
+    {
+      "info": {
+        "name": "Retrieve a Content Asset Folder by ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/folder/:folderId",
+        "params": [
+          {
+            "name": "folderId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ]
+      },
+      "docs": "Retrieve a specific content asset folder by ID"
+    },
+    {
+      "info": {
+        "name": "Update Existing Content Center Asset Folder",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.spredfast.com/v2/conversations/folder/:folderId",
+        "params": [
+          {
+            "name": "folderId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update an existing content center asset folder"
+    },
+    {
+      "info": {
+        "name": "Delete a Content Asset Folder by ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.spredfast.com/v2/conversations/folder/:folderId",
+        "params": [
+          {
+            "name": "folderId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ]
+      },
+      "docs": "Delete a specific content asset folder by ID"
+    },
+    {
+      "info": {
+        "name": "Retrieve a List of Assets in a Folder",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/folder/:folderId/assets",
+        "params": [
+          {
+            "name": "folderId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          },
+          {
+            "name": "orderBy",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "direction",
+            "value": "",
+            "type": "query",
+            "description": "**Allowed Values:** `ASCENDING`, `DESCENDING`"
+          },
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          }
+        ]
+      },
+      "docs": "Retrieve a list of assets in a folder"
+    },
+    {
+      "info": {
+        "name": "List CustomChannels",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/calendar/customChannel",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "List any CustomChannels that exist"
+    },
+    {
+      "info": {
+        "name": "Create a CustomChannel",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/calendar/customChannel",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a CustomChannel"
+    },
+    {
+      "info": {
+        "name": "Get a CustomChannel based on ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/calendar/customChannel/:customChannelId",
+        "params": [
+          {
+            "name": "customChannelId",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Retrieve a previously created custom channel"
+    },
+    {
+      "info": {
+        "name": "Update a CustomChannel",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.spredfast.com/v2/conversations/calendar/customChannel/:customChannelId",
+        "params": [
+          {
+            "name": "customChannelId",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update a CustomChannel"
+    },
+    {
+      "info": {
+        "name": "Get a CustomChannelItem by ID",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/calendar/customChannelItem/:customChannelItemId",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format**: int64"
+          },
+          {
+            "name": "customChannelItemId",
+            "value": "",
+            "type": "path",
+            "description": "**Format**: int64"
+          }
+        ]
+      },
+      "docs": "Get a CustomChannelItem identified by its unique id"
+    },
+    {
+      "info": {
+        "name": "Create a CustomChannelItem",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/calendar/customChannelItem/:customChannelItemId",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          },
+          {
+            "name": "customChannelItemId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a new CustomChannelItem"
+    },
+    {
+      "info": {
+        "name": "Update a CustomChannelItem",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/calendar/customChannelItem/:customChannelItemId",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          },
+          {
+            "name": "customChannelItemId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update a CustomChannelItem"
+    },
+    {
+      "info": {
+        "name": "Get Messages",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/calendar/messages",
+        "params": [
+          {
+            "name": "initiativeIds",
+            "value": "",
+            "type": "query",
+            "description": "CSV list of initiatives to filter by. All initiatives are included when absent."
+          },
+          {
+            "name": "planIds",
+            "value": "",
+            "type": "query",
+            "description": "CSV list of Plan ids to filter messages by. All plans are included in the search when absent."
+          },
+          {
+            "name": "perPage",
+            "value": "",
+            "type": "query",
+            "description": "Number of messages to include in each page of results. Default is 25. Must be between 1 and 50."
+          },
+          {
+            "name": "startDate",
+            "value": "",
+            "type": "query",
+            "description": "ISO-8601 formatted date and time for the earliest published result. **Format:** date-time"
+          },
+          {
+            "name": "endDate",
+            "value": "",
+            "type": "query",
+            "description": "ISO-8601 formatted date and time for the latest published result. **Format:** date-time"
+          },
+          {
+            "name": "after",
+            "value": "",
+            "type": "query",
+            "description": "String representing the current cursor within paged data."
+          }
+        ]
+      },
+      "docs": "Get a list of messages posted or scheduled to be posted from Khoros Marketing"
+    },
+    {
+      "info": {
+        "name": "Retrieve a List of Available Initiatives",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/initiative",
+        "params": [
+          {
+            "name": "nameFilter",
+            "value": "",
+            "type": "query",
+            "description": "If present, filter the results by the provided `nameFilter` string."
+          },
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          }
+        ]
+      },
+      "docs": "Retrieve a list of initiatives that exist for your company"
+    },
+    {
+      "info": {
+        "name": "Retrieve a Single Initiative",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format** int64"
+          }
+        ]
+      },
+      "docs": "Retrieve information about a specific initiative"
+    },
+    {
+      "info": {
+        "name": "Retrieve Paged Labels",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/contentLabel",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          },
+          {
+            "name": "q",
+            "value": "",
+            "type": "query",
+            "description": "If present, filter the results by the provided string."
+          },
+          {
+            "name": "priority",
+            "value": "",
+            "type": "query",
+            "description": "If present, only returns `top` labels."
+          },
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          }
+        ]
+      },
+      "docs": "Retrieve a paged list of labels using Khoros Marketing Conversations API."
+    },
+    {
+      "info": {
+        "name": "Retrieve a List of Companies with this App Enabled",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/me"
+      },
+      "docs": "Retrieve a list of companies the currently-authenticated user is associated with for this app"
+    },
+    {
+      "info": {
+        "name": "Publish a New Message (imageset)",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/message",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Publish a new Khoros Marketing Message for the target Initiative"
+    },
+    {
+      "info": {
+        "name": "Retrieve an Existing Message",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/message/:messageId",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          },
+          {
+            "name": "messageId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ]
+      },
+      "docs": "Returns information about the existing Khoros Marketing Messages for the target Initiative"
+    },
+    {
+      "info": {
+        "name": "Update a Message",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/message/:messageId",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          },
+          {
+            "name": "messageId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update an existing Khoros Marketing Message using Khoros Marketing Conversations API."
+    },
+    {
+      "info": {
+        "name": "Delete an Existing Message",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/message/:messageId",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          },
+          {
+            "name": "messageId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ]
+      },
+      "docs": "This endpoint is used to delete an existing Khoros Marketing Message"
+    },
+    {
+      "info": {
+        "name": "Publish a New Message (multipart)",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/message?multipart",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Publish a new Khoros Marketing multipart Message for the target Initiative"
+    },
+    {
+      "info": {
+        "name": "Update a Multipart Message",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/message/:messageId?multipart",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          },
+          {
+            "name": "messageId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "This endpoint is used to update an existing multi-part Khoros Marketing Message"
+    },
+    {
+      "info": {
+        "name": "Retrieve an Existing Multi-channel Message",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/multiChannelMessage/:messageId",
+        "params": [
+          {
+            "name": "messageId",
+            "value": "",
+            "type": "path",
+            "description": "**Format:** int64"
+          },
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          }
+        ]
+      },
+      "docs": "The Messages endpoint returns information about the Khoros Marketing multi-channel messages for the target Initiative"
+    },
+    {
+      "info": {
+        "name": "Retrieve Permissions for Current User",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/privilege"
+      },
+      "docs": "Retrieves a list of permissions in the currently selected company using Khoros Marketing Conversations API."
+    },
+    {
+      "info": {
+        "name": "Retrieve a List of Plans",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/plan",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target. **Format:** int64"
+          },
+          {
+            "name": "nameFilter",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query",
+            "description": "**Format:** int32"
+          }
+        ]
+      },
+      "docs": "Retrieve a list of plans for the specified initiative"
+    },
+    {
+      "info": {
+        "name": "List Roles for the Company",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/roles",
+        "params": [
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List Roles for the company using Khoros Marketing Conversations API."
+    },
+    {
+      "info": {
+        "name": "List Conversations Publishers",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/users/initiative/:initiativeId/publishers",
+        "params": [
+          {
+            "name": "initiativeId",
+            "value": "",
+            "type": "path",
+            "description": "The initiative you wish to target."
+          }
+        ]
+      },
+      "docs": "List publishers for a specified initiative using Khoros Marketing Conversations API."
+    },
+    {
+      "info": {
+        "name": "Delete a Conversations User",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.spredfast.com/v2/conversations/user/:userId",
+        "params": [
+          {
+            "name": "userId",
+            "value": "",
+            "type": "path",
+            "description": "The `id` returned from [List Users](ref:list-conversations-users)."
+          }
+        ]
+      },
+      "docs": "Delete a user from the company using Khoros Marketing Conversations API."
+    },
+    {
+      "info": {
+        "name": "Create a Conversations User",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/user",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a Conversations user for the company using Khoros Marketing Conversations API."
+    },
+    {
+      "info": {
+        "name": "List Conversations Users",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/users",
+        "params": [
+          {
+            "name": "nameEmailFilter",
+            "value": "",
+            "type": "query",
+            "description": "Search for users based on `firstName`, `lastName`, or `email`."
+          },
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List Conversations users in the company"
+    },
+    {
+      "info": {
+        "name": "Create a Video Captions",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.spredfast.com/v2/conversations/initiative/:initiativeId/video/captions",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a Video Captions object for using in the Khoros Marketing Conversations API."
+    },
+    {
+      "info": {
+        "name": "List Workspaces for the Company",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.spredfast.com/v2/conversations/workspaces",
+        "params": [
+          {
+            "name": "pageNumber",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "pageSize",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieve list Workspaces for the company"
+    }
+  ],
+  "bundled": true
+}

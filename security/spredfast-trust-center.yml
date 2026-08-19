@@ -1,0 +1,58 @@
+generated: '2026-08-13'
+method: searched
+source: https://khoros.ai/trust-center/
+docs: https://khoros.ai/legal/khoros-compliance/
+note: >-
+  Khoros — the successor company that carries the Spredfast product line as
+  Khoros Marketing — publishes a trust center with named third-party
+  certifications. khoros.com/trust-center 302s to khoros.ai/trust-center/
+  (Khoros now operates on the khoros.ai domain; khoros.com redirects to it).
+  This is a PARENT-COMPANY posture: nothing on spredfast.com or
+  api.spredfast.com asserts any of it, and the certifications are scoped to
+  Khoros platform operations, which is where the Spredfast APIs are now run.
+trust_center_url: https://khoros.ai/trust-center/
+certifications:
+- name: SOC 2 Type II
+  body: AICPA
+  verified: named on the trust center
+- name: ISO/IEC 27001
+  body: ISO
+  scope: Information security management
+  verified: named on the trust center
+- name: ISO/IEC 27701
+  body: ISO
+  scope: Privacy information management
+  verified: named on the trust center
+- name: ISO 22301
+  body: ISO
+  scope: Business continuity management
+  verified: named on the trust center
+- name: PCI DSS
+  body: PCI Security Standards Council
+  verified: named on the trust center
+- name: TrustArc Privacy Seal
+  body: TrustArc
+  verified: named on the trust center
+contacts:
+- purpose: compliance
+  email: compliance@khoros.com
+- purpose: privacy / data subject access requests
+  email: privacy@khoros.com
+- purpose: legal
+  email: legal@khoros.com
+resources:
+- title: Khoros Security
+  url: https://khoros.ai/khoros-security/
+- title: Khoros Compliance
+  url: https://khoros.ai/legal/khoros-compliance/
+- title: Customer Agreements
+  url: https://khoros.ai/legal/customer-agreements/
+gaps:
+- >-
+  No published vulnerability disclosure or bug bounty program (see
+  security/spredfast-vulnerability-disclosure.yml). Security enquiries are
+  routed through a customer success manager or a marketing contact form, not a
+  security.txt Contact or a disclosure policy.
+- >-
+  No /.well-known/security.txt is served on any Spredfast or Khoros host
+  (see well-known/spredfast-well-known.yml).

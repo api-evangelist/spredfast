@@ -1,0 +1,991 @@
+{
+  "item": [
+    {
+      "id": "8e1d74e8-a130-4a7d-8bdc-a935a403c25f",
+      "name": "Retrieve Subscription Events",
+      "request": {
+        "name": "Retrieve Subscription Events",
+        "description": {
+          "content": "Poll for events under the specified subscription using Khoros Marketing Events API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "data",
+            ":subscriptionId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "offset",
+              "value": "0",
+              "description": "Offset into results, use to cursor through results. **Format:** int32"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "0",
+              "description": "Maximum events to return. **Format:** int32"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "subscriptionId",
+              "description": "(Required) Subscription UUID"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "fbeffbe5-2a0b-46af-95b3-dbaf085f39c2",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "data",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) Subscription UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "44ba533d-029d-42a2-a668-19e40ed018d3",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "data",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "key": "limit",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) Subscription UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b5d7cc45-ad3f-49b7-a68f-989b21addede",
+      "name": "List Subscriptions",
+      "request": {
+        "name": "List Subscriptions",
+        "description": {
+          "content": "Retrieves all subscriptions to events registered for the specified company using Khoros Marketing Events API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "subscription"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "0",
+              "description": "Result page number. Used for cursoring. **Format:** int32"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "0",
+              "description": "Number of items to return. **Format:** int32"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7d164b3b-fa9c-4e5b-8451-9458491c56d6",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b4d23a6e-29ca-4821-8cb7-a4c48c0cb318",
+      "name": "Create a Subscription",
+      "request": {
+        "name": "Create a Subscription",
+        "description": {
+          "content": "Creates a subscription to an event originating from the specified company using Khoros Marketing Events API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "subscription"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uuid\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"companyId\": \"<integer>\",\n  \"userId\": \"<integer>\",\n  \"eventName\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"bearerToken\": \"<string>\",\n  \"notificationUri\": \"<string>\",\n  \"query\": \"<string>\",\n  \"createdDate\": \"<string>\",\n  \"key\": {\n    \"uuid\": \"<string>\",\n    \"companyId\": \"<integer>\",\n    \"eventName\": \"<string>\"\n  },\n  \"status\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "47ba9333-1946-49d2-95ec-1d2aeb37e3fa",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"companyId\": \"<integer>\",\n  \"userId\": \"<integer>\",\n  \"eventName\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"bearerToken\": \"<string>\",\n  \"notificationUri\": \"<string>\",\n  \"query\": \"<string>\",\n  \"createdDate\": \"<string>\",\n  \"key\": {\n    \"uuid\": \"<string>\",\n    \"companyId\": \"<integer>\",\n    \"eventName\": \"<string>\"\n  },\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "f3a00879-ccee-45fb-add1-d40bb3ead1b7",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"companyId\": \"<integer>\",\n  \"userId\": \"<integer>\",\n  \"eventName\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"bearerToken\": \"<string>\",\n  \"notificationUri\": \"<string>\",\n  \"query\": \"<string>\",\n  \"createdDate\": \"<string>\",\n  \"key\": {\n    \"uuid\": \"<string>\",\n    \"companyId\": \"<integer>\",\n    \"eventName\": \"<string>\"\n  },\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c3633002-706d-4b35-9dcc-f9a259882043",
+      "name": "Retrieve Subscription Details",
+      "request": {
+        "name": "Retrieve Subscription Details",
+        "description": {
+          "content": "Retrieves a specific subscription to an event by its UUID using Khoros Marketing Events API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "subscription",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) UUID of the subscription. **Format:** uuid"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "91b37319-212b-4fd8-8230-ed192ab6f3eb",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) UUID of the subscription. **Format:** uuid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "3c4fd220-4afd-40a8-8eab-e7ade6537dfd",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) UUID of the subscription. **Format:** uuid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "31a37f75-6a0b-4242-a707-95a53963fb95",
+      "name": "Delete a Subscription",
+      "request": {
+        "name": "Delete a Subscription",
+        "description": {
+          "content": "Deletes a specific subscription to an event registered for a company using Khoros Marketing Events API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "subscription",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) UUID of the subscription. **Format:** uuid"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "8ca01633-bd46-418f-b1c8-e51d00389eba",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) UUID of the subscription. **Format:** uuid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "d948ba41-88e0-4e75-838a-669632f83424",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) UUID of the subscription. **Format:** uuid"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8df9da03-8584-48bb-9a40-215b250d2b26",
+      "name": "Update a Subscription",
+      "request": {
+        "name": "Update a Subscription",
+        "description": {
+          "content": "Updates the status of a subscription using Khoros Marketing Events API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "subscription",
+            ":id",
+            ":status"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) UUID of subscription. **Format:** uuid"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "status",
+              "description": "(Required) **Allowed Values:** `ACTIVE`, `DISABLED`, `PAUSED`"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "PUT",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "78791e4c-7f11-42a3-9f34-b0ef4e39aa98",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription",
+                ":id",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) UUID of subscription. **Format:** uuid"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) **Allowed Values:** `ACTIVE`, `DISABLED`, `PAUSED`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "b7836984-455c-443b-af2d-a5718e909a2e",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription",
+                ":id",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) UUID of subscription. **Format:** uuid"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) **Allowed Values:** `ACTIVE`, `DISABLED`, `PAUSED`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "355a3c80-5b9f-4e4c-b6c2-b1b409caac65",
+          "name": "422",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "subscription",
+                ":id",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) UUID of subscription. **Format:** uuid"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) **Allowed Values:** `ACTIVE`, `DISABLED`, `PAUSED`"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spredfast.com/v2/events",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://example.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "018463f9-dcee-4e21-ac4b-039b05d92ef6",
+    "name": "notification-service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

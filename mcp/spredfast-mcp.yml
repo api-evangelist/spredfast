@@ -1,0 +1,109 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/spredfast-conversations-api-openapi.yml,
+  openapi/spredfast-analytics-api-openapi.yml,
+  openapi/spredfast-notification-api-openapi.yml
+status: candidate
+note: >-
+  Spredfast / Khoros Marketing ships NO MCP server. Searched the Khoros
+  developer center (developer.khoros.com/khorosmarketingdevdocs), the
+  github.com/spredfast organisation (30 public repos, all third-party forks),
+  npm under the `spredfast` maintainer account (4 packages, none MCP), and the
+  api.spredfast.com host. No hosted endpoint, no stdio package, no
+  /.well-known/ manifest. The tools[] below are a DERIVED CANDIDATE mapped from
+  real operationIds in the harvested OpenAPI documents — they describe what an
+  MCP server over this API could expose, not anything the provider publishes.
+  No endpoint URL is asserted because none exists.
+deployment:
+  mode: none
+  auth: oauth
+  verified: derived
+  note: >-
+    Nobody ships a server. `auth: oauth` records what a server WOULD need: the
+    API is OAuth 2.0 only (authorization code via
+    login.spredfast.com/v3/oauth/authorize, tokens valid 24 months).
+tool_count: 12
+tools:
+- name: list_initiatives
+  description: List the initiatives (campaign containers) available to the caller.
+  rest: retrieve-a-list-of-available-initiatives
+  method: GET
+  path: /conversations/initiative
+  source: openapi/spredfast-conversations-api-openapi.yml
+- name: get_initiative
+  description: Retrieve a single initiative by id.
+  rest: retrieve-a-single-initiative
+  method: GET
+  path: /conversations/initiative/{initiativeId}
+  source: openapi/spredfast-conversations-api-openapi.yml
+- name: list_account_sets
+  description: List all account sets and connected social accounts available to an initiative.
+  rest: accountset
+  method: GET
+  path: /conversations/initiative/{initiative-id}/accountset
+  source: openapi/spredfast-conversations-api-openapi.yml
+- name: publish_message
+  description: Publish a new social message to the target accounts of an initiative.
+  rest: publish-a-new-message-imageset
+  method: POST
+  path: /conversations/initiative/{initiativeId}/message
+  source: openapi/spredfast-conversations-api-openapi.yml
+- name: get_message
+  description: Retrieve an existing published or scheduled message.
+  rest: retrieve-an-existing-message
+  method: GET
+  path: /conversations/initiative/{initiativeId}/message/{messageId}
+  source: openapi/spredfast-conversations-api-openapi.yml
+- name: delete_message
+  description: Delete an existing message.
+  rest: delete-an-existing-message
+  method: DELETE
+  path: /conversations/initiative/{initiativeId}/message/{messageId}
+  source: openapi/spredfast-conversations-api-openapi.yml
+- name: list_calendar_messages
+  description: Retrieve messages on the publishing calendar.
+  rest: get-messages
+  method: GET
+  path: /conversations/calendar/messages
+  source: openapi/spredfast-conversations-api-openapi.yml
+- name: create_text_asset
+  description: Create a text asset in the Content Center.
+  rest: assets-create-text-asset
+  method: POST
+  path: /conversations/asset
+  source: openapi/spredfast-conversations-api-openapi.yml
+- name: export_published_posts
+  description: Start an analytics export of published post metrics.
+  rest: published-post
+  method: POST
+  path: /export/posts
+  source: openapi/spredfast-analytics-api-openapi.yml
+- name: get_export_status
+  description: Poll the status of a running analytics export job.
+  rest: retrieve-export-status
+  method: GET
+  path: /export/{id}/status
+  source: openapi/spredfast-analytics-api-openapi.yml
+- name: create_event_subscription
+  description: Subscribe to a Khoros Marketing event, optionally delivering to a notificationUri.
+  rest: create-a-subscription
+  method: POST
+  path: /subscription
+  source: openapi/spredfast-notification-api-openapi.yml
+- name: whoami
+  description: Introspect the token — return the identity and company behind the access token.
+  rest: get-whoami
+  method: GET
+  path: /
+  source: openapi/spredfast-introspection-api-openapi.yml
+searched_and_not_found:
+- surface: hosted remote MCP endpoint
+  where: developer.khoros.com/khorosmarketingdevdocs
+  result: not documented
+- surface: stdio MCP package
+  where: npm (maintainer:spredfast, text:spredfast, text:khoros), PyPI
+  result: none published
+- surface: /.well-known/ai-plugin.json
+  where: api.spredfast.com (401), login.spredfast.com (404), developer.khoros.com (200 SPA shell)
+  result: no document

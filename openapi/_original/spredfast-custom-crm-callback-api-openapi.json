@@ -1,0 +1,1666 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "api-specifications",
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "https://{your-domain}.com",
+      "variables": {
+        "your-domain": {
+          "default": "your-domain"
+        }
+      }
+    }
+  ],
+  "components": {
+    "securitySchemes": {}
+  },
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/case": {
+      "post": {
+        "summary": "createCase",
+        "description": "Create a new case with interactions",
+        "operationId": "createcase",
+        "parameters": [
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "customId",
+                  "title"
+                ],
+                "properties": {
+                  "customId": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "interactions": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "created": {
+                          "type": "string",
+                          "description": "The creation date of the interaction on the origin service. **Format:** date-time"
+                        },
+                        "body": {
+                          "type": "string",
+                          "description": "The text of the interaction."
+                        },
+                        "linkUrl": {
+                          "type": "string",
+                          "description": "The direct link to the content on the origin service when available."
+                        },
+                        "serviceId": {
+                          "type": "string",
+                          "description": "The id of the content on the origin service."
+                        },
+                        "service": {
+                          "type": "string",
+                          "description": "The social service the interaction originated.",
+                          "default": "facebook"
+                        },
+                        "contentType": {
+                          "type": "string",
+                          "description": "The type of content the interaction is on the origin service. Examples include: `post`, `comment`, etc.",
+                          "default": "post"
+                        },
+                        "author": {
+                          "type": "object",
+                          "required": [
+                            "service",
+                            "serviceId",
+                            "handle",
+                            "name",
+                            "brandOwned"
+                          ],
+                          "properties": {
+                            "service": {
+                              "type": "string",
+                              "description": "The social service of the author.",
+                              "default": "facebook"
+                            },
+                            "serviceId": {
+                              "type": "string",
+                              "description": "The id of the author on the origin service."
+                            },
+                            "handle": {
+                              "type": "string",
+                              "description": "The handle of the author on the origin service."
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "The screen name of the author on the origin service."
+                            },
+                            "brandOwned": {
+                              "type": "boolean",
+                              "description": "A flag that signals if the author belongs to an account added to the platform."
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "created",
+                        "body",
+                        "linkUrl",
+                        "serviceId",
+                        "service",
+                        "contentType"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "customCasePropertyOne": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Case object."
+                  },
+                  "customCasePropertyTwo": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Case object."
+                  }
+                }
+              },
+              "examples": {
+                "Request Example": {
+                  "value": {
+                    "customerId": "string",
+                    "title": "string",
+                    "interactions": [
+                      {
+                        "created": "string (date-time)",
+                        "body": "string",
+                        "linkUrl": "string",
+                        "serviceId": "string",
+                        "service": "string",
+                        "contentType": "string",
+                        "author": {
+                          "service": "string",
+                          "serviceId": "string",
+                          "handle": "string",
+                          "name": "string",
+                          "brandOwned": true
+                        }
+                      }
+                    ],
+                    "customCasePropertyOne": "string",
+                    "customCasePropertyTwo": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "201",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "422",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/case/{id}": {
+      "get": {
+        "summary": "lookupCase",
+        "description": "Returns info for a specific case",
+        "operationId": "lookupcase",
+        "parameters": [
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Case ID.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "422",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "patch": {
+        "summary": "updateCase",
+        "description": "Create a new case with interactions",
+        "operationId": "updatecase",
+        "parameters": [
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing id of the company the user is in when making the request. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The case ID to update.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "customId",
+                  "title"
+                ],
+                "properties": {
+                  "customId": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "interactions": {
+                    "type": "array",
+                    "description": ".",
+                    "items": {
+                      "properties": {
+                        "created": {
+                          "type": "string",
+                          "description": "The creation date of the interaction on the origin service. **Format:** date-time"
+                        },
+                        "body": {
+                          "type": "string",
+                          "description": "The text of the interaction."
+                        },
+                        "linkUrl": {
+                          "type": "string",
+                          "description": "The direct link to the content on the origin service when available."
+                        },
+                        "serviceId": {
+                          "type": "string",
+                          "description": "The id of the content on the origin service."
+                        },
+                        "service": {
+                          "type": "string",
+                          "description": "The social service the interaction originated.",
+                          "default": "facebook"
+                        },
+                        "contentType": {
+                          "type": "string",
+                          "description": "The type of content the interaction is on the origin service. Examples include: `post`, `comment`, etc.",
+                          "default": "post"
+                        },
+                        "author": {
+                          "type": "object",
+                          "required": [
+                            "service",
+                            "serviceId",
+                            "handle",
+                            "name",
+                            "brandOwned"
+                          ],
+                          "properties": {
+                            "service": {
+                              "type": "string",
+                              "description": "The social service of the author.",
+                              "default": "facebook"
+                            },
+                            "serviceId": {
+                              "type": "string",
+                              "description": "The id of the author on the origin service."
+                            },
+                            "handle": {
+                              "type": "string",
+                              "description": "The handle of the author on the origin service."
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "The screen name of the author on the origin service."
+                            },
+                            "brandOwned": {
+                              "type": "boolean",
+                              "description": "A flag that signals if the author belongs to an account added to the platform."
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "created",
+                        "body",
+                        "linkUrl",
+                        "serviceId",
+                        "service",
+                        "contentType"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "customCasePropertyOne": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Case object. These will only be present if specified via the **/meta/object/case** endpoint."
+                  },
+                  "customCasePropertyTwo": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Case object. These will only be present if specified via the **/meta/object/case** endpoint."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "422",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/customers": {
+      "post": {
+        "summary": "searchCustomers",
+        "description": "Find all customers matching the provided set of criteria",
+        "operationId": "searchcustomers",
+        "parameters": [
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customSearchableCustomerFieldOne": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": true`. These will only be present if specified via the **/meta/object/customer endpoint**."
+                  },
+                  "customSearchableCustomerFieldTwo": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": true`. These will only be present if specified via the **/meta/object/customer endpoint**."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "204",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/customer/bestmatch": {
+      "post": {
+        "summary": "bestmatchCustomers",
+        "description": "Find a customer best match based on known Social Information",
+        "operationId": "bestmatchcustomers",
+        "parameters": [
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "displayName": {
+                    "type": "string",
+                    "description": "The name of the user as it would appear on the social network."
+                  },
+                  "screenName": {
+                    "type": "string",
+                    "description": "The social handle of the user."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "A description of the user as specified in Khoros Marketing."
+                  },
+                  "profileUrl": {
+                    "type": "string",
+                    "description": "A direct link to the user's social profile #header."
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "An email address to the user."
+                  },
+                  "phoneNumbers": {
+                    "type": "array",
+                    "description": "A list of phone numbers for the user as defined in Khoros Marketing.",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "addresses": {
+                    "type": "array",
+                    "description": "A list of addresses for the user as defined in Khoros Marketing.",
+                    "items": {
+                      "properties": {
+                        "streetOne": {
+                          "type": "string",
+                          "description": "First line of an address."
+                        },
+                        "streetTwo": {
+                          "type": "string",
+                          "description": "Optional line two of an address."
+                        },
+                        "city": {
+                          "type": "string",
+                          "description": "City of an address."
+                        },
+                        "state": {
+                          "type": "string",
+                          "description": "State of an address."
+                        },
+                        "zip": {
+                          "type": "string",
+                          "description": "Postal code of an address."
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "orderNumbers": {
+                    "type": "array",
+                    "description": "A list of order numbers for the user as defined in Khoros Marketing.",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "caseNumbers": {
+                    "type": "array",
+                    "description": "A list of case numbers for the user as defined in Khoros Marketing. **Note:** These will not be case numbers from this system.",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "accountNumbers": {
+                    "type": "string",
+                    "description": "A list of account numbers for the user as defined in Khoros Marketing."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/customer": {
+      "post": {
+        "summary": "createCustomer",
+        "description": "Create a new customer",
+        "operationId": "createcustomer",
+        "parameters": [
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing id of the company the user is in when making the request.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customNonSearchableCustomerFieldOne": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": false`."
+                  },
+                  "customNonSearchableCustomerFieldTwo": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": false`."
+                  },
+                  "customSearchableCustomerFieldOne": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": true`."
+                  },
+                  "customSearchableCustomerFieldTwo": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": true`."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "201",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"id\": 1234,\n  \"nonSearchableFieldOne\": \"value1\",\n  \"searchableFieldTwo\": \"value2\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1234,
+                      "default": 0
+                    },
+                    "nonSearchableFieldOne": {
+                      "type": "string",
+                      "example": "value1"
+                    },
+                    "searchableFieldTwo": {
+                      "type": "string",
+                      "example": "value2"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "422",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/customer/{id}": {
+      "get": {
+        "summary": "findCustomer",
+        "description": "Returns info for a specific customer",
+        "operationId": "findcustomer",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Customer ID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "patch": {
+        "summary": "updateCustomer",
+        "description": "Update a customer\u2019s details",
+        "operationId": "updatecustomer",
+        "parameters": [
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email id of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The id of the active Khoros Marketing Initiative the user is in when performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing id of the company the user is in when making the request.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Customer ID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customNonSearchableCustomerFieldOne": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": false`. These will only be present if specified via the [createCustomer](ref:createcustomer) endpoint."
+                  },
+                  "customNonSearchableCustomerFieldTwo": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": false`. These will only be present if specified via the [createCustomer](ref:createcustomer) endpoint."
+                  },
+                  "customSearchableCustomerFieldOne": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": true`. These will only be present if specified via the [createCustomer](ref:createcustomer) endpoint."
+                  },
+                  "customSearchableCustomerFieldTwo": {
+                    "type": "string",
+                    "description": "An example of a custom field on the Customer object with `\"searchable\": true`. These will only be present if specified via the [createCustomer](ref:createcustomer) endpoint."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "201",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "422",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/customer/{id}/cases": {
+      "get": {
+        "summary": "findCases",
+        "description": "Get all cases for the given customer ID",
+        "operationId": "findcases",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Customer ID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-initiative",
+            "in": "header",
+            "description": "The ID of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing ID of the company the user is in when making the request. **Format:** int64",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/meta/object/{type}": {
+      "get": {
+        "summary": "Define Object Structures",
+        "description": "Define object structures for a specified type",
+        "operationId": "define-object-structures",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Object name. **Allowed Values:** `customer`, `case`",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "x-sf-user-email",
+            "in": "header",
+            "description": "The email ID of the Khoros Marketing agent performing the action.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-sf-company-id",
+            "in": "header",
+            "description": "The Khoros Marketing ID of the company the user is in when making the request.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/list/{resourcePath}": {
+      "get": {
+        "summary": "List a specific directory",
+        "description": "List the assets available within a specific directory",
+        "operationId": "list-a-specific-directory",
+        "parameters": [
+          {
+            "name": "resourcePath",
+            "in": "path",
+            "description": "The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/list": {
+      "get": {
+        "summary": "List the root directory",
+        "description": "List the root directory",
+        "operationId": "list-the-root-directory",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/asset/{assetPath}": {
+      "get": {
+        "summary": "Get an asset",
+        "description": "Retrieve an asset specified by its assetPath",
+        "operationId": "get-an-asset",
+        "parameters": [
+          {
+            "name": "assetPath",
+            "in": "path",
+            "description": "The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`.",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "thumbnail",
+            "in": "query",
+            "description": "When true, a thumbnail of the asset should be returned. See the expanded parameter descriptionbelow.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "500",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "Result": {
+                    "value": "See Details for Schema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": false,
+    "proxy-enabled": false
+  },
+  "x-readme-fauxas": true
+}

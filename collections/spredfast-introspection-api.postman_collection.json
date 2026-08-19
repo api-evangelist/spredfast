@@ -1,0 +1,112 @@
+{
+  "item": [
+    {
+      "id": "313af425-a2e2-45e3-894c-e5d09d17653e",
+      "name": "Current User Details",
+      "request": {
+        "name": "Current User Details",
+        "description": {
+          "content": "This returns directory level info about the current user using Khoros Marketing Introspection API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "9a4fb265-f680-4b27-8221-e81d2b24f3ce",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"companies\\\": [\\n    {\\n      \\\"id\\\": 12345,\\n      \\\"name\\\": \\\"Example Corp\\\",\\n      \\\"products\\\": []\\n    },\\n    {\\n      \\\"id\\\": 42,\\n      \\\"name\\\": \\\"Example Company\\\",\\n      \\\"products\\\": [\\n        {\\n          \\\"environmentId\\\": 14,\\n          \\\"environmentName\\\": \\\"care\\\",\\n          \\\"environmentUrl\\\": \\\"https://care.spredfast.com\\\",\\n          \\\"externalCompanyId\\\": \\\"45\\\",\\n          \\\"id\\\": 10,\\n          \\\"name\\\": \\\"Care\\\"\\n        },\\n        {\\n          \\\"environmentId\\\": 2,\\n          \\\"environmentName\\\": \\\"APP3\\\",\\n          \\\"environmentUrl\\\": \\\"https://app3.spredfast.com\\\",\\n          \\\"externalCompanyId\\\": \\\"45\\\",\\n          \\\"id\\\": 1,\\n          \\\"name\\\": \\\"Conversations\\\"\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"description\\\": \\\"\\\",\\n  \\\"email\\\": \\\"johndoe@example.com\\\",\\n  \\\"firstName\\\": \\\"John\\\",\\n  \\\"id\\\": 123123,\\n  \\\"jobTitle\\\": \\\"Assistant to the Regional Manager\\\",\\n  \\\"lastName\\\": \\\"Doe\\\",\\n  \\\"profileImageUri\\\": \\\"https://example.com/image.jpg\\\",\\n  \\\"timezone\\\": \\\"America/Chicago\\\"\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spredfast.com/v2/whoami",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://example.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "891a8892-2745-4447-b44e-1805cbe81d90",
+    "name": "introspection-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

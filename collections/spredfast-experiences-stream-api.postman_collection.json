@@ -1,0 +1,5636 @@
+{
+  "item": [
+    {
+      "id": "7f5cd7b2-cbeb-41cd-a28c-4a23a529d762",
+      "name": "Retrieve Stream's Approved Content",
+      "request": {
+        "name": "Retrieve Stream's Approved Content",
+        "description": {
+          "content": "Retrieve approved content for a specified account and stream",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "tweet_mode",
+              "value": "extended",
+              "description": "This will expose the latest Tweet format from Twitter where the payload contains all information required to render Tweets that contain more than 140 characters."
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "53646b19-6398-451f-8176-6b303f3319e5",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "tweet_mode",
+                  "value": "extended"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "66c25ea2-d8a5-417a-9617-06b8bfea5b7a",
+      "name": "Specify amount of content to pull",
+      "request": {
+        "name": "Specify amount of content to pull",
+        "description": {
+          "content": "Includes a query parameter to return a specific number of entities",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "50",
+              "description": "Number of status entities to return. **Maximum:** `200` **Minimum:** `1`"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "461b6c30-80eb-4aa6-b4ba-be31fbbf2e06",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8f2b5303-22ba-4dbe-a0c1-0e8d49aec621",
+      "name": "Gather content after specific entity",
+      "request": {
+        "name": "Gather content after specific entity",
+        "description": {
+          "content": "Includes only those status entities approved after supplied status entity_id biasing towards real-time",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "since_id",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "since_id",
+              "value": "255682528302747648",
+              "description": "Includes only those status entities approved after supplied status entity_id biasing towards real-time. (e.g. “entity_id” = 255682528302747648)\""
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "edd25b0c-b5cd-4e1d-a9f2-884d44ad6307",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "since_id",
+                  "value": "255682528302747648"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "cbf68180-42c8-487a-af2c-ced0afdcbfb8",
+      "name": "Gather content after included entity",
+      "request": {
+        "name": "Gather content after included entity",
+        "description": {
+          "content": "Includes only those status entities approved after supplied status entity_id without skipping over status entities",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "from_id",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "from_id",
+              "value": "255682528302747648"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "83cb85dd-2fd6-4617-86db-66c3998e9819",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "from_id",
+                  "value": "255682528302747648"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ebb989e0-c2f3-44fe-a970-3959192e82d0",
+      "name": "Gather content before included entity",
+      "request": {
+        "name": "Gather content before included entity",
+        "description": {
+          "content": "Includes only those status entities approved before supplied status `entity_id`",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "start_id",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "start_id",
+              "value": "255682528302747648",
+              "description": "Includes only those status entities approved before supplied status entity_id. This parameter is commonly used to implement ‘More’ functionality on a stream of content, wherein an end user sees a stream of content, then clicks on a ‘More’ link to display the next N entities. By supplying the entity_id of the last viewed entity, you may request the set of entities that came before it in the stream."
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "0d38c99e-73df-4b73-a20c-fa37668e7283",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "start_id",
+                  "value": "255682528302747648"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "6ce6fc8a-b5cb-4a90-ac16-5bb359adb322",
+      "name": "Enable JSONP support",
+      "request": {
+        "name": "Enable JSONP support",
+        "description": {
+          "content": "Enables JSONP support. Wraps JSON response with a JavaScript function of given name. (e.g. ?callback=myFunction)",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "callback",
+              "value": "null"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "27dd65bf-5cea-4c32-bfb8-d822371dd9f5",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "a93bf702-6264-4299-bb59-54db65be7205",
+      "name": "Enable geohinting data",
+      "request": {
+        "name": "Enable geohinting data",
+        "description": {
+          "content": "Includes only those status entities approved before supplied status `entity_id`",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "geo_hint",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "geo_hint",
+              "value": "true",
+              "description": "When possible, geo_hint adds inferred status entity location from the authoring user’s profile information. The data is added the to geo_hint property of a Twitter status entity. (e.g. 1)"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "2440219c-df34-4481-a319-2306f4aec8fb",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "geo_hint",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"geo_hint\\\": {\\n    \\\"country\\\": \\\"US\\\",\\n    \\\"state\\\": \\\"CA\\\",\\n    \\\"coordinates\\\": [\\n      34.0522342,\\n      -118.2436849\\n    ]\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "377800d2-ba96-43ae-aaec-34ab9cca67c9",
+      "name": "Enable product hinting for each entity",
+      "request": {
+        "name": "Enable product hinting for each entity",
+        "description": {
+          "content": "Enable product hinting by specified account and stream",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "page_links",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "page_links",
+              "value": "true",
+              "description": "This parameter is used for Product Linking and must be set to true to surface up any product data that is linked to the entity. The absence of the parameter or it being set to false will assume that you are not requesting product linked data. If set to true, the data is added the to massrel/page_links property of an entity. (e.g. 1)"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "452000ef-5b22-473e-97cf-48a6131a4154",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "page_links",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"massrel\\\": {\\n    \\\"page_links\\\": [\\n      {\\n        \\\"id\\\": 12,\\n        \\\"url\\\": \\\"http://yoursite.com/yourpage\\\",\\n        \\\"short_url\\\": \\\"http://mssv.ly/13J39ai\\\",\\n        \\\"name\\\": \\\"Your page name\\\",\\n        \\\"description\\\": \\\"Your page description\\\",\\n        \\\"image_url\\\": \\\"http://yoursite.com/yourpage.jpg\\\"\\n      }\\n    ]\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "4c59f7ce-e550-47d8-924e-b16b8e4d9003",
+      "name": "Enable replies to entities",
+      "request": {
+        "name": "Enable replies to entities",
+        "description": {
+          "content": "Includes the status entity that a status entity replied to. The status entity is added to the in_reply_to property of a status entity",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "replies",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "replies",
+              "value": "true",
+              "description": "Includes the status entity that a status entity replied to. The status entity is added to the in_reply_to property of a status entity. (e.g. 1)"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "9850a078-cc9b-4918-a47c-48b4b8669734",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "replies",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"massrel\\\": {\\n    \\\"page_links\\\": [\\n      {\\n        \\\"id\\\": 12,\\n        \\\"url\\\": \\\"http://yoursite.com/yourpage\\\",\\n        \\\"short_url\\\": \\\"http://mssv.ly/13J39ai\\\",\\n        \\\"name\\\": \\\"Your page name\\\",\\n        \\\"description\\\": \\\"Your page description\\\",\\n        \\\"image_url\\\": \\\"http://yoursite.com/yourpage.jpg\\\"\\n      }\\n    ]\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "82e9b5c2-7f5a-4542-82d1-1f35b327dfe1",
+      "name": "Specify Social Network to gather entities",
+      "request": {
+        "name": "Specify Social Network to gather entities",
+        "description": {
+          "content": "Includes entities from a specified social network only",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "network",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "network",
+              "value": "facebook",
+              "description": "Includes entities from a specified social network only. **Possible Values:** `facebook`, `instagram`, `google_plus`, and `rss`. **Notes:** Must be a single value (`network=facebook`). Multiple values are not supported."
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ffb8a185-9a06-4744-9328-03be92eadb00",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "network",
+                  "value": "facebook"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ffd9bbe3-e0b2-4d79-88f5-ed5c89e2aa2b",
+      "name": "Included entity object on tweets",
+      "request": {
+        "name": "Included entity object on tweets",
+        "description": {
+          "content": "XML endpoint only. Includes an `entities` object on Tweets containing links, media, or other references",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "include_entities",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "include_entities",
+              "value": "true",
+              "description": "XML endpoint only. Includes an `entities` object on Tweets containing links, media, or other references."
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "5182fa0d-c50b-4f90-ab4e-7e6dde3f9589",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "include_entities",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "37a274ef-dec0-4618-8eab-14584aaa54c0",
+      "name": "Reverse order of status entities",
+      "request": {
+        "name": "Reverse order of status entities",
+        "description": {
+          "content": "Reverses the status entities in response to be in chronological approved order (default is reverse chronological approved order) so that entities approved earlier are on top",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "reverse",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "reverse",
+              "value": "true",
+              "description": "Reverses the status entities in response to be in chronological approved order (default is reverse chronological approved order) so that entities approved earlier are on top."
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "83148443-61b9-43e9-929a-59c7f557462b",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "reverse",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e7e9cec0-5978-464b-9928-be1a513a63f9",
+      "name": "Remove trailing links",
+      "request": {
+        "name": "Remove trailing links",
+        "description": {
+          "content": "Removes trailing URLs from the text of a status entity",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "strip_links",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "strip_links",
+              "value": "true",
+              "description": "Removes trailing URLs from the text of a status entity."
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "08d655a5-ec7d-4eb2-9f05-1b0835e25e4d",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "strip_links",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d407aa0d-cdf7-43c8-bffd-e0e2fd387aa1",
+      "name": "Gather specific entities containing keywords",
+      "request": {
+        "name": "Gather specific entities containing keywords",
+        "description": {
+          "content": "Returns only entities containing the specified keywords",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "keywords",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "keywords",
+              "value": "fire%20ice",
+              "description": "Returns only entities containing the specified keywords.(e.g. `fire%20ice`)"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "59e205ec-5539-4a4f-8838-e10e532e8781",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "keywords",
+                  "value": "fire%20ice"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ce91fe38-1c75-4182-8f80-e3b31ecc3e55",
+      "name": "Return entities from specific user",
+      "request": {
+        "name": "Return entities from specific user",
+        "description": {
+          "content": "Returns only entities authored by the specified author. The value must be in all lowercase. (e.g. `jack%20johnson`)",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "from",
+              "value": "jack%20johnson"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "74f9cb9a-7c5d-48fc-bb18-acda7dcbb08d",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "jack%20johnson"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "24fc061c-bd29-46c0-a923-ce48f026b95f",
+      "name": "Return entities after a specific time",
+      "request": {
+        "name": "Return entities after a specific time",
+        "description": {
+          "content": "Returns only items created after given time. Only use the seconds portion of unix time (JavaScript will give the number in milliseconds. Divide by 1000). (e.g. `1380666060`)",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "timeframe[start]",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "timeframe[start]",
+              "value": "1380666060"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "94325353-9e55-4f31-b90e-f731dd7db6a1",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "timeframe[start]",
+                  "value": "1380666060"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "66ca0f62-3472-4083-87fe-ceb0b107604a",
+      "name": "Return entities before a specific time",
+      "request": {
+        "name": "Return entities before a specific time",
+        "description": {
+          "content": "Returns only items created before given time. Only use the seconds portion of unix time (JavaScript will give the number in milliseconds. Divide by 1000). (e.g. `1380666060`)",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            "{{streamName}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "timeframe[finish]",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "timeframe[finish]",
+              "value": "1380666060"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo",
+              "key": "account",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3e971645-580c-445b-acd0-d7eee90971d6",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                "{{streamName}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "timeframe[finish]",
+                  "value": "1380666060"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "38891025-6018-4b87-8972-f8415c9eb892",
+      "name": "Get entity information",
+      "request": {
+        "name": "Get entity information",
+        "description": {
+          "content": "Provides information about and derived from the entities in a stream",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "0963b956-f329-444d-865b-2932972cf3f4",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9729f6aa-8af3-4ac4-9c3b-7f565774e0b5",
+      "name": "Get minutes of activity",
+      "request": {
+        "name": "Get minutes of activity",
+        "description": {
+          "content": "Retrieve the number of minutes of activity",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "num_minutes",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "num_minutes",
+              "value": "60"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "961e9e4b-9aaa-40af-824a-0f42322b65a7",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "num_minutes",
+                  "value": "60"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5d61e2f3-e92a-4c45-9d80-52e83b0233e3",
+      "name": "Get hours of activity",
+      "request": {
+        "name": "Get hours of activity",
+        "description": {
+          "content": "Retrieve the number of activity hours",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "num_hours",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "num_hours",
+              "value": "2"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7d01c4d0-da3a-47e9-aa2f-6cdbe40c1521",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "num_hours",
+                  "value": "2"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "aff04c43-1f42-4ec8-b286-049df21e19cd",
+      "name": "Get days of activity",
+      "request": {
+        "name": "Get days of activity",
+        "description": {
+          "content": "Retrieve the number of activity days",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "num_days",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "num_days",
+              "value": "30"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "16e11265-f9ce-4909-8d2b-6478e5c4e44c",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "num_days",
+                  "value": "30"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0fb46b64-5098-4cad-a51b-4b64416f8ebc",
+      "name": "Get activity and count props",
+      "request": {
+        "name": "Get activity and count props",
+        "description": {
+          "content": "Include activity and count properties in response",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "activity",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "activity",
+              "value": "true",
+              "description": "**Format:** binary"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "2a42bb31-3b16-429c-9367-a47a745ced27",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "activity",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b3baa4a8-276b-43d1-8c14-16b5e128f09f",
+      "name": "Get last item of activity",
+      "request": {
+        "name": "Get last item of activity",
+        "description": {
+          "content": "Unix time of the point of which activity data should end",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "finish",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "finish",
+              "value": "1349278694"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3e7b7997-5352-4b5f-957f-885f627e8707",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "finish",
+                  "value": "1349278694"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "a5d66f61-9c34-43bd-bd10-d2faab4403c1",
+      "name": "Get networks in meta response",
+      "request": {
+        "name": "Get networks in meta response",
+        "description": {
+          "content": "Include networks property in the response, which is an array of strings",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": " networks",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "networks",
+              "value": "true"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ee689758-6d74-4b5f-bbbb-b16ce11427d9",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "networks",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "46e761e3-f395-4183-be6a-ddb0535364e8",
+      "name": "Get top retweets in specified hours",
+      "request": {
+        "name": "Get top retweets in specified hours",
+        "description": {
+          "content": "Include top tweets from specific hourly periods provided",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "top_periods",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "top_periods",
+              "value": "2012070412"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "0d585e40-59f9-469f-b353-7aa6687633bb",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "top_periods",
+                  "value": "2012070412"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ba3fa60b-aeac-484d-8048-393e948ec993",
+      "name": "Get top retweets hourly from now",
+      "request": {
+        "name": "Get top retweets hourly from now",
+        "description": {
+          "content": "Include top tweets from specific hourly periods ago from now",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "top_periods_relative",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "top_periods_relative",
+              "value": "1"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "31a3591a-9c3a-4a84-99ef-042b946a7d1d",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "top_periods_relative",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b3ddefb5-1ddc-4f63-bfe9-a7c6efb45257",
+      "name": "Get tweets per period",
+      "request": {
+        "name": "Get tweets per period",
+        "description": {
+          "content": "Number of tweets to include per period",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "top_count",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "top_count",
+              "value": "5"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "bf974e7f-292c-4eb8-9094-160421638180",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "top_count",
+                  "value": "5"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2aacb418-27b2-4ebc-8a61-4c0300b33571",
+      "name": "Get number of hashtags returned",
+      "request": {
+        "name": "Get number of hashtags returned",
+        "description": {
+          "content": "Retrieves the number of hashtags.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "num_hashtags",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "num_hashtags",
+              "value": "10"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "1fab162a-2ea4-4f56-ad5f-7af29e3bbc5f",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "num_hashtags",
+                  "value": "10"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "06a572ea-afd3-47a0-a190-56f6332ffb26",
+      "name": "Get number of contributors",
+      "request": {
+        "name": "Get number of contributors",
+        "description": {
+          "content": "Number of contributor user handles to return",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "num_contributors",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "num_contributors",
+              "value": "5"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "08d78514-3ab9-40ec-92d9-5a581cbe55d8",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "num_contributors",
+                  "value": "5"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "16192754-c021-4dcf-85a6-6ed0751f6855",
+      "name": "Get number of topics",
+      "request": {
+        "name": "Get number of topics",
+        "description": {
+          "content": "Retrieves the number of topics (buckets).",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "num_trends",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "num_trends",
+              "value": "5"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "06e86009-d209-427b-99c2-962ef6e826a5",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "num_trends",
+                  "value": "5"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2d86557e-ef43-4b25-bf18-9fbe230a59c6",
+      "name": "Get Specified Sort Order",
+      "request": {
+        "name": "Get Specified Sort Order",
+        "description": {
+          "content": "Determines the sort order for returned topics",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "sort",
+              "value": "position asc"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ec3ced7d-6f5c-41cb-90bc-1f25a831abfb",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "position asc"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "491da7fd-39b5-4291-9ba3-6082ae368647",
+      "name": "Get all topics",
+      "request": {
+        "name": "Get all topics",
+        "description": {
+          "content": "Returns all topics, not just those with count > 0",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "all_topics",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "all_topics",
+              "value": "3"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "389cc734-b313-4bca-bdf6-e13acda41cb0",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "all_topics",
+                  "value": "3"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "71c8eb76-a964-47b0-bd58-8878c123446b",
+      "name": "Get percentages in buckets",
+      "request": {
+        "name": "Get percentages in buckets",
+        "description": {
+          "content": "Returns percentages (PCT) in buckets (Total group only, not top)",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "percent",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "percent",
+              "value": "1"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ea9abb07-b745-426a-8c9a-54cb852cbbfb",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "percent",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "f4399ec0-b4c9-4b49-af0d-0891138aa817",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "percent",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "cc4c6256-7da0-4aae-ae15-833f98184c94",
+      "name": "Get specific decimals in percent return",
+      "request": {
+        "name": "Get specific decimals in percent return",
+        "description": {
+          "content": "Determines the number of decimal places to return in percentages",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "precision",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "precision",
+              "value": "1"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7cef4b18-8b76-4957-b9a6-91ae14891ffe",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "precision",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "03c9ba65-54f7-4671-a2b0-35ffdfbf1342",
+      "name": "Get excluded trends from values",
+      "request": {
+        "name": "Get excluded trends from values",
+        "description": {
+          "content": "Exclude trends that match supplied values from buckets while trying to ensure `num_trends` is met",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "meta.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "disregard",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "disregard",
+              "value": ""
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "5fe769e5-7d32-4524-acb7-96a7e07fe377",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "meta.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "disregard",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "f8609aee-8801-450b-947e-2265c9191917",
+      "name": "Get specific entities",
+      "request": {
+        "name": "Get specific entities",
+        "description": {
+          "content": "Returns a comma-separated list of one or more `entity_id` values of approved items in the stream",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":account",
+            ":streamName",
+            "entities.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "entity_ids",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "entity_ids",
+              "value": "749457935733950347_25025320"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "account",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "streamName",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3ce2d2fc-3bbb-4324-a419-9ecb67b59bb3",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":account",
+                ":streamName",
+                "entities.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "entity_ids",
+                  "value": "749457935733950347_25025320"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "38ea7a67-4038-4a9d-bca1-223338628432",
+      "name": "Get meta account information",
+      "request": {
+        "name": "Get meta account information",
+        "description": {
+          "content": "Retrieves limited meta-information (entity counts, entity activity rates, etc.) about a set of streams belonging to an individual user account",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "{{account}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "16673d10-0e55-4474-a404-b84170076f5c",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"activity\\\": {\\n        \\\"minute\\\": {\\n          \\\"approved\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"pending\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"rejected\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"total\\\": [\\n            0,\\n            ...\\n            0\\n          ]\\n        }\\n      },\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 91617,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 192724,\\n        \\\"total\\\": 284341\\n      },\\n      \\\"count_pct\\\": 91617,\\n      \\\"created_at\\\": \\\"2015-04-13T19:16:10Z\\\",\\n      \\\"description\\\": \\\"-nab2015\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/-nab2015\\\",\\n      \\\"name\\\": \\\"-nab2015\\\",\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    ...\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c28596ec-a752-4feb-80a9-85339af5730c",
+      "name": "Get meta info of account's streams",
+      "request": {
+        "name": "Get meta info of account's streams",
+        "description": {
+          "content": "Returns a comma-delimited set of stream names for which you need to pull meta information",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "{{account}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "streams",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "streams",
+              "value": "galaxy-topic"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "978b6bac-7c16-4a4d-9ee7-0afe16b65ed2",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "streams",
+                  "value": "galaxy-topic"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"activity\\\": {\\n        \\\"minute\\\": {\\n          \\\"approved\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"pending\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"rejected\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"total\\\": [\\n            0,\\n            ...\\n            0\\n          ]\\n        }\\n      },\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 12990,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 0,\\n        \\\"total\\\": 12990\\n      },\\n      \\\"count_pct\\\": 12990,\\n      \\\"created_at\\\": \\\"2012-02-03T15:17:01Z\\\",\\n      \\\"description\\\": \\\"Topic 1\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/galaxy-topic1\\\",\\n      \\\"name\\\": \\\"galaxy-topic1\\\",\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    ...\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "59bec490-3386-4a42-8adf-5049baf492ab",
+      "name": "Get minutes of activity from account",
+      "request": {
+        "name": "Get minutes of activity from account",
+        "description": {
+          "content": "Retrieves the number of minutes of activity.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "{{account}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "num_minutes",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "num_minutes",
+              "value": "120"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "aeece326-bd5b-4a22-bffa-c446a0bb6276",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "num_minutes",
+                  "value": "120"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"activity\\\": {\\n        \\\"minute\\\": {\\n          \\\"approved\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"pending\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"rejected\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"total\\\": [\\n            0,\\n            ...\\n            0\\n          ]\\n        }\\n      },\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 91617,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 192724,\\n        \\\"total\\\": 284341\\n      },\\n      \\\"count_pct\\\": 91617,\\n      \\\"created_at\\\": \\\"2015-04-13T19:16:10Z\\\",\\n      \\\"description\\\": \\\"-nab2015\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/-nab2015\\\",\\n      \\\"name\\\": \\\"-nab2015\\\",\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    ...\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2e0e52b4-8ce8-4bba-80d4-c81f7416eccf",
+      "name": "Get trends in response per account",
+      "request": {
+        "name": "Get trends in response per account",
+        "description": {
+          "content": "Number of trends to return in response per bucket",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "{{account}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "num_trends",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "num_trends",
+              "value": "5"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "acead698-13b1-4c9f-b69b-623529b8d5e0",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "num_trends",
+                  "value": "5"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"activity\\\": {\\n        \\\"minute\\\": {\\n          \\\"approved\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"pending\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"rejected\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"total\\\": [\\n            0,\\n            ...\\n            0\\n          ]\\n        }\\n      },\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 91617,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 192724,\\n        \\\"total\\\": 284341\\n      },\\n      \\\"count_pct\\\": 91617,\\n      \\\"created_at\\\": \\\"2015-04-13T19:16:10Z\\\",\\n      \\\"description\\\": \\\"-nab2015\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/-nab2015\\\",\\n      \\\"name\\\": \\\"-nab2015\\\",\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    ...\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "a3278628-d0cc-4cbb-8685-a3be3c92b7e7",
+      "name": "Exclude specified trends",
+      "request": {
+        "name": "Exclude specified trends",
+        "description": {
+          "content": "Exclude trends that match supplied values from buckets while trying to ensure `num_trends` is met",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "{{account}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "disregard",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "disregard",
+              "value": "test"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "9b2d0749-e4e6-4107-8611-5d338dfc3d94",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "disregard",
+                  "value": "test"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "f167cfcf-250b-4da2-895b-7d18ba77a4ba",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "disregard",
+                  "value": "test"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "cc63a329-fdf1-4206-ac45-579e34015cc8",
+      "name": "Get activity data from specific time",
+      "request": {
+        "name": "Get activity data from specific time",
+        "description": {
+          "content": "Unix time of the point of which activity data should start",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "{{account}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "start",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "start",
+              "value": "1349278694"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "69933315-5a93-4301-b529-056745626cda",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "1349278694"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"activity\\\": {\\n        \\\"minute\\\": {\\n          \\\"approved\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"pending\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"rejected\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"total\\\": [\\n            0,\\n            ...\\n            0\\n          ]\\n        }\\n      },\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 91617,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 192724,\\n        \\\"total\\\": 284341\\n      },\\n      \\\"count_pct\\\": 91617,\\n      \\\"created_at\\\": \\\"2015-04-13T19:16:10Z\\\",\\n      \\\"description\\\": \\\"-nab2015\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/-nab2015\\\",\\n      \\\"name\\\": \\\"-nab2015\\\",\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    ...\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "017211dd-7f7d-4c1a-982b-3425082dbaaf",
+      "name": "Get activity data ending at specific time",
+      "request": {
+        "name": "Get activity data ending at specific time",
+        "description": {
+          "content": "Unix time of the point of which activity data should end",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "{{account}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "finish",
+              "value": "null"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4c55a62c-0107-4c84-877b-2e508d89b698",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"activity\\\": {\\n        \\\"minute\\\": {\\n          \\\"approved\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"pending\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"rejected\\\": [\\n            0,\\n            ...\\n            0\\n          ],\\n          \\\"total\\\": [\\n            0,\\n            ...\\n            0\\n          ]\\n        }\\n      },\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 91617,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 192724,\\n        \\\"total\\\": 284341\\n      },\\n      \\\"count_pct\\\": 91617,\\n      \\\"created_at\\\": \\\"2015-04-13T19:16:10Z\\\",\\n      \\\"description\\\": \\\"-nab2015\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/-nab2015\\\",\\n      \\\"name\\\": \\\"-nab2015\\\",\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    ...\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d76b8485-a7ba-44e7-acdf-3df158eb01ce",
+      "name": "Get streams with/without topics",
+      "request": {
+        "name": "Get streams with/without topics",
+        "description": {
+          "content": "Returns streams that do or do not have topics configured",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "{{account}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "streams_with_topics",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "streams_with_topics",
+              "value": "<integer>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "f9c4709d-4e44-4002-98ff-4c2f21b9d3f0",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "{{account}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "streams_with_topics",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"activity\\\": {\\n        \\\"minute\\\": {\\n          \\\"approved\\\": [\\n            27,\\n            40,\\n            24,\\n            24,\\n            22,\\n            20,\\n            22,\\n            28,\\n            19,\\n            24,\\n            22,\\n            30,\\n            36,\\n            34,\\n            47,\\n            30,\\n            38,\\n            26,\\n            26,\\n            26,\\n            10,\\n            24,\\n            27,\\n            19,\\n            20,\\n            20,\\n            28,\\n            20,\\n            24,\\n            24,\\n            21,\\n            17,\\n            37,\\n            30,\\n            31,\\n            34,\\n            19,\\n            26,\\n            25,\\n            25,\\n            34,\\n            23,\\n            24,\\n            26,\\n            22,\\n            23,\\n            25,\\n            26,\\n            14,\\n            28,\\n            17,\\n            20,\\n            14,\\n            13,\\n            21,\\n            26,\\n            21,\\n            15,\\n            16,\\n            10\\n          ],\\n          \\\"pending\\\": [\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0,\\n            0\\n          ],\\n          \\\"rejected\\\": [\\n            12,\\n            8,\\n            6,\\n            9,\\n            12,\\n            10,\\n            8,\\n            11,\\n            9,\\n            8,\\n            9,\\n            14,\\n            12,\\n            11,\\n            10,\\n            19,\\n            12,\\n            12,\\n            9,\\n            12,\\n            18,\\n            17,\\n            11,\\n            14,\\n            9,\\n            17,\\n            10,\\n            16,\\n            17,\\n            12,\\n            9,\\n            6,\\n            5,\\n            11,\\n            8,\\n            12,\\n            12,\\n            13,\\n            12,\\n            13,\\n            9,\\n            7,\\n            19,\\n            9,\\n            10,\\n            13,\\n            13,\\n            11,\\n            8,\\n            15,\\n            11,\\n            18,\\n            10,\\n            10,\\n            7,\\n            8,\\n            8,\\n            8,\\n            7,\\n            3\\n          ],\\n          \\\"total\\\": [\\n            39,\\n            48,\\n            30,\\n            33,\\n            34,\\n            30,\\n            30,\\n            39,\\n            28,\\n            32,\\n            31,\\n            44,\\n            48,\\n            45,\\n            57,\\n            49,\\n            50,\\n            38,\\n            35,\\n            38,\\n            28,\\n            41,\\n            38,\\n            33,\\n            29,\\n            37,\\n            38,\\n            36,\\n            41,\\n            36,\\n            30,\\n            23,\\n            42,\\n            41,\\n            39,\\n            46,\\n            31,\\n            39,\\n            37,\\n            38,\\n            43,\\n            30,\\n            43,\\n            35,\\n            32,\\n            36,\\n            38,\\n            37,\\n            22,\\n            43,\\n            28,\\n            38,\\n            24,\\n            23,\\n            28,\\n            34,\\n            29,\\n            23,\\n            23,\\n            13\\n          ]\\n        }\\n      },\\n      \\\"approved_tpm\\\": 17,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 1516909299,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 560479090,\\n        \\\"total\\\": 2077388389\\n      },\\n      \\\"count_pct\\\": 1516909299,\\n      \\\"created_at\\\": \\\"2016-03-09T22:44:47Z\\\",\\n      \\\"description\\\": \\\"Stream Created with Builder\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/cc-competitor-donut\\\",\\n      \\\"name\\\": \\\"cc-competitor-donut\\\",\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    ...\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b3ed17d7-cdd1-48d5-8363-94fca87fe5e7",
+      "name": "Compare stream volumes",
+      "request": {
+        "name": "Compare stream volumes",
+        "description": {
+          "content": "Retrieve stream volumes and compare them.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "compare.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "streams",
+              "value": "null"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1",
+              "key": "streams",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4b3042fa-cda8-4f09-bc0b-77e7d6a53a8a",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "compare.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1",
+                  "key": "streams",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 551979,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 81681394,\\n        \\\"total\\\": 82233373\\n      },\\n      \\\"created_at\\\": \\\"2013-09-09T18:26:01Z\\\",\\n      \\\"description\\\": \\\"The Twitterverse has some good things to say about the Amazon Kindle.\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/kindle\\\",\\n      \\\"name\\\": \\\"kindle\\\",\\n      \\\"pct\\\": 98,\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    {\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 12990,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 0,\\n        \\\"total\\\": 12990\\n      },\\n      \\\"created_at\\\": \\\"2012-02-03T15:17:01Z\\\",\\n      \\\"description\\\": \\\"Topic 1\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/galaxy-topic1\\\",\\n      \\\"name\\\": \\\"galaxy-topic1\\\",\\n      \\\"pct\\\": 2,\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2e29e867-07c8-434e-a6f1-61ed00a9d41a",
+      "name": "Get percentage towards target",
+      "request": {
+        "name": "Get percentage towards target",
+        "description": {
+          "content": "Get a percentage towards a specified target",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "compare.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "streams",
+              "value": "{{content}}"
+            },
+            {
+              "key": "target",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "streams",
+              "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+            },
+            {
+              "disabled": false,
+              "key": "target",
+              "value": "5000"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7047682e-b0c7-4854-a31a-eef923fc78b9",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "compare.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "streams",
+                  "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                },
+                {
+                  "key": "target",
+                  "value": "5000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d7654672-3c0a-4361-acfe-86768210c918",
+      "name": "Get specific decimals in percent return",
+      "request": {
+        "name": "Get specific decimals in percent return",
+        "description": {
+          "content": "Return specific decimals",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "compare.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "streams",
+              "value": "{{content}}"
+            },
+            {
+              "key": "target",
+              "value": "{{number}}"
+            },
+            {
+              "key": "precision",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "streams",
+              "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+            },
+            {
+              "disabled": false,
+              "key": "target",
+              "value": "500"
+            },
+            {
+              "disabled": false,
+              "key": "precision",
+              "value": "1",
+              "description": "**Possible Values:** `0`, `1`, `2`, `3`, `4`"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3727e339-cdbb-491a-8386-8e3a0cc0239b",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "compare.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "streams",
+                  "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                },
+                {
+                  "key": "target",
+                  "value": "500"
+                },
+                {
+                  "key": "precision",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "adcc9a1b-3935-4bc0-bc4a-d490ef2da136",
+      "name": "Get specified sort order",
+      "request": {
+        "name": "Get specified sort order",
+        "description": {
+          "content": "Defines the sort order of the results",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "compare.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "streams",
+              "value": "{{content}}"
+            },
+            {
+              "key": "sort",
+              "value": "null"
+            },
+            {
+              "disabled": false,
+              "key": "streams",
+              "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+            },
+            {
+              "disabled": false,
+              "key": "sort",
+              "value": "pct asc",
+              "description": "Possible Values: `pct asc`, `pct desc`"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "c3f9de6b-3c2c-4110-be6b-53bc3bbe89f7",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "compare.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "streams",
+                  "value": "MassRelDemo/kindle,MassRelDemo/galaxy-topic1"
+                },
+                {
+                  "key": "sort",
+                  "value": "pct asc"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"streams\\\": [\\n    {\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 12990,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 0,\\n        \\\"total\\\": 12990\\n      },\\n      \\\"created_at\\\": \\\"2012-02-03T15:17:01Z\\\",\\n      \\\"description\\\": \\\"Topic 1\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/galaxy-topic1\\\",\\n      \\\"name\\\": \\\"galaxy-topic1\\\",\\n      \\\"pct\\\": 2,\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    },\\n    {\\n      \\\"approved_tpm\\\": 0,\\n      \\\"count\\\": {\\n        \\\"approved\\\": 551979,\\n        \\\"pending\\\": 0,\\n        \\\"rejected\\\": 81681394,\\n        \\\"total\\\": 82233373\\n      },\\n      \\\"created_at\\\": \\\"2013-09-09T18:26:01Z\\\",\\n      \\\"description\\\": \\\"The Twitterverse has some good things to say about the Amazon Kindle.\\\",\\n      \\\"full_name\\\": \\\"MassRelDemo/kindle\\\",\\n      \\\"name\\\": \\\"kindle\\\",\\n      \\\"pct\\\": 98,\\n      \\\"tags\\\": [],\\n      \\\"tpm\\\": 0\\n    }\\n  ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.massrelevance.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "streamName"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "account"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "content"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "number"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://example.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "15884926-13e5-40fc-8903-4a6ab6e75eec",
+    "name": "stream-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

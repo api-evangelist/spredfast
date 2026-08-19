@@ -1,0 +1,321 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/spredfast-conversations-api-openapi.json,
+  openapi/_original/spredfast-conversations-api-v1-openapi.json,
+  openapi/_original/spredfast-analytics-api-openapi.json,
+  openapi/_original/spredfast-notification-api-openapi.json,
+  openapi/_original/spredfast-custom-crm-callback-api-openapi.json
+note: >-
+  Derived from the harvested contracts: entity names come from the `sfEntityType`
+  discriminator that Spredfast stamps on every object it returns, and
+  relationships from id-reference fields and path nesting. The specs carry no
+  reusable `components.schemas` — every payload is inlined per operation — so
+  there are no $ref links to walk; the graph below is reconstructed from the
+  discriminator and the id fields instead, and confidence is recorded per edge.
+  There is no documented id-prefix scheme: identifiers are opaque numeric
+  strings for platform objects and UUIDs for event subscriptions.
+discriminator:
+  field: sfEntityType
+  description: >-
+    Every returned object carries a `sfEntityType` string naming its type. It is
+    the closest thing this API has to a schema registry — the contract has no
+    named schemas, so `sfEntityType` is the only way a client can tell what it
+    received.
+id_scheme:
+  platform_objects: opaque numeric strings (e.g. "21365", "98330576")
+  subscriptions: UUID
+  prefixes: none
+entity_count: 18
+entities:
+- name: Company
+  description: The top-level tenant. Every object belongs to exactly one company.
+  id_field: companyId
+  note: >-
+    In V2 the company is derived from the OAuth token; in V1 it is an explicit
+    path segment (/{environment}/v1/company/{companyId}/...).
+- name: Initiative
+  description: >-
+    A campaign container. The primary scoping unit for publishing — messages,
+    plans, content labels and account sets all hang off an initiative.
+  id_field: initiativeId
+  operations:
+  - retrieve-a-list-of-available-initiatives
+  - retrieve-a-single-initiative
+- name: AccountSet
+  description: A named grouping of connected social accounts available to an initiative.
+  id_field: accountSetIds
+  operations:
+  - accountset
+- name: Account
+  description: >-
+    A single connected social account. Carries accountType (PAGE, USER), alias,
+    service (FACEBOOK, TWITTER, ...), serviceId and uniqueId.
+  id_field: accountId
+- name: Message
+  description: >-
+    A social post — the central publishable object. Content is one of four
+    shapes (Status, ImageShare, ImageShareList, Video). Carries title, labels,
+    service, targetAccountIds, organicVisibility, delegationStatus,
+    publicationResults, scheduledPublishDate, notes and links.
+  id_field: messageId
+  operations:
+  - publish-a-new-message-imageset
+  - publish-a-new-message-multipart
+  - retrieve-an-existing-message
+  - update-a-message
+  - delete-an-existing-message
+- name: MultiChannelMessage
+  description: A message fanned out across several networks, retrievable as one object.
+  operations:
+  - retrieve-an-existing-multi-channel-message
+- name: SingleChannelMessage
+  description: The per-network component of a multi-channel message.
+- name: Status
+  description: Text-only message content.
+- name: ImageShare
+  description: Image message content.
+- name: ImageShareList
+  description: Multi-image message content.
+- name: Video
+  description: >-
+    Video message content. Video must be uploaded into the Content Center
+    before it can be published, unlike text and images.
+- name: PublicationResult
+  description: The per-account outcome of publishing a message.
+- name: Asset
+  description: A Content Center asset — text, image or video.
+  id_field: assetIds
+  operations:
+  - assets-create-text-asset
+  - assets-create-image-or-video
+  - assets-retrieve-a-content-center-asset-by-id
+  - assets-update-existing-content-center-asset
+- name: AssetFolder
+  description: A folder organising Content Center assets.
+  id_field: folderId
+  operations:
+  - create-a-new-content-asset-folder
+  - retrieve-a-list-of-folders
+  - retrieve-a-content-asset-folder-by-id
+  - update-existing-content-center-asset-folder
+  - delete-a-content-asset-folder-by-id
+  - retrieve-a-list-of-assets-in-a-folder
+- name: Plan
+  description: A publishing plan within an initiative.
+  id_field: planId
+  operations:
+  - retrieve-a-list-of-plans
+- name: CustomChannel
+  description: A non-social publishing channel defined by the customer.
+  id_field: customChannelId
+  operations:
+  - list-customchannels
+  - create-a-customchannel
+  - get-a-customchannel-based-on-id
+  - update-a-customchannel
+- name: CustomChannelItem
+  description: An item scheduled on a custom channel, within an initiative.
+  operations:
+  - create-a-customchannelitem
+  - update-a-customchannelitem
+  - get-a-customchannelitem-by-id
+- name: User
+  description: A platform user. Users hold roles and privileges and can be publishers on an initiative.
+  id_field: userId
+  operations:
+  - list-conversations-users
+  - create-a-conversations-user
+  - delete-a-conversations-user
+  - list-conversations-publishers
+- name: Role
+  description: A named permission bundle assigned to users.
+  id_field: roleId
+  operations:
+  - list-roles-for-the-company
+- name: UserPrivilege
+  description: The effective permission set of the current user.
+  operations:
+  - retrieve-permissions-for-current-user
+- name: Workspace
+  description: A workspace grouping within a company.
+  id_field: workspaceId
+  operations:
+  - list-workspaces-for-the-company
+- name: ContentLabel
+  description: A label applied to messages and stream items, organised into label sets.
+  operations:
+  - retrieve-paged-labels
+  - findContentLabelsForCompany
+- name: Subscription
+  description: An event subscription. One subscription listens for one eventName.
+  id_field: uuid
+  spec: openapi/spredfast-notification-api-openapi.yml
+- name: Stream
+  description: >-
+    An Experiences data source — a curated feed of social status entities.
+    The unit the Experiences Stream API is organised around.
+  id_field: streamName
+  spec: openapi/spredfast-experiences-stream-api-openapi.yml
+- name: Token
+  description: An OAuth access token object — accessToken plus expiryTime.
+relationships:
+- from: Company
+  to: Initiative
+  type: has_many
+  via: companyId
+  confidence: high
+- from: Company
+  to: User
+  type: has_many
+  via: companyId
+  confidence: high
+- from: Company
+  to: Role
+  type: has_many
+  via: companyId
+  confidence: high
+- from: Company
+  to: Workspace
+  type: has_many
+  via: companyId
+  confidence: high
+- from: Company
+  to: CustomChannel
+  type: has_many
+  via: companyId
+  confidence: medium
+- from: Initiative
+  to: AccountSet
+  type: has_many
+  via: path nesting /initiative/{initiativeId}/accountset
+  confidence: high
+- from: AccountSet
+  to: Account
+  type: has_many
+  via: accounts[] inline array
+  confidence: high
+- from: Initiative
+  to: Message
+  type: has_many
+  via: path nesting /initiative/{initiativeId}/message
+  confidence: high
+- from: Initiative
+  to: Plan
+  type: has_many
+  via: path nesting /initiative/{initiativeId}/plan
+  confidence: high
+- from: Initiative
+  to: ContentLabel
+  type: has_many
+  via: path nesting /initiative/{initiativeId}/contentLabel
+  confidence: high
+- from: Initiative
+  to: CustomChannelItem
+  type: has_many
+  via: path nesting /initiative/{initiativeId}/calendar/customChannelItem
+  confidence: high
+- from: Message
+  to: Account
+  type: has_many
+  via: targetAccountIds
+  confidence: high
+- from: Message
+  to: PublicationResult
+  type: has_many
+  via: publicationResults[]
+  confidence: high
+- from: Message
+  to: ContentLabel
+  type: has_many
+  via: labels[]
+  confidence: high
+- from: Message
+  to: Asset
+  type: has_many
+  via: assetIds
+  confidence: medium
+- from: MultiChannelMessage
+  to: SingleChannelMessage
+  type: has_many
+  via: inline content
+  confidence: medium
+- from: AssetFolder
+  to: Asset
+  type: has_many
+  via: path nesting /folder/{folderId}/assets
+  confidence: high
+- from: Asset
+  to: AssetFolder
+  type: belongs_to
+  via: folderId
+  confidence: high
+- from: User
+  to: Role
+  type: has_many
+  via: roleId
+  confidence: medium
+- from: User
+  to: UserPrivilege
+  type: has_one
+  via: /conversations/privilege for the current user
+  confidence: high
+- from: Initiative
+  to: User
+  type: has_many
+  via: /users/initiative/{initiativeId}/publishers
+  confidence: high
+  note: Publishers — the subset of users permitted to publish to this initiative.
+- from: CustomChannel
+  to: CustomChannelItem
+  type: has_many
+  via: customChannelItemId under an initiative calendar
+  confidence: medium
+- from: Subscription
+  to: Company
+  type: belongs_to
+  via: companyId
+  confidence: high
+- from: Subscription
+  to: User
+  type: belongs_to
+  via: userId
+  confidence: high
+- from: Asset
+  to: User
+  type: belongs_to
+  via: createdByUserId / lastModifiedByUserId
+  confidence: medium
+external_model:
+  note: >-
+    The Custom CRM contract (openapi/spredfast-custom-crm-callback-api-openapi.yml)
+    describes an INVERTED model: Khoros Marketing is the client and the customer
+    implements the server, so Case and Customer are entities the CUSTOMER owns
+    and Spredfast reads. The contract additionally exposes
+    GET /meta/object/{type}, letting the customer describe their own object
+    structures back to Khoros — a self-describing schema hook, and the only
+    schema-discovery mechanism anywhere in this API family.
+  entities:
+  - name: Case
+    operations:
+    - createcase
+    - retrieve and patch by id
+  - name: Customer
+    operations:
+    - createcustomer
+    - bestmatchcustomers
+    - retrieve and patch by id
+    - list a customer's cases
+  - name: ObjectMeta
+    operations:
+    - define-object-structures
+gaps:
+- >-
+  No reusable components.schemas anywhere in the nine specs. Every request and
+  response body is inlined at the operation, so nothing is $ref-shareable and no
+  schema can be validated by name.
+- >-
+  Many response bodies are documented ONLY as a JSON example string inside
+  `content.application/json.examples.Result.value` with no accompanying
+  `schema`, so a machine can read the shape by example but cannot validate it.
+- No id-prefix convention, so an identifier alone does not reveal its entity type.

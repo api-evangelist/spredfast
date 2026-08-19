@@ -1,0 +1,3681 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Welcome to the Spredfast Conversations API. Using this API you can access many of the features of the Spredfast platform including publishing and reporting.\n# Prerequisites\nIn order to make an API call to the platform, you must have the following:\n- Enable the DevCenter application for your company. See [troubleshooting](#devcenter-not-enabled) for more information.\n- A valid login for the platform (used to retrieve an access token, described below)\n- An assigned client id for your application\n- That client id enabled for your company in conversations\nIf you are reading this documentation you already have your login! Let&#39;s proceed the the next two steps.\n\n# Authentication and Authorization\n\nSpredfast uses the OAuth standard for API authorization. OAuth specifies the manner in which a bearer token may be obtained that will authorize your API calls. OAuth tokens are managed from the same authentication system as your web logins. All company security policies including SAML SSO integration are supported and enforced.\n\n## Client Id\n\nA client id uniquely identifies your application. There is a whitelist in place to control which applications have access to your company in Conversations. This allows you to control when an application is activated for your company.\n\nTo retrieve your client id, please have your company admin contact [support@spredfast.com](mailto:support@spredfast.com) and request a new or pre-existing client id. Please provide a description of your application. You may also request this application be enabled for your company, if you are the company administrator.\n\nSupport will respond with a client id and a client secret, both of which are needed to obtain an access token.\n\n## Browser Redirection Flow\n\nIf you are building a web application where your users will interact with a UI to authenticate against Spredfast, you are advised to implement the OAuth browser redirection flow. There are many resources available on the web on how to implement this flow, but the basic process is shown below:\n\n\nYou will redirect the user to login.spredfast.com with the following URL:\n\n [https://login.spredfast.com/v3/oauth/authorize?client id=YOUR CLIENT ID&response type=code&redirect uri=https://YOUR URL&state=none](https://login.spredfast.com/v3/oauth/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=https://YOUR_URL&state=none)\n\n Replace YOUR CLIENT ID with the id of your API client and YOUR URL with the URL of your web application the user should return two once an OAuth Grant has been obtained.\n\nWhen the user returns to your website there will be a URL parameter called &quot;code&quot; set. This is an authorization code that you must use to obtain an access token. Make a POST call to the following endpoint to obtain your access token:\n\n```bash \ncurl https://login.spredfast.com/v3/oauth/token \\\n\t-H \"Accept: application/json\" \\\n\t--data 'client_id=YOUR_CLIENT_ID' \\\n\t--data 'client_secret=YOUR_CLIENT_SECRET' \\\n\t--data 'redirect_uri=https://YOUR_URL' \\\n\t--data 'code=CODE_RETURNED'\n```\n\nOnce again substitute YOUR_CLIENT_ID for your client id. You must also provide your client secret in YOUR_CLIENT_SECRET and the code you received in CODE_RETURNED.\n\nYou will receive a JSON response that contains your access token in a response like this:\n\n```js\n{\n   \"data\":{\n      \"sfEntityType\":\"Token\",\n      \"accessToken\":\"XXX\",\n      \"expiryTime\":1519770939876\n   },\n   \"status\":{\n      \"succeeded\":true\n   }\n}\n```\n\nTokens are issued with a 2 year lifetime. Save this token in a secure place. It\u2019s a bearer token and is all that is needed to make API calls on your behalf.\n\n## DevCenter Test Request Flow\nBefore you can query any endpoint, you must first obtain a token. Do this by clicking the \"Get Access Token\" button on any endpoint. You will then be redirected to login via Spredfast and authenticate the DevCenter app for your company. Once complete you will return to the DevCenter and will notice that the `oauth_access_token` variable is filled in. You may now run any Spredfast API action against your company.\n\n### Developer notes\nWhile developing against the Spredfast API you will be using your own Spredfast API App (client_id/secret pair). To be absolutely certain you know what data your application is receiving, you can substitute the default DevCenter `client_id` and `secret` pair with your own.\n\n## Access Token Expiration\nAccess tokens are valid for 24 months. You may refresh these tokens at any time by repeating the authorization flow.\n# API Path Construction\nConversations APIs have several required parameters for all API calls. All Conversations APIs have the following URL path scheme:\n[https://api.spredfast.com/v1/conversations/](/api/conversations/v1/conversations)\n# API Overview\nSpredfast Conversations offers APIs to manage content and plans, publish content, and retrieve analytics reports.\n## Publishing\nPublishing requires you to select an initiative and an account set. To retrieve the list of initiatives use the [/{environment}/v1/company/{companyId}/initiative](/api/conversations/v1/conversations/initiatives/listinitiatives) call. To list the accounts available with that initiative, use the [/{environment}/v1/company/{companyId}/initiative/{initiativeId}/accountset](/api/conversations/v1/conversations/accountset/accountset) call.\n\nOnce you have these parameters you may publish content. For status updates (text) and images you publish with a single call. For video publishing you must first upload the video into the Conversations Content Center.\n\nStatus updated may be published with the [/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message](/api/conversations/v1/conversations/messages/publishmessage) call. You will send your content as a JSON POST. For example:\n\n```js\n{\n   \"sfEntityType\":\"Message\",\n   \"service\":\"FACEBOOK\",\n   \"content\":{\n      \"sfEntityType\":\"Status\",\n      \"text\":\"Status Update\"\n   },\n   \" targetAccountIds\":[\n      \"4\"\n   ]\n}\n```\n\n# Troubleshooting\n\n## DevCenter not enabled\n\nIf you get an error while granting a token which reads `Company 20,307,234 does not allow the application TVjzVmUSDZFVdSpUiKBsQYIAzTrvVcUb`, then please contact [support@spredfast.com](mailto:support@spredfast.com) to enable the DevCenter application for your company.",
+    "version": "1",
+    "title": "Conversations API V1",
+    "license": {
+      "name": "Spredfast API Terms of Use",
+      "url": "https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "AccountSet"
+    },
+    {
+      "name": "Analytics"
+    },
+    {
+      "name": "Assets"
+    },
+    {
+      "name": "Docs"
+    },
+    {
+      "name": "Folder"
+    },
+    {
+      "name": "Initiatives"
+    },
+    {
+      "name": "Labels"
+    },
+    {
+      "name": "Me"
+    },
+    {
+      "name": "Messages"
+    },
+    {
+      "name": "MultiChannelMessages"
+    },
+    {
+      "name": "Permissions"
+    },
+    {
+      "name": "Plans"
+    },
+    {
+      "name": "test"
+    },
+    {
+      "name": "Users"
+    }
+  ],
+  "paths": {
+    "/v1/me": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "List of your companies with this app enabled",
+        "description": "List of your companies **with this app enabled**.",
+        "operationId": "me",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Me"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/asset": {
+      "post": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Create a new Content Center Asset.",
+        "description": "Create a new image/video Content Center Asset.",
+        "operationId": "createAsset",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/companyId"
+          },
+          {
+            "$ref": "#/components/parameters/environment"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asset"
+              }
+            }
+          },
+          "description": "JSON object describing the asset.",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseAsset"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/asset?multipart": {
+      "post": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Create a new Content Center image/video Asset.",
+        "description": "Create a new image/video Content Center Asset.",
+        "operationId": "createMultiPartAsset",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/companyId"
+          },
+          {
+            "$ref": "#/components/parameters/environment"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "asset": {
+                    "description": "JSON object describing the asset.",
+                    "type": "string",
+                    "x-multipart": {
+                      "schema": {
+                        "$ref": "#/components/schemas/AssetCreateMultipart"
+                      }
+                    }
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "video": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "videoSize": {
+                    "description": "Video size in bytes.",
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                },
+                "required": [
+                  "asset"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseAsset"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/asset/{assetId}": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Retrieve a Content Center Asset based by asset ID.",
+        "description": "Gets a Content Center Asset based by asset ID (including content labels information).",
+        "operationId": "findAsset",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/companyId"
+          },
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/environment"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseAsset"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Update existing Content Center Asset.",
+        "description": "Updates a Content Center Asset based on the JSON request body.",
+        "operationId": "updateAsset",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/companyId"
+          },
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "removeImage",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "removeVideo",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "$ref": "#/components/parameters/environment"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssetCreate"
+              }
+            }
+          },
+          "description": "JSON object describing the asset."
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseAsset"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/folder": {
+      "get": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Retrieve a list of folders.",
+        "description": "This endpoint is used to retrieve a list of existing *Spredfast* Content Center folders.",
+        "operationId": "listFolders",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "nameFilter",
+            "in": "query",
+            "description": "If present, filter the results by the provided \"nameFilter\" string",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityPageResponseAssetFolder"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Create a new Content Center Asset Folder.",
+        "description": "",
+        "operationId": "createFolder",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssetFolderCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseAssetFolder"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/folder/{folderId}": {
+      "get": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Retrieve a specific Content Center Asset Folder by ID.",
+        "description": "",
+        "operationId": "findFolder",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseAssetFolder"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Updates an existing Content Center Asset Folder.",
+        "description": "",
+        "operationId": "updateFolder",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssetFolderUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseAssetFolder"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Deletes an existing Content Center Asset Folder.",
+        "description": "",
+        "operationId": "deleteFolder",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OptionalResponseLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/folder/{folderId}/assets": {
+      "get": {
+        "tags": [
+          "Folder"
+        ],
+        "summary": "Retrieve a list of assets in a folder.",
+        "description": "",
+        "operationId": "listFolderAssets",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ASCENDING",
+                "DESCENDING"
+              ],
+              "default": "ASCENDING"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityPageResponseAsset"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative": {
+      "get": {
+        "tags": [
+          "Initiatives"
+        ],
+        "summary": "Retrieve a list of available initiatives.",
+        "description": "",
+        "operationId": "listInitiatives",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "nameFilter",
+            "in": "query",
+            "description": "If present, filter the results by the provided \"nameFilter\" string.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityPageResponseInitiative"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}": {
+      "get": {
+        "tags": [
+          "Initiatives"
+        ],
+        "summary": "Retrieve a single initiative by ID.",
+        "description": "",
+        "operationId": "getInitiative",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseInitiative"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/contentLabel": {
+      "get": {
+        "tags": [
+          "Labels"
+        ],
+        "summary": "Retrieve paged labels.",
+        "description": "",
+        "operationId": "findContentLabelsForCompany",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "If present, filter the results by the provided title string.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priority",
+            "in": "query",
+            "description": "If present, only return \"top\" labels.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContentLabel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "summary": "Publish a new message.",
+        "description": "Publish a new *Spredfast* Messages for the target Initiative.",
+        "operationId": "publishMessage",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Message"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}": {
+      "get": {
+        "tags": [
+          "Messages"
+        ],
+        "summary": "Retrieve an existing message.",
+        "description": "The Messages endpoint returns information about the *Spredfast* Messages for the target Initiative.",
+        "operationId": "getMessage",
+        "parameters": [
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Messages"
+        ],
+        "summary": "Update an existing multi-part message.",
+        "description": "This endpoint is used to update an existing multi-part *Spredfast* Message.",
+        "operationId": "editMessage",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Message"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Messages"
+        ],
+        "summary": "Delete an existing message.",
+        "description": "This endpoint is used to delete an existing *Spredfast* Message.",
+        "operationId": "deleteMessage",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OptionalResponseLong"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/multiChannelMessage/{messageId}": {
+      "get": {
+        "tags": [
+          "MultiChannelMessages"
+        ],
+        "summary": "Retrieve an existing multi-channel message.",
+        "description": "The Messages endpoint returns information about the *Spredfast* multi-channel messages for the target Initiative.",
+        "operationId": "getMultiChannelMessage",
+        "parameters": [
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MultiChannelMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/plan": {
+      "get": {
+        "tags": [
+          "Plans"
+        ],
+        "summary": "Retrieve a list of Plans.",
+        "description": "",
+        "operationId": "listPlans",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "nameFilter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityPageResponsePlan"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/privilege": {
+      "get": {
+        "tags": [
+          "Permissions"
+        ],
+        "summary": "Retrieve permissions for current user.",
+        "description": "Results will be a list of permissions in the **currently selected company**.",
+        "operationId": "getPrivileges",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityResponseUserPrivilege"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?multipart": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "summary": "Publish a new message.",
+        "description": "Publish a new *Spredfast* Messages for the target Initiative.",
+        "operationId": "publishMultiPartMessage",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "x-multipart": {
+                      "schema": {
+                        "$ref": "#/components/schemas/MessageMultiPart"
+                      }
+                    }
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "message",
+                  "image"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?imageset": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "summary": "Publish a new message.",
+        "description": "Publish a new *Spredfast* Messages for the target Initiative. **Note:** For multiple images the cURL should looks like this (notice that content.images is an array and must contain the same number of elements as files being uploaded): \n \n ```curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: Bearer {your token}' -F 'message={\"sfEntityType\":\"Message\",\"service\":\"FACEBOOK\",\"content\":{\"sfEntityType\":\"ImageShareList\",\"images\":[{\"sfEntityType\":\"ImageShare\",\"caption\":\"image one\"},{\"sfEntityType\":\"ImageShare\",\"caption\":\"image two\"},{\"sfEntityType\":\"ImageShare\",\"caption\":\"image three\"}]},\"targetAccountIds\":[\"4\"]};type=application/json' -F 'image=@butterfly1.jpg' -F 'image=@butterfly2.jpg' -F 'image=@butterfly3.jpg' 'https://api.spredfast.com/{env}/v1/company/{companyId}/initiative/{initiativeId}/message' \n``` ",
+        "operationId": "publishImageSetMessage",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "x-multipart": {
+                      "schema": {
+                        "$ref": "#/components/schemas/MessageMultiPartImages"
+                      }
+                    }
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "message",
+                  "image"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message?video": {
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "summary": "Publish a new message.",
+        "description": "Publish a new *Spredfast* Messages for the target Initiative.",
+        "operationId": "publishMultiPartVideoMessage",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "x-multipart": {
+                      "schema": {
+                        "$ref": "#/components/schemas/MessageMultiPartVideo"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "message"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message/{messageId}?multipart": {
+      "put": {
+        "tags": [
+          "Messages"
+        ],
+        "summary": "Update an existing multi-part message.",
+        "description": "This endpoint is used to update an existing multi-part *Spredfast* Message.",
+        "operationId": "editMultiPartMessage",
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "x-multipart": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Message"
+                      }
+                    }
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "message"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{environment}/v1/company/{companyId}/initiative/{initiativeId}/accountset": {
+      "get": {
+        "tags": [
+          "AccountSet"
+        ],
+        "operationId": "accountSet",
+        "parameters": [
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AccountSet"
+                      }
+                    }
+                  }
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AccountSet"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "List all account sets and accounts available.\n\nNote: the following criteria must be met for an account set to be listed:\n1. Your user must be a member of the Account Set.\n2. There must be at least one Account registered in the Account Set.",
+        "summary": "Lists all accounts sets and corresponding accounts available to the user."
+      }
+    },
+    "/{environment}/v1/company/{companyId}/users/initiative/{initiativeId}/publishers": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Retrieve a list of Conversations users",
+        "operationId": "publishers",
+        "parameters": [
+          {
+            "name": "environment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "initiativeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EntityPageResponseConversationsUser"
+                      }
+                    }
+                  }
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EntityPageResponseConversationsUser"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.spredfast.com"
+    }
+  ],
+  "components": {
+    "parameters": {
+      "environment": {
+        "in": "path",
+        "required": true,
+        "name": "environment",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "Production",
+            "VCP1",
+            "APP3",
+            "APP"
+          ]
+        }
+      },
+      "companyId": {
+        "name": "companyId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.spredfast.com/v3/oauth/authorize",
+            "tokenUrl": "https://login.spredfast.com/v3/oauth/token",
+            "scopes": {
+              "all": "Read/write access for all endpoints."
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "EntityResponseAnalyticsMetadata": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AnalyticsMetadata"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "ImageShare": {
+        "type": "object",
+        "discriminator": {
+          "propertyName": "sfEntityType"
+        },
+        "properties": {
+          "caption": {
+            "type": "string"
+          },
+          "temporaryImageUrl": {
+            "type": "string"
+          },
+          "temporaryThumbnailUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "MessageContent": {
+        "type": "object",
+        "discriminator": {
+          "propertyName": "sfEntityType"
+        }
+      },
+      "TargetingProfile": {
+        "type": "object",
+        "properties": {
+          "targetingType": {
+            "type": "string",
+            "enum": [
+              "ENHANCED",
+              "GATED"
+            ]
+          },
+          "targetingValues": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/TargetingValue"
+              }
+            }
+          }
+        }
+      },
+      "MessageSponsor": {
+        "type": "object",
+        "description": "A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to *only* Facebook *verified* Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don't comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.",
+        "properties": {
+          "profileId": {
+            "type": "string",
+            "description": "The sponsor's profile ID in the corresponding Social Network."
+          },
+          "displayName": {
+            "type": "string",
+            "description": "The sponsor's display name in the corresponding Social Network."
+          },
+          "link": {
+            "type": "string",
+            "description": "The link to the sponsor's profile in the corresponding Social Network."
+          }
+        }
+      },
+      "MessageNote": {
+        "type": "object",
+        "description": "A Note on the Message.",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "description": "Spredfast internal entity type",
+            "enum": [
+              "Note"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "description": "The note's text content."
+          },
+          "id": {
+            "type": "string",
+            "description": "The note's ID. This should be left empty or set to 0 for new notes."
+          },
+          "createdByDisplayName": {
+            "type": "string",
+            "description": "The formatted name [firstName lastName] of the note's author.",
+            "readOnly": true
+          },
+          "createdByUserId": {
+            "type": "string",
+            "readOnly": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "lastModifiedByUserId": {
+            "type": "string",
+            "readOnly": true
+          },
+          "lastModifiedDate": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
+      "Message": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "description": "Spredfast internal entity type",
+            "enum": [
+              "Message"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          "title": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "service": {
+            "type": "string",
+            "description": "Social network to publish to.",
+            "default": "FACEBOOK",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "MULTI_CHANNEL",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "targetAccountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "organicVisibility": {
+            "type": "string",
+            "enum": [
+              "VISIBLE",
+              "INVISIBLE",
+              "VISIBLE_POST_PUBLISH"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": "DRAFT",
+            "enum": [
+              "DRAFT",
+              "PENDING",
+              "AWAITING_APPROVAL",
+              "REJECTED",
+              "PUBLISHED",
+              "ERROR",
+              "DELETED",
+              "NATIVELY_SCHEDULED"
+            ]
+          },
+          "delegationStatus": {
+            "type": "string",
+            "enum": [
+              "NOT_DELEGATED",
+              "SCHEDULED_FOR_DELEGATION",
+              "DELEGATION_FAILED",
+              "DELEGATED"
+            ]
+          },
+          "publicationResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicationResult"
+            }
+          },
+          "scheduledPublishDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "callbacks": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "targetingProfile": {
+            "$ref": "#/components/schemas/TargetingProfile"
+          },
+          "assetIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "planId": {
+            "type": "string"
+          },
+          "nativeScheduling": {
+            "type": "boolean",
+            "default": false
+          },
+          "sponsor": {
+            "$ref": "#/components/schemas/MessageSponsor"
+          },
+          "publisherIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageNote"
+            }
+          }
+        },
+        "example": {
+          "sfEntityType": "Message",
+          "service": "FACEBOOK",
+          "content": {
+            "sfEntityType": "Status",
+            "text": "Status Update"
+          },
+          "targetAccountIds": [
+            "4"
+          ]
+        }
+      },
+      "MultiChannelMessage": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "description": "Spredfast internal entity type",
+            "enum": [
+              "MultiChannelMessage"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PENDING",
+              "AWAITING_APPROVAL",
+              "REJECTED",
+              "PUBLISHED",
+              "ERROR",
+              "DELETED",
+              "NATIVELY_SCHEDULED"
+            ]
+          },
+          "messageService": {
+            "type": "string",
+            "description": "Social network of Spredfast message",
+            "default": "MULTI_CHANNEL",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "MULTI_CHANNEL",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "delegationStatus": {
+            "type": "string",
+            "enum": [
+              "NOT_DELEGATED",
+              "SCHEDULED_FOR_DELEGATION",
+              "DELEGATION_FAILED",
+              "DELEGATED"
+            ]
+          },
+          "scheduledPublishDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "callbacks": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "planId": {
+            "type": "string"
+          },
+          "nativeScheduling": {
+            "type": "boolean",
+            "default": false
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageNote"
+            }
+          },
+          "channelMessages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SingleChannelMessage"
+            }
+          }
+        },
+        "example": {
+          "sfEntityType": "MultiChannelMessage",
+          "id": "111",
+          "messageService": "MULTI_CHANNEL",
+          "channelMessages": [
+            {
+              "sfEntityType": "SingleChannelMessage",
+              "service": "FACEBOOK",
+              "targetAccountIds": [
+                "4"
+              ],
+              "content": {
+                "sfEntityType": "Status",
+                "text": "Status Update"
+              }
+            },
+            {
+              "sfEntityType": "SingleChannelMessage",
+              "service": "FACEBOOK",
+              "targetAccountIds": [
+                "5"
+              ],
+              "content": {
+                "sfEntityType": "Status",
+                "text": "Facebook test post"
+              }
+            }
+          ]
+        }
+      },
+      "EntityPageResponsePlan": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/Plan"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "ReportInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "EntityPageResponseInitiative": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/Initiative"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "PublicationResult": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string"
+          },
+          "serviceId": {
+            "type": "string"
+          },
+          "serviceLink": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "PUBLISHED",
+              "ERROR",
+              "DELETED"
+            ]
+          },
+          "datePublished": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ContentLabel": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string"
+          },
+          "previous": {
+            "type": "string"
+          },
+          "totalItems": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "EntityResponseAssetFolder": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AssetFolder"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "OptionalResponseLong": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "EntityResponseUserPrivilege": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/UserPrivilege"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "Asset": {
+        "type": "object",
+        "required": [
+          "name",
+          "folderId",
+          "sfEntityType"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "folderId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "services": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "FACEBOOK",
+                "GOOGLEPLUS",
+                "SINAWEIBO",
+                "LINKEDIN",
+                "PINTEREST",
+                "YOUTUBE",
+                "VK"
+              ]
+            }
+          },
+          "intendedForPublishing": {
+            "type": "boolean",
+            "default": false
+          },
+          "intendedForModeration": {
+            "type": "boolean",
+            "default": false
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "originSystem": {
+            "type": "string"
+          },
+          "originId": {
+            "type": "string"
+          },
+          "contentLabels": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "image": {
+            "type": "string",
+            "format": "uri"
+          },
+          "imageMedium": {
+            "type": "string",
+            "format": "uri",
+            "readOnly": true
+          },
+          "imageThumb": {
+            "type": "string",
+            "format": "uri",
+            "readOnly": true
+          },
+          "video": {
+            "type": "string",
+            "format": "uri"
+          },
+          "videoThumb": {
+            "type": "string",
+            "format": "uri",
+            "readOnly": true
+          },
+          "sfEntityType": {
+            "type": "string",
+            "enum": [
+              "Asset"
+            ]
+          },
+          "externalId": {
+            "type": "string",
+            "description": "External ID to represent the ID of the asset outside of the system"
+          }
+        },
+        "example": {
+          "folderId": "999",
+          "name": "asset_name",
+          "description": "Cool new Asset!",
+          "text": "Text body.",
+          "sfEntityType": "Asset"
+        }
+      },
+      "ImageShareList": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "images": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ImageShare"
+                }
+              },
+              "caption": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "AnalyticsMetadata": {
+        "type": "object",
+        "properties": {
+          "lastRefreshTime": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
+      "TargetingValue": {
+        "type": "object",
+        "properties": {
+          "subType": {
+            "type": "string",
+            "enum": [
+              "COUNTRY",
+              "REGION",
+              "METRO",
+              "CONTINENT",
+              "ZIP_CODE"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "Status": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "shareLink": {
+                "$ref": "#/components/schemas/ShareLink"
+              }
+            }
+          }
+        ]
+      },
+      "EntityResponseInitiative": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Initiative"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "EntityPageResponseAsset": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/Asset"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "AssetFolder": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "metrics": {
+            "$ref": "#/components/schemas/AssetFolderMetrics"
+          },
+          "sfEntityType": {
+            "type": "string",
+            "example": "AssetFolder"
+          }
+        }
+      },
+      "AssetFolderMetrics": {
+        "type": "object",
+        "properties": {
+          "assetCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastModifiedAssetImageThumb": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EntityPageResponseAssetFolder": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/AssetFolder"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "CallStatus": {
+        "type": "object",
+        "properties": {
+          "succeeded": {
+            "type": "boolean",
+            "readOnly": true,
+            "default": false
+          },
+          "error": {
+            "$ref": "#/components/schemas/ApiError"
+          }
+        }
+      },
+      "EntityResponseReportList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ReportList"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "UserPrivilege": {
+        "type": "object",
+        "properties": {
+          "canPublish": {
+            "type": "boolean",
+            "default": false
+          },
+          "canCreateLabels": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "Plan": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "campaignId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "overview": {
+            "type": "string"
+          },
+          "objective": {
+            "type": "string"
+          },
+          "targetAudience": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastModifiedDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Initiative": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "ReportInstanceId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "Video": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "videoTitle": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "tags": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "ApiError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "readOnly": true,
+            "enum": [
+              "PUBLISH_DATE_INVALID",
+              "CANNOT_CREATE_NEW_LABELS",
+              "IP_ADDRESS_REJECTED",
+              "MISSING_FIELD",
+              "NOT_ACCEPTABLE",
+              "NOT_FOUND",
+              "PUBLISH_POST_UPDATE_NOT_ALLOWED",
+              "PUBLISH_IMAGE_BAD_CONTENT_TYPE",
+              "PUBLISH_IMAGE_TOO_LARGE",
+              "PUBLISH_IMAGE_BAD_IMAGE",
+              "PUBLISH_INVALID_ACCOUNT_FOR_SERVICE",
+              "INVALID_MESSAGE_ID",
+              "NOT_IN_PRE_PUBLISH_STATE",
+              "NOT_ACCEPTABLE_CONTENT_TYPE",
+              "MESSAGE_HAS_A_LINK_PREVIEW",
+              "MESSAGE_HAS_TARGETING_PROFILE",
+              "MESSAGE_HAS_PROMOTION",
+              "MESSAGE_HAS_SCHEDULED_SERIES",
+              "MESSAGE_HAS_APPROVAL_TEAMS",
+              "EDIT_MESSAGE_SERVER_ERROR",
+              "UNAUTHENTICATED",
+              "UNAUTHORIZED",
+              "UNKNOWN_ERROR",
+              "RESOURCE_NOT_FOUND",
+              "VALIDATION_ERROR",
+              "VIDEO_SINGLE_ASSET_ALLOWED",
+              "VIDEO_INVALID_CATEGORY",
+              "SERVICE_INVALID_NAME",
+              "STREAM_ITEM_INVALID_TYPE",
+              "PROXY_UNROUTABLE_REQUEST",
+              "PROXY_SERVER_FAILURE",
+              "PROXY_ORIGIN_SERVER_FAILURE",
+              "ACCOUNT_LOCKED",
+              "PASSWORD_EXPIRED"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "ShareLink": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "thumbnailUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "ReportList": {
+        "type": "object",
+        "properties": {
+          "reports": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/ReportInfo"
+            }
+          }
+        }
+      },
+      "EntityResponseReportInstanceId": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ReportInstanceId"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "EntityResponseAsset": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Asset"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "AssetCreate": {
+        "type": "object",
+        "required": [
+          "sfEntityType",
+          "folderId"
+        ],
+        "properties": {
+          "folderId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "sfEntityType": {
+            "type": "string",
+            "enum": [
+              "Asset"
+            ]
+          }
+        }
+      },
+      "AssetCreateMultipart": {
+        "type": "object",
+        "description": "JSON describing the uploaded file.",
+        "required": [
+          "sfEntityType",
+          "folderId"
+        ],
+        "properties": {
+          "folderId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "sfEntityType": {
+            "type": "string",
+            "enum": [
+              "Asset"
+            ]
+          }
+        }
+      },
+      "AssetFolderCreate": {
+        "type": "object",
+        "required": [
+          "sfEntityType"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "sfEntityType": {
+            "type": "string",
+            "enum": [
+              "AssetFolder"
+            ]
+          }
+        }
+      },
+      "AssetFolderUpdate": {
+        "type": "object",
+        "required": [
+          "sfEntityType",
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "sfEntityType": {
+            "type": "string",
+            "enum": [
+              "AssetFolder"
+            ]
+          }
+        }
+      },
+      "createMessagesDefinitionsDef": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "example": "Message"
+          },
+          "content": {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          "title": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "service": {
+            "type": "string",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "targetAccountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "MessageMultiPart": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "example": "ImageShare"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          "title": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "service": {
+            "type": "string",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "targetAccountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "organicVisibility": {
+            "type": "string",
+            "enum": [
+              "VISIBLE",
+              "INVISIBLE",
+              "VISIBLE_POST_PUBLISH"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PENDING",
+              "AWAITING_APPROVAL",
+              "REJECTED",
+              "PUBLISHED",
+              "ERROR",
+              "DELETED",
+              "NATIVELY_SCHEDULED"
+            ]
+          },
+          "delegationStatus": {
+            "type": "string",
+            "enum": [
+              "NOT_DELEGATED",
+              "SCHEDULED_FOR_DELEGATION",
+              "DELEGATION_FAILED",
+              "DELEGATED"
+            ]
+          },
+          "publicationResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicationResult"
+            }
+          },
+          "scheduledPublishDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "callbacks": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "targetingProfile": {
+            "$ref": "#/components/schemas/TargetingProfile"
+          },
+          "assetIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "planId": {
+            "type": "string"
+          },
+          "nativeScheduling": {
+            "type": "boolean",
+            "default": false
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageNote"
+            }
+          }
+        },
+        "example": {
+          "sfEntityType": "Message",
+          "service": "FACEBOOK",
+          "content": {
+            "sfEntityType": "ImageShare",
+            "caption": "Status Update w/ image"
+          },
+          "targetAccountIds": [
+            "4"
+          ]
+        }
+      },
+      "MessageMultiPartImages": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "example": "ImageShare"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          "title": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "service": {
+            "type": "string",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "targetAccountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "organicVisibility": {
+            "type": "string",
+            "enum": [
+              "VISIBLE",
+              "INVISIBLE",
+              "VISIBLE_POST_PUBLISH"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PENDING",
+              "AWAITING_APPROVAL",
+              "REJECTED",
+              "PUBLISHED",
+              "ERROR",
+              "DELETED",
+              "NATIVELY_SCHEDULED"
+            ]
+          },
+          "delegationStatus": {
+            "type": "string",
+            "enum": [
+              "NOT_DELEGATED",
+              "SCHEDULED_FOR_DELEGATION",
+              "DELEGATION_FAILED",
+              "DELEGATED"
+            ]
+          },
+          "publicationResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicationResult"
+            }
+          },
+          "scheduledPublishDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "callbacks": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "targetingProfile": {
+            "$ref": "#/components/schemas/TargetingProfile"
+          },
+          "assetIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "planId": {
+            "type": "string"
+          },
+          "nativeScheduling": {
+            "type": "boolean",
+            "default": false
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageNote"
+            }
+          }
+        },
+        "example": {
+          "sfEntityType": "Message",
+          "service": "FACEBOOK",
+          "content": {
+            "sfEntityType": "ImageShareList",
+            "images": [
+              {
+                "sfEntityType": "ImageShare",
+                "caption": "image one"
+              }
+            ]
+          },
+          "targetAccountIds": [
+            "4"
+          ]
+        }
+      },
+      "EditMessage": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "example": "Message"
+          },
+          "content": {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          "title": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "service": {
+            "type": "string",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "targetAccountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageNote"
+            }
+          }
+        }
+      },
+      "EditMessageMultipart": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "example": "ImageShare"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          "title": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "service": {
+            "type": "string",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "targetAccountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "organicVisibility": {
+            "type": "string",
+            "enum": [
+              "VISIBLE",
+              "INVISIBLE",
+              "VISIBLE_POST_PUBLISH"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PENDING",
+              "AWAITING_APPROVAL",
+              "REJECTED",
+              "PUBLISHED",
+              "ERROR",
+              "DELETED"
+            ]
+          },
+          "delegationStatus": {
+            "type": "string",
+            "enum": [
+              "NOT_DELEGATED",
+              "SCHEDULED_FOR_DELEGATION",
+              "DELEGATION_FAILED",
+              "DELEGATED"
+            ]
+          },
+          "publicationResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicationResult"
+            }
+          },
+          "scheduledPublishDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "callbacks": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "targetingProfile": {
+            "$ref": "#/components/schemas/TargetingProfile"
+          },
+          "assetIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "planId": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageNote"
+            }
+          }
+        },
+        "example": {
+          "sfEntityType": "Message",
+          "service": "FACEBOOK",
+          "content": {
+            "sfEntityType": "ImageShareList",
+            "images": [
+              {
+                "sfEntityType": "ImageShare",
+                "caption": "image one"
+              }
+            ]
+          },
+          "targetAccountIds": [
+            "4"
+          ]
+        }
+      },
+      "MessageMultiPartVideo": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "example": "Video"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          "title": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "service": {
+            "type": "string",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "targetAccountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "organicVisibility": {
+            "type": "string",
+            "enum": [
+              "VISIBLE",
+              "INVISIBLE",
+              "VISIBLE_POST_PUBLISH"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "PENDING",
+              "AWAITING_APPROVAL",
+              "REJECTED",
+              "PUBLISHED",
+              "ERROR",
+              "DELETED",
+              "NATIVELY_SCHEDULED"
+            ]
+          },
+          "delegationStatus": {
+            "type": "string",
+            "enum": [
+              "NOT_DELEGATED",
+              "SCHEDULED_FOR_DELEGATION",
+              "DELEGATION_FAILED",
+              "DELEGATED"
+            ]
+          },
+          "publicationResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicationResult"
+            }
+          },
+          "scheduledPublishDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "callbacks": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "targetingProfile": {
+            "$ref": "#/components/schemas/TargetingProfile"
+          },
+          "assetIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "planId": {
+            "type": "string"
+          },
+          "nativeScheduling": {
+            "type": "boolean",
+            "default": false
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageNote"
+            }
+          }
+        },
+        "example": {
+          "sfEntityType": "Message",
+          "service": "YOUTUBE",
+          "content": {
+            "sfEntityType": "Video",
+            "videoTitle": "Cool video!",
+            "description": "That one guy doing that thing."
+          },
+          "assetIds": [
+            "xxx-xxx-xxx-xxx"
+          ],
+          "targetAccountIds": [
+            "4"
+          ]
+        }
+      },
+      "AccountSet": {
+        "type": "object",
+        "description": "A Conversations AccountSet",
+        "properties": {
+          "sfEntityType": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Account"
+            }
+          }
+        }
+      },
+      "Account": {
+        "type": "object",
+        "description": "A Conversations social media Account",
+        "properties": {
+          "sfEntityType": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "service": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "accountType": {
+            "type": "string"
+          },
+          "serviceId": {
+            "type": "string"
+          }
+        }
+      },
+      "Companies": {
+        "type": "object",
+        "description": "List of companies",
+        "properties": {
+          "sfEntityType": {
+            "type": "string"
+          },
+          "directoryId": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "string"
+          }
+        }
+      },
+      "Me": {
+        "type": "object",
+        "description": "List of companies you have authorized for use with this app",
+        "properties": {
+          "sfEntityType": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "companies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Companies"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          }
+        }
+      },
+      "SingleChannelMessage": {
+        "type": "object",
+        "properties": {
+          "sfEntityType": {
+            "type": "string",
+            "description": "Spredfast internal entity type",
+            "enum": [
+              "SingleChannelMessage"
+            ]
+          },
+          "service": {
+            "type": "string",
+            "description": "Social network to publish to",
+            "enum": [
+              "FACEBOOK",
+              "GOOGLEPLUS",
+              "SINAWEIBO",
+              "LINKEDIN",
+              "PINTEREST",
+              "YOUTUBE",
+              "VK"
+            ]
+          },
+          "targetAccountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "content": {
+            "$ref": "#/components/schemas/MessageContent"
+          },
+          "organicVisibility": {
+            "type": "string",
+            "enum": [
+              "VISIBLE",
+              "INVISIBLE",
+              "VISIBLE_POST_PUBLISH"
+            ]
+          },
+          "publicationResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicationResult"
+            }
+          },
+          "targetingProfile": {
+            "$ref": "#/components/schemas/TargetingProfile"
+          },
+          "sponsor": {
+            "$ref": "#/components/schemas/MessageSponsor"
+          }
+        }
+      },
+      "EntityPageResponseConversationsUser": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "type": "object",
+              "description": "Minimal data about Conversations users",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "displayName": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/CallStatus"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      }
+    }
+  },
+  "x-readme": {
+    "explorer-enabled": false,
+    "proxy-enabled": false,
+    "samples-enabled": true
+  }
+}

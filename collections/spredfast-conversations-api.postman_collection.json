@@ -1,0 +1,4978 @@
+{
+  "item": [
+    {
+      "id": "2ed5b372-a6c2-4784-813f-6908fc904e16",
+      "name": "Retrieve All Account Sets & Accounts Available",
+      "request": {
+        "name": "Retrieve All Account Sets & Accounts Available",
+        "description": {
+          "content": "List all account sets and accounts available",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiative-id",
+            "accountset"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiative-id",
+              "description": "(Required) The initiative you wish to target."
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "a4334ef4-9b9c-4440-9557-aa156cbe45f1",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiative-id",
+                "accountset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiative-id",
+                  "description": "(Required) The initiative you wish to target."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"accounts\\\": [\\n        {\\n          \\\"accountType\\\": \\\"PAGE\\\",\\n          \\\"alias\\\": \\\"PCGazer\\\",\\n          \\\"id\\\": \\\"21365\\\",\\n          \\\"name\\\": \\\"Page: Example Inc.\\\",\\n          \\\"service\\\": \\\"FACEBOOK\\\",\\n          \\\"serviceId\\\": \\\"103129177815577\\\",\\n          \\\"sfEntityType\\\": \\\"Account\\\",\\n          \\\"uniqueId\\\": \\\"2fefd6afe8261c2c162c0988c8f79727\\\"\\n        },\\n        {\\n          \\\"accountType\\\": \\\"USER\\\",\\n          \\\"id\\\": \\\"21366\\\",\\n          \\\"name\\\": \\\"ExampleInc\\\",\\n          \\\"service\\\": \\\"TWITTER\\\",\\n          \\\"serviceId\\\": \\\"1193602248087146499\\\",\\n          \\\"sfEntityType\\\": \\\"Account\\\",\\n          \\\"uniqueId\\\": \\\"495d056a96b49b82b8cd53145324c2d7\\\"\\n        }\\n      ],\\n      \\\"description\\\": \\\"\\\",\\n      \\\"id\\\": \\\"98330576\\\",\\n      \\\"name\\\": \\\"PCGazer\\\",\\n      \\\"sfEntityType\\\": \\\"AccountSet\\\"\\n    }\\n  ],\\n  \\\"pagination\\\": {\\n    \\\"totalItems\\\": 1\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "1d7d7925-5ef3-4bbb-843f-a9f99f0046ee",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiative-id",
+                "accountset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiative-id",
+                  "description": "(Required) The initiative you wish to target."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "f2f35645-a882-44cf-b906-e94f60756c4b",
+      "name": "Create Text Asset",
+      "request": {
+        "name": "Create Text Asset",
+        "description": {
+          "content": "Create a new Text Content Center Asset",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "asset"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sfEntityType\": \"Asset\",\n  \"folderId\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"intendedForPublishing\": true,\n  \"intendedForModeration\": true,\n  \"contentLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"removalDate\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageMedium\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"video\": \"<string>\",\n  \"videoThumb\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "4b16f9f7-a8a5-4158-bfbf-097f38600dbb",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"Asset\",\n  \"folderId\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"intendedForPublishing\": true,\n  \"intendedForModeration\": true,\n  \"contentLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"removalDate\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageMedium\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"video\": \"<string>\",\n  \"videoThumb\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"sfEntityType\\\": \\\"Asset\\\",\\n    \\\"id\\\": \\\"84d5cdbe-0f15-415e-80ea-examplede44f\\\",\\n    \\\"companyId\\\": \\\"12\\\",\\n    \\\"folderId\\\": \\\"736\\\",\\n    \\\"name\\\": \\\"Asset Name\\\",\\n    \\\"text\\\": \\\"Asset text value\\\",\\n    \\\"intendedForPublishing\\\": true,\\n    \\\"intendedForModeration\\\": true,\\n    \\\"createdDate\\\": 1551719642698,\\n    \\\"contentLabels\\\": [\\n      \\\"coffee - espresso\\\"\\n    ]\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "fad49c47-6121-4c20-9402-6dae66585b31",
+          "name": "406",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"Asset\",\n  \"folderId\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"intendedForPublishing\": true,\n  \"intendedForModeration\": true,\n  \"contentLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"removalDate\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageMedium\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"video\": \"<string>\",\n  \"videoThumb\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Acceptable",
+          "code": 406,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "{\n  \"status\": {\n    \"error\": {\n      \"code\": \"not_acceptable\",\n      \"message\": \"Unable to parse the json you provided.\"\n    },\n    \"succeeded\": false\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "98c9e5a0-ba94-4508-8d25-e732c67b8967",
+      "name": "Create Image or Video",
+      "request": {
+        "name": "Create Image or Video",
+        "description": {
+          "content": "Create a new image/video Content Center Asset",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "asset"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "multipart",
+              "value": "null"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sfEntityType\": \"Asset\",\n  \"folderId\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"intendedForPublishing\": true,\n  \"intendedForModeration\": true,\n  \"contentLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"removalDate\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageMedium\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"video\": \"<string>\",\n  \"videoThumb\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "686ba8d9-d223-4f6a-966e-f24871dffc20",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"Asset\",\n  \"folderId\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"intendedForPublishing\": true,\n  \"intendedForModeration\": true,\n  \"contentLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"removalDate\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageMedium\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"video\": \"<string>\",\n  \"videoThumb\": \"<string>\",\n  \"externalId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"sfEntityType\\\": \\\"Asset\\\",\\n    \\\"id\\\": \\\"84d5cdbe-0f15-415e-80ea-examplede44f\\\",\\n    \\\"companyId\\\": \\\"12\\\",\\n    \\\"folderId\\\": \\\"736\\\",\\n    \\\"name\\\": \\\"Asset Name\\\",\\n    \\\"text\\\": \\\"Asset text value\\\",\\n    \\\"intendedForPublishing\\\": true,\\n    \\\"intendedForModeration\\\": true,\\n    \\\"createdDate\\\": 1551719642698,\\n    \\\"contentLabels\\\": [\\n      \\\"coffee - espresso\\\"\\n    ]\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "7268c2bc-cd3c-4ee0-af29-dc78298361f6",
+      "name": "Retrieve a Content Center Asset by ID",
+      "request": {
+        "name": "Retrieve a Content Center Asset by ID",
+        "description": {
+          "content": "Gets a Content Center Asset by asset ID (including content label information)",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "asset",
+            ":assetId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "assetId",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "34e9b62c-0a86-4685-ac8b-f478b96f935a",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "asset",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"companyId\\\": \\\"389\\\",\\n    \\\"contentLabels\\\": [\\n      \\\"General Labels - Inspirations\\\"\\n    ],\\n    \\\"createdDate\\\": 1616437795210,\\n    \\\"description\\\": \\\"This is an asset description.\\\",\\n    \\\"folderId\\\": \\\"32252\\\",\\n    \\\"id\\\": \\\"0e195f2b-1f47-40cd-ae44-example70c88\\\",\\n    \\\"image\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-example70c88.jpg?AWSAccessKeyId=REDACTED_AWS_ACCESS_KEY_ID&Expires=1616441951&Signature=0DwGQR%2BDo00aDAbLSLszuBCe0Ow%3D\\\",\\n    \\\"imageMedium\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=SrwJV726yQxCez%2FwAj2uiZDe8A8%3D\\\",\\n    \\\"imageThumb\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=sOrgXXY2xLZK1wJC5H9v3DupakQ%3D\\\",\\n    \\\"intendedForModeration\\\": true,\\n    \\\"intendedForPublishing\\\": true,\\n    \\\"name\\\": \\\"exampleav-klapin-SymZoeE8quA-unsplash\\\",\\n    \\\"services\\\": [\\n      \\\"FACEBOOK\\\"\\n    ],\\n    \\\"sfEntityType\\\": \\\"Asset\\\",\\n    \\\"text\\\": \\\"\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "954e44b4-0385-4554-b184-913fcbe7fdea",
+      "name": "Update Existing Content Center Asset",
+      "request": {
+        "name": "Update Existing Content Center Asset",
+        "description": {
+          "content": "Updates a Content Center Asset based on the JSON request body",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "asset",
+            ":assetId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "removeImage",
+              "value": "false"
+            },
+            {
+              "disabled": false,
+              "key": "removeVideo",
+              "value": "false",
+              "description": "(Required) "
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "assetId",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"folderId\": \"<string>\",\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "875c6b7d-63c5-43e0-9c10-3950244af880",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "asset",
+                ":assetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "removeImage",
+                  "value": "false"
+                },
+                {
+                  "key": "removeVideo",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"folderId\": \"<string>\",\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"companyId\\\": \\\"389\\\",\\n    \\\"createdDate\\\": 1616437795210,\\n    \\\"description\\\": \\\"This is an example image asset.\\\",\\n    \\\"folderId\\\": \\\"32252\\\",\\n    \\\"id\\\": \\\"0e195f2b-1f47-40cd-ae44-a5e083070c88\\\",\\n    \\\"image\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplerqgMe7fxWfo6ckEzQ%2Bk%3D\\\",\\n    \\\"imageMedium\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplez4IoJCKxOjnKEw3giFE%3D\\\",\\n    \\\"imageThumb\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplejIGyN0tKoVjn9gSwisk%3D\\\",\\n    \\\"intendedForModeration\\\": true,\\n    \\\"intendedForPublishing\\\": true,\\n    \\\"name\\\": \\\"Asset Image Example\\\",\\n    \\\"services\\\": [\\n      \\\"FACEBOOK\\\"\\n    ],\\n    \\\"sfEntityType\\\": \\\"Asset\\\",\\n    \\\"text\\\": \\\"\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "33dc366e-ed0e-422b-b597-0f41a28a0f14",
+      "name": "Create a New Content Asset Folder",
+      "request": {
+        "name": "Create a New Content Asset Folder",
+        "description": {
+          "content": "Create a new custom asset folder where assets may be assigned",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "folder"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "5ae7fae4-0d59-4db0-a0d2-b809a86c09dc",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"companyId\\\": \\\"389\\\",\\n    \\\"createdDate\\\": 1616447179440,\\n    \\\"description\\\": \\\"This is a new example folder.\\\",\\n    \\\"id\\\": \\\"32253\\\",\\n    \\\"name\\\": \\\"A New Folder\\\",\\n    \\\"sfEntityType\\\": \\\"AssetFolder\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "7fef39c7-8e83-4e8e-9f50-ca0aa5bc7ece",
+      "name": "Retrieve a list of folders",
+      "request": {
+        "name": "Retrieve a list of folders",
+        "description": {
+          "content": "Retrieve a list of existing Khoros Marketing Content Center folders",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "folder"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "nameFilter",
+              "value": "<string>",
+              "description": "If present, filter the results by the provided `nameFilter` string."
+            },
+            {
+              "disabled": false,
+              "key": "metrics",
+              "value": "<boolean>"
+            },
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "0",
+              "description": "**Format:** int32"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "20",
+              "description": "**Format:** int32"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "45ea7c5e-6bb7-4c23-a116-135421394a21",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "nameFilter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "metrics",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"companyId\\\": \\\"389\\\",\\n      \\\"createdDate\\\": 1616437729000,\\n      \\\"description\\\": \\\"This folder contains assets.\\\",\\n      \\\"id\\\": \\\"32252\\\",\\n      \\\"name\\\": \\\"assets\\\",\\n      \\\"sfEntityType\\\": \\\"AssetFolder\\\"\\n    }\\n  ],\\n  \\\"pagination\\\": {\\n    \\\"totalItems\\\": 1\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "cd3e7291-5eea-4e39-8e48-6d8215bd506a",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "nameFilter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "metrics",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "765a76f1-84be-468a-99c6-7961093cca91",
+      "name": "Retrieve a Content Asset Folder by ID",
+      "request": {
+        "name": "Retrieve a Content Asset Folder by ID",
+        "description": {
+          "content": "Retrieve a specific content asset folder by ID",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "folder",
+            ":folderId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "folderId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "89daf9e9-3743-4758-b9a0-d3dcf98dc39b",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "folderId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"companyId\\\": \\\"389\\\",\\n    \\\"createdDate\\\": 1616437729000,\\n    \\\"description\\\": \\\"This folder contains assets.\\\",\\n    \\\"id\\\": \\\"32252\\\",\\n    \\\"name\\\": \\\"assets\\\",\\n    \\\"sfEntityType\\\": \\\"AssetFolder\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "69660d97-73d4-4c4f-adcd-315eea5afbed",
+      "name": "Update Existing Content Center Asset Folder",
+      "request": {
+        "name": "Update Existing Content Center Asset Folder",
+        "description": {
+          "content": "Update an existing content center asset folder",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "folder",
+            ":folderId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "folderId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<string>\",\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "73140029-2c56-4a3a-9b2b-39cfe35a6786",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "folderId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "3b5dc1eb-0d57-4f27-9a49-9aa75c244634",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "folderId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"sfEntityType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "03dcc826-70be-42e9-bfe9-1adb4d818fc1",
+      "name": "Delete a Content Asset Folder by ID",
+      "request": {
+        "name": "Delete a Content Asset Folder by ID",
+        "description": {
+          "content": "Delete a specific content asset folder by ID",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "folder",
+            ":folderId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "folderId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "960d8485-53e6-419a-aefd-cde71a7af406",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "folder",
+                ":folderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "folderId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": 32253,\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "43c43504-7647-47d5-86be-adb836d8be61",
+      "name": "Retrieve a List of Assets in a Folder",
+      "request": {
+        "name": "Retrieve a List of Assets in a Folder",
+        "description": {
+          "content": "Retrieve a list of assets in a folder",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "folder",
+            ":folderId",
+            "assets"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "orderBy",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "direction",
+              "value": "ASCENDING",
+              "description": "**Allowed Values:** `ASCENDING`, `DESCENDING`"
+            },
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "0",
+              "description": "**Format:** int32"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "20",
+              "description": "**Format:** int32"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "folderId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "6cea90d3-ff12-4910-b729-573a842ea853",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "folder",
+                ":folderId",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "orderBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "direction",
+                  "value": "ASCENDING"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "folderId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"companyId\\\": \\\"389\\\",\\n      \\\"createdDate\\\": 1616437795210,\\n      \\\"description\\\": \\\"This is an example image asset.\\\",\\n      \\\"folderId\\\": \\\"32252\\\",\\n      \\\"id\\\": \\\"0e195f2b-1f47-40cd-ae44-a5e083070c88\\\",\\n      \\\"image\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/example-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\\\",\\n      \\\"imageMedium\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\\\",\\n      \\\"imageThumb\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\\\",\\n      \\\"intendedForModeration\\\": true,\\n      \\\"intendedForPublishing\\\": true,\\n      \\\"name\\\": \\\"Asset Image Example\\\",\\n      \\\"services\\\": [\\n        \\\"FACEBOOK\\\"\\n      ],\\n      \\\"sfEntityType\\\": \\\"Asset\\\",\\n      \\\"text\\\": \\\"\\\"\\n    }\\n  ],\\n  \\\"pagination\\\": {\\n    \\\"totalItems\\\": 1\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "211e5386-e3ac-47dc-ab24-27b513c0f02d",
+      "name": "List CustomChannels",
+      "request": {
+        "name": "List CustomChannels",
+        "description": {
+          "content": "List any CustomChannels that exist",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "calendar",
+            "customChannel"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"companyId\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"image\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"companyId\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"image\": \"<string>\"\n    }\n  ],\n  \"pagination\": {\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\",\n    \"totalItems\": \"<string>\"\n  },\n  \"status\": {\n    \"succeeded\": \"<boolean>\",\n    \"error\": {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "e72ede9a-12f8-48e2-ad43-6b99d2674e02",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "calendar",
+                "customChannel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"companyId\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"image\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"companyId\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"image\": \"<string>\"\n    }\n  ],\n  \"pagination\": {\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\",\n    \"totalItems\": \"<string>\"\n  },\n  \"status\": {\n    \"succeeded\": \"<boolean>\",\n    \"error\": {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"companyId\\\": \\\"[COMPANY-ID]\\\",\\n      \\\"contactName\\\": \\\"John Doe\\\",\\n      \\\"id\\\": \\\"4609\\\",\\n      \\\"image\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]\\\",\\n      \\\"name\\\": \\\"Custom Type\\\",\\n      \\\"sfEntityType\\\": \\\"CustomChannel\\\",\\n      \\\"type\\\": \\\"Event\\\"\\n    }\\n  ],\\n  \\\"pagination\\\": {\\n    \\\"totalItems\\\": 1\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "f55db911-3bbf-49ff-86b9-591efcbb5506",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "calendar",
+                "customChannel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"companyId\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"image\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"companyId\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"image\": \"<string>\"\n    }\n  ],\n  \"pagination\": {\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\",\n    \"totalItems\": \"<string>\"\n  },\n  \"status\": {\n    \"succeeded\": \"<boolean>\",\n    \"error\": {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ccaaa204-5caf-4ba5-a6d5-f2164772f6a8",
+      "name": "Create a CustomChannel",
+      "request": {
+        "name": "Create a CustomChannel",
+        "description": {
+          "content": "Create a CustomChannel",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "calendar",
+            "customChannel"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"companyId\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"image\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "688a04d5-9fcc-47cc-aad5-d9348cd32b07",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "calendar",
+                "customChannel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"companyId\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"image\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "de3eac80-1aad-41a5-bb68-276e323aeea1",
+      "name": "Get a CustomChannel based on ID",
+      "request": {
+        "name": "Get a CustomChannel based on ID",
+        "description": {
+          "content": "Retrieve a previously created custom channel",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "calendar",
+            "customChannel",
+            ":customChannelId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "customChannelId",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"companyId\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"image\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "3bb5e62e-3bb3-41d3-9f5a-8e7f89cc94bc",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "calendar",
+                "customChannel",
+                ":customChannelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customChannelId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"companyId\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"image\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"companyId\\\": \\\"389\\\",\\n    \\\"contactName\\\": \\\"Ryan Pierson\\\",\\n    \\\"id\\\": \\\"4609\\\",\\n    \\\"image\\\": \\\"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616448046&Signature=[SIGNATURE]\\\",\\n    \\\"name\\\": \\\"Custom Type\\\",\\n    \\\"sfEntityType\\\": \\\"CustomChannel\\\",\\n    \\\"type\\\": \\\"Event\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "93eb5809-1a14-4c39-b1fb-a8e53700f443",
+      "name": "Update a CustomChannel",
+      "request": {
+        "name": "Update a CustomChannel",
+        "description": {
+          "content": "Update a CustomChannel",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "calendar",
+            "customChannel",
+            ":customChannelId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "customChannelId",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"companyId\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"image\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "729dd560-f9f4-40cf-bdf7-25cae9cade39",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "calendar",
+                "customChannel",
+                ":customChannelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customChannelId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"companyId\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"image\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3b256ebd-b7b3-4c6f-bf2d-2e92cd855b77",
+      "name": "Create a CustomChannelItem",
+      "request": {
+        "name": "Create a CustomChannelItem",
+        "description": {
+          "content": "Create a new CustomChannelItem",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "calendar",
+            "customChannelItem",
+            ":customChannelItemId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "customChannelItemId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<string>\",\n  \"companyId\": \"<integer>\",\n  \"initiativeId\": \"<integer>\",\n  \"customChannel\": {\n    \"id\": \"<integer>\",\n    \"companyId\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"contactName\": \"<string>\",\n    \"image\": \"<string>\"\n  },\n  \"scheduledPublishDate\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"createdDate\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "ea0d45da-6cb1-4d71-9c3e-faf5fdfa7cf4",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "calendar",
+                "customChannelItem",
+                ":customChannelItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customChannelItemId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"companyId\": \"<integer>\",\n  \"initiativeId\": \"<integer>\",\n  \"customChannel\": {\n    \"id\": \"<integer>\",\n    \"companyId\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"contactName\": \"<string>\",\n    \"image\": \"<string>\"\n  },\n  \"scheduledPublishDate\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"createdDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9352964c-17e6-43d0-8006-03ff25c30ed0",
+      "name": "Update a CustomChannelItem",
+      "request": {
+        "name": "Update a CustomChannelItem",
+        "description": {
+          "content": "Update a CustomChannelItem",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "calendar",
+            "customChannelItem",
+            ":customChannelItemId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "customChannelItemId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<string>\",\n  \"companyId\": \"<integer>\",\n  \"initiativeId\": \"<integer>\",\n  \"customChannel\": {\n    \"id\": \"<integer>\",\n    \"companyId\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"contactName\": \"<string>\",\n    \"image\": \"<string>\"\n  },\n  \"scheduledPublishDate\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"createdDate\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "aaa63096-4d4c-490e-a7bc-4a6d8f88e1e2",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "calendar",
+                "customChannelItem",
+                ":customChannelItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customChannelItemId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"companyId\": \"<integer>\",\n  \"initiativeId\": \"<integer>\",\n  \"customChannel\": {\n    \"id\": \"<integer>\",\n    \"companyId\": \"<integer>\",\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"contactName\": \"<string>\",\n    \"image\": \"<string>\"\n  },\n  \"scheduledPublishDate\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"image\": \"<string>\",\n  \"imageThumb\": \"<string>\",\n  \"createdDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0cf0a0dc-105c-4268-bacb-7dfb588ecd49",
+      "name": "Get a CustomChannelItem by ID",
+      "request": {
+        "name": "Get a CustomChannelItem by ID",
+        "description": {
+          "content": "Get a CustomChannelItem identified by its unique id",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "calendar",
+            "customChannelItem",
+            ":customChannelItemId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format**: int64"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "customChannelItemId",
+              "description": "(Required) **Format**: int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "0d71f3e3-3185-4f1b-a01c-c6d6476c6201",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "calendar",
+                "customChannelItem",
+                ":customChannelItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format**: int64"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customChannelItemId",
+                  "description": "(Required) **Format**: int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "fa4c5ab7-7239-4dfa-9eea-f89fd4d23585",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "calendar",
+                "customChannelItem",
+                ":customChannelItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format**: int64"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "customChannelItemId",
+                  "description": "(Required) **Format**: int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e99b7461-f4d0-4a35-9d4c-1afbd62d45e5",
+      "name": "Get Messages",
+      "request": {
+        "name": "Get Messages",
+        "description": {
+          "content": "Get a list of messages posted or scheduled to be posted from Khoros Marketing",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "calendar",
+            "messages"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "initiativeIds",
+              "value": "<string>",
+              "description": "CSV list of initiatives to filter by. All initiatives are included when absent."
+            },
+            {
+              "disabled": false,
+              "key": "planIds",
+              "value": "<string>",
+              "description": "CSV list of Plan ids to filter messages by. All plans are included in the search when absent."
+            },
+            {
+              "disabled": false,
+              "key": "perPage",
+              "value": "<integer>",
+              "description": "Number of messages to include in each page of results. Default is 25. Must be between 1 and 50."
+            },
+            {
+              "disabled": false,
+              "key": "startDate",
+              "value": "<string>",
+              "description": "ISO-8601 formatted date and time for the earliest published result. **Format:** date-time"
+            },
+            {
+              "disabled": false,
+              "key": "endDate",
+              "value": "<string>",
+              "description": "ISO-8601 formatted date and time for the latest published result. **Format:** date-time"
+            },
+            {
+              "disabled": false,
+              "key": "after",
+              "value": "<string>",
+              "description": "String representing the current cursor within paged data."
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3f75940c-66ef-4aee-99b0-30d6b646c6ba",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "calendar",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "initiativeIds",
+                  "value": "<string>"
+                },
+                {
+                  "key": "planIds",
+                  "value": "<string>"
+                },
+                {
+                  "key": "perPage",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "startDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "endDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "after",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ef26353a-4fad-42ac-9bd3-4a02741e1784",
+      "name": "Retrieve a List of Available Initiatives",
+      "request": {
+        "name": "Retrieve a List of Available Initiatives",
+        "description": {
+          "content": "Retrieve a list of initiatives that exist for your company",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "nameFilter",
+              "value": "<string>",
+              "description": "If present, filter the results by the provided `nameFilter` string."
+            },
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "0",
+              "description": "**Format:** int32"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "20",
+              "description": "**Format:** int32"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "8b6018a6-058d-472a-8513-1c59a50cdbad",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "nameFilter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"description\\\": \\\"This is an initiative's description.\\\",\\n      \\\"id\\\": \\\"1710\\\",\\n      \\\"name\\\": \\\"doc\\\",\\n      \\\"sfEntityType\\\": \\\"Initiative\\\"\\n    }\\n  ],\\n  \\\"pagination\\\": {\\n    \\\"totalItems\\\": 1\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "13c24b19-8df3-4ce5-b544-13029b37a609",
+      "name": "Retrieve a Single Initiative",
+      "request": {
+        "name": "Retrieve a Single Initiative",
+        "description": {
+          "content": "Retrieve information about a specific initiative",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "f2673fb0-5a94-486b-8cb3-6137311f09f2",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"description\\\": \\\"This is an initiative's description.\\\",\\n    \\\"id\\\": \\\"1710\\\",\\n    \\\"name\\\": \\\"doc\\\",\\n    \\\"sfEntityType\\\": \\\"Initiative\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5e5a23dc-2bca-480c-b2a2-09d40dc9cc44",
+      "name": "Retrieve Paged Labels",
+      "request": {
+        "name": "Retrieve Paged Labels",
+        "description": {
+          "content": "Retrieve a paged list of labels using Khoros Marketing Conversations API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "contentLabel"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "q",
+              "value": "<string>",
+              "description": "If present, filter the results by the provided string."
+            },
+            {
+              "disabled": false,
+              "key": "priority",
+              "value": "<boolean>",
+              "description": "If present, only returns `top` labels."
+            },
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "0",
+              "description": "**Format:** int32"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "100",
+              "description": "**Format:** int32"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3aedb27a-60a1-420b-9383-b45c1575b092",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "contentLabel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "priority",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "100"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"priority\\\": false,\\n      \\\"title\\\": \\\"General Labels - Ideas\\\"\\n    },\\n    {\\n      \\\"priority\\\": false,\\n      \\\"title\\\": \\\"General Labels - Inventions\\\"\\n    },\\n    {\\n      \\\"priority\\\": false,\\n      \\\"title\\\": \\\"General Labels - Products\\\"\\n    },\\n    {\\n      \\\"priority\\\": false,\\n      \\\"title\\\": \\\"General Labels - Services\\\"\\n    },\\n    {\\n      \\\"priority\\\": false,\\n      \\\"title\\\": \\\"General Labels - Innovations\\\"\\n    },\\n    {\\n      \\\"priority\\\": false,\\n      \\\"title\\\": \\\"General Labels - Inspirations\\\"\\n    }\\n  ],\\n  \\\"pagination\\\": {},\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0753ed4d-ebb3-47db-83bf-ed057dad4702",
+      "name": "Retrieve a List of Companies with this App Enabled",
+      "request": {
+        "name": "Retrieve a List of Companies with this App Enabled",
+        "description": {
+          "content": "Retrieve a list of companies the currently-authenticated user is associated with for this app",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "me"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "9927769c-9fc5-4dc7-ab0b-0233eadd015f",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "me"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"companies\\\": [\\n      {\\n        \\\"directoryId\\\": \\\"24606\\\",\\n        \\\"environment\\\": \\\"APP3\\\",\\n        \\\"environmentUrl\\\": \\\"https://app3.spredfast.com\\\",\\n        \\\"id\\\": \\\"389\\\",\\n        \\\"name\\\": \\\"(documentation2)\\\",\\n        \\\"productName\\\": null,\\n        \\\"sfEntityType\\\": \\\"AvailableCompany\\\"\\n      }\\n    ],\\n    \\\"email\\\": \\\"ryan.pierson+doc@khoros.com\\\",\\n    \\\"sfEntityType\\\": \\\"User\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "7173e5be-7668-4ef8-aff6-43946403fe08",
+      "name": "Publish a New Message (imageset)",
+      "request": {
+        "name": "Publish a New Message (imageset)",
+        "description": {
+          "content": "Publish a new Khoros Marketing Message for the target Initiative",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "message"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": {},\n  \"title\": \"<string>\",\n  \"labels\": \"<string>\",\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<string>\",\n  \"callbacks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {}\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": \"<boolean>\",\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "f2aa8e35-880b-48a0-bbea-6248ed8e3966",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": {},\n  \"title\": \"<string>\",\n  \"labels\": \"<string>\",\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<string>\",\n  \"callbacks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {}\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": \"<boolean>\",\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "58fa3823-5ae7-4e5c-8e9b-0db6e2851f8c",
+      "name": "Update a Message",
+      "request": {
+        "name": "Update a Message",
+        "description": {
+          "content": "Update an existing Khoros Marketing Message using Khoros Marketing Conversations API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "message",
+            ":messageId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "messageId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": {},\n  \"title\": \"<string>\",\n  \"labels\": \"<string>\",\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<string>\",\n  \"callbacks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {}\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": \"<boolean>\",\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "a3972516-a74c-4ef9-8958-e58578ef0145",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "message",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "messageId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": {},\n  \"title\": \"<string>\",\n  \"labels\": \"<string>\",\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<string>\",\n  \"callbacks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {}\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": \"<boolean>\",\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9d212ce4-58b9-4477-8aab-68fa8f6c204b",
+      "name": "Retrieve an Existing Message",
+      "request": {
+        "name": "Retrieve an Existing Message",
+        "description": {
+          "content": "Returns information about the existing Khoros Marketing Messages for the target Initiative",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "message",
+            ":messageId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "messageId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "dc3a24a7-951d-4b79-95ad-e3d39e1f14ee",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "message",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "messageId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"content\\\": {\\n      \\\"caption\\\": \\\"This is the best day to say hello to someone new. Hello, world!\\\",\\n      \\\"sfEntityType\\\": \\\"ImageShare\\\",\\n      \\\"temporaryImageUrl\\\": \\\"s3.amazonaws.com/photos.socialagency.com/app3/389/example.jpeg\\\",\\n      \\\"temporaryThumbnailUrl\\\": \\\"s3.amazonaws.com/photos.socialagency.com/app3/389/example.thumb.jpeg\\\"\\n    },\\n    \\\"delegationStatus\\\": \\\"NOT_DELEGATED\\\",\\n    \\\"id\\\": \\\"2244551225\\\",\\n    \\\"labels\\\": [\\n      \\\"General Labels - Inspirations\\\"\\n    ],\\n    \\\"notes\\\": [],\\n    \\\"organicVisibility\\\": \\\"VISIBLE\\\",\\n    \\\"planId\\\": \\\"example-991e-4394-bdb5-88358cd909eb\\\",\\n    \\\"publicationResults\\\": [\\n      {\\n        \\\"accountId\\\": \\\"21365\\\",\\n        \\\"datePublished\\\": 1616018540000,\\n        \\\"serviceId\\\": \\\"123456177815577_123456789123456\\\",\\n        \\\"serviceLink\\\": \\\"https://www.facebook.com/123456789/posts/987654321\\\",\\n        \\\"sfEntityType\\\": \\\"PublicationResult\\\",\\n        \\\"status\\\": \\\"PUBLISHED\\\"\\n      }\\n    ],\\n    \\\"scheduledPublishDate\\\": 1616018541000,\\n    \\\"service\\\": \\\"MULTI_CHANNEL\\\",\\n    \\\"sfEntityType\\\": \\\"Message\\\",\\n    \\\"status\\\": \\\"PUBLISHED\\\",\\n    \\\"targetAccountIds\\\": [\\n      \\\"21365\\\"\\n    ],\\n    \\\"title\\\": \\\"This is the best\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "aad2ed8f-2f07-432e-b678-9fd2718644e7",
+      "name": "Delete an Existing Message",
+      "request": {
+        "name": "Delete an Existing Message",
+        "description": {
+          "content": "This endpoint is used to delete an existing Khoros Marketing Message",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "message",
+            ":messageId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "messageId",
+              "description": "(Required) **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ce0835b0-249f-4087-8fc8-b96e90ca0549",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "message",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "messageId",
+                  "description": "(Required) **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": 6221767,\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "a484c0f4-4c78-4e3b-a347-594e55be2b01",
+      "name": "Publish a New Message (multipart)",
+      "request": {
+        "name": "Publish a New Message (multipart)",
+        "description": {
+          "content": "Publish a new Khoros Marketing multipart Message for the target Initiative",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "message"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "multipart",
+              "value": "null"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": {},\n  \"title\": \"<string>\",\n  \"labels\": \"<string>\",\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<string>\",\n  \"callbacks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {}\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": \"<boolean>\",\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "ff96ecaf-e544-4f92-b338-18eb7ae4ae5c",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": {},\n  \"title\": \"<string>\",\n  \"labels\": \"<string>\",\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<string>\",\n  \"callbacks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {}\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": \"<boolean>\",\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "739ed770-64aa-4051-9dc5-eed86b1fa715",
+      "name": "Update a Multipart Message",
+      "request": {
+        "name": "Update a Multipart Message",
+        "description": {
+          "content": "This endpoint is used to update an existing multi-part Khoros Marketing Message",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "message",
+            "{{messageId}}"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "multipart",
+              "value": "null"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": {},\n  \"title\": \"<string>\",\n  \"labels\": \"<string>\",\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<string>\",\n  \"callbacks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {}\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": \"<boolean>\",\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "68744062-1dcb-4a03-b966-f8d72bd62fe3",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "message",
+                "{{messageId}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sfEntityType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"content\": {},\n  \"title\": \"<string>\",\n  \"labels\": \"<string>\",\n  \"service\": \"FACEBOOK\",\n  \"targetAccountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"organicVisibility\": \"<string>\",\n  \"status\": \"DRAFT\",\n  \"delegationStatus\": \"<string>\",\n  \"publicationResults\": [\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"serviceId\": \"<string>\",\n      \"serviceLink\": \"<string>\",\n      \"status\": \"<string>\",\n      \"datePublished\": \"<string>\"\n    }\n  ],\n  \"scheduledPublishDate\": \"<string>\",\n  \"callbacks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"targetingProfile\": {\n    \"targetingType\": \"<string>\",\n    \"targetingValues\": {}\n  },\n  \"assetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"planId\": \"<string>\",\n  \"nativeScheduling\": \"<boolean>\",\n  \"sponsor\": {\n    \"profileId\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"link\": \"<string>\"\n  },\n  \"publisherIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notes\": [\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    },\n    {\n      \"sfEntityType\": \"<string>\",\n      \"text\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createdByDisplayName\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"createdDate\": \"<string>\",\n      \"lastModifiedByUserId\": \"<string>\",\n      \"lastModifiedDate\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "4941c745-2a72-42ba-8a91-fd186827344a",
+      "name": "Retrieve an Existing Multi-channel Message",
+      "request": {
+        "name": "Retrieve an Existing Multi-channel Message",
+        "description": {
+          "content": "The Messages endpoint returns information about the Khoros Marketing multi-channel messages for the target Initiative",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "multiChannelMessage",
+            ":messageId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "messageId",
+              "description": "(Required) **Format:** int64"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "fc92072b-3cb3-4aa8-b260-d54c129b61e7",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "multiChannelMessage",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "messageId",
+                  "description": "(Required) **Format:** int64"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "Coming Soon",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "349d5fbb-266d-4d2a-a5d5-b818fbd2ed9e",
+      "name": "Retrieve Permissions for Current User",
+      "request": {
+        "name": "Retrieve Permissions for Current User",
+        "description": {
+          "content": "Retrieves a list of permissions in the currently selected company using Khoros Marketing Conversations API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "privilege"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "80e93318-225b-433b-9280-52843b43243e",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "privilege"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": {\\n    \\\"canCreateLabels\\\": true,\\n    \\\"canPublish\\\": true,\\n    \\\"sfEntityType\\\": \\\"UserPrivilege\\\"\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9bca6323-58da-4c41-95b7-257b0e22a88d",
+      "name": "Retrieve a List of Plans",
+      "request": {
+        "name": "Retrieve a List of Plans",
+        "description": {
+          "content": "Retrieve a list of plans for the specified initiative",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "plan"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "nameFilter",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "0",
+              "description": "**Format:** int32"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "20",
+              "description": "**Format:** int32"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target. **Format:** int64"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "d93076e0-3e74-4975-aeaa-97c516910186",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "plan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "nameFilter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target. **Format:** int64"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"campaignId\\\": 1710,\\n      \\\"color\\\": \\\"#1a7293\\\",\\n      \\\"companyId\\\": 389,\\n      \\\"endDate\\\": 1619931599999,\\n      \\\"id\\\": \\\"34534cd7-991e-4394-bdb5-88358cd909eb\\\",\\n      \\\"name\\\": \\\"Grow the Following\\\",\\n      \\\"sfEntityType\\\": \\\"Plan\\\",\\n      \\\"startDate\\\": 1615957200000\\n    }\\n  ],\\n  \\\"pagination\\\": {\\n    \\\"totalItems\\\": 1\\n  },\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "7fb45cf9-edac-4547-a418-c986eb2900b8",
+      "name": "List Roles for the Company",
+      "request": {
+        "name": "List Roles for the Company",
+        "description": {
+          "content": "List Roles for the company using Khoros Marketing Conversations API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "roles"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "300"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "eb0c3094-4281-401f-aeef-5c6c34f5c415",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "300"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"custom\\\": false,\\n      \\\"id\\\": 1,\\n      \\\"name\\\": \\\"company_admin\\\",\\n      \\\"sfEntityType\\\": \\\"Role\\\"\\n    },\\n    {\\n      \\\"custom\\\": false,\\n      \\\"id\\\": 3,\\n      \\\"name\\\": \\\"editor\\\",\\n      \\\"sfEntityType\\\": \\\"Role\\\"\\n    },\\n    {\\n      \\\"custom\\\": false,\\n      \\\"id\\\": 2,\\n      \\\"name\\\": \\\"manager\\\",\\n      \\\"sfEntityType\\\": \\\"Role\\\"\\n    },\\n    {\\n      \\\"custom\\\": false,\\n      \\\"id\\\": 97,\\n      \\\"name\\\": \\\"mobile_capture_user\\\",\\n      \\\"sfEntityType\\\": \\\"Role\\\"\\n    },\\n    {\\n      \\\"custom\\\": false,\\n      \\\"id\\\": 5,\\n      \\\"name\\\": \\\"viewer\\\",\\n      \\\"sfEntityType\\\": \\\"Role\\\"\\n    },\\n    {\\n      \\\"custom\\\": false,\\n      \\\"id\\\": 4,\\n      \\\"name\\\": \\\"writer\\\",\\n      \\\"sfEntityType\\\": \\\"Role\\\"\\n    }\\n  ],\\n  \\\"pagination\\\": {},\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "149e68b4-adbd-4ae6-a851-b7cf05cff446",
+      "name": "List Conversations Publishers",
+      "request": {
+        "name": "List Conversations Publishers",
+        "description": {
+          "content": "List publishers for a specified initiative using Khoros Marketing Conversations API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "users",
+            "initiative",
+            ":initiativeId",
+            "publishers"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "initiativeId",
+              "description": "(Required) The initiative you wish to target."
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "66760ccb-54ea-4ec0-bb2c-601e4a2fb2c6",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "users",
+                "initiative",
+                ":initiativeId",
+                "publishers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "initiativeId",
+                  "description": "(Required) The initiative you wish to target."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"displayName\\\": \\\"Jane Doe\\\",\\n      \\\"id\\\": 73588\\n    },\\n    {\\n      \\\"displayName\\\": \\\"John Doe\\\",\\n      \\\"id\\\": 73589\\n    },\\n    {\\n      \\\"displayName\\\": \\\"Joan Jett\\\",\\n      \\\"id\\\": 73590\\n    }\\n  ],\\n  \\\"pagination\\\": {},\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "87d9a81b-0c3c-4139-8bf8-b91a34a0fd4e",
+      "name": "Delete a Conversations User",
+      "request": {
+        "name": "Delete a Conversations User",
+        "description": {
+          "content": "Delete a user from the company using Khoros Marketing Conversations API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "user",
+            ":userId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "userId",
+              "description": "(Required) The `id` returned from [List Users](ref:list-conversations-users)."
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "82b76003-fbbe-4d36-ad89-f52054fc5075",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "user",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userId",
+                  "description": "(Required) The `id` returned from [List Users](ref:list-conversations-users)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "d390a806-fe29-40e3-a7f4-c52dcc492166",
+          "name": "404",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "user",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userId",
+                  "description": "(Required) The `id` returned from [List Users](ref:list-conversations-users)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0722bed0-15d5-4b6e-859b-8ab0222afccd",
+      "name": "Create a Conversations User",
+      "request": {
+        "name": "Create a Conversations User",
+        "description": {
+          "content": "Create a Conversations user for the company using Khoros Marketing Conversations API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "user"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roleId\": \"<integer>\",\n  \"workspaceId\": \"<integer>\",\n  \"jobTitle\": \"<string>\",\n  \"description\": \"<string>\",\n  \"timezone\": \"America/Chicago\",\n  \"sendInvite\": false,\n  \"inviteEmail\": \"<string>\",\n  \"inviteMessage\": \"<string>\",\n  \"addToFutureInitiatives\": false,\n  \"initiativeIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"addtoFutureAccountSets\": false,\n  \"accountSetIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "7160bd25-f84c-4cde-99f6-2a655a4bf664",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roleId\": \"<integer>\",\n  \"workspaceId\": \"<integer>\",\n  \"jobTitle\": \"<string>\",\n  \"description\": \"<string>\",\n  \"timezone\": \"America/Chicago\",\n  \"sendInvite\": false,\n  \"inviteEmail\": \"<string>\",\n  \"inviteMessage\": \"<string>\",\n  \"addToFutureInitiatives\": false,\n  \"initiativeIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"addtoFutureAccountSets\": false,\n  \"accountSetIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "f8933973-064c-437a-80d2-c95173924991",
+          "name": "406",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"roleId\": \"<integer>\",\n  \"workspaceId\": \"<integer>\",\n  \"jobTitle\": \"<string>\",\n  \"description\": \"<string>\",\n  \"timezone\": \"America/Chicago\",\n  \"sendInvite\": false,\n  \"inviteEmail\": \"<string>\",\n  \"inviteMessage\": \"<string>\",\n  \"addToFutureInitiatives\": false,\n  \"initiativeIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"addtoFutureAccountSets\": false,\n  \"accountSetIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Acceptable",
+          "code": 406,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5500a61f-2747-43fa-8958-3572e1d071df",
+      "name": "List Conversations Users",
+      "request": {
+        "name": "List Conversations Users",
+        "description": {
+          "content": "List Conversations users in the company",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "users"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "nameEmailFilter",
+              "value": "<string>",
+              "description": "Search for users based on `firstName`, `lastName`, or `email`."
+            },
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "0"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "300"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "856b9a8b-e9fa-4143-91f3-433380b1d0bd",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "nameEmailFilter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "300"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"accountSetIds\\\": [\\n        1710\\n      ],\\n      \\\"description\\\": \\\"\\\",\\n      \\\"directoryId\\\": 232809,\\n      \\\"email\\\": \\\"ryan@example.com\\\",\\n      \\\"firstName\\\": \\\"Ryan\\\",\\n      \\\"id\\\": 73589,\\n      \\\"initiativeIds\\\": [\\n        1710\\n      ],\\n      \\\"jobTitle\\\": \\\"\\\",\\n      \\\"lastName\\\": \\\"Doe\\\",\\n      \\\"roleId\\\": 1,\\n      \\\"sfEntityType\\\": \\\"User\\\",\\n      \\\"timezone\\\": \\\"America/Chicago\\\",\\n      \\\"workspaceId\\\": 1747\\n    },\\n    {\\n      \\\"accountSetIds\\\": [\\n        1710\\n      ],\\n      \\\"description\\\": \\\"\\\",\\n      \\\"directoryId\\\": 232810,\\n      \\\"email\\\": \\\"ryan@example2.com\\\",\\n      \\\"firstName\\\": \\\"Ryan\\\",\\n      \\\"id\\\": 73590,\\n      \\\"initiativeIds\\\": [\\n        1710\\n      ],\\n      \\\"jobTitle\\\": \\\"\\\",\\n      \\\"lastName\\\": \\\"Readme\\\",\\n      \\\"roleId\\\": 5,\\n      \\\"sfEntityType\\\": \\\"User\\\",\\n      \\\"timezone\\\": \\\"America/Los_Angeles\\\",\\n      \\\"workspaceId\\\": 1748\\n    },\\n    {\\n      \\\"accountSetIds\\\": [\\n        1710\\n      ],\\n      \\\"description\\\": \\\"\\\",\\n      \\\"directoryId\\\": 232808,\\n      \\\"email\\\": \\\"suzie@example.com\\\",\\n      \\\"firstName\\\": \\\"Suzie\\\",\\n      \\\"id\\\": 73588,\\n      \\\"initiativeIds\\\": [\\n        1710\\n      ],\\n      \\\"jobTitle\\\": \\\"\\\",\\n      \\\"lastName\\\": \\\"Doe\\\",\\n      \\\"roleId\\\": 1,\\n      \\\"sfEntityType\\\": \\\"User\\\",\\n      \\\"timezone\\\": \\\"America/Tijuana\\\",\\n      \\\"workspaceId\\\": 1747\\n    }\\n  ],\\n  \\\"pagination\\\": {},\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5e85c403-140b-4504-a90e-6b8181272263",
+      "name": "Create a Video Captions",
+      "request": {
+        "name": "Create a Video Captions",
+        "description": {
+          "content": "Create a Video Captions object for using in the Khoros Marketing Conversations API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "initiative",
+            ":initiativeId",
+            "video",
+            "captions"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"captions\": \"<binary>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "59f4cf54-ecd1-4f04-a8b0-e3ba0d0bed2d",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "video",
+                "captions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"captions\": \"<binary>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "d292414a-79be-455e-bfc4-d5a5ee5516dd",
+          "name": "406",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "initiative",
+                ":initiativeId",
+                "video",
+                "captions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"captions\": \"<binary>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Acceptable",
+          "code": 406,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "cfc5a60f-4cfe-4687-b071-dd024044cb74",
+      "name": "List Workspaces for the Company",
+      "request": {
+        "name": "List Workspaces for the Company",
+        "description": {
+          "content": "Retrieve list Workspaces for the company",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "conversations",
+            "workspaces"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "pageNumber",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "300"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "dc661d16-053b-47b8-9edb-2619b849c3a5",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "conversations",
+                "workspaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "300"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n  \\\"data\\\": [\\n    {\\n      \\\"default\\\": true,\\n      \\\"id\\\": 1747,\\n      \\\"name\\\": \\\"Advanced\\\",\\n      \\\"sfEntityType\\\": \\\"Workspace\\\"\\n    },\\n    {\\n      \\\"default\\\": true,\\n      \\\"id\\\": 1748,\\n      \\\"name\\\": \\\"Basic\\\",\\n      \\\"sfEntityType\\\": \\\"Workspace\\\"\\n    },\\n    {\\n      \\\"default\\\": true,\\n      \\\"id\\\": 1749,\\n      \\\"name\\\": \\\"Mobile Capture Workspace\\\",\\n      \\\"sfEntityType\\\": \\\"Workspace\\\"\\n    }\\n  ],\\n  \\\"pagination\\\": {},\\n  \\\"status\\\": {\\n    \\\"succeeded\\\": true\\n  }\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.spredfast.com/v2",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) **Format:** int64",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "messageId"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://example.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b8132643-0d8d-4ab6-803b-27428b89a615",
+    "name": "conversations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

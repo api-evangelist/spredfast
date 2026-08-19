@@ -1,0 +1,76 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+docs: https://developer.khoros.com/khorosmarketingdevdocs
+derived_from:
+- openapi/spredfast-conversations-api-v1-openapi.yml
+- openapi/spredfast-conversations-api-openapi.yml
+- openapi/spredfast-analytics-api-openapi.yml
+- openapi/spredfast-crm-api-openapi.yml
+- openapi/spredfast-notification-api-openapi.yml
+- openapi/spredfast-labelsets-api-openapi.yml
+- openapi/spredfast-introspection-api-openapi.yml
+- openapi/spredfast-experiences-stream-api-openapi.yml
+scope_count: 1
+note: >-
+  Spredfast / Khoros Marketing publishes exactly ONE OAuth scope: `all`, granting
+  read/write across every endpoint. There is no scopes or permissions reference
+  page on the developer center — searched, none exists — and no per-resource or
+  read-only scope is defined anywhere in the nine harvested contracts. That is
+  the finding: an integration that only needs to read analytics must be issued
+  the same credential that can publish to every connected social account and
+  delete users. There is no least-privilege path available to a customer.
+  Coarse authorization is instead done OUTSIDE OAuth, at the platform layer:
+  a client id is allow-listed per company, and the acting user's effective
+  permissions are readable at GET /conversations/privilege
+  (`retrieve-permissions-for-current-user`), with roles listed at
+  GET /conversations/roles. Those are runtime permission checks, not token
+  scopes — an issued token does not narrow to them.
+scopes:
+- scope: all
+  description: Read/write access for all endpoints.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/spredfast-conversations-api-v1-openapi.yml
+schemes:
+- name: oauth2
+  authoritative: true
+  source: openapi/spredfast-conversations-api-v1-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+    tokenUrl: https://login.spredfast.com/v3/oauth/token
+    scopes:
+      all: Read/write access for all endpoints.
+- name: sec0
+  authoritative: false
+  defect: placeholder-token-url
+  note: >-
+    Declared in eight of the nine published contracts with tokenUrl
+    https://example.com/oauth2/token and an EMPTY scopes object. example.com is
+    the IANA reserved domain — this is a docs-platform default, not a Spredfast
+    endpoint, and its empty scopes map must not be read as "no scopes required".
+    See authentication/spredfast-authentication.yml.
+  sources:
+  - openapi/spredfast-conversations-api-openapi.yml
+  - openapi/spredfast-analytics-api-openapi.yml
+  - openapi/spredfast-crm-api-openapi.yml
+  - openapi/spredfast-notification-api-openapi.yml
+  - openapi/spredfast-labelsets-api-openapi.yml
+  - openapi/spredfast-introspection-api-openapi.yml
+  - openapi/spredfast-experiences-stream-api-openapi.yml
+platform_permissions:
+  note: >-
+    Not OAuth scopes, but the only authorization granularity that exists.
+  operations:
+  - operationId: retrieve-permissions-for-current-user
+    path: GET /conversations/privilege
+    description: The acting user's effective privilege set.
+  - operationId: list-roles-for-the-company
+    path: GET /conversations/roles
+    description: Named permission bundles assigned to users.
+  - operationId: list-conversations-publishers
+    path: GET /conversations/users/initiative/{initiativeId}/publishers
+    description: The subset of users permitted to publish to an initiative.
+  spec: openapi/spredfast-conversations-api-openapi.yml
