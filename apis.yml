@@ -44,6 +44,19 @@ created: '2026-07-17'
 modified: '2026-08-13'
 tags:
 - Company
+- Social-Media
+- Social Media Management
+- Marketing
+- Social Marketing
+- Publishing
+- Analytics
+- Engagement
+- Content Management
+- Webhook
+- Event
+- Enterprise
+tags_raw:
+- Company
 - Social Media
 - Social Media Management
 - Marketing
@@ -68,6 +81,11 @@ apis:
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
   baseURL: https://api.spredfast.com/v2
   tags:
+  - Social-Media
+  - Marketing
+  - Publishing
+  - Content Management
+  tags_raw:
   - Social Media
   - Marketing
   - Publishing
@@ -100,6 +118,10 @@ apis:
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference
   baseURL: https://api.spredfast.com
   tags:
+  - Social-Media
+  - Publishing
+  - Legacy
+  tags_raw:
   - Social Media
   - Publishing
   - Legacy
@@ -144,6 +166,10 @@ apis:
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
   baseURL: https://api.spredfast.com/v2/events
   tags:
+  - Webhook
+  - Event
+  - Notification
+  tags_raw:
   - Webhooks
   - Events
   - Notifications
@@ -173,6 +199,10 @@ apis:
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
   baseURL: https://api.massrelevance.com
   tags:
+  - Social-Media
+  - Streaming
+  - Experience
+  tags_raw:
   - Social Media
   - Streaming
   - Experiences
