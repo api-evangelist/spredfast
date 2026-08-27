@@ -72,12 +72,10 @@ image: https://raw.githubusercontent.com/api-evangelist/spredfast/refs/heads/mai
 apis:
 - name: Spredfast Conversations API (v2)
   description: >-
-    The current Spredfast / Khoros Marketing publishing and content surface —
-    39 operations covering initiatives, account sets, message publishing and
-    scheduling, the Content Center (assets and folders), custom channels and the
-    publishing calendar, plans, content labels, users, roles, privileges and
-    workspaces. OAuth 2.0 bearer token; company and environment are derived from
-    the token.
+    The current Spredfast / Khoros Marketing publishing and content surface — 39 operations covering initiatives,
+    account sets, message publishing and scheduling, the Content Center (assets and folders), custom channels
+    and the publishing calendar, plans, content labels, users, roles, privileges and workspaces. OAuth
+    2.0 bearer token; company and environment are derived from the token.
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
   baseURL: https://api.spredfast.com/v2
   tags:
@@ -100,189 +98,1413 @@ apis:
   - type: APIReference
     url: https://developer.khoros.com/khorosmarketingdevdocs/reference
   - type: GettingStarted
-    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/getting-started-with-the-conversations-api
   - type: AgentSkill
     url: skills/spredfast-publish-a-social-message.md
   - type: AgentSkill
     url: skills/spredfast-manage-content-center-assets.md
-- name: Spredfast Conversations API (v1)
-  description: >-
-    The original Spredfast Conversations API, still live alongside v2 on
-    api.spredfast.com — 27 operations for publishing, assets, folders,
-    initiatives, plans and privileges. Paths take the form
-    /{environment}/v1/company/{companyId}/... where the environment segment is a
-    case-sensitive deployment name (Production, VPC1, APP3). This is the one
-    contract that declares the real OAuth endpoints on login.spredfast.com and
-    carries the "Spredfast API Terms of Use" licence. No deprecation or sunset
-    notice is published for it.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference
-  baseURL: https://api.spredfast.com
+- aid: spredfast:spredfast-accountset-api
+  name: Spredfast Account Set API
+  description: The AccountSet API from Spredfast — 1 operation(s) for accountset.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
   tags:
-  - Social-Media
-  - Publishing
-  - Legacy
-  tags_raw:
-  - Social Media
-  - Publishing
-  - Legacy
+  - AccountSet
   properties:
   - type: OpenAPI
-    url: openapi/spredfast-conversations-api-v1-openapi.yml
-  - type: Overlay
-    url: overlays/spredfast-conversations-api-v1-overlay.yaml
+    url: openapi/spredfast-accountset-api-openapi.yml
   - type: APIReference
     url: https://developer.khoros.com/khorosmarketingdevdocs/reference
   - type: TermsOfService
     url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
-- name: Spredfast Analytics Reporting API
-  description: >-
-    Asynchronous analytics exports — 12 operations. Eight export endpoints
-    (published posts, daily account metrics, daily post summary, ads net values,
-    stream items, stream item actions, customer feedback, profiles) start a job
-    that is then polled at GET /export/{id}/status; field discovery and stream
-    listing are synchronous. Documented as beta.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
-  baseURL: https://api.spredfast.com/v2/analytics
-  tags:
-  - Analytics
-  - Reporting
-  properties:
-  - type: OpenAPI
-    url: openapi/spredfast-analytics-api-openapi.yml
-  - type: Overlay
-    url: overlays/spredfast-analytics-api-overlay.yaml
   - type: Documentation
-    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
-  - type: AgentSkill
-    url: skills/spredfast-export-analytics.md
-- name: Spredfast Notifications (Events) API
-  description: >-
-    The event surface — six operations managing event subscriptions. A
-    subscription binds one eventName; setting notificationUri makes delivery a
-    push (with an optional subscriber-supplied bearerToken), omitting it makes
-    it a poll against GET /data/{subscriptionId}. Eleven event types are
-    documented, including four credential-* events that report social account
-    de-authorization. No AsyncAPI document is published.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
-  baseURL: https://api.spredfast.com/v2/events
-  tags:
-  - Webhook
-  - Event
-  - Notification
-  tags_raw:
-  - Webhooks
-  - Events
-  - Notifications
-  properties:
-  - type: OpenAPI
-    url: openapi/spredfast-notification-api-openapi.yml
-  - type: Overlay
-    url: overlays/spredfast-notification-api-overlay.yaml
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
   - type: Webhooks
     url: asyncapi/spredfast-events-webhooks.yml
   - type: Documentation
     url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
-  - type: AgentSkill
-    url: skills/spredfast-subscribe-to-events.md
-- name: Spredfast Experiences Stream API
-  description: >-
-    Curated social stream data powering Khoros Marketing Experiences
-    visualisations — 48 operations for stream items, leaderboards, stream meta,
-    topic and hashtag counts, and volume comparison. Served from
-    api.massrelevance.com, the host inherited from Mass Relevance, which
-    Spredfast acquired in 2013 and rebranded as Spredfast Experiences; the
-    provider's own reference page states "Experiences is a Khoros Marketing
-    product" and that access requires accepting the Spredfast Experiences API
-    usage agreement. PROBED 2026-08-13: that host returns HTTP 502 on every path
-    including /, while the contract remains published on the current developer
-    center.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
-  baseURL: https://api.massrelevance.com
-  tags:
-  - Social-Media
-  - Streaming
-  - Experience
-  tags_raw:
-  - Social Media
-  - Streaming
-  - Experiences
-  properties:
-  - type: OpenAPI
-    url: openapi/spredfast-experiences-stream-api-openapi.yml
-  - type: Overlay
-    url: overlays/spredfast-experiences-stream-api-overlay.yaml
   - type: APIReference
     url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
-- name: Spredfast CRM Registration API
-  description: >-
-    Two operations to register and update a customer-implemented Custom CRM so
-    Khoros Marketing can call it — POST /admin/custom and PATCH
-    /admin/custom/{crmId}. The paired contract the customer must implement is
-    the Custom CRM Callback Contract.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
-  baseURL: https://api.spredfast.com/v2/crm
-  tags:
-  - CRM
-  - Integration
-  properties:
-  - type: OpenAPI
-    url: openapi/spredfast-crm-api-openapi.yml
-  - type: Overlay
-    url: overlays/spredfast-crm-api-overlay.yaml
   - type: APIReference
     url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
-- name: Spredfast Custom CRM Callback Contract
-  description: >-
-    An INVERTED contract — 13 operations the CUSTOMER implements on their own
-    domain and Khoros Marketing calls. Cases, customers, best-match lookup, a
-    customer's cases, list and asset resources, and GET /meta/object/{type},
-    which lets the customer describe their own object structures back to Khoros.
-    The templated server https://{your-domain}.com is correct and deliberate,
-    not a defect: the host is the customer's. Failures on this integration are
-    reported asynchronously through the error-custom-crm event.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/api-specification-introduction
-  baseURL: https://{your-domain}.com
-  tags:
-  - CRM
-  - Integration
-  - Callbacks
-  properties:
-  - type: OpenAPI
-    url: openapi/spredfast-custom-crm-callback-api-openapi.yml
-  - type: Overlay
-    url: overlays/spredfast-custom-crm-callback-api-overlay.yaml
   - type: Documentation
-    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
-- name: Spredfast Label Sets API
-  description: >-
-    One operation returning a page of content labels nested within their label
-    sets. Labels are applied to messages and to inbox stream items, and their
-    application raises the stream-item-label-applied event.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/retrieve-a-page-of-labels-nested-within-sets
-  baseURL: https://api.spredfast.com/v2/labelsets
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-admin-api
+  name: Spredfast Admin API
+  description: The Admin API from Spredfast — 2 operation(s) for admin.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
   tags:
-  - Taxonomy
-  - Content Management
+  - Admin
   properties:
   - type: OpenAPI
-    url: openapi/spredfast-labelsets-api-openapi.yml
-  - type: Overlay
-    url: overlays/spredfast-labelsets-api-overlay.yaml
-- name: Spredfast Introspection API
-  description: >-
-    Token introspection — a single GET returning the identity and company behind
-    the presented access token. The whoami call for the Spredfast OAuth surface.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs/reference/current-user-details
-  baseURL: https://api.spredfast.com/v2/whoami
+    url: openapi/spredfast-admin-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-asset-api
+  name: Spredfast Asset API
+  description: The Asset API from Spredfast — 1 operation(s) for asset.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
   tags:
-  - Authentication
-  - Identity
+  - Asset
   properties:
   - type: OpenAPI
-    url: openapi/spredfast-introspection-api-openapi.yml
-  - type: Overlay
-    url: overlays/spredfast-introspection-api-overlay.yaml
+    url: openapi/spredfast-asset-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-assets-api
+  name: Spredfast Assets API
+  description: The Assets API from Spredfast — 3 operation(s) for assets.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-assets-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-case-api
+  name: Spredfast Case API
+  description: The Case API from Spredfast — 2 operation(s) for case.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Case
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-case-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-compare-json-streams-api
+  name: Spredfast Compare.json?streams API
+  description: The Compare.json?streams API from Spredfast — 1 operation(s) for compare.json?streams.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Compare.json?streams
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-compare-json-streams-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-compare-json-streams-content-sort-api
+  name: Spredfast Compare.json?streams={content}&sort API
+  description: >-
+    The Compare.json?streams={content}&sort API from Spredfast — 1 operation(s) for compare.json?streams={content}&sort.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Compare.json?streams={content}&sort
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-compare-json-streams-content-sort-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-compare-json-streams-content-target-api
+  name: Spredfast Compare.json?streams={content}&target API
+  description: >-
+    The Compare.json?streams={content}&target API from Spredfast — 1 operation(s) for compare.json?streams={content}&target.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Compare.json?streams={content}&target
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-compare-json-streams-content-target-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-compare-json-streams-content-target-number-precision-api
+  name: Spredfast Compare.json?streams={content}&target={number}&precision API
+  description: >-
+    The Compare.json?streams={content}&target={number}&precision API from Spredfast — 1 operation(s) for
+    compare.json?streams={content}&target={number}&precision.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Compare.json?streams={content}&target={number}&precision
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-compare-json-streams-content-target-number-precision-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-customer-api
+  name: Spredfast Customer API
+  description: The Customer API from Spredfast — 4 operation(s) for customer.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Customer
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-customer-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-customers-api
+  name: Spredfast Customers API
+  description: The Customers API from Spredfast — 1 operation(s) for customers.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-customers-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-data-api
+  name: Spredfast Data API
+  description: The Data API from Spredfast — 1 operation(s) for data.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Data
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-data-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-entities-json-entity-ids-api
+  name: Spredfast Entities.json?entity Ids API
+  description: >-
+    The Entities.json?entity Ids API from Spredfast — 1 operation(s) for entities.json?entity ids.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Entities.json?entity Ids
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-entities-json-entity-ids-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-export-api
+  name: Spredfast Export API
+  description: The Export API from Spredfast — 10 operation(s) for export.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Export
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-export-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-folder-api
+  name: Spredfast Folder API
+  description: The Folder API from Spredfast — 3 operation(s) for folder.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Folder
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-folder-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-initiatives-api
+  name: Spredfast Initiatives API
+  description: The Initiatives API from Spredfast — 2 operation(s) for initiatives.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Initiatives
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-initiatives-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-introspection-api-api
+  name: Spredfast Introspection API
+  description: The Introspection Api API from Spredfast — 1 operation(s) for introspection api.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Introspection Api
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-introspection-api-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-labels-api
+  name: Spredfast Labels API
+  description: The Labels API from Spredfast — 1 operation(s) for labels.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Labels
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-labels-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-labelsets-api-api
+  name: Spredfast Labelsets API
+  description: The Labelsets Api API from Spredfast — 1 operation(s) for labelsets api.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Labelsets Api
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-labelsets-api-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-list-api
+  name: Spredfast List API
+  description: The List API from Spredfast — 2 operation(s) for list.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - List
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-list-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-me-api
+  name: Spredfast Me API
+  description: The Me API from Spredfast — 2 operation(s) for me.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Me
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-me-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-messages-api
+  name: Spredfast Messages API
+  description: The Messages API from Spredfast — 6 operation(s) for messages.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-messages-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-api
+  name: Spredfast Meta API
+  description: The Meta API from Spredfast — 1 operation(s) for meta.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-activity-api
+  name: Spredfast Meta.json?activity API
+  description: The Meta.json?activity API from Spredfast — 1 operation(s) for meta.json?activity.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?activity
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-activity-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-all-topics-api
+  name: Spredfast Meta.json?all Topics API
+  description: The Meta.json?all Topics API from Spredfast — 1 operation(s) for meta.json?all topics.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?all Topics
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-all-topics-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-api
+  name: Spredfast Meta.json API
+  description: The Meta.json API from Spredfast — 1 operation(s) for meta.json.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-disregard-api
+  name: Spredfast Meta.json?disregard API
+  description: The Meta.json?disregard API from Spredfast — 1 operation(s) for meta.json?disregard.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?disregard
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-disregard-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-finish-api
+  name: Spredfast Meta.json?finish API
+  description: The Meta.json?finish API from Spredfast — 1 operation(s) for meta.json?finish.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?finish
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-finish-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-networks-api
+  name: Spredfast Meta.json? Networks API
+  description: The Meta.json? Networks API from Spredfast — 1 operation(s) for meta.json? networks.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json? Networks
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-networks-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-num-contributors-api
+  name: Spredfast Meta.json?num Contributors API
+  description: >-
+    The Meta.json?num Contributors API from Spredfast — 1 operation(s) for meta.json?num contributors.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?num Contributors
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-num-contributors-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-num-days-api
+  name: Spredfast Meta.json?num Days API
+  description: The Meta.json?num Days API from Spredfast — 1 operation(s) for meta.json?num days.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?num Days
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-num-days-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-num-hashtags-api
+  name: Spredfast Meta.json?num Hashtags API
+  description: >-
+    The Meta.json?num Hashtags API from Spredfast — 1 operation(s) for meta.json?num hashtags.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?num Hashtags
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-num-hashtags-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-num-hours-api
+  name: Spredfast Meta.json?num Hours API
+  description: The Meta.json?num Hours API from Spredfast — 1 operation(s) for meta.json?num hours.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?num Hours
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-num-hours-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-num-minutes-api
+  name: Spredfast Meta.json?num Minutes API
+  description: The Meta.json?num Minutes API from Spredfast — 1 operation(s) for meta.json?num minutes.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?num Minutes
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-num-minutes-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-num-trends-api
+  name: Spredfast Meta.json?num Trends API
+  description: The Meta.json?num Trends API from Spredfast — 1 operation(s) for meta.json?num trends.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?num Trends
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-num-trends-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-percent-api
+  name: Spredfast Meta.json?percent API
+  description: The Meta.json?percent API from Spredfast — 1 operation(s) for meta.json?percent.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?percent
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-percent-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-precision-api
+  name: Spredfast Meta.json?precision API
+  description: The Meta.json?precision API from Spredfast — 1 operation(s) for meta.json?precision.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?precision
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-precision-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-sort-api
+  name: Spredfast Meta.json?sort API
+  description: The Meta.json?sort API from Spredfast — 1 operation(s) for meta.json?sort.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?sort
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-sort-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-top-count-api
+  name: Spredfast Meta.json?top Count API
+  description: The Meta.json?top Count API from Spredfast — 1 operation(s) for meta.json?top count.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?top Count
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-top-count-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-top-periods-api
+  name: Spredfast Meta.json?top Periods API
+  description: The Meta.json?top Periods API from Spredfast — 1 operation(s) for meta.json?top periods.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?top Periods
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-top-periods-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-meta-json-top-periods-relative-api
+  name: Spredfast Meta.json?top Periods Relative API
+  description: >-
+    The Meta.json?top Periods Relative API from Spredfast — 1 operation(s) for meta.json?top periods relative.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Meta.json?top Periods Relative
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-meta-json-top-periods-relative-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-multichannelmessages-api
+  name: Spredfast Multi Channel Messages API
+  description: The MultiChannelMessages API from Spredfast — 1 operation(s) for multichannelmessages.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - MultiChannelMessages
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-multichannelmessages-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-permissions-api
+  name: Spredfast Permissions API
+  description: The Permissions API from Spredfast — 1 operation(s) for permissions.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-permissions-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-plans-api
+  name: Spredfast Plans API
+  description: The Plans API from Spredfast — 1 operation(s) for plans.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-plans-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-stream-api-api
+  name: Spredfast Stream API
+  description: The Stream Api API from Spredfast — 25 operation(s) for stream api.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Stream Api
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-stream-api-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-streams-api
+  name: Spredfast Streams API
+  description: The Streams API from Spredfast — 1 operation(s) for streams.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Streams
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-streams-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-subscription-api
+  name: Spredfast Subscription API
+  description: The Subscription API from Spredfast — 3 operation(s) for subscription.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-subscription-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-surveys-api
+  name: Spredfast Surveys API
+  description: The Surveys API from Spredfast — 1 operation(s) for surveys.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Surveys
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-surveys-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
+- aid: spredfast:spredfast-users-api
+  name: Spredfast Users API
+  description: The Users API from Spredfast — 1 operation(s) for users.
+  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
+  baseURL: https://api.spredfast.com/v2
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/spredfast-users-api-openapi.yml
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
+  - type: TermsOfService
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
+  - type: Webhooks
+    url: asyncapi/spredfast-events-webhooks.yml
+  - type: Documentation
+    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
+  - type: APIReference
+    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
+  - type: Documentation
+    url: >-
+      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
 common:
+- type: Overlay
+  url: overlays/spredfast-conversations-api-v1-overlay.yaml
+- type: Overlay
+  url: overlays/spredfast-analytics-api-overlay.yaml
+- type: AgentSkill
+  url: skills/spredfast-export-analytics.md
+- type: Overlay
+  url: overlays/spredfast-notification-api-overlay.yaml
+- type: AgentSkill
+  url: skills/spredfast-subscribe-to-events.md
+- type: Overlay
+  url: overlays/spredfast-experiences-stream-api-overlay.yaml
+- type: Overlay
+  url: overlays/spredfast-crm-api-overlay.yaml
+- type: Overlay
+  url: overlays/spredfast-custom-crm-callback-api-overlay.yaml
+- type: Overlay
+  url: overlays/spredfast-labelsets-api-overlay.yaml
+- type: Overlay
+  url: overlays/spredfast-introspection-api-overlay.yaml
 - type: DeveloperPortal
   url: https://developer.khoros.com/khorosmarketingdevdocs
 - type: Documentation
