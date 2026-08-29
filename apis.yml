@@ -26,6 +26,18 @@ x-backed-by:
 x-tier: enriched
 x-tier-reason: nine-openapi-contracts-harvested
 x-successor: khoros
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: sales-gated
@@ -1485,6 +1497,9 @@ apis:
     url: >-
       https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
 common:
+- type: CapabilityMap
+  url: capabilities/spredfast-capability-edges.yml
+  name: Spredfast Business Capability Map
 - type: Overlay
   url: overlays/spredfast-conversations-api-v1-overlay.yaml
 - type: Overlay
