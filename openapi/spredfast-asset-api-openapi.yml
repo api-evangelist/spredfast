@@ -1,0 +1,77 @@
+openapi: 3.2.0
+info:
+  title: api-specifications Asset API
+  version: '1.1'
+servers:
+- url: https://{your-domain}.com
+  variables:
+    your-domain:
+      default: your-domain
+security:
+- {}
+tags:
+- name: Asset
+paths:
+  /asset/{assetPath}:
+    get:
+      summary: Get an asset
+      description: Retrieve an asset specified by its assetPath
+      operationId: get-an-asset
+      parameters:
+      - name: assetPath
+        in: path
+        description: The path to a specific asset. This is a generic string in the format of the implementing service. Some examples include IDs such as `123` or `abc` and full paths such as `/some/path/to/asset.jpeg`.
+        schema:
+          type: string
+        required: true
+      - name: thumbnail
+        in: query
+        description: When true, a thumbnail of the asset should be returned. See the expanded parameter descriptionbelow.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '404':
+          description: '404'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '500':
+          description: '500'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+      deprecated: false
+      security: []
+      tags:
+      - Asset
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,187 @@
+openapi: 3.2.0
+info:
+  description: "Welcome to the Spredfast Conversations API. Using this API you can access many of the features of the Spredfast platform including publishing and reporting.\n# Prerequisites\nIn order to make an API call to the platform, you must have the following:\n- Enable the DevCenter application for your company. See [troubleshooting](#devcenter-not-enabled) for more information.\n- A valid login for the platform (used to retrieve an access token, described below)\n- An assigned client id for your application\n- That client id enabled for your company in conversations\nIf you are reading this documentation you already have your login! Let&#39;s proceed the the next two steps.\n\n# Authentication and Authorization\n\nSpredfast uses the OAuth standard for API authorization. OAuth specifies the manner in which a bearer token may be obtained that will authorize your API calls. OAuth tokens are managed from the same authentication system as your web logins. All company security policies including SAML SSO integration are supported and enforced.\n\n## Client Id\n\nA client id uniquely identifies your application. There is a whitelist in place to control which applications have access to your company in Conversations. This allows you to control when an application is activated for your company.\n\nTo retrieve your client id, please have your company admin contact [support@spredfast.com](mailto:support@spredfast.com) and request a new or pre-existing client id. Please provide a description of your application. You may also request this application be enabled for your company, if you are the company administrator.\n\nSupport will respond with a client id and a client secret, both of which are needed to obtain an access token.\n\n## Browser Redirection Flow\n\nIf you are building a web application where your users will interact with a UI to authenticate against Spredfast, you are advised to implement the OAuth browser redirection flow. There are many resources available on the web on how to implement this flow, but the basic process is shown below:\n\n\nYou will redirect the user to login.spredfast.com with the following URL:\n\n [https://login.spredfast.com/v3/oauth/authorize?client id=YOUR CLIENT ID&response type=code&redirect uri=https://YOUR URL&state=none](https://login.spredfast.com/v3/oauth/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=https://YOUR_URL&state=none)\n\n Replace YOUR CLIENT ID with the id of your API client and YOUR URL with the URL of your web application the user should return two once an OAuth Grant has been obtained.\n\nWhen the user returns to your website there will be a URL parameter called &quot;code&quot; set. This is an authorization code that you must use to obtain an access token. Make a POST call to the following endpoint to obtain your access token:\n\n```bash \ncurl https://login.spredfast.com/v3/oauth/token \\\n\t-H \"Accept: application/json\" \\\n\t--data 'client_id=YOUR_CLIENT_ID' \\\n\t--data 'client_secret=YOUR_CLIENT_SECRET' \\\n\t--data 'redirect_uri=https://YOUR_URL' \\\n\t--data 'code=CODE_RETURNED'\n```\n\nOnce again substitute YOUR_CLIENT_ID for your client id. You must also provide your client secret in YOUR_CLIENT_SECRET and the code you received in CODE_RETURNED.\n\nYou will receive a JSON response that contains your access token in a response like this:\n\n```js\n{\n   \"data\":{\n      \"sfEntityType\":\"Token\",\n      \"accessToken\":\"XXX\",\n      \"expiryTime\":1519770939876\n   },\n   \"status\":{\n      \"succeeded\":true\n   }\n}\n```\n\nTokens are issued with a 2 year lifetime. Save this token in a secure place. It’s a bearer token and is all that is needed to make API calls on your behalf.\n\n## DevCenter Test Request Flow\nBefore you can query any endpoint, you must first obtain a token. Do this by clicking the \"Get Access Token\" button on any endpoint. You will then be redirected to login via Spredfast and authenticate the DevCenter app for your company. Once complete you will return to the DevCenter and will notice that the `oauth_access_token` variable is filled in. You may now run any Spredfast API action against your company.\n\n### Developer notes\nWhile developing against the Spredfast API you will be using your own Spredfast API App (client_id/secret pair). To be absolutely certain you know what data your application is receiving, you can substitute the default DevCenter `client_id` and `secret` pair with your own.\n\n## Access Token Expiration\nAccess tokens are valid for 24 months. You may refresh these tokens at any time by repeating the authorization flow.\n# API Path Construction\nConversations APIs have several required parameters for all API calls. All Conversations APIs have the following URL path scheme:\n[https://api.spredfast.com/v1/conversations/](/api/conversations/v1/conversations)\n# API Overview\nSpredfast Conversations offers APIs to manage content and plans, publish content, and retrieve analytics reports.\n## Publishing\nPublishing requires you to select an initiative and an account set. To retrieve the list of initiatives use the [/{environment}/v1/company/{companyId}/initiative](/api/conversations/v1/conversations/initiatives/listinitiatives) call. To list the accounts available with that initiative, use the [/{environment}/v1/company/{companyId}/initiative/{initiativeId}/accountset](/api/conversations/v1/conversations/accountset/accountset) call.\n\nOnce you have these parameters you may publish content. For status updates (text) and images you publish with a single call. For video publishing you must first upload the video into the Conversations Content Center.\n\nStatus updated may be published with the [/{environment}/v1/company/{companyId}/initiative/{initiativeId}/message](/api/conversations/v1/conversations/messages/publishmessage) call. You will send your content as a JSON POST. For example:\n\n```js\n{\n   \"sfEntityType\":\"Message\",\n   \"service\":\"FACEBOOK\",\n   \"content\":{\n      \"sfEntityType\":\"Status\",\n      \"text\":\"Status Update\"\n   },\n   \" targetAccountIds\":[\n      \"4\"\n   ]\n}\n```\n\n# Troubleshooting\n\n## DevCenter not enabled\n\nIf you get an error while granting a token which reads `Company 20,307,234 does not allow the application TVjzVmUSDZFVdSpUiKBsQYIAzTrvVcUb`, then please contact [support@spredfast.com](mailto:support@spredfast.com) to enable the DevCenter application for your company."
+  version: '1'
+  title: Conversations API V1 Plans API
+  license:
+    name: Spredfast API Terms of Use
+    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
+servers:
+- url: https://api.spredfast.com
+tags:
+- name: Plans
+paths:
+  /{environment}/v1/company/{companyId}/initiative/{initiativeId}/plan:
+    get:
+      tags:
+      - Plans
+      summary: Retrieve a list of Plans.
+      description: ''
+      operationId: listPlans
+      parameters:
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: initiativeId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: nameFilter
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageNumber
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityPageResponsePlan'
+components:
+  schemas:
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          readOnly: true
+          enum:
+          - PUBLISH_DATE_INVALID
+          - CANNOT_CREATE_NEW_LABELS
+          - IP_ADDRESS_REJECTED
+          - MISSING_FIELD
+          - NOT_ACCEPTABLE
+          - NOT_FOUND
+          - PUBLISH_POST_UPDATE_NOT_ALLOWED
+          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
+          - PUBLISH_IMAGE_TOO_LARGE
+          - PUBLISH_IMAGE_BAD_IMAGE
+          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
+          - INVALID_MESSAGE_ID
+          - NOT_IN_PRE_PUBLISH_STATE
+          - NOT_ACCEPTABLE_CONTENT_TYPE
+          - MESSAGE_HAS_A_LINK_PREVIEW
+          - MESSAGE_HAS_TARGETING_PROFILE
+          - MESSAGE_HAS_PROMOTION
+          - MESSAGE_HAS_SCHEDULED_SERIES
+          - MESSAGE_HAS_APPROVAL_TEAMS
+          - EDIT_MESSAGE_SERVER_ERROR
+          - UNAUTHENTICATED
+          - UNAUTHORIZED
+          - UNKNOWN_ERROR
+          - RESOURCE_NOT_FOUND
+          - VALIDATION_ERROR
+          - VIDEO_SINGLE_ASSET_ALLOWED
+          - VIDEO_INVALID_CATEGORY
+          - SERVICE_INVALID_NAME
+          - STREAM_ITEM_INVALID_TYPE
+          - PROXY_UNROUTABLE_REQUEST
+          - PROXY_SERVER_FAILURE
+          - PROXY_ORIGIN_SERVER_FAILURE
+          - ACCOUNT_LOCKED
+          - PASSWORD_EXPIRED
+        message:
+          type: string
+          readOnly: true
+    EntityPageResponsePlan:
+      type: object
+      properties:
+        data:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Plan'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+        companyId:
+          type: integer
+          format: int64
+        campaignId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        overview:
+          type: string
+        objective:
+          type: string
+        targetAudience:
+          type: string
+        color:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        createdDate:
+          type: string
+          format: date-time
+        lastModifiedDate:
+          type: string
+          format: date-time
+    Pagination:
+      type: object
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        totalItems:
+          type: integer
+          format: int64
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
+x-readme:
+  explorer-enabled: false
+  proxy-enabled: false
+  samples-enabled: true

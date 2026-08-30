@@ -1,0 +1,57 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json?top Periods Relative API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json?top Periods Relative
+paths:
+  /{account}/{streamName}/meta.json?top_periods_relative:
+    get:
+      summary: Get top retweets hourly from now
+      description: Include top tweets from specific hourly periods ago from now
+      operationId: get-top-retweets-hourly-from-now-1
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: top_periods_relative
+        in: query
+        schema:
+          type: string
+          default: '1'
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?top Periods Relative
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: stream-api Compare.json?streams={content}&target API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Compare.json?streams={content}&target
+paths:
+  /compare.json?streams={content}&target:
+    get:
+      summary: Get percentage towards target
+      description: Get a percentage towards a specified target
+      operationId: get-percentage-towards-target
+      parameters:
+      - name: content
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streams
+        in: query
+        schema:
+          type: string
+          default: MassRelDemo/kindle,MassRelDemo/galaxy-topic1
+      - name: target
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 5000
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Compare.json?streams={content}&target
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json?finish API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json?finish
+paths:
+  /{account}/{streamName}/meta.json?finish:
+    get:
+      summary: Get last item of activity
+      description: Unix time of the point of which activity data should end
+      operationId: get-last-item-of-activity
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: finish
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 1349278694
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?finish
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

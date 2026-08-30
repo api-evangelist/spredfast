@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json?num Contributors API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json?num Contributors
+paths:
+  /{account}/{streamName}/meta.json?num_contributors:
+    get:
+      summary: Get number of contributors
+      description: Number of contributor user handles to return
+      operationId: get-number-of-topics
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: num_contributors
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 5
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?num Contributors
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

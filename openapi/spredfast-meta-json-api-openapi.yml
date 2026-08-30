@@ -1,0 +1,52 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json
+paths:
+  /{account}/{streamName}/meta.json:
+    get:
+      summary: Get entity information
+      description: Provides information about and derived from the entities in a stream
+      operationId: get-entity-information
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

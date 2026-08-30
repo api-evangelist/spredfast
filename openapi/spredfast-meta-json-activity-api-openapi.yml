@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json?activity API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json?activity
+paths:
+  /{account}/{streamName}/meta.json?activity:
+    get:
+      summary: Get activity and count props
+      description: Include activity and count properties in response
+      operationId: get-activity-and-count-props
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: activity
+        in: query
+        description: '**Format:** binary'
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?activity
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

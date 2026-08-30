@@ -1,0 +1,57 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json? Networks API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json? Networks
+paths:
+  /{account}/{streamName}/meta.json? networks:
+    get:
+      summary: Get networks in meta response
+      description: Include networks property in the response, which is an array of strings
+      operationId: get-networks-in-meta-response-1
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: networks
+        in: query
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json? Networks
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

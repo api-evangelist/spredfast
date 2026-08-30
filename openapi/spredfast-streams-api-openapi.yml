@@ -1,0 +1,91 @@
+openapi: 3.2.0
+info:
+  title: beta-analytics-api Streams API
+  version: '1.1'
+servers:
+- url: https://api.spredfast.com/v2/analytics
+security:
+- sec0: []
+tags:
+- name: Streams
+paths:
+  /streams:
+    get:
+      summary: 'Streams: List All Available Streams for a Company'
+      description: Returns a list of the available streams for a given Company Directory ID
+      operationId: list-all-available-streams-for-a-company
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[\n  {\n    \"campaign_id\": 1710,\n    \"credential_id\": 0,\n    \"hash\": \"c4ad3d29f2c80eea1c557a817581f04a\",\n    \"id\": 22910,\n    \"inbox\": false,\n    \"mode\": \"standard\",\n    \"name\": \"All Activity\",\n    \"query\": \"\",\n    \"stream_type\": \"spredfast\",\n    \"user_id\": 73208\n  },\n  {\n    \"campaign_id\": 1710,\n    \"credential_id\": 0,\n    \"hash\": \"17d10dfe348ab18a449858e836f59a7f\",\n    \"id\": 22911,\n    \"inbox\": false,\n    \"mode\": \"user_engagement\",\n    \"name\": \"Recent Engagement\",\n    \"query\": \"\",\n    \"stream_type\": \"spredfast\",\n    \"user_id\": 73208\n  }\n]"
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    campaign_id:
+                      type: integer
+                      example: 1710
+                      default: 0
+                    credential_id:
+                      type: integer
+                      example: 0
+                      default: 0
+                    hash:
+                      type: string
+                      example: c4ad3d29f2c80eea1c557a817581f04a
+                    id:
+                      type: integer
+                      example: 22910
+                      default: 0
+                    inbox:
+                      type: boolean
+                      example: false
+                      default: true
+                    mode:
+                      type: string
+                      example: standard
+                    name:
+                      type: string
+                      example: All Activity
+                    query:
+                      type: string
+                      example: ''
+                    stream_type:
+                      type: string
+                      example: spredfast
+                    user_id:
+                      type: integer
+                      example: 73208
+                      default: 0
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      tags:
+      - Streams
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

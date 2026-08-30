@@ -1,0 +1,392 @@
+openapi: 3.2.0
+info:
+  title: api-specifications Case API
+  version: '1.1'
+servers:
+- url: https://{your-domain}.com
+  variables:
+    your-domain:
+      default: your-domain
+security:
+- {}
+tags:
+- name: Case
+paths:
+  /case:
+    post:
+      summary: createCase
+      description: Create a new case with interactions
+      operationId: createcase
+      parameters:
+      - name: x-sf-user-email
+        in: header
+        description: The email id of the Khoros Marketing agent performing the action.
+        schema:
+          type: string
+      - name: x-sf-initiative
+        in: header
+        description: The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64
+        schema:
+          type: integer
+          format: int32
+      - name: x-sf-company-id
+        in: header
+        description: The Khoros Marketing id of the company the user is in when making the request. **Format:** int64
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - customId
+              - title
+              properties:
+                customId:
+                  type: string
+                title:
+                  type: string
+                interactions:
+                  type: array
+                  items:
+                    properties:
+                      created:
+                        type: string
+                        description: The creation date of the interaction on the origin service. **Format:** date-time
+                      body:
+                        type: string
+                        description: The text of the interaction.
+                      linkUrl:
+                        type: string
+                        description: The direct link to the content on the origin service when available.
+                      serviceId:
+                        type: string
+                        description: The id of the content on the origin service.
+                      service:
+                        type: string
+                        description: The social service the interaction originated.
+                        default: facebook
+                      contentType:
+                        type: string
+                        description: 'The type of content the interaction is on the origin service. Examples include: `post`, `comment`, etc.'
+                        default: post
+                      author:
+                        type: object
+                        required:
+                        - service
+                        - serviceId
+                        - handle
+                        - name
+                        - brandOwned
+                        properties:
+                          service:
+                            type: string
+                            description: The social service of the author.
+                            default: facebook
+                          serviceId:
+                            type: string
+                            description: The id of the author on the origin service.
+                          handle:
+                            type: string
+                            description: The handle of the author on the origin service.
+                          name:
+                            type: string
+                            description: The screen name of the author on the origin service.
+                          brandOwned:
+                            type: boolean
+                            description: A flag that signals if the author belongs to an account added to the platform.
+                    required:
+                    - created
+                    - body
+                    - linkUrl
+                    - serviceId
+                    - service
+                    - contentType
+                    type: object
+                customCasePropertyOne:
+                  type: string
+                  description: An example of a custom field on the Case object.
+                customCasePropertyTwo:
+                  type: string
+                  description: An example of a custom field on the Case object.
+            examples:
+              Request Example:
+                value:
+                  customerId: string
+                  title: string
+                  interactions:
+                  - created: string (date-time)
+                    body: string
+                    linkUrl: string
+                    serviceId: string
+                    service: string
+                    contentType: string
+                    author:
+                      service: string
+                      serviceId: string
+                      handle: string
+                      name: string
+                      brandOwned: true
+                  customCasePropertyOne: string
+                  customCasePropertyTwo: string
+      responses:
+        '201':
+          description: '201'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '422':
+          description: '422'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '500':
+          description: '500'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+      deprecated: false
+      security: []
+      tags:
+      - Case
+  /case/{id}:
+    get:
+      summary: lookupCase
+      description: Returns info for a specific case
+      operationId: lookupcase
+      parameters:
+      - name: x-sf-user-email
+        in: header
+        description: The email id of the Khoros Marketing agent performing the action.
+        schema:
+          type: string
+      - name: x-sf-initiative
+        in: header
+        description: The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64
+        schema:
+          type: integer
+          format: int32
+      - name: x-sf-company-id
+        in: header
+        description: The Khoros Marketing id of the company the user is in when making the request. **Format:** int64
+        schema:
+          type: integer
+          format: int32
+      - name: id
+        in: path
+        description: Case ID.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '422':
+          description: '422'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '500':
+          description: '500'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+      deprecated: false
+      security: []
+      tags:
+      - Case
+    patch:
+      summary: updateCase
+      description: Create a new case with interactions
+      operationId: updatecase
+      parameters:
+      - name: x-sf-user-email
+        in: header
+        description: The email id of the Khoros Marketing agent performing the action.
+        schema:
+          type: string
+      - name: x-sf-initiative
+        in: header
+        description: The id of the active Khoros Marketing initiative the user is in when performing the action. **Format:** int64
+        schema:
+          type: integer
+          format: int32
+      - name: x-sf-company-id
+        in: header
+        description: The Khoros Marketing id of the company the user is in when making the request. **Format:** int64
+        schema:
+          type: integer
+          format: int32
+      - name: id
+        in: path
+        description: The case ID to update.
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - customId
+              - title
+              properties:
+                customId:
+                  type: string
+                title:
+                  type: string
+                interactions:
+                  type: array
+                  description: .
+                  items:
+                    properties:
+                      created:
+                        type: string
+                        description: The creation date of the interaction on the origin service. **Format:** date-time
+                      body:
+                        type: string
+                        description: The text of the interaction.
+                      linkUrl:
+                        type: string
+                        description: The direct link to the content on the origin service when available.
+                      serviceId:
+                        type: string
+                        description: The id of the content on the origin service.
+                      service:
+                        type: string
+                        description: The social service the interaction originated.
+                        default: facebook
+                      contentType:
+                        type: string
+                        description: 'The type of content the interaction is on the origin service. Examples include: `post`, `comment`, etc.'
+                        default: post
+                      author:
+                        type: object
+                        required:
+                        - service
+                        - serviceId
+                        - handle
+                        - name
+                        - brandOwned
+                        properties:
+                          service:
+                            type: string
+                            description: The social service of the author.
+                            default: facebook
+                          serviceId:
+                            type: string
+                            description: The id of the author on the origin service.
+                          handle:
+                            type: string
+                            description: The handle of the author on the origin service.
+                          name:
+                            type: string
+                            description: The screen name of the author on the origin service.
+                          brandOwned:
+                            type: boolean
+                            description: A flag that signals if the author belongs to an account added to the platform.
+                    required:
+                    - created
+                    - body
+                    - linkUrl
+                    - serviceId
+                    - service
+                    - contentType
+                    type: object
+                customCasePropertyOne:
+                  type: string
+                  description: An example of a custom field on the Case object. These will only be present if specified via the **/meta/object/case** endpoint.
+                customCasePropertyTwo:
+                  type: string
+                  description: An example of a custom field on the Case object. These will only be present if specified via the **/meta/object/case** endpoint.
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '422':
+          description: '422'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '500':
+          description: '500'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+      deprecated: false
+      security: []
+      tags:
+      - Case
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,116 @@
+openapi: 3.2.0
+info:
+  title: api-specifications List API
+  version: '1.1'
+servers:
+- url: https://{your-domain}.com
+  variables:
+    your-domain:
+      default: your-domain
+security:
+- {}
+tags:
+- name: List
+paths:
+  /list/{resourcePath}:
+    get:
+      summary: List a specific directory
+      description: List the assets available within a specific directory
+      operationId: list-a-specific-directory
+      parameters:
+      - name: resourcePath
+        in: path
+        description: The path to the resource. This is a generic string in the format of the implementing service. Some examples include ids such as `123` or `abc` and full paths such as `/some/path/folder`.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '404':
+          description: '404'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '500':
+          description: '500'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+      deprecated: false
+      security: []
+      tags:
+      - List
+  /list:
+    get:
+      summary: List the root directory
+      description: List the root directory
+      operationId: list-the-root-directory
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '404':
+          description: '404'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '500':
+          description: '500'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+      deprecated: false
+      security: []
+      tags:
+      - List
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json?disregard API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json?disregard
+paths:
+  /{account}/{streamName}/meta.json?disregard:
+    get:
+      summary: Get excluded trends from values
+      description: Exclude trends that match supplied values from buckets while trying to ensure `num_trends` is met
+      operationId: get-excluded-trends-from-values
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: disregard
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: null
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?disregard
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

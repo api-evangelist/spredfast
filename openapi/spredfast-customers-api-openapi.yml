@@ -1,0 +1,94 @@
+openapi: 3.2.0
+info:
+  title: api-specifications Customers API
+  version: '1.1'
+servers:
+- url: https://{your-domain}.com
+  variables:
+    your-domain:
+      default: your-domain
+security:
+- {}
+tags:
+- name: Customers
+paths:
+  /customers:
+    post:
+      summary: searchCustomers
+      description: Find all customers matching the provided set of criteria
+      operationId: searchcustomers
+      parameters:
+      - name: x-sf-user-email
+        in: header
+        description: The email ID of the Khoros Marketing agent performing the action.
+        schema:
+          type: string
+      - name: x-sf-initiative
+        in: header
+        description: The ID of the active Khoros Marketing initiative the user is in when performing the action.
+        schema:
+          type: integer
+          format: int32
+      - name: x-sf-company-id
+        in: header
+        description: The Khoros Marketing ID of the company the user is in when making the request.
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customSearchableCustomerFieldOne:
+                  type: string
+                  description: 'An example of a custom field on the Customer object with `"searchable": true`. These will only be present if specified via the **/meta/object/customer endpoint**.'
+                customSearchableCustomerFieldTwo:
+                  type: string
+                  description: 'An example of a custom field on the Customer object with `"searchable": true`. These will only be present if specified via the **/meta/object/customer endpoint**.'
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '204':
+          description: '204'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '401':
+          description: '401'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+        '500':
+          description: '500'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: See Details for Schema
+      deprecated: false
+      security: []
+      tags:
+      - Customers
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: false
+x-readme-fauxas: true

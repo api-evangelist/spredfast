@@ -1,0 +1,195 @@
+openapi: 3.2.0
+info:
+  title: Spredfast Me API
+  version: '1.0'
+  description: 'Operations tagged Me across 2 of this provider''s published API definitions: spredfast-conversations-api-openapi.yml, spredfast-conversations-api-v1-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.spredfast.com/v2
+- url: https://api.spredfast.com
+tags:
+- name: Me
+paths:
+  /me:
+    get:
+      summary: Retrieve a List of Companies with this App Enabled
+      description: Retrieve a list of companies the currently-authenticated user is associated with for this app
+      operationId: retrieve-a-list-companies-with-this-app-enabled
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"data\": {\n    \"companies\": [\n      {\n        \"directoryId\": \"24606\",\n        \"environment\": \"APP3\",\n        \"environmentUrl\": \"https://app3.spredfast.com\",\n        \"id\": \"389\",\n        \"name\": \"(documentation2)\",\n        \"productName\": null,\n        \"sfEntityType\": \"AvailableCompany\"\n      }\n    ],\n    \"email\": \"ryan.pierson+doc@khoros.com\",\n    \"sfEntityType\": \"User\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      companies:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            directoryId:
+                              type: string
+                              example: '24606'
+                            environment:
+                              type: string
+                              example: APP3
+                            environmentUrl:
+                              type: string
+                              example: https://app3.spredfast.com
+                            id:
+                              type: string
+                              example: '389'
+                            name:
+                              type: string
+                              example: (documentation2)
+                            productName: {}
+                            sfEntityType:
+                              type: string
+                              example: AvailableCompany
+                      email:
+                        type: string
+                        example: ryan.pierson+doc@khoros.com
+                      sfEntityType:
+                        type: string
+                        example: User
+                  status:
+                    type: object
+                    properties:
+                      succeeded:
+                        type: boolean
+                        example: true
+                        default: true
+      deprecated: false
+      tags:
+      - Me
+      security:
+      - sec0: []
+    servers:
+    - url: https://api.spredfast.com/v2
+  /v1/me:
+    get:
+      tags:
+      - Me
+      summary: List of your companies with this app enabled
+      description: List of your companies **with this app enabled**.
+      operationId: me
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Me'
+    servers:
+    - url: https://api.spredfast.com
+components:
+  schemas:
+    ApiError:
+      type: object
+      properties:
+        code:
+          type: string
+          readOnly: true
+          enum:
+          - PUBLISH_DATE_INVALID
+          - CANNOT_CREATE_NEW_LABELS
+          - IP_ADDRESS_REJECTED
+          - MISSING_FIELD
+          - NOT_ACCEPTABLE
+          - NOT_FOUND
+          - PUBLISH_POST_UPDATE_NOT_ALLOWED
+          - PUBLISH_IMAGE_BAD_CONTENT_TYPE
+          - PUBLISH_IMAGE_TOO_LARGE
+          - PUBLISH_IMAGE_BAD_IMAGE
+          - PUBLISH_INVALID_ACCOUNT_FOR_SERVICE
+          - INVALID_MESSAGE_ID
+          - NOT_IN_PRE_PUBLISH_STATE
+          - NOT_ACCEPTABLE_CONTENT_TYPE
+          - MESSAGE_HAS_A_LINK_PREVIEW
+          - MESSAGE_HAS_TARGETING_PROFILE
+          - MESSAGE_HAS_PROMOTION
+          - MESSAGE_HAS_SCHEDULED_SERIES
+          - MESSAGE_HAS_APPROVAL_TEAMS
+          - EDIT_MESSAGE_SERVER_ERROR
+          - UNAUTHENTICATED
+          - UNAUTHORIZED
+          - UNKNOWN_ERROR
+          - RESOURCE_NOT_FOUND
+          - VALIDATION_ERROR
+          - VIDEO_SINGLE_ASSET_ALLOWED
+          - VIDEO_INVALID_CATEGORY
+          - SERVICE_INVALID_NAME
+          - STREAM_ITEM_INVALID_TYPE
+          - PROXY_UNROUTABLE_REQUEST
+          - PROXY_SERVER_FAILURE
+          - PROXY_ORIGIN_SERVER_FAILURE
+          - ACCOUNT_LOCKED
+          - PASSWORD_EXPIRED
+        message:
+          type: string
+          readOnly: true
+    Companies:
+      type: object
+      description: List of companies
+      properties:
+        sfEntityType:
+          type: string
+        directoryId:
+          type: integer
+        name:
+          type: string
+        environment:
+          type: string
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
+    Me:
+      type: object
+      description: List of companies you have authorized for use with this app
+      properties:
+        sfEntityType:
+          type: string
+        email:
+          type: string
+          format: email
+        companies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Companies'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.spredfast.com/v3/oauth/authorize
+          tokenUrl: https://login.spredfast.com/v3/oauth/token
+          scopes:
+            all: Read/write access for all endpoints.
+x-refined-from:
+- spredfast-conversations-api-openapi.yml
+- spredfast-conversations-api-v1-openapi.yml
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

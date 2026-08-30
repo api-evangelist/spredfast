@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json?num Hours API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json?num Hours
+paths:
+  /{account}/{streamName}/meta.json?num_hours:
+    get:
+      summary: Get hours of activity
+      description: Retrieve the number of activity hours
+      operationId: get-minutes-of-activity-1
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: num_hours
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 2
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?num Hours
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

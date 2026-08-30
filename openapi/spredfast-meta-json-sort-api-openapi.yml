@@ -1,0 +1,57 @@
+openapi: 3.2.0
+info:
+  title: stream-api Meta.json?sort API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Meta.json?sort
+paths:
+  /{account}/{streamName}/meta.json?sort:
+    get:
+      summary: Get Specified Sort Order
+      description: Determines the sort order for returned topics
+      operationId: get-specified-sort-order
+      parameters:
+      - name: account
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: streamName
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: sort
+        in: query
+        schema:
+          type: string
+          default: position asc
+      responses:
+        '200':
+          description: '200'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: Coming Soon
+      deprecated: false
+      security: []
+      tags:
+      - Meta.json?sort
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true

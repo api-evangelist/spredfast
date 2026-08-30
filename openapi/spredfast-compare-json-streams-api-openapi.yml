@@ -1,0 +1,104 @@
+openapi: 3.2.0
+info:
+  title: stream-api Compare.json?streams API
+  version: '1.1'
+servers:
+- url: https://api.massrelevance.com
+security:
+- sec0: []
+tags:
+- name: Compare.json?streams
+paths:
+  /compare.json?streams:
+    get:
+      summary: Compare stream volumes
+      description: Retrieve stream volumes and compare them.
+      operationId: compare-stream-volumes
+      parameters:
+      - name: streams
+        in: path
+        schema:
+          type: string
+          default: MassRelDemo/kindle,MassRelDemo/galaxy-topic1
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"streams\": [\n    {\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 551979,\n        \"pending\": 0,\n        \"rejected\": 81681394,\n        \"total\": 82233373\n      },\n      \"created_at\": \"2013-09-09T18:26:01Z\",\n      \"description\": \"The Twitterverse has some good things to say about the Amazon Kindle.\",\n      \"full_name\": \"MassRelDemo/kindle\",\n      \"name\": \"kindle\",\n      \"pct\": 98,\n      \"tags\": [],\n      \"tpm\": 0\n    },\n    {\n      \"approved_tpm\": 0,\n      \"count\": {\n        \"approved\": 12990,\n        \"pending\": 0,\n        \"rejected\": 0,\n        \"total\": 12990\n      },\n      \"created_at\": \"2012-02-03T15:17:01Z\",\n      \"description\": \"Topic 1\",\n      \"full_name\": \"MassRelDemo/galaxy-topic1\",\n      \"name\": \"galaxy-topic1\",\n      \"pct\": 2,\n      \"tags\": [],\n      \"tpm\": 0\n    }\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  streams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        approved_tpm:
+                          type: integer
+                          example: 0
+                          default: 0
+                        count:
+                          type: object
+                          properties:
+                            approved:
+                              type: integer
+                              example: 551979
+                              default: 0
+                            pending:
+                              type: integer
+                              example: 0
+                              default: 0
+                            rejected:
+                              type: integer
+                              example: 81681394
+                              default: 0
+                            total:
+                              type: integer
+                              example: 82233373
+                              default: 0
+                        created_at:
+                          type: string
+                          example: '2013-09-09T18:26:01Z'
+                        description:
+                          type: string
+                          example: The Twitterverse has some good things to say about the Amazon Kindle.
+                        full_name:
+                          type: string
+                          example: MassRelDemo/kindle
+                        name:
+                          type: string
+                          example: kindle
+                        pct:
+                          type: integer
+                          example: 98
+                          default: 0
+                        tags:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                        tpm:
+                          type: integer
+                          example: 0
+                          default: 0
+      deprecated: false
+      security: []
+      tags:
+      - Compare.json?streams
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true
