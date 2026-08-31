@@ -290,7 +290,8 @@ apis:
     The Compare.json?streams={content}&sort API from Spredfast — 1 operation(s) for compare.json?streams={content}&sort.
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
   baseURL: https://api.spredfast.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - Compare.json?streams={content}&sort
   properties:
   - type: OpenAPI
@@ -319,7 +320,8 @@ apis:
     The Compare.json?streams={content}&target API from Spredfast — 1 operation(s) for compare.json?streams={content}&target.
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
   baseURL: https://api.spredfast.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - Compare.json?streams={content}&target
   properties:
   - type: OpenAPI
@@ -349,7 +351,8 @@ apis:
     compare.json?streams={content}&target={number}&precision.
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
   baseURL: https://api.spredfast.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - Compare.json?streams={content}&target={number}&precision
   properties:
   - type: OpenAPI
@@ -378,6 +381,8 @@ apis:
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
   baseURL: https://api.spredfast.com/v2
   tags:
+  - Customers
+  tags_raw:
   - Customer
   properties:
   - type: OpenAPI
@@ -715,6 +720,8 @@ apis:
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
   baseURL: https://api.spredfast.com/v2
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -1474,6 +1481,8 @@ apis:
   humanURL: https://developer.khoros.com/khorosmarketingdevdocs
   baseURL: https://api.spredfast.com/v2
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
