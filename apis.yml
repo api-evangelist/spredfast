@@ -630,34 +630,6 @@ apis:
   - type: Documentation
     url: >-
       https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
-- aid: spredfast:spredfast-labelsets-api-api
-  name: Spredfast Labelsets API
-  description: The Labelsets Api API from Spredfast — 1 operation(s) for labelsets api.
-  humanURL: https://developer.khoros.com/khorosmarketingdevdocs
-  baseURL: https://api.spredfast.com/v2
-  tags:
-  - Labelsets Api
-  properties:
-  - type: OpenAPI
-    url: openapi/spredfast-labelsets-api-api-openapi.yml
-  - type: APIReference
-    url: https://developer.khoros.com/khorosmarketingdevdocs/reference
-  - type: TermsOfService
-    url: https://s3.amazonaws.com/apiexplorer.spredfast.com/APITermsonlineacceptance.html
-  - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/calling-the-analytics-reporting-api
-  - type: Webhooks
-    url: asyncapi/spredfast-events-webhooks.yml
-  - type: Documentation
-    url: https://developer.khoros.com/khorosmarketingdevdocs/docs/notification-tutorials
-  - type: APIReference
-    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/stream-api
-  - type: APIReference
-    url: https://developer.khoros.com/khorosmarketingdevdocs/reference/custom-crm-registration
-  - type: Documentation
-    url: >-
-      https://developer.khoros.com/khorosmarketingdevdocs/docs/crm-api-spec-build-workflow-support-with-your-crm
 - aid: spredfast:spredfast-list-api
   name: Spredfast List API
   description: The List API from Spredfast — 2 operation(s) for list.
