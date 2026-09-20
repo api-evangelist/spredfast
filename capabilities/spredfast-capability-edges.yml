@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 2
+edge_count: 3
 edges:
 - tag: Messages
   spec_file: spredfast-messages-api-openapi.yml
@@ -24,6 +24,17 @@ edges:
   reason: Operations publish, edit and delete social messages (including sponsored/targeted posts) via
     a social media marketing platform — this is social publishing, i.e. digital marketing execution. Confidence
     moderated because it could also be read as content marketing distribution.
+- tag: Customer
+  spec_file: spredfast-customer-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.75
+  evidence: POST /customer/bestmatch bestmatchCustomers; POST /customer createCustomer; GET /customer/{id}
+    findCustomer; PATCH /customer/{id} updateCustomer
+  reason: CRUD plus a best-match endpoint over customer records is customer master data with identity
+    resolution, supporting the social-care customer profile.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: MultiChannelMessages
   spec_file: spredfast-multichannelmessages-api-openapi.yml
   capability_id: BC-400.60
