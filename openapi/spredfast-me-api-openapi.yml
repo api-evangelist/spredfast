@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Spredfast Me API
   version: '1.0'
-  description: 'Operations tagged Me across 2 of this provider''s published API definitions: spredfast-conversations-api-openapi.yml, spredfast-conversations-api-v1-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Me across 2 of this provider''s published API definitions: spredfast-conversations-api-openapi.json, spredfast-conversations-api-v1-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.spredfast.com/v2
 - url: https://api.spredfast.com
@@ -90,6 +90,27 @@ paths:
     - url: https://api.spredfast.com
 components:
   schemas:
+    Companies:
+      type: object
+      description: List of companies
+      properties:
+        sfEntityType:
+          type: string
+        directoryId:
+          type: integer
+        name:
+          type: string
+        environment:
+          type: string
+    CallStatus:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+          readOnly: true
+          default: false
+        error:
+          $ref: '#/components/schemas/ApiError'
     ApiError:
       type: object
       properties:
@@ -134,27 +155,6 @@ components:
         message:
           type: string
           readOnly: true
-    Companies:
-      type: object
-      description: List of companies
-      properties:
-        sfEntityType:
-          type: string
-        directoryId:
-          type: integer
-        name:
-          type: string
-        environment:
-          type: string
-    CallStatus:
-      type: object
-      properties:
-        succeeded:
-          type: boolean
-          readOnly: true
-          default: false
-        error:
-          $ref: '#/components/schemas/ApiError'
     Me:
       type: object
       description: List of companies you have authorized for use with this app
@@ -186,8 +186,8 @@ components:
           scopes:
             all: Read/write access for all endpoints.
 x-refined-from:
-- spredfast-conversations-api-openapi.yml
-- spredfast-conversations-api-v1-openapi.yml
+- spredfast-conversations-api-openapi.json
+- spredfast-conversations-api-v1-openapi.json
 x-readme:
   headers: []
   explorer-enabled: false

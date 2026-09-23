@@ -1,19 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: conversations
+  title: Conversations API
   version: '1.1'
 servers:
 - url: https://api.spredfast.com/v2
-components:
-  securitySchemes:
-    sec0:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://example.com/oauth2/token
-          scopes: {}
 security:
 - sec0: []
+tags:
+- name: Conversations
 paths:
   /conversations/initiative/{initiative-id}/accountset:
     get:
@@ -34,18 +28,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"accounts\": [\n        {\n          \"accountType\"\
-                    : \"PAGE\",\n          \"alias\": \"PCGazer\",\n          \"id\": \"21365\",\n   \
-                    \       \"name\": \"Page: Example Inc.\",\n          \"service\": \"FACEBOOK\",\n\
-                    \          \"serviceId\": \"103129177815577\",\n          \"sfEntityType\": \"Account\"\
-                    ,\n          \"uniqueId\": \"2fefd6afe8261c2c162c0988c8f79727\"\n        },\n    \
-                    \    {\n          \"accountType\": \"USER\",\n          \"id\": \"21366\",\n     \
-                    \     \"name\": \"ExampleInc\",\n          \"service\": \"TWITTER\",\n          \"\
-                    serviceId\": \"1193602248087146499\",\n          \"sfEntityType\": \"Account\",\n\
-                    \          \"uniqueId\": \"495d056a96b49b82b8cd53145324c2d7\"\n        }\n      ],\n\
-                    \      \"description\": \"\",\n      \"id\": \"98330576\",\n      \"name\": \"PCGazer\"\
-                    ,\n      \"sfEntityType\": \"AccountSet\"\n    }\n  ],\n  \"pagination\": {\n    \"\
-                    totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"accounts\": [\n        {\n          \"accountType\": \"PAGE\",\n          \"alias\": \"PCGazer\",\n          \"id\": \"21365\",\n          \"name\": \"Page: Example Inc.\",\n          \"service\": \"FACEBOOK\",\n          \"serviceId\": \"103129177815577\",\n          \"sfEntityType\": \"Account\",\n          \"uniqueId\": \"2fefd6afe8261c2c162c0988c8f79727\"\n        },\n        {\n          \"accountType\": \"USER\",\n          \"id\": \"21366\",\n          \"name\": \"ExampleInc\",\n          \"service\": \"TWITTER\",\n          \"serviceId\": \"1193602248087146499\",\n          \"sfEntityType\": \"Account\",\n          \"uniqueId\": \"495d056a96b49b82b8cd53145324c2d7\"\n        }\n      ],\n      \"description\": \"\",\n      \"id\": \"98330576\",\n      \"name\": \"PCGazer\",\n      \"sfEntityType\": \"AccountSet\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -120,6 +103,8 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
+      tags:
+      - Conversations
   /conversations/asset:
     post:
       summary: Create Text Asset
@@ -136,8 +121,7 @@ paths:
               properties:
                 sfEntityType:
                   type: string
-                  description: Specifies that this object is of Khoros Marketing entity type `Asset`.
-                    Any other type will fail for this request.
+                  description: Specifies that this object is of Khoros Marketing entity type `Asset`. Any other type will fail for this request.
                   default: Asset
                 id:
                   type: string
@@ -147,8 +131,7 @@ paths:
                   description: Which folder to place the asset in. This value must be present and a valid.
                 name:
                   type: string
-                  description: The name of the Asset. See the [Name](#name-field) section below for additional
-                    information.
+                  description: The name of the Asset. See the [Name](#name-field) section below for additional information.
                 intendedForPublishing:
                   type: boolean
                   description: Whether the asset can be used for publishing.
@@ -164,50 +147,36 @@ paths:
                     type: string
                 services:
                   type: array
-                  description: The services to restrict this Asset to. **Allowed Values:** `FACEBOOK`,
-                    `INSTAGRAM`, `PINTEREST`, `YOUTUBE`, `VK`, `MULTI_CHANNEL`, `SINAWEIBO`
+                  description: The services to restrict this Asset to. **Allowed Values:** `FACEBOOK`, `INSTAGRAM`, `PINTEREST`, `YOUTUBE`, `VK`, `MULTI_CHANNEL`, `SINAWEIBO`
                   items:
                     type: string
                 startDate:
                   type: string
-                  description: 'The date and time when the asset becomes available for use. **Format**:
-                    date-time'
+                  description: 'The date and time when the asset becomes available for use. **Format**: date-time'
                 endDate:
                   type: string
-                  description: 'The date and time when the asset stops being available for use. **Format**:
-                    date-time'
+                  description: 'The date and time when the asset stops being available for use. **Format**: date-time'
                 removalDate:
                   type: string
-                  description: 'The date and time when the asset will be removed from Khoros Marketing.
-                    **Format**: date-time'
+                  description: 'The date and time when the asset will be removed from Khoros Marketing. **Format**: date-time'
                 text:
                   type: string
-                  description: 'Text to go along with the asset. If this is Text Asset, this field is
-                    required. **Character Limit**: 4000 **Visible On**: Text asset **Required for**: Text
-                    asset'
+                  description: 'Text to go along with the asset. If this is Text Asset, this field is required. **Character Limit**: 4000 **Visible On**: Text asset **Required for**: Text asset'
                 image:
                   type: string
-                  description: 'The publicly accessible URL for an Image Asset from within Khoros Marketing
-                    Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true'
+                  description: 'The publicly accessible URL for an Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true'
                 imageMedium:
                   type: string
-                  description: 'The publicly accessible URL for a smaller version of the original Image
-                    Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**:
-                    Image asset **readOnly**: true'
+                  description: 'The publicly accessible URL for a smaller version of the original Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true'
                 imageThumb:
                   type: string
-                  description: 'The publically accessible URL for a thumbnail of an Image Asset from within
-                    Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**:
-                    true'
+                  description: 'The publically accessible URL for a thumbnail of an Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true'
                 video:
                   type: string
-                  description: 'The publically accessible URL for a Video Asset from within Khoros Marketing
-                    Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true'
+                  description: 'The publically accessible URL for a Video Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true'
                 videoThumb:
                   type: string
-                  description: 'The publically accessible URL for a thumbnail of a Video Asset from within
-                    Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**:
-                    true'
+                  description: 'The publically accessible URL for a thumbnail of a Video Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true'
                 externalId:
                   type: string
                   description: External ID to represent the ID of the asset outside of the system.
@@ -218,12 +187,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"sfEntityType\": \"Asset\",\n    \"id\": \"84d5cdbe-0f15-415e-80ea-examplede44f\"\
-                    ,\n    \"companyId\": \"12\",\n    \"folderId\": \"736\",\n    \"name\": \"Asset Name\"\
-                    ,\n    \"text\": \"Asset text value\",\n    \"intendedForPublishing\": true,\n   \
-                    \ \"intendedForModeration\": true,\n    \"createdDate\": 1551719642698,\n    \"contentLabels\"\
-                    : [\n      \"coffee - espresso\"\n    ]\n  },\n  \"status\": {\n    \"succeeded\"\
-                    : true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"sfEntityType\": \"Asset\",\n    \"id\": \"84d5cdbe-0f15-415e-80ea-examplede44f\",\n    \"companyId\": \"12\",\n    \"folderId\": \"736\",\n    \"name\": \"Asset Name\",\n    \"text\": \"Asset text value\",\n    \"intendedForPublishing\": true,\n    \"intendedForModeration\": true,\n    \"createdDate\": 1551719642698,\n    \"contentLabels\": [\n      \"coffee - espresso\"\n    ]\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -278,9 +242,7 @@ paths:
             text/plain:
               examples:
                 Result:
-                  value: "{\n  \"status\": {\n    \"error\": {\n      \"code\": \"not_acceptable\",\n\
-                    \      \"message\": \"Unable to parse the json you provided.\"\n    },\n    \"succeeded\"\
-                    : false\n  }\n}"
+                  value: "{\n  \"status\": {\n    \"error\": {\n      \"code\": \"not_acceptable\",\n      \"message\": \"Unable to parse the json you provided.\"\n    },\n    \"succeeded\": false\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -302,6 +264,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/asset?multipart:
     post:
       summary: Create Image or Video
@@ -318,8 +282,7 @@ paths:
               properties:
                 sfEntityType:
                   type: string
-                  description: Specifies that this object is of Khoros Marketing entity type `Asset`.
-                    Any other type will fail for this request.
+                  description: Specifies that this object is of Khoros Marketing entity type `Asset`. Any other type will fail for this request.
                   default: Asset
                 id:
                   type: string
@@ -329,8 +292,7 @@ paths:
                   description: Which folder to place the asset in. This value must be present and a valid.
                 name:
                   type: string
-                  description: The name of the Asset. See the [Name](#name-field) section below for additional
-                    information. **Character Limit:** 250
+                  description: The name of the Asset. See the [Name](#name-field) section below for additional information. **Character Limit:** 250
                 intendedForPublishing:
                   type: boolean
                   description: Whether the asset can be used for publishing.
@@ -346,50 +308,36 @@ paths:
                     type: string
                 services:
                   type: array
-                  description: The services to restrict this Asset to. **Allowed Values:** `FACEBOOK`,
-                    `INSTAGRAM`, `PINTEREST`, `YOUTUBE`, `VK`, `MULTI_CHANNEL`, `SINAWEIBO`
+                  description: The services to restrict this Asset to. **Allowed Values:** `FACEBOOK`, `INSTAGRAM`, `PINTEREST`, `YOUTUBE`, `VK`, `MULTI_CHANNEL`, `SINAWEIBO`
                   items:
                     type: string
                 startDate:
                   type: string
-                  description: 'The date and time when the asset becomes available for use. **Format**:
-                    date-time'
+                  description: 'The date and time when the asset becomes available for use. **Format**: date-time'
                 endDate:
                   type: string
-                  description: 'The date and time when the asset stops being available for use. **Format**:
-                    date-time'
+                  description: 'The date and time when the asset stops being available for use. **Format**: date-time'
                 removalDate:
                   type: string
-                  description: 'The date and time when the asset will be removed from Khoros Marketing.
-                    **Format**: date-time'
+                  description: 'The date and time when the asset will be removed from Khoros Marketing. **Format**: date-time'
                 text:
                   type: string
-                  description: 'Text to go along with the asset. If this is Text Asset, this field is
-                    required. **Visible On**: Text asset **Required for**: Text asset **Character Limit:**
-                    4000'
+                  description: 'Text to go along with the asset. If this is Text Asset, this field is required. **Visible On**: Text asset **Required for**: Text asset **Character Limit:** 4000'
                 image:
                   type: string
-                  description: 'The publicly accessible URL for an Image Asset from within Khoros Marketing
-                    Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true'
+                  description: 'The publicly accessible URL for an Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true'
                 imageMedium:
                   type: string
-                  description: 'The publicly accessible URL for a smaller version of the original Image
-                    Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**:
-                    Image asset **readOnly**: true'
+                  description: 'The publicly accessible URL for a smaller version of the original Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true'
                 imageThumb:
                   type: string
-                  description: 'The publically accessible URL for a thumbnail of an Image Asset from within
-                    Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**:
-                    true'
+                  description: 'The publically accessible URL for a thumbnail of an Image Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Image asset **readOnly**: true'
                 video:
                   type: string
-                  description: 'The publically accessible URL for a Video Asset from within Khoros Marketing
-                    Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true'
+                  description: 'The publically accessible URL for a Video Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true'
                 videoThumb:
                   type: string
-                  description: 'The publically accessible URL for a thumbnail of a Video Asset from within
-                    Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**:
-                    true'
+                  description: 'The publically accessible URL for a thumbnail of a Video Asset from within Khoros Marketing Content Center. **Format**: uri **Visible On**: Video asset **readOnly**: true'
                 externalId:
                   type: string
                   description: External ID to represent the ID of the asset outside of the system.
@@ -400,12 +348,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"sfEntityType\": \"Asset\",\n    \"id\": \"84d5cdbe-0f15-415e-80ea-examplede44f\"\
-                    ,\n    \"companyId\": \"12\",\n    \"folderId\": \"736\",\n    \"name\": \"Asset Name\"\
-                    ,\n    \"text\": \"Asset text value\",\n    \"intendedForPublishing\": true,\n   \
-                    \ \"intendedForModeration\": true,\n    \"createdDate\": 1551719642698,\n    \"contentLabels\"\
-                    : [\n      \"coffee - espresso\"\n    ]\n  },\n  \"status\": {\n    \"succeeded\"\
-                    : true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"sfEntityType\": \"Asset\",\n    \"id\": \"84d5cdbe-0f15-415e-80ea-examplede44f\",\n    \"companyId\": \"12\",\n    \"folderId\": \"736\",\n    \"name\": \"Asset Name\",\n    \"text\": \"Asset text value\",\n    \"intendedForPublishing\": true,\n    \"intendedForModeration\": true,\n    \"createdDate\": 1551719642698,\n    \"contentLabels\": [\n      \"coffee - espresso\"\n    ]\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -456,6 +399,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/asset/{assetId}:
     get:
       summary: Retrieve a Content Center Asset by ID
@@ -474,16 +419,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"contentLabels\": [\n  \
-                    \    \"General Labels - Inspirations\"\n    ],\n    \"createdDate\": 1616437795210,\n\
-                    \    \"description\": \"This is an asset description.\",\n    \"folderId\": \"32252\"\
-                    ,\n    \"id\": \"0e195f2b-1f47-40cd-ae44-example70c88\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-example70c88.jpg?AWSAccessKeyId=REDACTED_AWS_ACCESS_KEY_ID&Expires=1616441951&Signature=0DwGQR%2BDo00aDAbLSLszuBCe0Ow%3D\"\
-                    ,\n    \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=SrwJV726yQxCez%2FwAj2uiZDe8A8%3D\"\
-                    ,\n    \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=sOrgXXY2xLZK1wJC5H9v3DupakQ%3D\"\
-                    ,\n    \"intendedForModeration\": true,\n    \"intendedForPublishing\": true,\n  \
-                    \  \"name\": \"exampleav-klapin-SymZoeE8quA-unsplash\",\n    \"services\": [\n   \
-                    \   \"FACEBOOK\"\n    ],\n    \"sfEntityType\": \"Asset\",\n    \"text\": \"\"\n \
-                    \ },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"contentLabels\": [\n      \"General Labels - Inspirations\"\n    ],\n    \"createdDate\": 1616437795210,\n    \"description\": \"This is an asset description.\",\n    \"folderId\": \"32252\",\n    \"id\": \"0e195f2b-1f47-40cd-ae44-example70c88\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-example70c88.jpg?AWSAccessKeyId=REDACTED_AWS_ACCESS_KEY_ID&Expires=1616441951&Signature=0DwGQR%2BDo00aDAbLSLszuBCe0Ow%3D\",\n    \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=SrwJV726yQxCez%2FwAj2uiZDe8A8%3D\",\n    \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616441951&Signature=sOrgXXY2xLZK1wJC5H9v3DupakQ%3D\",\n    \"intendedForModeration\": true,\n    \"intendedForPublishing\": true,\n    \"name\": \"exampleav-klapin-SymZoeE8quA-unsplash\",\n    \"services\": [\n      \"FACEBOOK\"\n    ],\n    \"sfEntityType\": \"Asset\",\n    \"text\": \"\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -551,6 +487,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
     put:
       summary: Update Existing Content Center Asset
       description: Updates a Content Center Asset based on the JSON request body
@@ -599,15 +537,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616437795210,\n\
-                    \    \"description\": \"This is an example image asset.\",\n    \"folderId\": \"32252\"\
-                    ,\n    \"id\": \"0e195f2b-1f47-40cd-ae44-a5e083070c88\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplerqgMe7fxWfo6ckEzQ%2Bk%3D\"\
-                    ,\n    \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplez4IoJCKxOjnKEw3giFE%3D\"\
-                    ,\n    \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplejIGyN0tKoVjn9gSwisk%3D\"\
-                    ,\n    \"intendedForModeration\": true,\n    \"intendedForPublishing\": true,\n  \
-                    \  \"name\": \"Asset Image Example\",\n    \"services\": [\n      \"FACEBOOK\"\n \
-                    \   ],\n    \"sfEntityType\": \"Asset\",\n    \"text\": \"\"\n  },\n  \"status\":\
-                    \ {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616437795210,\n    \"description\": \"This is an example image asset.\",\n    \"folderId\": \"32252\",\n    \"id\": \"0e195f2b-1f47-40cd-ae44-a5e083070c88\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplerqgMe7fxWfo6ckEzQ%2Bk%3D\",\n    \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplez4IoJCKxOjnKEw3giFE%3D\",\n    \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=exampleUS5KNJY7D7SQA&Expires=1616442157&Signature=examplejIGyN0tKoVjn9gSwisk%3D\",\n    \"intendedForModeration\": true,\n    \"intendedForPublishing\": true,\n    \"name\": \"Asset Image Example\",\n    \"services\": [\n      \"FACEBOOK\"\n    ],\n    \"sfEntityType\": \"Asset\",\n    \"text\": \"\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -670,6 +600,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/folder:
     post:
       summary: Create a New Content Asset Folder
@@ -697,10 +629,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616447179440,\n\
-                    \    \"description\": \"This is a new example folder.\",\n    \"id\": \"32253\",\n\
-                    \    \"name\": \"A New Folder\",\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"\
-                    status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616447179440,\n    \"description\": \"This is a new example folder.\",\n    \"id\": \"32253\",\n    \"name\": \"A New Folder\",\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -735,6 +664,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
     get:
       summary: Retrieve a list of folders
       description: Retrieve a list of existing Khoros Marketing Content Center folders
@@ -770,11 +701,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"companyId\": \"389\",\n      \"createdDate\"\
-                    : 1616437729000,\n      \"description\": \"This folder contains assets.\",\n     \
-                    \ \"id\": \"32252\",\n      \"name\": \"assets\",\n      \"sfEntityType\": \"AssetFolder\"\
-                    \n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n\
-                    \    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"companyId\": \"389\",\n      \"createdDate\": 1616437729000,\n      \"description\": \"This folder contains assets.\",\n      \"id\": \"32252\",\n      \"name\": \"assets\",\n      \"sfEntityType\": \"AssetFolder\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -828,6 +755,8 @@ paths:
                 properties: {}
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/folder/{folderId}:
     get:
       summary: Retrieve a Content Asset Folder by ID
@@ -848,10 +777,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616437729000,\n\
-                    \    \"description\": \"This folder contains assets.\",\n    \"id\": \"32252\",\n\
-                    \    \"name\": \"assets\",\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\"\
-                    : {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"createdDate\": 1616437729000,\n    \"description\": \"This folder contains assets.\",\n    \"id\": \"32252\",\n    \"name\": \"assets\",\n    \"sfEntityType\": \"AssetFolder\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -886,6 +812,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
     put:
       summary: Update Existing Content Center Asset Folder
       description: Update an existing content center asset folder
@@ -936,6 +864,8 @@ paths:
                 properties: {}
       deprecated: false
       security: []
+      tags:
+      - Conversations
     delete:
       summary: Delete a Content Asset Folder by ID
       description: Delete a specific content asset folder by ID
@@ -972,6 +902,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/folder/{folderId}/assets:
     get:
       summary: Retrieve a List of Assets in a Folder
@@ -1016,17 +948,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"companyId\": \"389\",\n      \"createdDate\"\
-                    : 1616437795210,\n      \"description\": \"This is an example image asset.\",\n  \
-                    \    \"folderId\": \"32252\",\n      \"id\": \"0e195f2b-1f47-40cd-ae44-a5e083070c88\"\
-                    ,\n      \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/example-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\"\
-                    ,\n      \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\"\
-                    ,\n      \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\"\
-                    ,\n      \"intendedForModeration\": true,\n      \"intendedForPublishing\": true,\n\
-                    \      \"name\": \"Asset Image Example\",\n      \"services\": [\n        \"FACEBOOK\"\
-                    \n      ],\n      \"sfEntityType\": \"Asset\",\n      \"text\": \"\"\n    }\n  ],\n\
-                    \  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\"\
-                    : true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"companyId\": \"389\",\n      \"createdDate\": 1616437795210,\n      \"description\": \"This is an example image asset.\",\n      \"folderId\": \"32252\",\n      \"id\": \"0e195f2b-1f47-40cd-ae44-a5e083070c88\",\n      \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_ASSET/2021-03/example-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\",\n      \"imageMedium\": \"https://spredfast-download.s3.amazonaws.com/app3/389/MEDIUM_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\",\n      \"imageThumb\": \"https://spredfast-download.s3.amazonaws.com/app3/389/THUMB_IMAGE_ASSET/2021-03/0e195f2b-1f47-40cd-ae44-a5e083070c88.jpg?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616451084&Signature=[SIGNATURE]\",\n      \"intendedForModeration\": true,\n      \"intendedForPublishing\": true,\n      \"name\": \"Asset Image Example\",\n      \"services\": [\n        \"FACEBOOK\"\n      ],\n      \"sfEntityType\": \"Asset\",\n      \"text\": \"\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -1098,6 +1020,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/calendar/customChannel:
     get:
       summary: List CustomChannels
@@ -1115,13 +1039,11 @@ paths:
                     properties:
                       id:
                         type: integer
-                        description: 'The Khoros Marketing internal ID of the CustomChannel. **Format**:
-                          int64'
+                        description: 'The Khoros Marketing internal ID of the CustomChannel. **Format**: int64'
                         format: int32
                       companyId:
                         type: string
-                        description: The Khoros Marketing internal ID for the company. **Note:** This
-                          is scoped to the environment to which the company belongs.
+                        description: The Khoros Marketing internal ID for the company. **Note:** This is scoped to the environment to which the company belongs.
                       type:
                         type: string
                       name:
@@ -1170,11 +1092,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"companyId\": \"[COMPANY-ID]\",\n      \"contactName\"\
-                    : \"John Doe\",\n      \"id\": \"4609\",\n      \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]\"\
-                    ,\n      \"name\": \"Custom Type\",\n      \"sfEntityType\": \"CustomChannel\",\n\
-                    \      \"type\": \"Event\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\":\
-                    \ 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"companyId\": \"[COMPANY-ID]\",\n      \"contactName\": \"John Doe\",\n      \"id\": \"4609\",\n      \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]\",\n      \"name\": \"Custom Type\",\n      \"sfEntityType\": \"CustomChannel\",\n      \"type\": \"Event\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -1230,9 +1148,10 @@ paths:
                 properties: {}
       deprecated: false
       security: []
+      tags:
+      - Conversations
     post:
       summary: Create a CustomChannel
-      description: Create a CustomChannel
       operationId: create-a-customchannel
       requestBody:
         content:
@@ -1246,8 +1165,7 @@ paths:
                   format: int32
                 companyId:
                   type: integer
-                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:**
-                    This is scoped to the environment to which the company belongs.
+                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.
                   format: int32
                 type:
                   type: string
@@ -1268,6 +1186,8 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/calendar/customChannel/{customChannelId}:
     get:
       summary: Get a CustomChannel based on ID
@@ -1291,8 +1211,7 @@ paths:
                   format: int32
                 companyId:
                   type: integer
-                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:**
-                    This is scoped to the environment to which the company belongs.
+                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.
                   format: int32
                 type:
                   type: string
@@ -1310,10 +1229,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"contactName\": \"Ryan Pierson\"\
-                    ,\n    \"id\": \"4609\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616448046&Signature=[SIGNATURE]\"\
-                    ,\n    \"name\": \"Custom Type\",\n    \"sfEntityType\": \"CustomChannel\",\n    \"\
-                    type\": \"Event\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"companyId\": \"389\",\n    \"contactName\": \"Ryan Pierson\",\n    \"id\": \"4609\",\n    \"image\": \"https://spredfast-download.s3.amazonaws.com/app3/389/IMAGE_CHANNEL_TYPE/2021-03/example-2ac0-40e6-93d5-84a265fcfb2f.png?AWSAccessKeyId=[ACCESS-KEY]&Expires=1616448046&Signature=[SIGNATURE]\",\n    \"name\": \"Custom Type\",\n    \"sfEntityType\": \"CustomChannel\",\n    \"type\": \"Event\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -1350,9 +1266,10 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
     put:
       summary: Update a CustomChannel
-      description: Update a CustomChannel
       operationId: update-a-customchannel
       parameters:
       - name: customChannelId
@@ -1372,8 +1289,7 @@ paths:
                   format: int32
                 companyId:
                   type: integer
-                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:**
-                    This is scoped to the environment to which the company belongs.
+                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.
                   format: int32
                 type:
                   type: string
@@ -1394,6 +1310,8 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/calendar/customChannelItem/{customChannelItemId}:
     post:
       summary: Create a CustomChannelItem
@@ -1423,8 +1341,7 @@ paths:
                   type: string
                 companyId:
                   type: integer
-                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:**
-                    This is scoped to the environment to which the company belongs.
+                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.
                   format: int32
                 initiativeId:
                   type: integer
@@ -1440,8 +1357,7 @@ paths:
                       format: int32
                     companyId:
                       type: integer
-                      description: The Khoros Marketing internal ID for the company. **Note:** This is
-                        scoped to the environment to which the company belongs.
+                      description: The Khoros Marketing internal ID for the company. **Note:** This is scoped to the environment to which the company belongs.
                       format: int32
                     type:
                       type: string
@@ -1477,9 +1393,10 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
     put:
       summary: Update a CustomChannelItem
-      description: Update a CustomChannelItem
       operationId: update-a-customchannelitem
       parameters:
       - name: initiativeId
@@ -1505,8 +1422,7 @@ paths:
                   type: string
                 companyId:
                   type: integer
-                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:**
-                    This is scoped to the environment to which the company belongs.
+                  description: The Khoros Marketing internal ID for the company. **Format:** int64 **Note:** This is scoped to the environment to which the company belongs.
                   format: int32
                 initiativeId:
                   type: integer
@@ -1522,8 +1438,7 @@ paths:
                       format: int32
                     companyId:
                       type: integer
-                      description: The Khoros Marketing internal ID for the company. **Note:** This is
-                        scoped to the environment to which the company belongs.
+                      description: The Khoros Marketing internal ID for the company. **Note:** This is scoped to the environment to which the company belongs.
                       format: int32
                     type:
                       type: string
@@ -1559,6 +1474,8 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
     get:
       summary: Get a CustomChannelItem by ID
       description: Get a CustomChannelItem identified by its unique id
@@ -1597,6 +1514,8 @@ paths:
                 properties: {}
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/calendar/messages:
     get:
       summary: Get Messages
@@ -1610,14 +1529,12 @@ paths:
           type: string
       - name: planIds
         in: query
-        description: CSV list of Plan ids to filter messages by. All plans are included in the search
-          when absent.
+        description: CSV list of Plan ids to filter messages by. All plans are included in the search when absent.
         schema:
           type: string
       - name: perPage
         in: query
-        description: Number of messages to include in each page of results. Default is 25. Must be between
-          1 and 50.
+        description: Number of messages to include in each page of results. Default is 25. Must be between 1 and 50.
         schema:
           type: integer
           format: int32
@@ -1646,6 +1563,8 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative:
     get:
       summary: Retrieve a List of Available Initiatives
@@ -1678,10 +1597,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"description\": \"This is an initiative's description.\"\
-                    ,\n      \"id\": \"1710\",\n      \"name\": \"doc\",\n      \"sfEntityType\": \"Initiative\"\
-                    \n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n\
-                    \    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"description\": \"This is an initiative's description.\",\n      \"id\": \"1710\",\n      \"name\": \"doc\",\n      \"sfEntityType\": \"Initiative\"\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -1718,6 +1634,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}:
     get:
       summary: Retrieve a Single Initiative
@@ -1737,9 +1655,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"description\": \"This is an initiative's description.\"\
-                    ,\n    \"id\": \"1710\",\n    \"name\": \"doc\",\n    \"sfEntityType\": \"Initiative\"\
-                    \n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"description\": \"This is an initiative's description.\",\n    \"id\": \"1710\",\n    \"name\": \"doc\",\n    \"sfEntityType\": \"Initiative\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -1767,6 +1683,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/contentLabel:
     get:
       summary: Retrieve Paged Labels
@@ -1810,14 +1728,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"priority\": false,\n      \"title\": \"General\
-                    \ Labels - Ideas\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"\
-                    General Labels - Inventions\"\n    },\n    {\n      \"priority\": false,\n      \"\
-                    title\": \"General Labels - Products\"\n    },\n    {\n      \"priority\": false,\n\
-                    \      \"title\": \"General Labels - Services\"\n    },\n    {\n      \"priority\"\
-                    : false,\n      \"title\": \"General Labels - Innovations\"\n    },\n    {\n     \
-                    \ \"priority\": false,\n      \"title\": \"General Labels - Inspirations\"\n    }\n\
-                    \  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Ideas\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Inventions\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Products\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Services\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Innovations\"\n    },\n    {\n      \"priority\": false,\n      \"title\": \"General Labels - Inspirations\"\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -1845,69 +1756,8 @@ paths:
                         default: true
       deprecated: false
       security: []
-  /me:
-    get:
-      summary: Retrieve a List of Companies with this App Enabled
-      description: Retrieve a list of companies the currently-authenticated user is associated with for
-        this app
-      operationId: retrieve-a-list-companies-with-this-app-enabled
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: "{\n  \"data\": {\n    \"companies\": [\n      {\n        \"directoryId\": \"\
-                    24606\",\n        \"environment\": \"APP3\",\n        \"environmentUrl\": \"https://app3.spredfast.com\"\
-                    ,\n        \"id\": \"389\",\n        \"name\": \"(documentation2)\",\n        \"productName\"\
-                    : null,\n        \"sfEntityType\": \"AvailableCompany\"\n      }\n    ],\n    \"email\"\
-                    : \"ryan.pierson+doc@khoros.com\",\n    \"sfEntityType\": \"User\"\n  },\n  \"status\"\
-                    : {\n    \"succeeded\": true\n  }\n}"
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      companies:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            directoryId:
-                              type: string
-                              example: '24606'
-                            environment:
-                              type: string
-                              example: APP3
-                            environmentUrl:
-                              type: string
-                              example: https://app3.spredfast.com
-                            id:
-                              type: string
-                              example: '389'
-                            name:
-                              type: string
-                              example: (documentation2)
-                            productName: {}
-                            sfEntityType:
-                              type: string
-                              example: AvailableCompany
-                      email:
-                        type: string
-                        example: ryan.pierson+doc@khoros.com
-                      sfEntityType:
-                        type: string
-                        example: User
-                  status:
-                    type: object
-                    properties:
-                      succeeded:
-                        type: boolean
-                        example: true
-                        default: true
-      deprecated: false
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/message:
     post:
       summary: Publish a New Message (imageset)
@@ -1933,8 +1783,7 @@ paths:
                   type: string
                 content:
                   type: object
-                  description: Content body appears as one of the object sets described in the **Details**
-                    section below.
+                  description: Content body appears as one of the object sets described in the **Details** section below.
                   properties: {}
                 title:
                   type: string
@@ -1942,8 +1791,7 @@ paths:
                   type: string
                 service:
                   type: string
-                  description: Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`,
-                    `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`
+                  description: Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`, `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`
                   default: FACEBOOK
                 targetAccountIds:
                   type: array
@@ -1954,13 +1802,11 @@ paths:
                   description: '**AllowedValues:** `VISIBLE`, `INVISIBLE`, `VISIBLE_POST_PUBLISH`'
                 status:
                   type: string
-                  description: '**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`,
-                    `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`'
+                  description: '**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`, `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`'
                   default: DRAFT
                 delegationStatus:
                   type: string
-                  description: '**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`,
-                    `DELEGATED`'
+                  description: '**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`, `DELEGATED`'
                 publicationResults:
                   type: array
                   items:
@@ -1982,8 +1828,7 @@ paths:
                   description: '**Format:** date-time'
                 callbacks:
                   type: array
-                  description: '**uniqueItems:** `true` **uniqueItems:** `true` Callback URLs need to
-                    be a POST type. Other types of URLs may result in an error response.'
+                  description: '**uniqueItems:** `true` **uniqueItems:** `true` Callback URLs need to be a POST type. Other types of URLs may result in an error response.'
                   items:
                     type: string
                 targetingProfile:
@@ -2005,15 +1850,7 @@ paths:
                   type: boolean
                 sponsor:
                   type: object
-                  description: A Sponsor for the Message. Currently, we only support attaching a single
-                    sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded
-                    Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for
-                    more info), so any attempt to use it either for other Social Networks or including
-                    targets that don’t comply with this rule, will result in an error from the back-end.
-                    Note that the Sponsor itself is not restricted to be a verified page, so it could
-                    be a regular (non-verified) page or a regular user. As an example, a post could be
-                    created, targeting the Facebook verified page of @LeoMessi and that post could be
-                    sponsored by @nike.
+                  description: A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don’t comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.
                   properties:
                     profileId:
                       type: string
@@ -2043,8 +1880,7 @@ paths:
                         description: The note's ID. This should be left empty or set to `0` for new notes.
                       createdByDisplayName:
                         type: string
-                        description: The formatted name [firstName lastName] of the note's author. **readOnly:**
-                          true
+                        description: The formatted name [firstName lastName] of the note's author. **readOnly:** true
                       createdByUserId:
                         type: string
                         description: '**readOnly:** true'
@@ -2068,6 +1904,8 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/message/{messageId}:
     put:
       summary: Update a Message
@@ -2100,8 +1938,7 @@ paths:
                   type: string
                 content:
                   type: object
-                  description: Content body appears as one of the object sets described in the **Details**
-                    section below.
+                  description: Content body appears as one of the object sets described in the **Details** section below.
                   properties: {}
                 title:
                   type: string
@@ -2109,8 +1946,7 @@ paths:
                   type: string
                 service:
                   type: string
-                  description: Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`,
-                    `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`
+                  description: Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`, `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`
                   default: FACEBOOK
                 targetAccountIds:
                   type: array
@@ -2121,13 +1957,11 @@ paths:
                   description: '**AllowedValues:** `VISIBLE`, `INVISIBLE`, `VISIBLE_POST_PUBLISH`'
                 status:
                   type: string
-                  description: '**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`,
-                    `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`'
+                  description: '**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`, `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`'
                   default: DRAFT
                 delegationStatus:
                   type: string
-                  description: '**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`,
-                    `DELEGATED`'
+                  description: '**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`, `DELEGATED`'
                 publicationResults:
                   type: array
                   items:
@@ -2171,15 +2005,7 @@ paths:
                   type: boolean
                 sponsor:
                   type: object
-                  description: A Sponsor for the Message. Currently, we only support attaching a single
-                    sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded
-                    Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for
-                    more info), so any attempt to use it either for other Social Networks or including
-                    targets that don’t comply with this rule, will result in an error from the back-end.
-                    Note that the Sponsor itself is not restricted to be a verified page, so it could
-                    be a regular (non-verified) page or a regular user. As an example, a post could be
-                    created, targeting the Facebook verified page of @LeoMessi and that post could be
-                    sponsored by @nike.
+                  description: A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don’t comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.
                   properties:
                     profileId:
                       type: string
@@ -2209,8 +2035,7 @@ paths:
                         description: The note's ID. This should be left empty or set to `0` for new notes.
                       createdByDisplayName:
                         type: string
-                        description: The formatted name [firstName lastName] of the note's author. **readOnly:**
-                          true
+                        description: The formatted name [firstName lastName] of the note's author. **readOnly:** true
                       createdByUserId:
                         type: string
                         description: '**readOnly:** true'
@@ -2234,6 +2059,8 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
     get:
       summary: Retrieve an Existing Message
       description: Returns information about the existing Khoros Marketing Messages for the target Initiative
@@ -2259,21 +2086,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"content\": {\n      \"caption\": \"This is the best\
-                    \ day to say hello to someone new. Hello, world!\",\n      \"sfEntityType\": \"ImageShare\"\
-                    ,\n      \"temporaryImageUrl\": \"s3.amazonaws.com/photos.socialagency.com/app3/389/example.jpeg\"\
-                    ,\n      \"temporaryThumbnailUrl\": \"s3.amazonaws.com/photos.socialagency.com/app3/389/example.thumb.jpeg\"\
-                    \n    },\n    \"delegationStatus\": \"NOT_DELEGATED\",\n    \"id\": \"2244551225\"\
-                    ,\n    \"labels\": [\n      \"General Labels - Inspirations\"\n    ],\n    \"notes\"\
-                    : [],\n    \"organicVisibility\": \"VISIBLE\",\n    \"planId\": \"example-991e-4394-bdb5-88358cd909eb\"\
-                    ,\n    \"publicationResults\": [\n      {\n        \"accountId\": \"21365\",\n   \
-                    \     \"datePublished\": 1616018540000,\n        \"serviceId\": \"123456177815577_123456789123456\"\
-                    ,\n        \"serviceLink\": \"https://www.facebook.com/123456789/posts/987654321\"\
-                    ,\n        \"sfEntityType\": \"PublicationResult\",\n        \"status\": \"PUBLISHED\"\
-                    \n      }\n    ],\n    \"scheduledPublishDate\": 1616018541000,\n    \"service\":\
-                    \ \"MULTI_CHANNEL\",\n    \"sfEntityType\": \"Message\",\n    \"status\": \"PUBLISHED\"\
-                    ,\n    \"targetAccountIds\": [\n      \"21365\"\n    ],\n    \"title\": \"This is\
-                    \ the best\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"content\": {\n      \"caption\": \"This is the best day to say hello to someone new. Hello, world!\",\n      \"sfEntityType\": \"ImageShare\",\n      \"temporaryImageUrl\": \"s3.amazonaws.com/photos.socialagency.com/app3/389/example.jpeg\",\n      \"temporaryThumbnailUrl\": \"s3.amazonaws.com/photos.socialagency.com/app3/389/example.thumb.jpeg\"\n    },\n    \"delegationStatus\": \"NOT_DELEGATED\",\n    \"id\": \"2244551225\",\n    \"labels\": [\n      \"General Labels - Inspirations\"\n    ],\n    \"notes\": [],\n    \"organicVisibility\": \"VISIBLE\",\n    \"planId\": \"example-991e-4394-bdb5-88358cd909eb\",\n    \"publicationResults\": [\n      {\n        \"accountId\": \"21365\",\n        \"datePublished\": 1616018540000,\n        \"serviceId\": \"123456177815577_123456789123456\",\n        \"serviceLink\": \"https://www.facebook.com/123456789/posts/987654321\",\n        \"sfEntityType\": \"PublicationResult\",\n        \"status\": \"PUBLISHED\"\n      }\n    ],\n    \"scheduledPublishDate\": 1616018541000,\n    \"service\": \"MULTI_CHANNEL\",\n    \"sfEntityType\": \"Message\",\n    \"status\": \"PUBLISHED\",\n    \"targetAccountIds\": [\n      \"21365\"\n    ],\n    \"title\": \"This is the best\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -2371,6 +2184,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
     delete:
       summary: Delete an Existing Message
       description: This endpoint is used to delete an existing Khoros Marketing Message
@@ -2413,6 +2228,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/message?multipart:
     post:
       summary: Publish a New Message (multipart)
@@ -2438,8 +2255,7 @@ paths:
                   type: string
                 content:
                   type: object
-                  description: Content body appears as one of the object sets described in the **Details**
-                    section below.
+                  description: Content body appears as one of the object sets described in the **Details** section below.
                   properties: {}
                 title:
                   type: string
@@ -2447,8 +2263,7 @@ paths:
                   type: string
                 service:
                   type: string
-                  description: Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`,
-                    `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`
+                  description: Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`, `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`, `TIKTOK`
                   default: FACEBOOK
                 targetAccountIds:
                   type: array
@@ -2459,13 +2274,11 @@ paths:
                   description: '**AllowedValues:** `VISIBLE`, `INVISIBLE`, `VISIBLE_POST_PUBLISH`'
                 status:
                   type: string
-                  description: '**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`,
-                    `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`'
+                  description: '**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`, `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`'
                   default: DRAFT
                 delegationStatus:
                   type: string
-                  description: '**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`,
-                    `DELEGATED`'
+                  description: '**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`, `DELEGATED`'
                 publicationResults:
                   type: array
                   items:
@@ -2487,8 +2300,7 @@ paths:
                   description: '**Format:** date-time'
                 callbacks:
                   type: array
-                  description: '**uniqueItems:** `true` **uniqueItems:** `true` Callback URLs need to
-                    be a POST type. Other types of URLs may result in an error response.'
+                  description: '**uniqueItems:** `true` **uniqueItems:** `true` Callback URLs need to be a POST type. Other types of URLs may result in an error response.'
                   items:
                     type: string
                 targetingProfile:
@@ -2510,15 +2322,7 @@ paths:
                   type: boolean
                 sponsor:
                   type: object
-                  description: A Sponsor for the Message. Currently, we only support attaching a single
-                    sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded
-                    Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for
-                    more info), so any attempt to use it either for other Social Networks or including
-                    targets that don’t comply with this rule, will result in an error from the back-end.
-                    Note that the Sponsor itself is not restricted to be a verified page, so it could
-                    be a regular (non-verified) page or a regular user. As an example, a post could be
-                    created, targeting the Facebook verified page of @LeoMessi and that post could be
-                    sponsored by @nike.
+                  description: A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don’t comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.
                   properties:
                     profileId:
                       type: string
@@ -2548,8 +2352,7 @@ paths:
                         description: The note's ID. This should be left empty or set to `0` for new notes.
                       createdByDisplayName:
                         type: string
-                        description: The formatted name [firstName lastName] of the note's author. **readOnly:**
-                          true
+                        description: The formatted name [firstName lastName] of the note's author. **readOnly:** true
                       createdByUserId:
                         type: string
                         description: '**readOnly:** true'
@@ -2573,6 +2376,8 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/message/{messageId}?multipart:
     put:
       summary: Update a Multipart Message
@@ -2605,8 +2410,7 @@ paths:
                   type: string
                 content:
                   type: object
-                  description: Content body appears as one of the object sets described in the **Details**
-                    section below.
+                  description: Content body appears as one of the object sets described in the **Details** section below.
                   properties: {}
                 title:
                   type: string
@@ -2614,8 +2418,7 @@ paths:
                   type: string
                 service:
                   type: string
-                  description: Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`,
-                    `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`,`TIKTOK`
+                  description: Social network to publish to. **Allowed Values:** `FACEBOOK`, `GOOGLEPLUS`, `SINAWEIBO`, `LINKEDIN`, `MULTI_CHANNEL`, `PINTEREST`, `YOUTUBE`, `VK`,`TIKTOK`
                   default: FACEBOOK
                 targetAccountIds:
                   type: array
@@ -2626,13 +2429,11 @@ paths:
                   description: '**AllowedValues:** `VISIBLE`, `INVISIBLE`, `VISIBLE_POST_PUBLISH`'
                 status:
                   type: string
-                  description: '**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`,
-                    `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`'
+                  description: '**Allowed Values:** `DRAFT`, `PENDING`, `AWAITING_APPROVAL`, `REJECTED`, `PUBLISHED`, `ERROR`, `DELETED`, `NATIVELY_SCHEDULED`'
                   default: DRAFT
                 delegationStatus:
                   type: string
-                  description: '**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`,
-                    `DELEGATED`'
+                  description: '**Allowed Values:** `NOT_DELEGATED`, `SCHEDULED_FOR_DELEGATION`, `DELEGATION_FAILED`, `DELEGATED`'
                 publicationResults:
                   type: array
                   items:
@@ -2676,15 +2477,7 @@ paths:
                   type: boolean
                 sponsor:
                   type: object
-                  description: A Sponsor for the Message. Currently, we only support attaching a single
-                    sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded
-                    Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for
-                    more info), so any attempt to use it either for other Social Networks or including
-                    targets that don’t comply with this rule, will result in an error from the back-end.
-                    Note that the Sponsor itself is not restricted to be a verified page, so it could
-                    be a regular (non-verified) page or a regular user. As an example, a post could be
-                    created, targeting the Facebook verified page of @LeoMessi and that post could be
-                    sponsored by @nike.
+                  description: A Sponsor for the Message. Currently, we only support attaching a single sponsor when posting to **only** Facebook **verified** Pages (a.k.a. Facebook Branded Content, see https://www.facebook.com/facebookmedia/get-started/branded-content for more info), so any attempt to use it either for other Social Networks or including targets that don’t comply with this rule, will result in an error from the back-end. Note that the Sponsor itself is not restricted to be a verified page, so it could be a regular (non-verified) page or a regular user. As an example, a post could be created, targeting the Facebook verified page of @LeoMessi and that post could be sponsored by @nike.
                   properties:
                     profileId:
                       type: string
@@ -2714,8 +2507,7 @@ paths:
                         description: The note's ID. This should be left empty or set to `0` for new notes.
                       createdByDisplayName:
                         type: string
-                        description: The formatted name [firstName lastName] of the note's author. **readOnly:**
-                          true
+                        description: The formatted name [firstName lastName] of the note's author. **readOnly:** true
                       createdByUserId:
                         type: string
                         description: '**readOnly:** true'
@@ -2739,11 +2531,12 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/multiChannelMessage/{messageId}:
     get:
       summary: Retrieve an Existing Multi-channel Message
-      description: The Messages endpoint returns information about the Khoros Marketing multi-channel
-        messages for the target Initiative
+      description: The Messages endpoint returns information about the Khoros Marketing multi-channel messages for the target Initiative
       operationId: retrieve-an-existing-multi-channel-message
       parameters:
       - name: messageId
@@ -2769,11 +2562,12 @@ paths:
                   value: Coming Soon
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/privilege:
     get:
       summary: Retrieve Permissions for Current User
-      description: Retrieves a list of permissions in the currently selected company using Khoros Marketing
-        Conversations API.
+      description: Retrieves a list of permissions in the currently selected company using Khoros Marketing Conversations API.
       operationId: retrieve-permissions-for-current-user
       responses:
         '200':
@@ -2782,9 +2576,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": {\n    \"canCreateLabels\": true,\n    \"canPublish\": true,\n\
-                    \    \"sfEntityType\": \"UserPrivilege\"\n  },\n  \"status\": {\n    \"succeeded\"\
-                    : true\n  }\n}"
+                  value: "{\n  \"data\": {\n    \"canCreateLabels\": true,\n    \"canPublish\": true,\n    \"sfEntityType\": \"UserPrivilege\"\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -2811,6 +2603,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/plan:
     get:
       summary: Retrieve a List of Plans
@@ -2848,12 +2642,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"campaignId\": 1710,\n      \"color\": \"#1a7293\"\
-                    ,\n      \"companyId\": 389,\n      \"endDate\": 1619931599999,\n      \"id\": \"\
-                    34534cd7-991e-4394-bdb5-88358cd909eb\",\n      \"name\": \"Grow the Following\",\n\
-                    \      \"sfEntityType\": \"Plan\",\n      \"startDate\": 1615957200000\n    }\n  ],\n\
-                    \  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\"\
-                    : true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"campaignId\": 1710,\n      \"color\": \"#1a7293\",\n      \"companyId\": 389,\n      \"endDate\": 1619931599999,\n      \"id\": \"34534cd7-991e-4394-bdb5-88358cd909eb\",\n      \"name\": \"Grow the Following\",\n      \"sfEntityType\": \"Plan\",\n      \"startDate\": 1615957200000\n    }\n  ],\n  \"pagination\": {\n    \"totalItems\": 1\n  },\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -2906,6 +2695,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/roles:
     get:
       summary: List Roles for the Company
@@ -2930,17 +2721,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"custom\": false,\n      \"id\": 1,\n      \"\
-                    name\": \"company_admin\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n    \
-                    \  \"custom\": false,\n      \"id\": 3,\n      \"name\": \"editor\",\n      \"sfEntityType\"\
-                    : \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 2,\n      \"name\"\
-                    : \"manager\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\"\
-                    : false,\n      \"id\": 97,\n      \"name\": \"mobile_capture_user\",\n      \"sfEntityType\"\
-                    : \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 5,\n      \"name\"\
-                    : \"viewer\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\":\
-                    \ false,\n      \"id\": 4,\n      \"name\": \"writer\",\n      \"sfEntityType\": \"\
-                    Role\"\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n\
-                    \  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"custom\": false,\n      \"id\": 1,\n      \"name\": \"company_admin\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 3,\n      \"name\": \"editor\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 2,\n      \"name\": \"manager\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 97,\n      \"name\": \"mobile_capture_user\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 5,\n      \"name\": \"viewer\",\n      \"sfEntityType\": \"Role\"\n    },\n    {\n      \"custom\": false,\n      \"id\": 4,\n      \"name\": \"writer\",\n      \"sfEntityType\": \"Role\"\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -2975,6 +2756,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/users/initiative/{initiativeId}/publishers:
     get:
       summary: List Conversations Publishers
@@ -2994,10 +2777,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"displayName\": \"Jane Doe\",\n      \"id\"\
-                    : 73588\n    },\n    {\n      \"displayName\": \"John Doe\",\n      \"id\": 73589\n\
-                    \    },\n    {\n      \"displayName\": \"Joan Jett\",\n      \"id\": 73590\n    }\n\
-                    \  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"displayName\": \"Jane Doe\",\n      \"id\": 73588\n    },\n    {\n      \"displayName\": \"John Doe\",\n      \"id\": 73589\n    },\n    {\n      \"displayName\": \"Joan Jett\",\n      \"id\": 73590\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -3025,6 +2805,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/user/{userId}:
     delete:
       summary: Delete a Conversations User
@@ -3058,6 +2840,8 @@ paths:
                   value: ''
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/user:
     post:
       summary: Create a Conversations User
@@ -3118,8 +2902,7 @@ paths:
                     format: int32
                 addtoFutureAccountSets:
                   type: boolean
-                  description: Boolean indicating if the users should be added implicitly to new account
-                    sets.
+                  description: Boolean indicating if the users should be added implicitly to new account sets.
                   default: false
                 accountSetIds:
                   type: array
@@ -3149,6 +2932,8 @@ paths:
                 properties: {}
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/users:
     get:
       summary: List Conversations Users
@@ -3179,24 +2964,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"accountSetIds\": [\n        1710\n      ],\n\
-                    \      \"description\": \"\",\n      \"directoryId\": 232809,\n      \"email\": \"\
-                    ryan@example.com\",\n      \"firstName\": \"Ryan\",\n      \"id\": 73589,\n      \"\
-                    initiativeIds\": [\n        1710\n      ],\n      \"jobTitle\": \"\",\n      \"lastName\"\
-                    : \"Doe\",\n      \"roleId\": 1,\n      \"sfEntityType\": \"User\",\n      \"timezone\"\
-                    : \"America/Chicago\",\n      \"workspaceId\": 1747\n    },\n    {\n      \"accountSetIds\"\
-                    : [\n        1710\n      ],\n      \"description\": \"\",\n      \"directoryId\":\
-                    \ 232810,\n      \"email\": \"ryan@example2.com\",\n      \"firstName\": \"Ryan\"\
-                    ,\n      \"id\": 73590,\n      \"initiativeIds\": [\n        1710\n      ],\n    \
-                    \  \"jobTitle\": \"\",\n      \"lastName\": \"Readme\",\n      \"roleId\": 5,\n  \
-                    \    \"sfEntityType\": \"User\",\n      \"timezone\": \"America/Los_Angeles\",\n \
-                    \     \"workspaceId\": 1748\n    },\n    {\n      \"accountSetIds\": [\n        1710\n\
-                    \      ],\n      \"description\": \"\",\n      \"directoryId\": 232808,\n      \"\
-                    email\": \"suzie@example.com\",\n      \"firstName\": \"Suzie\",\n      \"id\": 73588,\n\
-                    \      \"initiativeIds\": [\n        1710\n      ],\n      \"jobTitle\": \"\",\n \
-                    \     \"lastName\": \"Doe\",\n      \"roleId\": 1,\n      \"sfEntityType\": \"User\"\
-                    ,\n      \"timezone\": \"America/Tijuana\",\n      \"workspaceId\": 1747\n    }\n\
-                    \  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"accountSetIds\": [\n        1710\n      ],\n      \"description\": \"\",\n      \"directoryId\": 232809,\n      \"email\": \"ryan@example.com\",\n      \"firstName\": \"Ryan\",\n      \"id\": 73589,\n      \"initiativeIds\": [\n        1710\n      ],\n      \"jobTitle\": \"\",\n      \"lastName\": \"Doe\",\n      \"roleId\": 1,\n      \"sfEntityType\": \"User\",\n      \"timezone\": \"America/Chicago\",\n      \"workspaceId\": 1747\n    },\n    {\n      \"accountSetIds\": [\n        1710\n      ],\n      \"description\": \"\",\n      \"directoryId\": 232810,\n      \"email\": \"ryan@example2.com\",\n      \"firstName\": \"Ryan\",\n      \"id\": 73590,\n      \"initiativeIds\": [\n        1710\n      ],\n      \"jobTitle\": \"\",\n      \"lastName\": \"Readme\",\n      \"roleId\": 5,\n      \"sfEntityType\": \"User\",\n      \"timezone\": \"America/Los_Angeles\",\n      \"workspaceId\": 1748\n    },\n    {\n      \"accountSetIds\": [\n        1710\n      ],\n      \"description\": \"\",\n      \"directoryId\": 232808,\n      \"email\": \"suzie@example.com\",\n      \"firstName\": \"Suzie\",\n      \"id\": 73588,\n      \"initiativeIds\": [\n        1710\n      ],\n      \"jobTitle\": \"\",\n      \"lastName\": \"Doe\",\n      \"roleId\": 1,\n      \"sfEntityType\": \"User\",\n      \"timezone\": \"America/Tijuana\",\n      \"workspaceId\": 1747\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -3266,6 +3034,8 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/initiative/{initiativeId}/video/captions:
     post:
       summary: Create a Video Captions
@@ -3279,8 +3049,7 @@ paths:
               properties:
                 captions:
                   type: string
-                  description: The SRT captions file. The name of the file must comply with the convention
-                    *filename.[language code]_[country code].srt*
+                  description: The SRT captions file. The name of the file must comply with the convention *filename.[language code]_[country code].srt*
                   format: binary
       responses:
         '200':
@@ -3305,6 +3074,8 @@ paths:
                 properties: {}
       deprecated: false
       security: []
+      tags:
+      - Conversations
   /conversations/workspaces:
     get:
       summary: List Workspaces for the Company
@@ -3329,13 +3100,7 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: "{\n  \"data\": [\n    {\n      \"default\": true,\n      \"id\": 1747,\n   \
-                    \   \"name\": \"Advanced\",\n      \"sfEntityType\": \"Workspace\"\n    },\n    {\n\
-                    \      \"default\": true,\n      \"id\": 1748,\n      \"name\": \"Basic\",\n     \
-                    \ \"sfEntityType\": \"Workspace\"\n    },\n    {\n      \"default\": true,\n     \
-                    \ \"id\": 1749,\n      \"name\": \"Mobile Capture Workspace\",\n      \"sfEntityType\"\
-                    : \"Workspace\"\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\"\
-                    : true\n  }\n}"
+                  value: "{\n  \"data\": [\n    {\n      \"default\": true,\n      \"id\": 1747,\n      \"name\": \"Advanced\",\n      \"sfEntityType\": \"Workspace\"\n    },\n    {\n      \"default\": true,\n      \"id\": 1748,\n      \"name\": \"Basic\",\n      \"sfEntityType\": \"Workspace\"\n    },\n    {\n      \"default\": true,\n      \"id\": 1749,\n      \"name\": \"Mobile Capture Workspace\",\n      \"sfEntityType\": \"Workspace\"\n    }\n  ],\n  \"pagination\": {},\n  \"status\": {\n    \"succeeded\": true\n  }\n}"
               schema:
                 type: object
                 properties:
@@ -3370,6 +3135,16 @@ paths:
                         default: true
       deprecated: false
       security: []
+      tags:
+      - Conversations
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth2/token
+          scopes: {}
 x-readme:
   headers: []
   explorer-enabled: true

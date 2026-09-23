@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: stream-api Compare.json?streams={content}&target={number}&precision API
+  title: stream-api Compare.json?streams={content}&target={number}&pr…
   version: '1.1'
 servers:
 - url: https://api.massrelevance.com

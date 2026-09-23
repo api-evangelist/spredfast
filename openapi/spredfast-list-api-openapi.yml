@@ -67,7 +67,6 @@ paths:
   /list:
     get:
       summary: List the root directory
-      description: List the root directory
       operationId: list-the-root-directory
       responses:
         '200':
